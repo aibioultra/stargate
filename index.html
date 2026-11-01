@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="초광역 성장엔진 인재육성사업 ULTRA ANCHOR · 5개 대학과 8개 앵커기업·기관이 함께하는 AI첨단바이오 워케이션 챌린지 ① (2026.11.20–21, 충남 1박 2일, 1학점) 신청 안내">
+<meta name="description" content="초광역 성장엔진 인재육성사업 ULTRA ANCHOR · 5개 대학과 8개 앵커기업·기관이 함께하는 AI첨단바이오 워케이션 챌린지 ① (2026.11.20–21, 충남 1박 2일, 1학점, 신청 마감 11.6 18:00) 신청 안내와 AI첨단바이오 전공 교육과정">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:title" content="ULTRA ANCHOR · AI첨단바이오 워케이션 챌린지 ①">
 <meta property="og:description" content="5개 대학 · 8개 앵커기업·기관과 함께하는 1박 2일 1학점 챌린지 | 2026.11.20(금)–21(토) 충남">
-<meta property="og:image" content="/og.png">
+<meta property="og:url" content="https://stargate-aibio.vercel.app/">
+<meta property="og:image" content="https://stargate-aibio.vercel.app/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -40,6 +41,7 @@
   --on-dark-fill:rgba(255,255,255,.05);
   --sea-1:#5AA6F0; --sea-2:#2F6FD6; --sea-3:#1F4FB0; --sea-4:#1D3484; --sea-5:#151D48;
   --tbd-ink:#8A5300; --tbd-bg:#FFF3DA; --tbd-line:#EDAA3A;
+  --amber:#E59A2F; --amber-bg:#FFF7EA; --amber-line:#F3D5A6; --amber-ink:#8F5200;
   --shadow:rgba(27,36,82,.45);
   --scrim:rgba(10,14,34,.55);
 
@@ -118,6 +120,14 @@ h1 .nw{white-space:nowrap}
 .lead{font-size:clamp(1.02rem,1.5vw,1.14rem);color:var(--muted);max-width:34em;margin:0}
 .lead b{color:var(--ink)}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.deadline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 0;font-size:14.5px;color:var(--muted)}
+.deadline b{color:var(--ink)}
+.f-contact a,.desc a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.m-priv{margin:-6px 0 0;font-size:12.5px}
+.m-priv a{color:var(--blue);font-weight:700}
+.priv dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 16px;margin:0 0 18px;font-size:14px}
+.priv dt{font-weight:700;color:var(--blue)}
+.priv dd{margin:0}
 .facts{list-style:none;padding:0;margin:36px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
 .facts li{padding:16px 16px 0 0;min-width:0}
 .facts .k{display:block;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--blue)}
@@ -267,7 +277,7 @@ h2{font-size:clamp(1.65rem,3.2vw,2.4rem);line-height:1.32;letter-spacing:-.04em;
 .step.is-open .st.now{background:var(--cyan);color:var(--navy)}
 .cmp-title{margin:56px 0 16px;font-size:1.3rem;letter-spacing:-.03em}
 .cmp-wrap{overflow-x:auto;border-radius:22px;border:1px solid var(--line);background:var(--paper)}
-table.cmp{width:100%;border-collapse:collapse;min-width:660px;font-size:15px}
+table.cmp{width:100%;border-collapse:collapse;min-width:760px;font-size:15px}
 .cmp th,.cmp td{padding:16px 20px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
 .cmp thead th{background:var(--navy);color:var(--paper);font-weight:700;border-bottom:0}
 .cmp thead th small{display:block;font-family:var(--f-mono);font-weight:500;font-size:11px;color:var(--cyan-soft);letter-spacing:.08em}
@@ -278,7 +288,8 @@ table.cmp{width:100%;border-collapse:collapse;min-width:660px;font-size:15px}
 @media (max-width:560px){.steps{grid-template-columns:minmax(0,1fr)}}
 
 /* ---------- challenge ---------- */
-.ch-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:28px}
+.ch-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.ch-info + .note-ref{margin:12px 0 28px}
 .ch-info div{border:1px solid var(--on-dark-line);border-radius:18px;padding:16px 18px;background:var(--on-dark-fill);min-width:0}
 .ch-info .k{display:block;font-family:var(--f-mono);font-size:11.5px;color:var(--cyan);letter-spacing:.1em}
 .ch-info .v{display:block;font-weight:700;margin-top:4px;line-height:1.55}
@@ -327,7 +338,7 @@ table.cmp{width:100%;border-collapse:collapse;min-width:660px;font-size:15px}
 .ptile.main{border:2px solid var(--navy)}
 .ptile .badge{position:absolute;top:8px;left:8px;z-index:1;font-size:11px;font-weight:800;background:var(--navy);color:var(--paper);border-radius:999px;padding:1px 8px}
 .plogo{display:grid;place-items:center;height:68px;margin-bottom:8px;border-radius:12px;background:var(--mist)}
-.plogo img{max-height:40px;max-width:84%;width:auto;height:auto;object-fit:contain}
+.plogo img{display:block;max-width:88%;height:auto;object-fit:contain}
 .logo-ph{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:#8E9BBC;border:1.5px dashed #C3CFE6;border-radius:8px;padding:5px 10px;background:var(--paper)}
 .logo-ph svg{width:14px;height:14px}
 .pname{font-weight:800;font-size:15px;line-height:1.4;padding-right:22px}
@@ -359,7 +370,7 @@ table.cmp{width:100%;border-collapse:collapse;min-width:660px;font-size:15px}
 .ov-actions{display:flex;flex-wrap:wrap;gap:10px 14px;margin-top:26px;align-items:center}
 .ov-url{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);overflow-wrap:anywhere}
 .ov-logo{display:grid;place-items:center;aspect-ratio:3/2;width:100%;max-width:100%;border-radius:26px;background:var(--paper);border:1px solid var(--line);box-shadow:0 30px 60px -40px var(--shadow);padding:28px}
-.ov-logo img{max-width:80%;max-height:96px;width:auto;height:auto;object-fit:contain}
+.ov-logo img{display:block;max-width:88%;height:auto;object-fit:contain}
 .ov-logo .logo-ph{font-size:12px;padding:10px 14px}
 .ov-sec{padding-block:44px 0}
 .ov-h{margin:0 0 16px;font-size:1.25rem;letter-spacing:-.03em}
@@ -385,6 +396,92 @@ table.cmp{width:100%;border-collapse:collapse;min-width:660px;font-size:15px}
 @media (max-width:860px){.ov-grid{grid-template-columns:minmax(0,1fr);gap:24px}.ov-logo{order:-1;max-width:320px;aspect-ratio:2/1;padding:20px}}
 @media (max-width:480px){.ov-nav{grid-template-columns:minmax(0,1fr)}.ov-nav a.next{text-align:left;align-items:flex-start}.ov-cta .btn{flex:1 1 100%}}
 
+/* ---------- notes + curriculum view ---------- */
+.note-ref{margin:14px 0 0;font-size:13.5px;line-height:1.6;color:var(--muted)}
+.band-navy .note-ref{color:var(--on-dark-muted)}
+.cmp-actions{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;margin-top:18px}
+.cmp-actions .txt{min-width:0;flex:1 1 320px}
+.cmp-actions .txt p{margin:0;font-size:14px;color:var(--ink)}
+.cmp-actions .note-ref{margin-top:4px}
+.r-link{color:var(--cyan);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.cv-lead{margin:-4px 0 18px;color:var(--muted);font-size:15px;max-width:52em}
+.cv-count{display:grid;gap:4px;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:18px 22px;box-shadow:0 30px 60px -40px var(--shadow)}
+.cv-count div{display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.cv-count div:last-child{border-bottom:0}
+.cv-count b{font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:2.4rem;line-height:1;color:var(--navy);min-width:1.6em;font-variant-numeric:tabular-nums}
+.cv-count span{font-weight:700;font-size:14.5px;line-height:1.4}
+.cv-count small{font-weight:500;color:var(--muted);font-size:12.5px}
+.ladder{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lcard{border:1px solid var(--line);border-radius:20px;padding:20px;background:var(--paper);min-width:0}
+.lcard .en{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:112%;font-size:12px;letter-spacing:.1em;color:var(--blue)}
+.lcard h3{margin:4px 0 0;font-size:1.2rem;letter-spacing:-.02em}
+.lcard .cr{font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:2.6rem;line-height:1.1;color:var(--navy);margin-top:6px;font-variant-numeric:tabular-nums}
+.lcard .cr small{font-family:var(--f-kr);font-size:1rem;margin-left:4px}
+.bar{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--mist);border:1px solid var(--line);margin:12px 0 10px}
+.bar span{display:block;height:100%}
+.bar span + span{box-shadow:inset 2px 0 0 var(--paper)}
+.lcard .fx{margin:0;font-size:13px;font-weight:600;color:var(--ink)}
+.lcard .goal{margin:6px 0 0;font-size:13.5px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;margin-top:14px;font-size:12.5px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend .sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.legend .scale{margin-left:auto;font-family:var(--f-mono);font-size:11.5px}
+.tmatrix{display:grid;grid-template-columns:110px repeat(3,minmax(0,1fr));gap:8px}
+.tmatrix .mh{display:flex;align-items:center;font-size:13px;font-weight:800;color:var(--muted)}
+.tmatrix .mh.col{justify-content:flex-start;padding-left:4px}
+.tbtn{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:0;padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:var(--paper);color:var(--ink);text-align:left;cursor:pointer;transition:border-color .15s,background-color .15s}
+.tbtn:hover{border-color:var(--cyan)}
+.tbtn .tid{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:112%;font-size:13px;color:var(--blue)}
+.tbtn .tind{display:none;font-size:12px;color:var(--muted)}
+.tbtn b{font-size:15px;line-height:1.4}
+.tbtn small{font-size:12px;color:var(--muted);line-height:1.45}
+.tbtn[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--paper)}
+.tbtn[aria-pressed="true"] .tid{color:var(--cyan)}
+.tbtn[aria-pressed="true"] small,.tbtn[aria-pressed="true"] .tind{color:var(--on-dark-muted)}
+.tdetail{margin-top:14px;padding:24px;border-radius:22px;border:1px solid var(--line);background:var(--mist)}
+.td-head{display:flex;gap:16px;align-items:flex-start}
+.tcode{flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:14px;background:var(--navy);color:var(--cyan);font-family:var(--f-display);font-style:italic;font-weight:800;font-size:18px}
+.td-head h3{margin:0;font-size:1.25rem;letter-spacing:-.02em}
+.td-head p{margin:6px 0 0;font-size:14.5px;color:var(--muted)}
+.td-meta{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 16px;margin:16px 0;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--paper);font-size:14px}
+.td-meta dt{font-weight:700;color:var(--blue)}
+.td-meta dd{margin:0}
+.td-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.td-cols h4{margin:0 0 8px;font-size:15px}
+.td-cols h4 small{margin-left:6px;font-size:12.5px;font-weight:500;color:var(--muted)}
+.crs-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.crs,.cc{min-width:0;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--paper)}
+.crs-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.crs-h b{font-size:14.5px;line-height:1.45;word-break:normal;overflow-wrap:anywhere;min-width:0}
+.crs-cr{flex:none;font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.crs p,.cc p{margin:4px 0 8px;font-size:13.5px;line-height:1.6;color:var(--muted)}
+.mode{display:inline-block;padding:1px 9px;border-radius:999px;background:var(--sky);color:var(--blue);font-size:11.5px;font-weight:700}
+.td-pbl{margin-top:16px;padding:14px 16px;border-radius:14px;background:var(--navy);color:var(--on-dark)}
+.td-pbl .tag{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;color:var(--cyan)}
+.td-pbl p{margin:4px 0 0;font-size:14px}
+.td-pbl b{margin-right:8px;color:var(--paper)}
+.wk{display:grid;gap:10px;padding:18px;border-radius:20px;border:1px solid var(--line);background:var(--paper)}
+.wk-row{display:grid;grid-template-columns:150px repeat(3,minmax(0,1fr));gap:8px}
+.wk-label{display:flex;align-items:center;font-size:14px;font-weight:800;line-height:1.35}
+.wk-step{display:flex;flex-direction:column;justify-content:center;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--mist);font-size:14px;font-weight:800}
+.wk-step small{font-size:12px;font-weight:500;color:var(--muted)}
+.wk-step.now{background:var(--cyan);border-color:var(--cyan);color:var(--navy)}
+.wk-step.now small{color:var(--navy)}
+.wk-note{margin:4px 0 0;font-size:13.5px;color:var(--muted)}
+.cc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.pp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pp{min-width:0;padding:18px;border-radius:18px;border:1px solid var(--line);background:var(--mist)}
+.pp .tag{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;color:var(--blue)}
+.pp h4{margin:6px 0 4px;font-size:15.5px;letter-spacing:-.02em}
+.pp p{margin:0;font-size:13.5px;color:var(--muted)}
+.pp.amber{background:var(--amber-bg);border-color:var(--amber-line)}
+.pp.amber .tag{color:var(--amber-ink)}
+@media (max-width:860px){.cc-grid{grid-template-columns:minmax(0,1fr)}.pp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.ladder,.td-cols{grid-template-columns:minmax(0,1fr)}.legend .scale{margin-left:0;width:100%}}
+@media (max-width:700px){.tmatrix{grid-template-columns:repeat(2,minmax(0,1fr))}.tmatrix .mh{display:none}.tbtn .tind{display:block}}
+@media (max-width:600px){.wk-row{grid-template-columns:repeat(3,minmax(0,1fr))}.wk-label{grid-column:1/-1}}
+@media (max-width:560px){.pp-grid{grid-template-columns:minmax(0,1fr)}.tdetail{padding:18px}}
+
 /* ---------- faq ---------- */
 .faq-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
 .tab{padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:var(--paper);font-weight:700;font-size:15px;cursor:pointer;color:var(--muted)}
@@ -398,6 +495,7 @@ table.cmp{width:100%;border-collapse:collapse;min-width:660px;font-size:15px}
 .qa[open] .chev{transform:rotate(180deg)}
 .qa .a{padding:0 22px 20px 48px;color:var(--muted);font-size:15px}
 .qa .a p{margin:0}
+.qa .a a{color:var(--blue);font-weight:700}
 .univ{background:var(--paper);border-radius:20px;border:1px solid var(--line);padding:22px;margin-top:18px}
 .univ h3{margin:0 0 12px;font-size:1.05rem}
 .univ-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
@@ -496,6 +594,56 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+/* ---------- FAQ chatbot ---------- */
+.bot-fab{position:fixed;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:75;display:flex;align-items:center;gap:10px;border:0;background:none;padding:0;cursor:pointer;font-family:inherit}
+.bot-fab .ball{position:relative;display:grid;place-items:center;width:60px;height:60px;border-radius:50%;background:var(--navy);color:var(--paper);box-shadow:0 16px 34px -12px var(--shadow);transition:transform .15s}
+.bot-fab:hover .ball{transform:translateY(-2px)}
+.bot-fab .ball svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.bot-fab .ball::after{content:"";position:absolute;top:6px;right:6px;width:12px;height:12px;border-radius:50%;background:var(--cyan);border:2px solid var(--navy)}
+.bot-fab .tip{order:-1;padding:9px 14px;border-radius:999px;background:var(--paper);color:var(--ink);border:1px solid var(--line);box-shadow:0 10px 26px -14px var(--shadow);font-size:14px;font-weight:700;white-space:nowrap}
+.bot-fab[aria-expanded="true"] .tip{display:none}
+.bot-fab[aria-expanded="true"] .ball::after{display:none}
+.bot{position:fixed;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(92px + env(safe-area-inset-bottom,0px));z-index:75;width:380px;height:min(600px,calc(100vh - 120px));height:min(600px,calc(100dvh - 120px));display:flex;flex-direction:column;border-radius:22px;background:var(--paper);border:1px solid var(--line);box-shadow:0 30px 70px -24px var(--shadow);overflow:hidden}
+.bot[hidden]{display:none!important}
+.bot-hd{display:flex;align-items:center;gap:12px;padding:14px 14px 14px 16px;background:var(--navy);color:var(--paper)}
+.bot-hd .av{flex:none;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12) url("assets/mark-white.png") center/64% no-repeat;border:1px solid rgba(255,255,255,.22)}
+.bot-hd .t{flex:1;min-width:0;line-height:1.35}
+.bot-hd b{display:block;font-size:15px}
+.bot-hd small{display:block;font-size:12px;color:var(--on-dark-muted)}
+.bot-hd button{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;border:0;background:rgba(255,255,255,.08);color:var(--paper);cursor:pointer}
+.bot-hd button:hover{background:rgba(255,255,255,.16)}
+.bot-log{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:16px 14px 8px;background:var(--mist);display:flex;flex-direction:column;gap:10px}
+.bm{max-width:86%;padding:10px 14px;border-radius:18px;font-size:14.5px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere}
+.bm p{margin:0}.bm p+p{margin-top:6px}
+.bm ul{margin:4px 0 0;padding-left:18px}
+.bm a{color:var(--blue);font-weight:700}
+.bm.bot-a{align-self:flex-start;background:var(--paper);border:1px solid var(--line);border-bottom-left-radius:6px;color:var(--ink)}
+.bm.me{align-self:flex-end;background:var(--blue);color:var(--paper);border-bottom-right-radius:6px}
+.bm .note{display:block;margin-top:6px;font-size:12px;color:var(--muted)}
+.bm.typing{display:flex;gap:5px;padding:14px 16px}
+.bm.typing i{width:7px;height:7px;border-radius:50%;background:#A5AFC6;animation:botdot 1s infinite ease-in-out}
+.bm.typing i:nth-child(2){animation-delay:.15s}.bm.typing i:nth-child(3){animation-delay:.3s}
+@keyframes botdot{0%,80%,100%{transform:translateY(0);opacity:.5}40%{transform:translateY(-4px);opacity:1}}
+.b-acts{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start;max-width:92%}
+.b-acts .b-act{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 14px;border-radius:999px;font-size:13.5px;font-weight:800;text-decoration:none;border:0;cursor:pointer;font-family:inherit;background:var(--cyan);color:var(--navy-deep)}
+.b-acts .b-act.sec{background:var(--paper);color:var(--navy);border:1.5px solid var(--navy)}
+.b-chips{display:flex;flex-wrap:wrap;gap:6px;padding:8px 14px 10px;background:var(--mist);border-top:1px solid var(--line)}
+.b-chips button{min-height:34px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--navy);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+.b-chips button:hover{border-color:var(--cyan)}
+.bot-in{display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:var(--paper);border-top:1px solid var(--line)}
+.bot-in input{flex:1;min-width:0;height:44px;border-radius:999px;border:1px solid var(--line);background:var(--mist);padding:0 16px;font-size:16px;font-family:inherit;color:var(--ink)}
+.bot-in input:focus{outline:2px solid var(--cyan);outline-offset:1px}
+.bot-in button{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--navy);color:var(--paper);display:grid;place-items:center;cursor:pointer}
+.bot-ft{padding:0 14px 8px;background:var(--paper);font-size:11.5px;color:var(--muted);text-align:center}
+@media (max-width:760px){
+  .bot-fab{bottom:calc(84px + env(safe-area-inset-bottom,0px));right:max(14px,env(safe-area-inset-right,0px))}
+  .bot-fab .tip{display:none}
+  .bot-fab .ball{width:54px;height:54px}
+  .bot{inset:0;width:auto;height:auto;border-radius:0;border:0;z-index:78}
+}
+@media (prefers-reduced-motion:reduce){.bm.typing i{animation:none}.bot-fab .ball{transition:none}}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 </head>
 <body>
@@ -520,13 +668,6 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
   <symbol id="i-bld" viewBox="0 0 24 24"><path d="M4 21V6l8-3 8 3v15M9 21v-5h6v5M8 9h.01M12 9h.01M16 9h.01M8 12.5h.01M12 12.5h.01M16 12.5h.01"/></symbol>
 </svg>
 
-<div class="draftbar">
-  <div class="wrap">
-    <p>학생 안내페이지 시안입니다. 아직 정해지지 않은 내용은 <span class="tbd" data-nocount>확정 후 기입</span>으로 표시했습니다.</p>
-    <button type="button" id="tbdNext"><svg class="i"><use href="#i-search"/></svg>미확정 항목 찾기 <span id="tbdPos"></span><b id="tbdCount"></b></button>
-  </div>
-</div>
-
 <header class="site-header">
   <div class="wrap header-in">
     <a class="brand" href="#top"><img src="assets/logo.png" alt="ULTRA ANCHOR 초광역 성장엔진 인재육성사업" width="720" height="245"></a>
@@ -534,6 +675,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       <a href="#about">사업 소개</a>
       <a href="#finder">진로 진단</a>
       <a href="#pathway">이수 경로</a>
+      <a href="#curriculum">교육과정</a>
       <a href="#challenge">11.20 챌린지<span class="new" aria-hidden="true"></span></a>
       <a href="#schedule">일정</a>
       <a href="#faq">FAQ</a>
@@ -546,6 +688,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       <a href="#about">사업 소개</a>
       <a href="#finder">30초 진로 진단</a>
       <a href="#pathway">이수 경로</a>
+      <a href="#curriculum">교육과정</a>
       <a href="#challenge">11.20 워케이션 챌린지</a>
       <a href="#schedule">일정</a>
       <a href="#faq">자주 묻는 질문</a>
@@ -565,6 +708,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
         <a class="btn btn-navy" href="#apply" data-open="challenge">11.20 챌린지 신청하기 <svg class="i"><use href="#i-arrow"/></svg></a>
         <a class="btn btn-ghost" href="#finder">30초 진로 진단</a>
       </div>
+      <p class="deadline">신청 마감 <b>11월 6일(금) 18:00</b> <span class="st now" data-deadline-dday>D-5</span></p>
       <ul class="facts">
         <li><span class="k">WHEN</span><span class="v">2026.11.20(금)–21(토)<br>1박 2일 · 충남</span></li>
         <li><span class="k">CREDIT</span><span class="v">1학점<br>2026-2학기 시범 운영</span></li>
@@ -575,7 +719,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
     <figure class="route-card" aria-label="5개 참여대학 항로도">
       <div class="route-top"><span>ULTRA ROUTE · 2026</span><span class="badge">11.20 출항</span></div>
       <svg class="map" viewBox="0 0 520 470" role="img" aria-labelledby="mapTitle">
-        <title id="mapTitle">충남의 단국대를 허브로 아주대·유한대(경기), 건양대(충남), 계명대(대구)를 잇는 항로</title>
+        <title id="mapTitle">충남의 단국대를 허브로 건양대(충남), 계명대(대구), 아주대·유한대(경기)를 잇는 항로</title>
         <g class="gridl">
           <line x1="19" y1="0" x2="19" y2="440"/><line x1="114" y1="0" x2="114" y2="440"/><line x1="209" y1="0" x2="209" y2="440"/><line x1="304" y1="0" x2="304" y2="440"/><line x1="399" y1="0" x2="399" y2="440"/><line x1="494" y1="0" x2="494" y2="440"/>
           <line x1="0" y1="60" x2="520" y2="60"/><line x1="0" y1="160" x2="520" y2="160"/><line x1="0" y1="260" x2="520" y2="260"/><line x1="0" y1="360" x2="520" y2="360"/>
@@ -646,7 +790,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
         <div class="v-text">
           <h3>Connect Ultra-wide</h3>
           <p class="ko">지역을 넘어 연결됩니다</p>
-          <p>단국대·아주대·계명대·건양대·유한대가 교과를 함께 만들고 함께 운영합니다. 내 학교에 없는 과목과 실습실도 내 커리큘럼이 됩니다.</p>
+          <p>단국대·건양대·계명대·아주대·유한대가 교과를 함께 만들고 함께 운영합니다. 내 학교에 없는 과목과 실습실도 내 커리큘럼이 됩니다.</p>
         </div>
       </div>
       <div class="v-item">
@@ -672,10 +816,10 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       <a class="more" href="#partners">함께하는 기관 보기 <svg class="i"><use href="#i-arrow"/></svg></a>
     </div>
     <div class="stats">
-      <div class="stat"><div class="n">5<small>개 대학</small></div><div class="sub"><b>충남 · 경기 · 대구</b>단국대 · 아주대 · 계명대 · 건양대 · 유한대</div></div>
+      <div class="stat"><div class="n">5<small>개 대학</small></div><div class="sub"><b>충남 · 경기 · 대구</b>단국대 · 건양대 · 계명대 · 아주대 · 유한대</div></div>
       <div class="stat"><div class="n">8<small>개 앵커기업·기관</small></div><div class="sub"><b>제약 · 의료기기 · 시험인증 · 기술지주</b>교육 설계부터 실습, 채용연계까지 참여합니다</div></div>
-      <div class="stat"><div class="n">4<small>개 대학병원</small></div><div class="sub"><b>상급종합병원 협력</b>단국대병원 · 아주대병원 · 계명대 동산병원 · 건양대병원</div></div>
-      <div class="stat"><div class="n">71<small>개 공동개발 교과</small></div><div class="sub"><b>4년간 5개 대학이 함께 개발</b>직무기초부터 PBL, 현장실습까지</div></div>
+      <div class="stat"><div class="n">4<small>개 대학병원</small></div><div class="sub"><b>상급종합병원 협력</b>단국대병원 · 건양대병원 · 계명대 동산병원 · 아주대병원</div></div>
+      <div class="stat"><div class="n">70<small>여 개 공동개발 교과</small></div><div class="sub"><b>4년간 5개 대학이 함께 개발</b>직무기초부터 PBL, 현장실습까지</div></div>
     </div>
     <div class="why">
       <div>
@@ -703,7 +847,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
         </div>
         <ul class="tips">
           <li><svg class="i"><use href="#i-check"/></svg><span>정답은 없습니다. 끌리는 쪽을 고르세요.</span></li>
-          <li><svg class="i"><use href="#i-check"/></svg><span>결과는 트랙 선택을 돕는 참고용이고, 신청 후에도 바꿀 수 있습니다. <span class="tbd">변경 기준</span></span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>결과는 트랙 선택을 돕는 참고용입니다.</span></li>
           <li><svg class="i"><use href="#i-check"/></svg><span>유형마다 연계 기업과 목표 직무가 다릅니다.</span></li>
         </ul>
       </div>
@@ -725,27 +869,31 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       <a class="more" href="#apply" data-open="challenge">챌린지 신청 <svg class="i"><use href="#i-arrow"/></svg></a>
     </div>
     <div class="steps">
-      <div class="step is-open"><span class="no">STEP 1</span><h3>챌린지 참가 신청</h3><p>이름과 소속 대학, 관심 트랙을 남기면 참가 안내를 문자로 보내 드립니다.</p><div class="meta"><span class="st now">지금 신청 가능</span></div></div>
-      <div class="step is-open"><span class="no">STEP 2</span><h3>AI첨단바이오 워케이션 챌린지 ①</h3><p>충남에서 1박 2일. AI제약바이오·AI의료기기 두 트랙 중 하나를 골라 참여합니다.</p><div class="meta"><span class="st">11.20–21</span><span class="st">1학점</span></div></div>
-      <div class="step"><span class="no">STEP 3</span><h3>공통과목</h3><p>모든 트랙이 함께 듣는 기초 과목입니다. 동계 계절학기 운영을 협의하고 있습니다.</p><div class="meta"><span class="st plan">협의 중</span><span class="st">2026 동계</span></div></div>
-      <div class="step"><span class="no">STEP 4</span><h3>직무별 마이크로디그리</h3><p>목표 직무 하나에 맞춰 이론, PBL, 현장실습·인턴십을 묶은 과정입니다.</p><div class="meta"><span class="st">11.20부터 신청</span></div></div>
-      <div class="step"><span class="no">STEP 5</span><h3>AI첨단바이오 융합전공</h3><p>5개 대학 공동개발 교과로 새로 만드는 다전공입니다. 신설 절차를 밟고 있습니다.</p><div class="meta"><span class="st plan">신설 추진 중</span></div></div>
+      <div class="step is-open"><span class="no">STEP 1</span><h3>챌린지 참가 신청</h3><p>이름과 소속 대학, 관심 트랙을 남기면 참가 안내를 문자로 보내 드립니다.</p><div class="meta"><span class="st now" data-deadline-chip>지금 신청 가능</span><span class="st">~11.6(금) 18:00</span></div></div>
+      <div class="step is-open"><span class="no">STEP 2</span><h3>AI첨단바이오 워케이션 챌린지 ①</h3><p>충남에서 1박 2일. AI제약바이오·AI의료기기 워케이션챌린지① 중 하나를 이수합니다. 이후 ②(2학점)·③(3학점)으로 이어집니다.</p><div class="meta"><span class="st">11.20–21</span><span class="st">1학점</span></div></div>
+      <div class="step"><span class="no">STEP 3</span><h3>공통교과</h3><p>인체·건강기초, 첨단바이오산업과 직무이해, 데이터·AI 활용기초 등 모든 트랙이 함께 듣는 교과입니다. 동계 계절학기 운영을 협의하고 있습니다.</p><div class="meta"><span class="st plan">협의 중</span><span class="st">2026 동계</span></div></div>
+      <div class="step"><span class="no">STEP 4</span><h3>직무별 마이크로디그리 · 12학점</h3><p>6개 트랙 중 하나를 골라 공통·직무기초·직무심화 교과와 기업문제형 PBLⅠ을 이수합니다.</p><div class="meta"><span class="st">11.20부터 신청</span></div></div>
+      <div class="step"><span class="no">STEP 5</span><h3>AI첨단바이오 전공 · 부전공 21 / 복수전공 42학점</h3><p>같은 트랙을 더 깊게 이어 가며 현장·연구연계까지 이수합니다. 먼저 이수한 학점은 누적 인정됩니다.</p><div class="meta"><span class="st plan">신설 추진 중</span></div></div>
       <div class="step"><span class="no">STEP 6</span><h3>대학원 · 앵커기업 채용연계</h3><p>5개 대학 공동 석·박사과정 신설을 추진하고, 앵커기업 채용으로 연결합니다.</p><div class="meta"><span class="st plan">대학원 신설 추진 중</span></div></div>
     </div>
 
-    <h3 class="cmp-title">마이크로디그리와 융합전공, 무엇이 다른가요?</h3>
+    <h3 class="cmp-title">마이크로디그리 · 부전공 · 복수전공, 무엇이 다른가요?</h3>
     <div class="cmp-wrap">
       <table class="cmp">
-        <thead><tr><th scope="col">구분</th><th scope="col">직무별 마이크로디그리<small>MICRO DEGREE</small></th><th scope="col">AI첨단바이오 융합전공<small>CONVERGENCE MAJOR</small></th></tr></thead>
+        <thead><tr><th scope="col">구분</th><th scope="col">마이크로디그리<small>MICRO DEGREE</small></th><th scope="col">부전공<small>MINOR</small></th><th scope="col">복수전공<small>DOUBLE MAJOR</small></th></tr></thead>
         <tbody>
-          <tr><th scope="row">한 줄 설명</th><td>목표 직무 하나를 집중해서 준비하는 작은 학위 묶음</td><td>AI와 바이오를 제2전공 수준으로 깊이 공부하는 다전공</td></tr>
-          <tr><th scope="row">구성</th><td>이론(강의) + PBL + 현장실습·인턴십</td><td>5개 대학 공동개발 교과로 새로 구성</td></tr>
-          <tr><th scope="row">이수 학점</th><td><span class="tbd">확정 후 기입</span></td><td><span class="tbd">확정 후 기입</span></td></tr>
-          <tr><th scope="row">증명 방식</th><td>이수증·성적증명서 표기 <span class="tbd">확정 후 기입</span></td><td>학위기 표기 <span class="tbd">확정 후 기입</span></td></tr>
-          <tr><th scope="row">신청 시기</th><td>11.20부터 · 마감 <span class="tbd">확정 후 기입</span></td><td>전공 신설 절차 완료 후 <span class="tbd">확정 후 기입</span></td></tr>
-          <tr><th scope="row">이런 학생에게</th><td>QA·QC, RA처럼 가고 싶은 직무가 분명한 학생</td><td>AI·바이오를 전공 수준으로 쌓고 대학원까지 생각하는 학생</td></tr>
+          <tr><th scope="row">이수 학점</th><td><b>12학점</b></td><td><b>21학점</b></td><td><b>42학점</b></td></tr>
+          <tr><th scope="row">기본 구성</th><td>공통 3 + 직무기초 3 + 직무심화 3 + PBLⅠ 3</td><td>공통 6 + 직무기초 3 + 직무심화 6 + PBLⅠ 3 + 현장·연구연계Ⅰ 3</td><td>공통 9 + 직무기초 9 + 직무심화 12 + PBLⅠ·Ⅱ 6 + 현장·연구연계Ⅰ·Ⅱ 6</td></tr>
+          <tr><th scope="row">교육 목표</th><td>특정 산업·직무의 기초역량과 기업문제 분석·설계 경험</td><td>같은 직무경로의 심화지식과 방학 집중형 현장·연구 경험</td><td>직무 전문성, 기업문제 검증, 취업·국내외 대학원 진학 역량</td></tr>
+          <tr><th scope="row">증명 방식</th><td>이수증·성적증명서 표기 방식 추후 안내</td><td colspan="2">학위기 표기 방식 추후 안내</td></tr>
+          <tr><th scope="row">신청 시기</th><td>11.20부터 · 마감 추후 안내</td><td colspan="2">전공 신설 절차 완료 후 안내</td></tr>
+          <tr><th scope="row">이런 학생에게</th><td>가고 싶은 직무를 빠르게 탐색하고 싶은 학생</td><td>현장실습·연구 경험까지 쌓고 싶은 학생</td><td>직무 전문성을 갖추고 취업·대학원 진학을 준비하는 학생</td></tr>
         </tbody>
       </table>
+    </div>
+    <div class="cmp-actions">
+      <div class="txt"><p>같은 트랙 안에서 단계적으로 넓혀 가며, 먼저 이수한 학점은 상위 과정에 누적 인정됩니다.</p><p class="note-ref">※ 교육과정은 각 참여대학별로 개설 전공명 등이 상이할 수 있습니다.</p></div>
+      <a class="btn btn-navy" href="#curriculum">교육과정 자세히 확인하기 <svg class="i"><use href="#i-right"/></svg></a>
     </div>
   </div>
 </section>
@@ -757,17 +905,18 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       <div class="t">
         <p class="kicker">BioWorkation Challenge ①</p>
         <h2>11월 20일, 충남에서 1박 2일</h2>
-        <p class="desc">AI첨단바이오 워케이션 챌린지 ①은 2026-2학기에 시범 운영하는 1학점 교과입니다. AI제약바이오와 AI의료기기 두 트랙으로 나뉘고, 앵커기업 특강은 함께 듣습니다.</p>
+        <p class="desc">AI제약바이오 워케이션챌린지①과 AI의료기기 워케이션챌린지① 중 하나를 이수하는 1학점 교과로, 2026-2학기에 시범 운영합니다. 앵커기업 현장에 머물며 일과 학습을 병행하고, 현직자 멘토링과 활동 산출물을 성과기반학점인정제로 평가합니다. 앵커기업 특강은 함께 듣습니다.</p>
       </div>
       <a class="more" href="#apply" data-open="challenge">챌린지 신청하기 <svg class="i"><use href="#i-arrow"/></svg></a>
     </div>
 
     <div class="ch-info">
       <div><span class="k">DATE</span><span class="v">2026.11.20(금)–21(토)<br>1박 2일 합숙</span></div>
-      <div><span class="k">PLACE</span><span class="v">충남 · 세부 장소<br><span class="tbd">확정 후 기입</span></span></div>
+      <div><span class="k">PLACE</span><span class="v">충남<br>세부 장소는 참가 확정 때 안내</span></div>
       <div><span class="k">CREDIT</span><span class="v">1학점<br>2026-2학기 시범 운영</span></div>
-      <div><span class="k">COST</span><span class="v">참가비·숙박·교통 지원<br><span class="tbd">확정 후 기입</span></span></div>
+      <div><span class="k">COST</span><span class="v">참가비 무료<br>숙박·식사·교통 지원</span></div>
     </div>
+    <p class="note-ref">※ 챌린지 세부 일정은 변경될 수 있습니다.</p>
 
     <div class="track">
       <div class="track-label"><span class="t">ALL TRACKS</span><h3>공통 세션</h3><p>두 트랙이 함께 듣습니다</p></div>
@@ -781,13 +930,13 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
         <article class="session soon">
           <span class="tag">TIMETABLE</span>
           <h4>세부 시간표</h4>
-          <p>세션별 시간과 순서 <span class="tbd">확정 후 기입</span></p>
+          <p>세션별 시간과 순서는 참가 확정 때 안내합니다.</p>
         </article>
       </div>
     </div>
 
     <div class="track">
-      <div class="track-label"><span class="t">TRACK A</span><h3>AI제약바이오</h3><p>신약개발·품질·인허가</p></div>
+      <div class="track-label"><span class="t">TRACK A</span><h3>AI제약바이오</h3><p>신약개발·품질·인허가<br>교과: AI제약바이오워케이션챌린지① (1학점)</p></div>
       <div class="sessions">
         <article class="session">
           <span class="tag">실습 · LAB</span>
@@ -811,12 +960,12 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
     </div>
 
     <div class="track">
-      <div class="track-label"><span class="t">TRACK B</span><h3>AI의료기기</h3><p>병원 AX·바이브코딩·사업화</p></div>
+      <div class="track-label"><span class="t">TRACK B</span><h3>AI의료기기</h3><p>병원 AX·바이브코딩·사업화<br>교과: AI의료기기워케이션챌린지① (1학점)</p></div>
       <div class="sessions">
         <article class="session wide">
           <span class="tag">워크숍 · WORKSHOP</span>
           <h4>AI 의료기기 바이브코딩 워크숍</h4>
-          <p>병원 현장에서 나온 문제를 AI 코딩 도구로 바로 시제품으로 만들어 봅니다. 코딩 경험이 없어도 참여할 수 있도록 설계합니다. <span class="tbd">사전 준비 안내</span></p>
+          <p>병원 현장에서 나온 문제를 AI 코딩 도구로 바로 시제품으로 만들어 봅니다. 코딩 경험이 없어도 참여할 수 있도록 설계합니다. 노트북을 지참해 주세요.</p>
           <div class="org"><svg class="i"><use href="#i-bld"/></svg>단국대병원 AX센터</div>
         </article>
         <article class="session">
@@ -840,12 +989,13 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       </div>
     </div>
     <ol class="tl">
-      <li class="now"><span class="dot" aria-hidden="true"></span><div><span class="title">챌린지 참가 신청</span><span class="date">지금부터 · 마감 <span class="tbd">확정 후 기입</span> <span class="st now">진행 중</span></span></div><div class="box">이 페이지의 신청서에 이름, 소속 대학, 관심 트랙(AI제약바이오 / AI의료기기)을 남깁니다. 모집 인원 <span class="tbd">확정 후 기입</span></div></li>
-      <li><span class="dot" aria-hidden="true"></span><div><span class="title">참가 확정 안내</span><span class="date"><span class="tbd">확정 후 기입</span></span></div><div class="box">참가 확정과 함께 집결 장소, 이동 방법, 준비물을 개별로 안내합니다.</div></li>
-      <li class="key"><span class="dot" aria-hidden="true"></span><div><span class="title">AI첨단바이오 워케이션 챌린지 ①</span><span class="date">11.20(금)–21(토)</span></div><div class="box">충남에서 1박 2일 합숙으로 진행합니다. 이수하면 1학점을 받습니다.</div></li>
-      <li class="key"><span class="dot" aria-hidden="true"></span><div><span class="title">마이크로디그리·다전공 신청 시작</span><span class="date">11.20부터 · 마감 <span class="tbd">확정 후 기입</span></span></div><div class="box">챌린지 기간부터 신청을 받습니다. 융합전공은 신설 절차가 끝나는 대로 신청 일정을 안내합니다.</div></li>
-      <li><span class="dot" aria-hidden="true"></span><div><span class="title">공통과목 (동계 계절학기)</span><span class="date">2026.12–2027.02 <span class="st plan">협의 중</span></span></div><div class="box">공통과목을 동계 계절학기에 운영하는 방안을 각 대학 학사팀과 협의하고 있습니다.</div></li>
+      <li class="now"><span class="dot" aria-hidden="true"></span><div><span class="title">챌린지 참가 신청</span><span class="date">지금부터 11.6(금) 18:00까지 <span class="st now" data-deadline-chip>진행 중</span></span></div><div class="box">이 페이지의 신청서에 이름, 소속 대학, 관심 트랙(AI제약바이오 / AI의료기기)을 남깁니다.</div></li>
+      <li><span class="dot" aria-hidden="true"></span><div><span class="title">참가 확정 안내</span><span class="date">신청 마감 후 개별 안내</span></div><div class="box">참가 확정과 함께 집결 장소, 이동 방법, 준비물을 개별로 안내합니다.</div></li>
+      <li class="key"><span class="dot" aria-hidden="true"></span><div><span class="title">AI첨단바이오 워케이션 챌린지 ①</span><span class="date">11.20(금)–21(토)</span></div><div class="box">충남에서 1박 2일 합숙으로 진행합니다. AI제약바이오·AI의료기기 워케이션챌린지① 중 하나를 이수하면 1학점을 받습니다.</div></li>
+      <li class="key"><span class="dot" aria-hidden="true"></span><div><span class="title">마이크로디그리·다전공 신청 시작</span><span class="date">11.20부터 · 마감 추후 안내</span></div><div class="box">챌린지 기간부터 마이크로디그리 신청을 받습니다. 부전공·복수전공은 전공 신설 절차가 끝나는 대로 신청 일정을 안내합니다.</div></li>
+      <li><span class="dot" aria-hidden="true"></span><div><span class="title">공통교과 (동계 계절학기)</span><span class="date">2026.12–2027.02 <span class="st plan">협의 중</span></span></div><div class="box">공통교과를 동계 계절학기에 운영하는 방안을 각 대학 학사팀과 협의하고 있습니다.</div></li>
     </ol>
+    <p class="note-ref">※ 챌린지 세부 일정은 변경될 수 있습니다.</p>
   </div>
 </section>
 
@@ -860,7 +1010,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       </div>
     </div>
     <div class="pgroups" id="pgroups"></div>
-    <p class="logo-note">로고는 사업 소개 장표에서 옮겨 온 시안용 이미지입니다. 각 기관의 공식 로고 파일을 받으면 고화질로 바꿉니다.</p>
+    
   </div>
 </section>
 
@@ -871,7 +1021,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       <div class="t">
         <p class="kicker">FAQ</p>
         <h2>자주 묻는 질문</h2>
-        <p class="desc">원하는 답이 없다면 소속 대학 담당자에게 문의하세요. 많이 받은 질문은 여기에 계속 추가합니다.</p>
+        <p class="desc">원하는 답이 없다면 사업단 이메일(<a href="mailto:ai.bio.engine@gmail.com">ai.bio.engine@gmail.com</a>)로 문의하세요. 많이 받은 질문은 여기에 계속 추가합니다.</p>
       </div>
     </div>
     <div class="faq-tabs" role="tablist" aria-label="질문 분류">
@@ -882,46 +1032,46 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
     </div>
 
     <div class="panel" role="tabpanel" id="p-apply" aria-labelledby="tab-apply">
-      <details class="qa" open><summary><span class="q">Q.</span>누가 신청할 수 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>단국대·아주대·계명대·건양대·유한대 5개 참여대학 재학생이 대상입니다. 학년·학적 기준은 <span class="tbd">확정 후 기입</span></p></div></details>
-      <details class="qa"><summary><span class="q">Q.</span>바이오 전공이 아니어도 참여할 수 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>공학·IT·경영 등 다른 전공 학생의 참여 범위는 <span class="tbd">확정 후 기입</span> 어떤 트랙이 맞을지 모르겠다면 위의 30초 진로 진단을 먼저 해 보세요.</p></div></details>
-      <details class="qa"><summary><span class="q">Q.</span>마이크로디그리와 다전공을 함께 신청할 수 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>중복 신청 가능 여부와 학점 인정 방식은 <span class="tbd">확정 후 기입</span> 두 과정의 차이는 이수 경로의 비교표를 참고하세요.</p></div></details>
-      <details class="qa"><summary><span class="q">Q.</span>어디서 신청하나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>이 페이지의 ‘챌린지 신청하기’ 버튼으로 신청합니다. 입력한 내용은 사업단 담당자만 확인하고, 참가 확정과 준비 사항은 입력한 휴대폰 번호로 안내합니다. 학점 등록은 소속 대학 안내에 따라 따로 진행합니다.</p></div></details>
+      <details class="qa" open><summary><span class="q">Q.</span>누가 신청할 수 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>단국대·건양대·계명대·아주대·유한대 5개 참여대학 재학생이면 전공·학년에 관계없이 신청할 수 있습니다.</p></div></details>
+      <details class="qa"><summary><span class="q">Q.</span>바이오 전공이 아니어도 참여할 수 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>교육과정은 비전공자도 들어올 수 있도록 설계했습니다. 공통교과 「바이오제조를위한인체·건강기초」는 비보건계열 학생을 위한 과목이고, 규제·산업지원 트랙은 경영학·법학·디자인 전공 학생도 추천 대상입니다. 트랙별 추천 전공은 <a href="#curriculum">교육과정 자세히 보기</a>에서 확인하세요.</p></div></details>
+      <details class="qa"><summary><span class="q">Q.</span>마이크로디그리와 다전공을 함께 신청할 수 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>마이크로디그리(12학점) → 부전공(21학점) → 복수전공(42학점)으로 이어지는 단계형 과정입니다. 먼저 이수한 학점은 상위 과정에 누적 인정되므로 마이크로디그리로 시작해 넓혀 갈 수 있습니다. 신청 절차는 소속 대학 안내를 따릅니다.</p></div></details>
+      <details class="qa"><summary><span class="q">Q.</span>어디서 신청하나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>이 페이지의 ‘챌린지 신청하기’ 버튼으로 신청합니다. 입력한 내용은 사업단 담당자만 확인하고, 참가 확정과 준비 사항은 입력한 휴대폰 번호와 이메일로 안내합니다. 학점 등록은 소속 대학 안내에 따라 따로 진행합니다.</p></div></details>
     </div>
 
     <div class="panel" role="tabpanel" id="p-credit" aria-labelledby="tab-credit" hidden>
       <details class="qa" open><summary><span class="q">Q.</span>워케이션 챌린지 1학점은 어떻게 인정되나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>AI첨단바이오 워케이션 챌린지 ①은 2026-2학기에 시범 운영하는 1학점 교과입니다. 소속 대학별 이수 구분은 아래 '우리 학교 안내'에서 확인하세요.</p></div></details>
-      <details class="qa"><summary><span class="q">Q.</span>11월 20일(금) 수업과 겹치면 어떻게 하나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>출석 인정(공결) 처리 여부는 <span class="tbd">확정 후 기입</span></p></div></details>
-      <details class="qa"><summary><span class="q">Q.</span>다른 대학이 운영하는 교과도 졸업학점으로 인정되나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>5개 대학 공동교육과정의 학점교류 기준은 <span class="tbd">확정 후 기입</span></p></div></details>
-      <details class="qa"><summary><span class="q">Q.</span>중간에 그만두면 불이익이 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>포기·변경 절차와 기한은 <span class="tbd">확정 후 기입</span></p></div></details>
+      <details class="qa"><summary><span class="q">Q.</span>11월 20일(금) 수업과 겹치면 어떻게 하나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>출석 인정(공결) 처리 여부는 소속 대학별로 추후 안내합니다.</p></div></details>
+      <details class="qa"><summary><span class="q">Q.</span>다른 대학이 운영하는 교과도 졸업학점으로 인정되나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>5개 대학 공동교육과정의 학점교류 기준은 추후 안내합니다.</p></div></details>
+      <details class="qa"><summary><span class="q">Q.</span>중간에 그만두면 불이익이 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>포기·변경 절차와 기한은 추후 안내합니다.</p></div></details>
       <div class="univ">
         <h3>우리 학교 안내 · <span id="univName">단국대학교</span></h3>
         <div class="univ-chips" role="group" aria-label="소속 대학 선택">
           <button class="uchip" type="button" aria-pressed="true" data-name="단국대학교">단국대</button>
-          <button class="uchip" type="button" aria-pressed="false" data-name="아주대학교">아주대</button>
-          <button class="uchip" type="button" aria-pressed="false" data-name="계명대학교">계명대</button>
           <button class="uchip" type="button" aria-pressed="false" data-name="건양대학교">건양대</button>
+          <button class="uchip" type="button" aria-pressed="false" data-name="계명대학교">계명대</button>
+          <button class="uchip" type="button" aria-pressed="false" data-name="아주대학교">아주대</button>
           <button class="uchip" type="button" aria-pressed="false" data-name="유한대학교">유한대</button>
         </div>
         <dl>
-          <dt>챌린지 1학점 이수 구분</dt><dd><span class="tbd">확정 후 기입</span></dd>
-          <dt>마이크로디그리·다전공 신청 창구</dt><dd><span class="tbd">확정 후 기입</span></dd>
-          <dt>학사 문의처</dt><dd><span class="tbd">확정 후 기입</span></dd>
+          <dt>챌린지 1학점 이수 구분</dt><dd>추후 안내</dd>
+          <dt>마이크로디그리·다전공 신청 창구</dt><dd>추후 안내</dd>
+          <dt>학사 문의처</dt><dd>추후 안내</dd>
         </dl>
       </div>
     </div>
 
     <div class="panel" role="tabpanel" id="p-ch" aria-labelledby="tab-ch" hidden>
-      <details class="qa" open><summary><span class="q">Q.</span>언제, 어디서 하나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>2026년 11월 20일(금)부터 21일(토)까지 충남에서 1박 2일 합숙으로 진행합니다. 세부 장소는 <span class="tbd">확정 후 기입</span></p></div></details>
-      <details class="qa"><summary><span class="q">Q.</span>비용이 드나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>참가비와 숙박·식사, 교통 지원 내용은 <span class="tbd">확정 후 기입</span></p></div></details>
+      <details class="qa" open><summary><span class="q">Q.</span>언제, 어디서 하나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>2026년 11월 20일(금)부터 21일(토)까지 충남에서 1박 2일 합숙으로 진행합니다. 세부 장소는 참가 확정 때 안내합니다.</p></div></details>
+      <details class="qa"><summary><span class="q">Q.</span>비용이 드나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>참가비는 무료이며 숙박·식사·교통을 지원합니다.</p></div></details>
       <details class="qa"><summary><span class="q">Q.</span>트랙은 어떻게 고르나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>신청할 때 AI제약바이오 트랙과 AI의료기기 트랙 중 하나를 고릅니다. 고민된다면 30초 진로 진단 결과를 참고하세요.</p></div></details>
-      <details class="qa"><summary><span class="q">Q.</span>무엇을 준비해야 하나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>준비물과 노트북 지참 여부는 <span class="tbd">확정 후 기입</span></p></div></details>
+      <details class="qa"><summary><span class="q">Q.</span>무엇을 준비해야 하나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>노트북을 지참해 주세요. 그 밖의 준비물과 세부 시간표는 참가 확정 때 안내합니다.</p></div></details>
     </div>
 
     <div class="panel" role="tabpanel" id="p-career" aria-labelledby="tab-career" hidden>
-      <details class="qa" open><summary><span class="q">Q.</span>실제 채용으로 이어지나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>유한양행·종근당·에스디바이오센서·메가젠임플란트·다산제약·세신정밀 6개 앵커기업이 채용연계에 참여합니다. 인턴십, 서류 가점 같은 연계 방식은 <span class="tbd">확정 후 기입</span></p></div></details>
+      <details class="qa" open><summary><span class="q">Q.</span>실제 채용으로 이어지나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>유한양행·종근당·에스디바이오센서·메가젠임플란트·다산제약·세신정밀 6개 앵커기업이 채용연계에 참여합니다. 인턴십, 서류 가점 같은 연계 방식은 추후 안내합니다.</p></div></details>
       <details class="qa"><summary><span class="q">Q.</span>창업에 관심이 있어요.<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>엔포유대학연합기술지주회사와 연계한 창업 경로가 있습니다. 아이디어 발굴부터 시제품 실증, 법인 설립과 지식재산 보호, 투자 유치까지 단계별로 지원합니다.</p></div></details>
       <details class="qa"><summary><span class="q">Q.</span>대학원 진학도 생각하고 있어요.<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>5개 대학이 함께 운영하는 석·박사과정 신설을 추진하고 있습니다. 확정되면 이 페이지에서 안내합니다.</p></div></details>
-      <details class="qa"><summary><span class="q">Q.</span>지역에서 일하고 싶어요.<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>충남·경기·대구의 앵커기업 채용과 지역 정주 지원을 함께 연결합니다. 지원 내용은 <span class="tbd">확정 후 기입</span></p></div></details>
+      <details class="qa"><summary><span class="q">Q.</span>지역에서 일하고 싶어요.<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>충남·경기·대구의 앵커기업 채용과 지역 정주 지원을 함께 연결합니다. 지원 내용은 추후 안내합니다.</p></div></details>
     </div>
   </div>
 </section>
@@ -933,20 +1083,11 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       <div class="t">
         <p class="kicker">News</p>
         <h2>소식</h2>
-        <p class="desc">모집 공고와 공지는 이곳에 올라옵니다. 아래 목록은 게시 예정인 글의 예시입니다.</p>
-      </div>
-      <div class="news-filter" role="group" aria-label="소식 분류">
-        <button class="nf" type="button" aria-pressed="true" data-cat="all">전체</button>
-        <button class="nf" type="button" aria-pressed="false" data-cat="recruit">모집</button>
-        <button class="nf" type="button" aria-pressed="false" data-cat="notice">공지</button>
-        <button class="nf" type="button" aria-pressed="false" data-cat="story">소식</button>
+        <p class="desc">모집 공고와 공지는 이곳에 올라옵니다.</p>
       </div>
     </div>
     <ul class="news">
-      <li data-cat="recruit"><a href="#news" data-soon="게시 예정 글입니다. 공고가 올라오면 연결됩니다."><span class="cat">모집</span><span class="ttl">AI첨단바이오 워케이션 챌린지 ① 참가자 모집</span><span class="st plan">게시 예정</span><span class="go"><svg class="i"><use href="#i-arrow"/></svg></span></a></li>
-      <li data-cat="notice"><a href="#news" data-soon="게시 예정 글입니다. 공고가 올라오면 연결됩니다."><span class="cat">공지</span><span class="ttl">마이크로디그리·다전공 신청 안내 (11.20부터)</span><span class="st plan">게시 예정</span><span class="go"><svg class="i"><use href="#i-arrow"/></svg></span></a></li>
-      <li data-cat="notice"><a href="#news" data-soon="게시 예정 글입니다. 공고가 올라오면 연결됩니다."><span class="cat">공지</span><span class="ttl">학생 대상 온라인 설명회 안내</span><span class="st plan">게시 예정</span><span class="go"><svg class="i"><use href="#i-arrow"/></svg></span></a></li>
-      <li data-cat="story"><a href="#news" data-soon="게시 예정 글입니다. 공고가 올라오면 연결됩니다."><span class="cat">소식</span><span class="ttl">초광역 성장엔진 인재육성사업 선정, 5개 대학 컨소시엄 출범</span><span class="st plan">게시 예정</span><span class="go"><svg class="i"><use href="#i-arrow"/></svg></span></a></li>
+      <li><a href="#apply" data-open="challenge"><span class="cat">모집</span><span class="ttl">AI첨단바이오 워케이션 챌린지 ① 참가자 모집 (~11.6 18:00)</span><span class="st now" data-deadline-chip>모집 중</span><span class="go"><svg class="i"><use href="#i-arrow"/></svg></span></a></li>
     </ul>
   </div>
 </section>
@@ -957,7 +1098,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
   <div class="wrap inner">
     <span class="dd" data-dday>D-24</span>
     <h2>11월 20일, 첫 항해에 함께하세요</h2>
-    <p>지금 신청하면 참가 확정과 준비 사항을 문자로 안내해 드립니다.</p>
+    <p>신청 마감은 11월 6일(금) 18:00입니다. 참가 확정과 준비 사항은 문자와 이메일로 안내해 드립니다.</p>
     <div class="cta-row">
       <a class="btn btn-cyan" href="#apply" data-open="challenge">11.20 챌린지 신청하기 <svg class="i"><use href="#i-arrow"/></svg></a>
       <a class="btn btn-line" href="#faq">자주 묻는 질문 보기</a>
@@ -971,7 +1112,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
     <div class="f-grid">
       <div class="f-logo">
         <img src="assets/logo-white.png" alt="ULTRA ANCHOR 초광역 성장엔진 인재육성사업" width="720" height="245">
-        <p>AI 기반 첨단바이오 제조 인재양성 사업단<br>주관 단국대학교 · 참여 아주대 · 계명대 · 건양대 · 유한대</p>
+        <p>AI 기반 첨단바이오 제조 인재양성 사업단<br>주관 단국대학교 · 참여 건양대 · 계명대 · 아주대 · 유한대</p>
       </div>
       <div>
         <h3>MENU</h3>
@@ -979,6 +1120,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
           <li><a href="#about">사업 소개</a></li>
           <li><a href="#finder">30초 진로 진단</a></li>
           <li><a href="#pathway">이수 경로</a></li>
+          <li><a href="#curriculum">교육과정</a></li>
           <li><a href="#challenge">11.20 워케이션 챌린지</a></li>
           <li><a href="#faq">자주 묻는 질문</a></li>
         </ul>
@@ -987,22 +1129,42 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
         <h3>CONTACT</h3>
         <dl>
           <dt>사업단</dt><dd>초광역 성장엔진 인재육성사업단</dd>
-          <dt>주소</dt><dd><span class="tbd">확정 후 기입</span></dd>
-          <dt>전화</dt><dd><span class="tbd">확정 후 기입</span></dd>
-          <dt>이메일</dt><dd><span class="tbd">확정 후 기입</span></dd>
-          <dt>카카오톡</dt><dd>채널 <span class="tbd">확정 후 기입</span></dd>
+          <dt>이메일</dt><dd><a href="mailto:ai.bio.engine@gmail.com">ai.bio.engine@gmail.com</a></dd>
+          <dt>전화·카카오톡</dt><dd>추후 안내</dd>
         </dl>
       </div>
     </div>
     <div class="f-water" aria-hidden="true">ULTRA ANCHOR</div>
-    <div class="f-copy"><span>© 2026 ULTRA ANCHOR · 초광역 성장엔진 인재육성사업</span><a href="#top">개인정보처리방침</a></div>
+    <div class="f-copy"><span>© 2026 ULTRA ANCHOR · 초광역 성장엔진 인재육성사업</span><a href="#privacy" data-privacy>개인정보 수집·이용 안내</a></div>
   </div>
 </footer>
 
 <div class="mcta">
-  <div class="l"><b data-dday>D-24</b><span>11.20 워케이션 챌린지</span></div>
+  <div class="l"><b data-deadline-dday>D-5</b><span>신청 마감 11.6(금) 18:00</span></div>
   <a class="btn btn-cyan" href="#apply" data-open="challenge">신청하기</a>
 </div>
+
+<!-- FAQ chatbot (rule-based: answers only from confirmed page content; nothing is sent or stored) -->
+<button class="bot-fab" id="botFab" type="button" aria-expanded="false" aria-controls="botPanel" aria-label="안내봇 열기: 챌린지에 대해 물어보세요">
+  <span class="tip">궁금한 점 물어보세요</span>
+  <span class="ball"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12.5a7.5 7.5 0 0 1-11.2 6.5L4 20l1.2-4.4A7.5 7.5 0 1 1 20 12.5z"/><path d="M9 12.5h.01M12.5 12.5h.01M16 12.5h.01"/></svg></span>
+</button>
+<section class="bot" id="botPanel" role="dialog" aria-modal="false" aria-labelledby="botTitle" hidden>
+  <div class="bot-hd">
+    <span class="av" aria-hidden="true"></span>
+    <div class="t"><b id="botTitle">ULTRA ANCHOR 안내봇</b><small>워케이션 챌린지 ① 자주 묻는 질문</small></div>
+    <button type="button" id="botReset" aria-label="대화 처음으로"><svg class="i"><use href="#i-left"/></svg></button>
+    <button type="button" id="botClose" aria-label="안내봇 닫기"><svg class="i"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="bot-log" id="botLog" aria-live="polite"></div>
+  <div class="b-chips" id="botChips"></div>
+  <form class="bot-in" id="botForm" autocomplete="off">
+    <label for="botQ" class="sr-only">질문 입력</label>
+    <input id="botQ" type="text" maxlength="120" placeholder="예) 1학년도 신청할 수 있어요?" enterkeyhint="send">
+    <button type="submit" aria-label="보내기"><svg class="i"><use href="#i-right"/></svg></button>
+  </form>
+  <div class="bot-ft">확정된 안내만 답해요 · 대화 내용은 어디에도 저장·전송되지 않아요</div>
+</section>
 
 <div class="modal" id="applyModal" role="dialog" aria-modal="true" aria-labelledby="mTitle" hidden>
   <div class="m-card">
@@ -1010,7 +1172,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
     <form class="form" id="applyForm" novalidate>
       <div>
         <h2 id="mTitle">바이오워케이션 챌린지 신청</h2>
-        <p class="m-desc" id="mDesc">AI첨단바이오 워케이션 챌린지 ① · 2026.11.20.(금)–21.(토) · 충남 1박 2일 · 1학점</p>
+        <p class="m-desc" id="mDesc">AI첨단바이오 워케이션 챌린지 ① · 2026.11.20.(금)–21.(토) · 충남 1박 2일 · 1학점 · 신청 마감 11.6.(금) 18:00</p>
       </div>
       <input type="hidden" id="f-kind" value="notify">
       <div class="row">
@@ -1018,18 +1180,19 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
         <label class="fld" for="f-univ">소속 대학
           <select id="f-univ" name="univ" required>
             <option value="">선택하세요</option>
-            <option>단국대학교</option><option>아주대학교</option><option>계명대학교</option><option>건양대학교</option><option>유한대학교</option>
+            <option>단국대학교</option><option>건양대학교</option><option>계명대학교</option><option>아주대학교</option><option>유한대학교</option>
           </select>
         </label>
       </div>
       <div class="row">
-        <label class="fld" for="f-major">전공<input id="f-major" name="major" required placeholder="예: 생명공학과"></label>
+        <label class="fld" for="f-sid">학번<input id="f-sid" name="sid" required autocomplete="off" placeholder="예: 32261234" pattern="[0-9A-Za-z\-]{4,20}" title="학번을 숫자(또는 영문·숫자)로 입력해 주세요"></label>
         <label class="fld" for="f-year">학년
           <select id="f-year" name="year" required>
             <option value="">선택하세요</option><option>1학년</option><option>2학년</option><option>3학년</option><option>4학년 이상</option>
           </select>
         </label>
       </div>
+      <label class="fld" for="f-major">전공<input id="f-major" name="major" required placeholder="예: 생명공학과"></label>
       <fieldset class="fld">
         <legend>관심 트랙</legend>
         <div class="seg">
@@ -1038,16 +1201,26 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
           <label><input type="radio" name="track" id="f-track-undecided" value="undecided"><span>아직 모르겠어요</span></label>
         </div>
       </fieldset>
-      <label class="fld" for="f-phone">휴대폰 번호<input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="010-0000-0000" pattern="01[016789]-?[0-9]{3,4}-?[0-9]{4}" title="010-0000-0000 형식으로 입력해 주세요"></label>
-      <label class="agree" for="f-agree"><input type="checkbox" id="f-agree" required>안내 발송을 위한 개인정보 수집·이용에 동의합니다. (수집 항목: 이름, 소속, 연락처 · 보유 기간: 사업 종료 시까지)</label>
+      <div class="row">
+        <label class="fld" for="f-phone">휴대폰 번호<input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="010-0000-0000" pattern="01[016789]-?[0-9]{3,4}-?[0-9]{4}" title="010-0000-0000 형식으로 입력해 주세요"></label>
+        <label class="fld" for="f-email">이메일<input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="name@example.com"></label>
+      </div>
+      <label class="agree" for="f-agree"><input type="checkbox" id="f-agree" required>안내 발송을 위한 개인정보 수집·이용에 동의합니다. (수집 항목: 이름, 소속 대학, 학번, 전공, 학년, 휴대폰 번호, 이메일 · 보유 기간: 사업 종료 시까지)</label>
+      <p class="m-priv"><a href="#privacy" data-privacy>개인정보 수집·이용 안내 자세히 보기</a></p>
       <p class="m-note" id="mError" role="alert" hidden></p>
       <button class="btn btn-navy" type="submit" id="fSubmit">신청하기</button>
       <p class="m-alt">전송이 되지 않으면 <a id="gformLink" href="https://docs.google.com/forms/d/e/1FAIpQLScnGahfBOGbilxpED0EPLnVCk05clih4HLYmC1DxV5cVw0LEA/viewform" target="_blank" rel="noopener noreferrer">구글 폼에서 직접 신청</a>할 수 있어요.</p>
     </form>
+    <div class="done" id="applyClosed" hidden>
+      <div class="ok" aria-hidden="true"><svg class="i"><use href="#i-cal"/></svg></div>
+      <h3>신청이 마감되었습니다</h3>
+      <p>11월 6일(금) 18:00에 참가 신청을 마감했습니다. 문의는 ai.bio.engine@gmail.com로 보내 주세요.</p>
+      <button class="btn btn-navy" type="button" data-close>닫기</button>
+    </div>
     <div class="done" id="applyDone" hidden>
       <div class="ok" aria-hidden="true"><svg class="i"><use href="#i-check"/></svg></div>
       <h3><span id="doneName"></span>님, 신청이 접수됐어요</h3>
-      <p>참가 확정과 준비 사항은 입력한 휴대폰 번호로 안내해 드립니다.</p>
+      <p>참가 확정과 준비 사항은 입력한 휴대폰 번호와 이메일로 안내해 드립니다.</p>
       <button class="btn btn-navy" type="button" data-close>닫기</button>
     </div>
   </div>
@@ -1059,6 +1232,31 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
     <span class="ov-crumb" id="ovCrumb"></span>
   </div></div>
   <div id="ovBody"></div>
+</div>
+
+<div class="orgview" id="currview" role="dialog" aria-modal="true" aria-labelledby="cvName" hidden>
+  <div class="ov-bar"><div class="wrap">
+    <button class="ov-back" type="button" id="cvBack"><svg class="i"><use href="#i-left"/></svg>이수 경로</button>
+    <span class="ov-crumb">CURRICULUM / AI첨단바이오 전공</span>
+  </div></div>
+  <div id="cvBody"></div>
+</div>
+
+<div class="modal" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="pTitle" hidden>
+  <div class="m-card priv">
+    <button class="m-close" type="button" data-pclose aria-label="닫기"><svg class="i"><use href="#i-close"/></svg></button>
+    <h2 id="pTitle">개인정보 수집·이용 안내</h2>
+    <p class="m-desc">초광역 성장엔진 인재육성사업단은 워케이션 챌린지 참가 신청을 받기 위해 아래와 같이 개인정보를 수집·이용합니다.</p>
+    <dl>
+      <dt>목적</dt><dd>챌린지 참가 신청 접수와 참가 확정·일정 안내 발송</dd>
+      <dt>항목</dt><dd>이름, 소속 대학, 학번, 전공, 학년, 휴대폰 번호, 이메일</dd>
+      <dt>보유 기간</dt><dd>사업 종료 시까지</dd>
+      <dt>저장</dt><dd>Google 설문지·스프레드시트(사업단 계정)에 저장하며, 사업단 담당자만 확인합니다.</dd>
+      <dt>동의 거부</dt><dd>동의하지 않을 수 있으며, 이 경우 신청이 제한됩니다.</dd>
+      <dt>문의</dt><dd>ai.bio.engine@gmail.com</dd>
+    </dl>
+    <button class="btn btn-navy" type="button" data-pclose>확인</button>
+  </div>
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
@@ -1080,6 +1278,31 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
   }
   function paintDday() { const t = dday(); $$('[data-dday]').forEach(el => { el.textContent = t; }); }
   paintDday(); setInterval(paintDday, 60000);
+
+  /* application deadline (KST) */
+  const DEADLINE = new Date('2026-11-06T18:00:00+09:00').getTime();
+  const DEADLINE_DAY = new Date('2026-11-06T00:00:00+09:00').getTime();
+  function isClosed() { return Date.now() >= DEADLINE; }
+  function paintDeadline() {
+    const now = Date.now();
+    const label = now >= DEADLINE ? '마감' : now >= DEADLINE_DAY ? 'D-DAY' : 'D-' + Math.ceil((DEADLINE_DAY - now) / 86400000);
+    $$('[data-deadline-dday]').forEach(el => { el.textContent = label; });
+    if (now >= DEADLINE) $$('[data-deadline-chip]').forEach(el => { el.textContent = '마감'; el.classList.remove('now'); el.classList.add('plan'); });
+  }
+  paintDeadline(); setInterval(paintDeadline, 60000);
+
+  /* privacy notice */
+  const pModal = $('#privacyModal');
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-privacy]'); if (!t) return;
+    e.preventDefault(); pModal.hidden = false; document.documentElement.style.overflow = 'hidden';
+  });
+  $$('[data-pclose]', pModal).forEach(b => b.addEventListener('click', () => {
+    pModal.hidden = true;
+    const anyOpen = !$('#applyModal').hidden || !$('#orgview').hidden || !$('#currview').hidden;
+    document.documentElement.style.overflow = anyOpen ? 'hidden' : '';
+  }));
+  pModal.addEventListener('click', e => { if (e.target === pModal) $('[data-pclose]', pModal).click(); });
 
   /* mobile menu */
   const menuBtn = $('#menuBtn'), mnav = $('#mnav');
@@ -1150,7 +1373,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       `<span class="r-badge">${s.en}</span>
        <p class="r-ko">나는 ${s.ko} 유형</p>
        <p class="r-def">${s.def}</p>
-       <dl class="r-dl"><dt>목표 직무</dt><dd>${s.jobs}</dd><dt>연계 기관</dt><dd>${s.orgs}</dd><dt>추천 트랙</dt><dd>${s.track}</dd></dl>
+       <dl class="r-dl"><dt>목표 직무</dt><dd>${s.jobs}</dd><dt>연계 기관</dt><dd>${s.orgs}</dd><dt>챌린지 트랙</dt><dd>${s.track}</dd><dt>교육과정</dt><dd>${(STAR_TRACKS[key] || []).map(id => `<a class="r-link" href="#curriculum-${id.toLowerCase()}">${id} ${TRACK_BY[id].name}</a>`).join(' · ')}</dd></dl>
        <div class="r-actions">
          <a class="btn btn-cyan" href="#apply" data-open="challenge" data-track="${s.tk}">이 트랙으로 챌린지 신청</a>
          <button class="btn btn-line" type="button" id="qAgain">다시 하기</button>
@@ -1171,14 +1394,15 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
   const modal = $('#applyModal'), form = $('#applyForm'), done = $('#applyDone');
   let lastFocus = null;
   const COPY = {
-    challenge: ['바이오워케이션 챌린지 신청', 'AI첨단바이오 워케이션 챌린지 ① · 2026.11.20.(금)–21.(토) · 충남 1박 2일 · 1학점']
+    challenge: ['바이오워케이션 챌린지 신청', 'AI첨단바이오 워케이션 챌린지 ① · 2026.11.20.(금)–21.(토) · 충남 1박 2일 · 1학점 · 신청 마감 11.6.(금) 18:00']
   };
   /* Google Form: 바이오워케이션챌린지 신청 → 응답 시트 */
   const GFORM = {
     action: 'https://docs.google.com/forms/d/e/1FAIpQLScnGahfBOGbilxpED0EPLnVCk05clih4HLYmC1DxV5cVw0LEA/formResponse',
     view: 'https://docs.google.com/forms/d/e/1FAIpQLScnGahfBOGbilxpED0EPLnVCk05clih4HLYmC1DxV5cVw0LEA/viewform',
-    name: 'entry.736221514', univ: 'entry.1919727293', major: 'entry.586247420', year: 'entry.162665545',
-    track: 'entry.829435681', phone: 'entry.2028709786', agree: 'entry.500393194'
+    name: 'entry.736221514', univ: 'entry.1919727293', major: 'entry.527122163', year: 'entry.162665545',
+    track: 'entry.829435681', phone: 'entry.2028709786', agree: 'entry.500393194',
+    sid: 'entry.586247420', email: 'entry.1705470939'
   };
   const TRACK_LABEL = { pharma: 'AI제약바이오', device: 'AI의료기기', undecided: '아직 모르겠어요' };
   function prefillUrl() {
@@ -1189,6 +1413,8 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
   }
   function openModal(kind, track) {
     lastFocus = document.activeElement;
+    if (isClosed()) { form.hidden = true; done.hidden = true; $('#applyClosed').hidden = false; modal.hidden = false; document.documentElement.style.overflow = 'hidden'; setTimeout(() => $('#applyClosed button').focus(), 30); return; }
+    $('#applyClosed').hidden = true;
     const c = COPY[kind] || COPY.challenge;
     $('#mTitle').textContent = c[0]; $('#mDesc').textContent = c[1];
     $('#f-kind').value = kind;
@@ -1200,7 +1426,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
     setTimeout(() => $('#f-name').focus(), 30);
   }
   function closeModal() {
-    modal.hidden = true; document.documentElement.style.overflow = document.getElementById('orgview').hidden ? '' : 'hidden';
+    modal.hidden = true; document.documentElement.style.overflow = (document.getElementById('orgview').hidden && document.getElementById('currview').hidden) ? '' : 'hidden';
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
   document.addEventListener('click', e => {
@@ -1224,6 +1450,8 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
     body.set(GFORM.year, $('#f-year').value);
     body.set(GFORM.track, TRACK_LABEL[t ? t.value : 'undecided']);
     body.set(GFORM.phone, $('#f-phone').value.trim());
+    if (GFORM.sid) body.set(GFORM.sid, $('#f-sid').value.trim());
+    if (GFORM.email) body.set(GFORM.email, $('#f-email').value.trim());
     body.set(GFORM.agree, '예');
     btn.disabled = true; btn.textContent = '보내는 중…'; err.hidden = true;
     try {
@@ -1274,30 +1502,31 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
   }));
 
   /* ---------- partners, logos, org intro pages ---------- */
-  // 로고: 각 기관의 공식 로고 파일을 assets/logos/<slug>.png(또는 .svg)로 올린 뒤 여기에 등록합니다.
-  // 예) yuhan: 'assets/logos/yuhan.png'
+  // 로고: 각 기관의 공식 로고(배경 투명 PNG, 여백 없이 자른 파일)를 assets/logos/<slug>.png로 올린 뒤 여기에 등록합니다.
+  // r = 가로/세로 비율(여백 제거 후). 크기는 logoSize()가 '보이는 면적'이 같도록 계산합니다.
+  // k = 시각 보정(색이 진하고 굵은 로고는 1보다 작게, 가늘고 옅은 로고는 1보다 크게).
   const LOGO_FILES = {
-    'dku': 'assets/logos/dku.png',
-    'konyang': 'assets/logos/konyang.png',
-    'kmu': 'assets/logos/kmu.png',
-    'ajou': 'assets/logos/ajou.png',
-    'yuhan-univ': 'assets/logos/yuhan-univ.png',
-    'chungnam': 'assets/logos/chungnam.png',
-    'gyeonggi': 'assets/logos/gyeonggi.png',
-    'daegu': 'assets/logos/daegu.png',
-    'yuhan': 'assets/logos/yuhan.png',
-    'ckd': 'assets/logos/ckd.png',
-    'dasan': 'assets/logos/dasan.png',
-    'sdbio': 'assets/logos/sdbio.png',
-    'megagen': 'assets/logos/megagen.png',
-    'saeshin': 'assets/logos/saeshin.png',
-    'ktr': 'assets/logos/ktr.png',
-    'n4u': 'assets/logos/n4u.png',
-    'dkuh': 'assets/logos/dkuh.png',
-    'kyuh': 'assets/logos/kyuh.png',
-    'ajouh': 'assets/logos/ajouh.png',
-    'dsmc': 'assets/logos/dsmc.png',
-    'bionexus': 'assets/logos/bionexus.png'
+    'dku': { src: 'assets/logos/dku.png', r: 5.52 },
+    'konyang': { src: 'assets/logos/konyang.png', r: 5.25 },
+    'kmu': { src: 'assets/logos/kmu.png', r: 3.90 },
+    'ajou': { src: 'assets/logos/ajou.png', r: 3.83 },
+    'yuhan-univ': { src: 'assets/logos/yuhan-univ.png', r: 2.75, k: 1.06 },
+    'chungnam': { src: 'assets/logos/chungnam.png', r: 3.75 },
+    'gyeonggi': { src: 'assets/logos/gyeonggi.png', r: 5.22, k: 0.92 },
+    'daegu': { src: 'assets/logos/daegu.png', r: 4.41 },
+    'yuhan': { src: 'assets/logos/yuhan.png', r: 4.51, k: 0.9 },
+    'ckd': { src: 'assets/logos/ckd.png', r: 4.08, k: 0.86 },
+    'dasan': { src: 'assets/logos/dasan.png', r: 2.77 },
+    'sdbio': { src: 'assets/logos/sdbio.png', r: 8.77 },
+    'megagen': { src: 'assets/logos/megagen.png', r: 3.84 },
+    'saeshin': { src: 'assets/logos/saeshin.png', r: 1.79 },
+    'ktr': { src: 'assets/logos/ktr.png', r: 2.02, k: 0.92 },
+    'n4u': { src: 'assets/logos/n4u.png', r: 1.29, k: 0.92 },
+    'dkuh': { src: 'assets/logos/dkuh.png', r: 6.53 },
+    'kyuh': { src: 'assets/logos/kyuh.png', r: 3.81 },
+    'ajouh': { src: 'assets/logos/ajouh.png', r: 2.84, k: 1.08 },
+    'dsmc': { src: 'assets/logos/dsmc.png', r: 4.69 },
+    'bionexus': { src: 'assets/logos/bionexus.png', r: 1.20 }
   };
 
   const ROLE = {
@@ -1316,9 +1545,9 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
   const ORGS = [
     // universities → 공식 홈페이지
     { slug: 'dku', g: 'univ', name: '단국대학교', meta: '주관 · HUB', badge: '주관', main: true, url: 'https://www.dankook.ac.kr' },
-    { slug: 'ajou', g: 'univ', name: '아주대학교', meta: 'AI HUB', url: 'https://www.ajou.ac.kr' },
-    { slug: 'kmu', g: 'univ', name: '계명대학교', meta: 'MED-AI HUB', url: 'https://www.kmu.ac.kr' },
     { slug: 'konyang', g: 'univ', name: '건양대학교', meta: 'CLINICAL HUB', url: 'https://www.konyang.ac.kr' },
+    { slug: 'kmu', g: 'univ', name: '계명대학교', meta: 'MED-AI HUB', url: 'https://www.kmu.ac.kr' },
+    { slug: 'ajou', g: 'univ', name: '아주대학교', meta: 'AI HUB', url: 'https://www.ajou.ac.kr' },
     { slug: 'yuhan-univ', g: 'univ', name: '유한대학교', meta: 'MFG HUB', url: 'https://www.yuhan.ac.kr' },
     // regions
     { slug: 'chungnam', g: 'region', name: '충청남도', meta: '주관 지자체', badge: '주관', main: true, url: 'https://www.chungnam.go.kr' },
@@ -1333,7 +1562,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       url: 'https://www.ckdpharm.com', roles: ['talk', 'hire'], stars: ['Q'] },
     { slug: 'dasan', g: 'anchor', page: true, name: '다산제약', en: 'Dasan Pharmaceutical', meta: 'PHARMA', sector: '제약 · 위탁생산', region: '충남 생산공장',
       intro: '충남에 생산공장을 둔 제약기업으로, 의약품 제조와 위탁생산을 해 왔습니다.',
-      url: '', roles: ['talk', 'hire'], stars: ['Q'] },
+      url: 'http://www.dspharm.com/', roles: ['talk', 'hire'], stars: ['Q'] },
     { slug: 'sdbio', g: 'anchor', page: true, name: '에스디바이오센서', en: 'SD Biosensor', meta: 'DIAGNOSTICS', sector: '체외진단', region: '경기 수원 본사',
       intro: '체외진단 기업으로, 신속진단 키트와 면역진단 장비 같은 진단 제품을 개발하고 생산합니다.',
       url: 'https://www.sdbiosensor.com', roles: ['talk', 'hire'], stars: ['Q'] },
@@ -1342,7 +1571,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       url: 'https://imegagen.com', roles: ['talk', 'hire', 'device'], stars: ['Q'] },
     { slug: 'saeshin', g: 'anchor', page: true, name: '세신정밀', en: 'Saeshin Precision', meta: 'MEDICAL DEVICE', sector: '의료기기 · 치과 장비', region: '대구',
       intro: '치과용 마이크로모터와 임플란트 수술용 모터 같은 치과 의료기기를 만드는 기업입니다.',
-      url: '', roles: ['talk', 'hire', 'device'], stars: ['Q'] },
+      url: 'https://www.saeshin.com/kr', roles: ['talk', 'hire', 'device'], stars: ['Q'] },
     { slug: 'ktr', g: 'anchor', page: true, name: '한국화학융합시험연구원', en: 'KTR', meta: 'KTR · TESTING', sector: '시험 · 인증',
       intro: '제품의 품질과 안전성을 시험·검사·인증하는 전문기관입니다. 의료기기와 바이오 분야의 시험인증도 수행합니다.',
       url: 'https://www.ktr.or.kr', roles: ['talk', 'ktrLab', 'ktrTour'], stars: ['T'] },
@@ -1351,9 +1580,9 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       url: '', roles: ['talk', 'n4uMent', 'startup', 'transfer'], stars: ['F', 'T'] },
     // hospitals → 공식 홈페이지
     { slug: 'dkuh', g: 'hospital', name: '단국대학교병원', meta: 'AX CENTER', url: 'https://www.dkuh.co.kr' },
-    { slug: 'ajouh', g: 'hospital', name: '아주대학교병원', meta: 'GYEONGGI', url: 'https://hosp.ajoumc.or.kr' },
-    { slug: 'dsmc', g: 'hospital', name: '계명대학교 동산병원', meta: 'DAEGU', url: 'https://www.dsmc.or.kr' },
     { slug: 'kyuh', g: 'hospital', name: '건양대학교병원', meta: 'CHUNGNAM', url: 'https://www.kyuh.ac.kr' },
+    { slug: 'dsmc', g: 'hospital', name: '계명대학교 동산병원', meta: 'DAEGU', url: 'https://www.dsmc.or.kr' },
+    { slug: 'ajouh', g: 'hospital', name: '아주대학교병원', meta: 'GYEONGGI', url: 'https://hosp.ajoumc.or.kr' },
     // practice partner → 소개 페이지
     { slug: 'bionexus', g: 'practice', page: true, name: '바이오넥서스', en: 'BioNexus', meta: 'AI DRUG DISCOVERY', sector: 'AI 신약개발', region: '경기 수원(광교)',
       intro: '2024년 설립된 AI 바이오 기업으로, AI 기반 바이오 데이터 분석과 신약개발 연구 설계를 돕는 솔루션을 개발합니다.',
@@ -1371,10 +1600,19 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
   const EXT = 'target="_blank" rel="noopener noreferrer"';
   const host = u => u.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
-  function logoHTML(o) {
+  // 면적 기준 정규화: 가로로 긴 로고는 낮게, 정사각형에 가까운 로고는 높게 그려 시각적 무게를 맞춥니다.
+  function logoSize(r, big, k = 1) {
+    const A = big ? 14000 : 3800, maxW = big ? 250 : 132, maxH = big ? 120 : 50;
+    let h = Math.min(Math.sqrt(A / r), maxH), w = h * r;
+    if (w > maxW) { w = maxW; h = w / r; }
+    w = Math.min(w * k, maxW); h = w / r;
+    return { w: Math.round(w), h: Math.round(h) };
+  }
+  function logoHTML(o, big) {
     const f = LOGO_FILES[o.slug];
-    return f ? `<img src="${f}" alt="${o.name} 로고" loading="lazy">`
-             : `<span class="logo-ph" title="공식 로고 파일 대기"><svg class="i"><use href="#i-image"/></svg>LOGO</span>`;
+    if (!f) return `<span class="logo-ph" title="공식 로고 파일 대기"><svg class="i"><use href="#i-image"/></svg>LOGO</span>`;
+    const { w, h } = logoSize(f.r, big, f.k);
+    return `<img src="${f.src}" alt="${o.name} 로고" width="${w}" height="${h}" style="width:${w}px" loading="lazy" decoding="async">`;
   }
   function tileHTML(o) {
     const inner = `${o.badge ? `<span class="badge">${o.badge}</span>` : ''}<span class="plogo">${logoHTML(o)}</span><span class="pname">${o.name}</span><span class="pmeta">${o.meta}</span>`;
@@ -1399,7 +1637,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
     ].join('');
     const site = o.url
       ? `<a class="btn btn-navy" href="${o.url}" ${EXT}><svg class="i"><use href="#i-globe"/></svg>공식 홈페이지 <svg class="i"><use href="#i-arrow"/></svg></a><span class="ov-url">${host(o.url)}</span>`
-      : `<span class="tbd">홈페이지 주소 확정 후 기입</span>`;
+      : '';
     const roles = o.roles.map(k => { const r = ROLE[k]; return `<article class="role"><span class="tag">${r.tag}</span><h4>${r.t}</h4><p>${r.d}</p></article>`; }).join('');
     const stars = (o.stars || []).map(k => { const s = STARS[k]; return `<div class="ov-star"><b>${s.en}</b><span class="k">${s.ko}</span><span>${s.jobs}</span></div>`; }).join('');
     $('#ovCrumb').textContent = 'PARTNERS / ' + (o.en || o.name).toUpperCase();
@@ -1413,7 +1651,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
           <div class="ov-chips">${chips}</div>
           <div class="ov-actions">${site}</div>
         </div>
-        <div class="ov-logo">${logoHTML(o)}</div>
+        <div class="ov-logo">${logoHTML(o, true)}</div>
       </div></section>
       <section class="ov-sec"><div class="wrap">
         <h2 class="ov-h">ULTRA ANCHOR에서 함께하는 일</h2>
@@ -1422,7 +1660,6 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       ${stars ? `<section class="ov-sec"><div class="wrap"><h2 class="ov-h">연계 인재 유형</h2><div class="ov-stars">${stars}</div></div></section>` : ''}
       <section class="ov-sec"><div class="wrap">
         <div class="ov-cta"><p>11월 20일 워케이션 챌린지에서 직접 만나 보세요</p><a class="btn btn-cyan" href="#apply" data-open="challenge">챌린지 신청하기 <svg class="i"><use href="#i-arrow"/></svg></a></div>
-        <p class="ov-note">기관 소개 문구와 로고는 각 기관의 확인을 거쳐 확정합니다.</p>
       </div></section>
       <nav class="wrap ov-nav" aria-label="다른 기관">
         <a class="prev" href="#co-${prev.slug}"><span class="dir">← PREV</span><span class="nm">${prev.name}</span></a>
@@ -1461,22 +1698,436 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
   }, true);
   route();
 
-  /* TBD finder for reviewers */
-  const tbdList = () => $$('.tbd').filter(el => !el.hasAttribute('data-nocount') && !el.closest('#applyModal') && !el.closest('#orgview'));
-  $('#tbdCount').textContent = '(' + tbdList().length + ')';
-  let ti = -1;
-  $('#tbdNext').addEventListener('click', () => {
-    const list = tbdList(); if (!list.length) return;
-    ti = (ti + 1) % list.length;
-    const el = list[ti];
-    const panel = el.closest('[role="tabpanel"]');
-    if (panel && panel.hidden) selectTab($(`[aria-controls="${panel.id}"]`));
-    const det = el.closest('details'); if (det) det.open = true;
-    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
-    el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
-    $('#tbdPos').textContent = (ti + 1) + '/';
-    $('#tbdCount').textContent = list.length;
+  /* ---------- curriculum view (AI첨단바이오 전공 신설계획(안) 2026.10 기준) ---------- */
+  const PATHS = [
+    { id: 'md', name: '마이크로디그리', en: 'MICRO DEGREE', credits: 12,
+      parts: { 공통: 3, 직무기초: 3, 직무심화: 3, PBL: 3, 현장: 0 },
+      formula: '공통 3 + 직무기초 3 + 직무심화 3 + PBLⅠ 3',
+      goal: '특정 산업·직무의 기초역량과 기업문제 분석·설계 경험을 확보합니다.' },
+    { id: 'minor', name: '부전공', en: 'MINOR', credits: 21,
+      parts: { 공통: 6, 직무기초: 3, 직무심화: 6, PBL: 3, 현장: 3 },
+      formula: '공통 6 + 직무기초 3 + 직무심화 6 + PBLⅠ 3 + 현장·연구연계Ⅰ 3',
+      goal: '같은 직무경로의 심화지식과 방학 집중형 현장·연구 경험을 쌓습니다.' },
+    { id: 'double', name: '복수전공', en: 'DOUBLE MAJOR', credits: 42,
+      parts: { 공통: 9, 직무기초: 9, 직무심화: 12, PBL: 6, 현장: 6 },
+      formula: '공통 9 + 직무기초 9 + 직무심화 12 + PBLⅠ·Ⅱ 6 + 현장·연구연계Ⅰ·Ⅱ 6',
+      goal: '같은 직무경로의 전문교육과 기업문제 검증으로 취업·국내외 대학원 진학 역량을 갖춥니다.' }
+  ];
+  const PART_COLOR = { 공통: 'var(--cyan)', 직무기초: 'var(--sea-1)', 직무심화: 'var(--sea-3)', PBL: 'var(--navy)', 현장: 'var(--amber)' };
+  const PART_LABEL = { 공통: '공통교과', 직무기초: '직무기초', 직무심화: '직무심화', PBL: '기업문제형 PBL', 현장: '현장·연구연계' };
+
+  const TRACKS = [
+    { id: 'T1', ind: '제약·바이오', job: '품질·제조', name: '제약·바이오 품질·제조',
+      summary: '제품과 제조공정을 이해한 뒤 시험·분석, 품질시스템, 공정관리, 데이터 활용까지 단계적으로 배웁니다. 제약기업의 실제 제조·품질 사례와 직무문서를 활용합니다.',
+      careers: 'QC·QA 분석가, 제조·공정관리, 품질문서·일탈관리 담당', students: '화학공학·생명공학·약학·산업공학',
+      basic: [['제약·바이오제품과제조과정', '합성·바이오의약품의 특성과 원료관리, 제조·포장·출하 과정을 배웁니다.', '온라인·공정사례 학습'],
+              ['제약·바이오품질관리의이해', 'QC와 QA의 역할, 업무흐름, 주요 품질문서를 배웁니다.', '온라인·문서실습'],
+              ['의약품시험·분석의이해', '원료·완제품의 이화학·기기·미생물 시험과 결과해석의 기초를 배웁니다.', '온라인 선행학습·집중실습']],
+      adv: [['의약품제조와공정관리', '제조기록, 공정조건, 공정중관리, 출하승인과 GMP를 배웁니다.', '공정문서·사례 기반 실습'],
+            ['첨단바이오GMP', '첨단바이오제품의 생산·품질관리 특성과 GMP 적용방법을 배웁니다.', '온라인·사례 기반 학습'],
+            ['바이오품질시스템과문서관리', 'QMS, 문서관리, 일탈·변경관리, 시정예방조치, 실사 대응을 배웁니다.', '품질문서 작성·검토 실습'],
+            ['바이오제조·품질데이터활용', '제조·시험데이터로 품질추세, 공정편차, 개선과제를 분석합니다.', '데이터 분석 실습']],
+      pbl: ['제조공정, 시험·분석, 품질문서, 공정편차, 품질개선', '제약 앵커기업 · KTR'] },
+    { id: 'T2', ind: '제약·바이오', job: '연구개발', name: '제약·바이오 연구개발',
+      summary: '제품개발 전주기, 제형·공정 설계, 분석·성능평가, 연구데이터 활용을 단계적으로 배웁니다. 연구실 인턴과 대학원 진학을 연계해 석사급 이상 연구개발 인재로 성장하도록 돕습니다.',
+      careers: '제형·공정개발 연구원, 품질평가 연구원, AI 신약개발 연구원', students: '생명과학·약학·화학·컴퓨터공학',
+      basic: [['바이오제품연구개발의이해', '후보물질 발굴부터 제형·공정개발, 비임상·임상, 기술이전, 생산이관까지 R&D 전주기를 배웁니다.', '온라인·개발사례 학습'],
+              ['의약품제형과약물전달', '의약품 제형, 약물의 물리화학적 특성, 방출·흡수, 약물전달의 기본원리를 배웁니다.', '온라인·혼합형'],
+              ['첨단바이오의약품의이해', '단백질·항체·유전자·세포 기반 치료제의 구조, 작용원리, 생산과 개발특성을 배웁니다.', '온라인·산업전문가 참여형']],
+      adv: [['의약품제형과생산공정', '제품 특성에 따른 제형 설계, 원료·첨가제 선정, 공정변수 설정, 스케일업을 배웁니다.', '제형설계·공정실습'],
+            ['바이오제품생산공정의이해', '배양, 회수, 분리·정제와 공정조건이 수율·품질에 미치는 영향을 배웁니다.', '온라인 선행학습·공정실습'],
+            ['의약품품질평가의이해', '의약품의 물리화학적·생물학적 특성평가와 분석결과의 R&D 활용방법을 배웁니다.', '온라인 선행학습·분석실습'],
+            ['인공지능신약개발', '신약개발에 쓰이는 AI와 데이터 분석을 이해하고 후보물질 탐색과 연구기획에 적용합니다.', '데이터·AI 실습']],
+      pbl: ['제형·공정 설계, 후보제품 평가, 연구데이터 분석, 개발전략', '제약 앵커기업'] },
+    { id: 'T3', ind: '제약·바이오', job: '규제·산업지원', name: '제약·바이오 규제·산업지원',
+      summary: '인허가와 기술문서, 학술·기술마케팅, 고객지원, 사업개발에 필요한 역량을 단계적으로 배웁니다. 산업문서와 시장·고객 요구를 해석해 실제 지원업무에 적용합니다.',
+      careers: '인허가(RA) 전문가, 기술마케팅·학술 담당, 사업개발, 기술이전 담당', students: '약학·보건·경영학·법학',
+      basic: [['제약산업과규제환경', '의약품 규제체계, 산업구조, 시장·유통·보험 환경과 주요 산업지원 업무를 배웁니다.', '온라인·산업사례 학습'],
+              ['의약품개발과기술문서', '개발단계별 품질·비임상·임상 자료와 기술문서의 구조, 작성원칙을 배웁니다.', '온라인·문서실습'],
+              ['바이오기술사업화의이해', '연구성과의 기술가치와 시장성, 지식재산, 기술이전과 사업화 절차를 배웁니다.', '온라인·사업화 사례 학습']],
+      adv: [['의약품인허가와규제의이해', '품목허가, 변경허가, 규제기관 질의 대응, 허가자료 검토 실무를 배웁니다.', '규제문서 검토 실습'],
+            ['바이오기술마케팅과고객지원', '과학적 근거를 바탕으로 학술정보 제공, 기술지원, 고객소통, 현장요구 대응을 배웁니다.', '산업전문가 참여·고객지원 실습'],
+            ['바이오산업시장과사업개발', '시장·경쟁제품·기술수요를 분석하고 제휴·기술도입, 시장진입 전략을 배웁니다.', '시장·경쟁분석 실습'],
+            ['창업과지식재산권', '바이오 창업과 기술사업화에 필요한 지식재산권, 특허정보, 사업모델, 초기 사업기획을 배웁니다.', '특허분석·사업기획 실습']],
+      pbl: ['인허가 자료, 기술문서, 시장분석, 기술마케팅, 사업개발', '제약 앵커기업 · KTR · 엔포유대학연합기술지주회사'] },
+    { id: 'T4', ind: '의료기기', job: '품질·제조', name: '의료기기 품질·제조',
+      summary: '제품 구조와 제조과정을 이해한 뒤 QMS, 시험·검사, 공정관리, 안전성 평가, 제조데이터 활용까지 단계적으로 배웁니다. 의료기기기업의 제조·품질 자료와 기술문서를 활용합니다.',
+      careers: '품질관리·QMS 담당, 제조 엔지니어, 시험·검사 담당', students: '의공학·기계공학·전자공학·보건',
+      basic: [['의료기기제품과제조과정', '의료기기 유형, 구성요소, 재료·부품, 제조·조립·포장, 제품생애주기를 배웁니다.', '온라인·제조사례 학습'],
+              ['의료기기품질관리의이해', '의료기기 QMS, 문서관리, 생산·검사·출하관리, 품질조직의 역할을 배웁니다.', '온라인·문서실습'],
+              ['의료기기시험·검사의이해', '기계·전기·생물학적 시험과 체외진단 성능평가의 기본개념, 결과해석을 배웁니다.', '온라인 선행학습·집중실습']],
+      adv: [['의료기기제조와품질관리', '제조기록, 공정검증, 품질검사, 로트관리와 제조 현장의 품질문제 해결방법을 배웁니다.', '제조문서·문제해결 실습'],
+            ['의료기기설계와안전관리', '위험분석, 설계입력·출력, 검증·확인, 변경관리의 원리와 적용방법을 배웁니다.', '위험분석·설계문서 실습'],
+            ['의료기기성능과안전성의이해', '제품 특성에 따른 성능, 환경, 전기·기계, 생물학적 안전성 평가방법을 배웁니다.', '온라인 선행학습·평가실습'],
+            ['의료기기제조·품질데이터활용', '센서·검사·공정데이터로 제품편차, 이상 패턴, 품질개선 과제를 분석합니다.', '데이터 분석실습']],
+      pbl: ['제조공정, QMS, 시험·검사, 안전관리, 품질 데이터 분석', '의료기기 앵커기업 · KTR'] },
+    { id: 'T5', ind: '의료기기', job: '연구개발', name: '의료기기 연구개발',
+      summary: '제품 기획, 설계, 시제품 제작, 성능평가, 의료데이터 활용을 통합적으로 배웁니다. 연구실 인턴, 기업 프로젝트, 대학원 진학과 연계해 의료기기 연구개발 인력으로 성장하도록 돕습니다.',
+      careers: '의료기기 설계·개발 연구원, 체외진단 개발자, 의료AI 성능평가 담당', students: '의공학·전자공학·생명과학·컴퓨터공학',
+      basic: [['의료기기개발의이해', '아이디어 도출부터 요구사항, 설계, 검증, 임상, 인허가, 시장진입까지 R&D 전주기를 배웁니다.', '온라인·개발사례 학습'],
+              ['의료기기설계와시제품제작', '사용자 요구를 바탕으로 제품설계, 재료·부품 선정, 도면 작성, 시제품 제작의 기본원리를 배웁니다.', '설계·시제품 제작 실습'],
+              ['바이오센서와체외진단의이해', '생체신호, 바이오센서, 면역·분자진단과 체외진단 제품의 기본원리를 배웁니다.', '온라인 선행학습·원리실습']],
+      adv: [['의료기기시제품개발과평가', '제품 요구사항을 설계안으로 바꾸고 시제품 제작, 성능평가, 개선과정을 수행합니다.', '팀 프로젝트형'],
+            ['테라노스틱스', '진단과 치료를 잇는 테라노스틱스의 기본개념과 영상·센서·바이오소재 활용방법을 배웁니다.', '온라인·융합사례 학습'],
+            ['체외진단제품개발과성능평가', '체외진단제품의 시약·기기 설계와 분석적·임상적 성능평가 방법을 배웁니다.', '설계·성능평가 실습'],
+            ['의료데이터와AI성능평가', '연구데이터 품질, 알고리즘 성능, 외부검증, 하위군 분석, 편향평가 방법을 배웁니다.', '데이터·AI 분석 실습']],
+      pbl: ['제품설계, 시제품 제작, 성능평가, 체외진단, 의료데이터 활용', '의료기기 앵커기업'] },
+    { id: 'T6', ind: '의료기기', job: '규제·산업지원', name: '의료기기 규제·산업지원',
+      summary: '인허가와 기술문서뿐 아니라 기술·학술마케팅, 고객·기술서비스, 사업개발을 함께 다룹니다. 비전공자도 산업문서와 시장·고객 요구를 이해할 수 있도록 사례 중심으로 운영합니다.',
+      careers: '인허가·국제인증 담당, 기술서비스 엔지니어, 사업개발, 사용적합성 평가 담당', students: '보건·의공학·경영학·디자인',
+      basic: [['의료기기산업과규제환경', '의료기기 등급, 규제체계, 산업구조, 보험·유통, 국내외 시장환경을 배웁니다.', '온라인·산업사례 학습'],
+              ['의료기기기술문서와시장진입', '제품개발 자료, 기술문서, 성능자료와 시장진입 절차의 구조·연계성을 배웁니다.', '온라인·문서실습'],
+              ['의료기기임상과사용환경의이해', '사용환경, 사용자 특성, 임상적 요구, 사용오류가 제품개발과 규제에 미치는 영향을 배웁니다.', '사용환경·사용오류 분석']],
+      adv: [['의료기기인허가와국제기준', '국내외 인허가와 국제표준을 제품개발, 시험, 기술문서에 적용하는 방법을 배웁니다.', '규제문서·표준 적용 실습'],
+            ['의료기기기술서비스와고객지원', '설치·교육·유지보수·불만처리와 고객현장의 기술지원 업무를 배웁니다.', '산업전문가 참여·고객지원 실습'],
+            ['의료기기시장과사업개발', '의료수요, 경쟁제품, 가격·유통, 시장진입, 사업모델을 분석하고 사업개발 전략을 세웁니다.', '시장·사업모델 분석 실습'],
+            ['의료기기사용적합성평가와규제문서', '사용오류와 위험요인을 분석하고 평가결과를 설계·임상·인허가 문서에 반영하는 방법을 배웁니다.', '사용적합성 평가·문서실습']],
+      pbl: ['기술문서, 인허가, 국제기준, 사용적합성, 기술서비스, 시장진입', '의료기기 앵커기업 · KTR'] }
+  ];
+  const COMMON_ONLINE = [
+    ['바이오제조를위한인체·건강기초', '온라인·이론', '인체의 구조와 기능, 주요 질환을 이해하고 의약품·의료기기가 인체에 적용되는 원리와 안전성의 기초를 배웁니다. 비보건계열 학생도 바이오제조 분야에 들어올 수 있도록 기초 소양을 갖춥니다.'],
+    ['첨단바이오산업과직무이해', '온라인·이론', '제약·바이오와 의료기기의 산업구조, 제품개발 과정, 주요 직무를 배웁니다. 산업전문가 특강으로 6개 교육경로의 직무를 탐색하고 희망 진로를 고릅니다.'],
+    ['바이오산업데이터·인공지능활용기초', '온라인·실습', '바이오산업 데이터와 인공지능의 기본 원리, 활용 방법, 윤리·보안·결과검증을 배웁니다. 온라인 선행학습 뒤 데이터 실습으로 모든 경로에 필요한 AI 활용 역량을 기릅니다.']
+  ];
+  const STAR_TRACKS = { Q: ['T1', 'T4'], G: ['T3', 'T6'], F: ['T5', 'T3'], T: ['T3', 'T6'], AI: ['T2', 'T5'] };
+  const TRACK_BY = {}; TRACKS.forEach(t => { TRACK_BY[t.id] = t; });
+
+  const cv = $('#currview'), cvBody = $('#cvBody');
+  let cvTrack = 'T1', cvSavedY = null, cvReturn = '#pathway';
+
+  function barHTML(p) {
+    const segs = Object.keys(p.parts).filter(k => p.parts[k] > 0)
+      .map(k => `<span style="width:${(p.parts[k] / 42 * 100).toFixed(3)}%;background:${PART_COLOR[k]}" title="${PART_LABEL[k]} ${p.parts[k]}학점"></span>`).join('');
+    return `<div class="bar" role="img" aria-label="${p.name} ${p.credits}학점 구성: ${p.formula}">${segs}</div>`;
+  }
+  function courseLI(c, level) {
+    return `<li class="crs"><div class="crs-h"><b>${c[0]}</b><span class="crs-cr">3학점 · ${level}</span></div><p>${c[1]}</p><span class="mode">${c[2]}</span></li>`;
+  }
+  function trackDetailHTML(t) {
+    return `
+      <div class="td-head"><span class="tcode">${t.id}</span><div><h3>${t.name}</h3><p>${t.summary}</p></div></div>
+      <dl class="td-meta"><dt>진출 분야</dt><dd>${t.careers}</dd><dt>추천 대상</dt><dd>${t.students} 전공 학생</dd></dl>
+      <div class="td-cols">
+        <div><h4>직무기초 <small>초급 · 3과목</small></h4><ul class="crs-list">${t.basic.map(c => courseLI(c, '초급')).join('')}</ul></div>
+        <div><h4>직무심화 <small>중급 · 4과목</small></h4><ul class="crs-list">${t.adv.map(c => courseLI(c, '중급')).join('')}</ul></div>
+      </div>
+      <div class="td-pbl"><span class="tag">기업문제형 PBL Ⅰ·Ⅱ (${t.name})</span><p><b>주요 문제영역</b> ${t.pbl[0]}</p><p><b>함께하는 기관</b> ${t.pbl[1]}</p></div>`;
+  }
+  function selectTrack(id) {
+    cvTrack = TRACK_BY[id] ? id : 'T1';
+    $$('.tbtn', cv).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.t === cvTrack)));
+    const d = $('#tdetail', cv); if (d) d.innerHTML = trackDetailHTML(TRACK_BY[cvTrack]);
+  }
+  function renderCurriculum() {
+    const ladder = PATHS.map(p => `
+      <article class="lcard">
+        <span class="en">${p.en}</span>
+        <h3>${p.name}</h3>
+        <div class="cr">${p.credits}<small>학점</small></div>
+        ${barHTML(p)}
+        <p class="fx">${p.formula}</p>
+        <p class="goal">${p.goal}</p>
+      </article>`).join('');
+    const legend = Object.keys(PART_LABEL).map(k => `<span><i class="sw" style="background:${PART_COLOR[k]}"></i>${PART_LABEL[k]}</span>`).join('');
+    const jobs = ['품질·제조', '연구개발', '규제·산업지원'], inds = ['제약·바이오', '의료기기'];
+    const matrix = `<div class="tmatrix" role="group" aria-label="트랙 선택">
+        <span class="mh"></span>${jobs.map(j => `<span class="mh col">${j}</span>`).join('')}
+        ${inds.map(ind => `<span class="mh row">${ind}</span>` + jobs.map(j => {
+          const t = TRACKS.find(x => x.ind === ind && x.job === j);
+          return `<button class="tbtn" type="button" data-t="${t.id}" aria-pressed="false"><span class="tid">${t.id}</span><span class="tind">${ind}</span><b>${j}</b><small>${t.careers.split(', ')[0]} 외</small></button>`;
+        }).join('')).join('')}
+      </div>`;
+    cvBody.innerHTML = `
+      <section class="ov-hero"><div class="wrap ov-grid">
+        <div>
+          <p class="kicker">Curriculum</p>
+          <h1 class="ov-name" id="cvName" tabindex="-1">AI첨단바이오 전공</h1>
+          <span class="ov-en">Major in AI-driven Advanced Bio</span>
+          <p class="ov-intro">제약·바이오와 의료기기 산업의 연구개발, 제조·품질, 인허가·사업화 전 과정에 AI·데이터를 적용하는 실무 역량을 기르는 융합 전공입니다. 2개 산업분야와 3개 직무군을 교차한 6개 트랙 중 하나를 골라 단계적으로 이수합니다.</p>
+          <div class="ov-chips"><span class="ov-chip">6개 트랙</span><span class="ov-chip">마이크로디그리 12 · 부전공 21 · 복수전공 42학점</span><span class="ov-chip">기업문제형 PBL · 현장·연구연계</span></div>
+          <p class="note-ref">※ 교육과정은 각 참여대학별로 개설 전공명 등이 상이할 수 있습니다.</p>
+        </div>
+        <div class="cv-count">
+          <div><b>9</b><span>공통교과</span></div>
+          <div><b>42</b><span>트랙 교과<br><small>6개 트랙 × 7과목</small></span></div>
+          <div><b>16</b><span>PBL · 현장·연구연계</span></div>
+        </div>
+      </div></section>
+
+      <section class="ov-sec"><div class="wrap">
+        <h2 class="ov-h">단계형 이수체계</h2>
+        <p class="cv-lead">같은 트랙 안에서 마이크로디그리 → 부전공 → 복수전공으로 넓혀 갑니다. 먼저 이수한 학점은 상위 이수유형에 누적 인정됩니다.</p>
+        <div class="ladder">${ladder}</div>
+        <div class="legend">${legend}<span class="scale">막대 전체 길이 = 42학점</span></div>
+      </div></section>
+
+      <section class="ov-sec"><div class="wrap">
+        <h2 class="ov-h">6개 트랙</h2>
+        <p class="cv-lead">트랙을 누르면 진출 분야, 추천 대상, 직무기초·직무심화 교과와 PBL 연계를 볼 수 있습니다.</p>
+        ${matrix}
+        <div class="tdetail" id="tdetail" aria-live="polite"></div>
+      </div></section>
+
+      <section class="ov-sec"><div class="wrap">
+        <h2 class="ov-h">공통교과</h2>
+        <p class="cv-lead">모든 트랙이 함께 듣는 교과입니다. 산업과 직무를 이해하고 데이터·AI 활용 역량을 갖춘 뒤 트랙 교과로 넘어갑니다.</p>
+        <div class="wk">
+          <div class="wk-row"><span class="wk-label">AI제약바이오<br>워케이션챌린지</span><span class="wk-step now">① 1학점<small>초급</small></span><span class="wk-step">② 2학점<small>중급</small></span><span class="wk-step">③ 3학점<small>중급</small></span></div>
+          <div class="wk-row"><span class="wk-label">AI의료기기<br>워케이션챌린지</span><span class="wk-step now">① 1학점<small>초급</small></span><span class="wk-step">② 2학점<small>중급</small></span><span class="wk-step">③ 3학점<small>중급</small></span></div>
+          <p class="wk-note">앵커기업과 지역 바이오 산업현장에 머물며 일과 학습을 병행하는 워케이션형 교과(대면·실습)입니다. 현직자 멘토링, 활동별 이수 실적과 산출물을 성과기반학점인정제에 따라 누적 평가해 학점을 줍니다. 11월 20–21일 과정이 ①입니다.</p>
+        </div>
+        <div class="cc-grid">${COMMON_ONLINE.map(c => `<article class="cc"><div class="crs-h"><b>${c[0]}</b><span class="crs-cr">3학점 · 초급</span></div><p>${c[2]}</p><span class="mode">${c[1]}</span></article>`).join('')}</div>
+      </div></section>
+
+      <section class="ov-sec"><div class="wrap">
+        <h2 class="ov-h">기업문제형 PBL과 현장·연구연계</h2>
+        <p class="cv-lead">참여대학 교원과 기업멘토가 함께 지도하고 평가합니다. 세부 과제는 기업수요조사와 참여기업 협의로 매년 새로 발굴합니다.</p>
+        <div class="pp-grid">
+          <article class="pp"><span class="tag">PBL Ⅰ · 3학점 · 중급</span><h4>문제를 정의하고 해결안을 설계합니다</h4><p>문제 정의, 원인분석, 자료검토, 해결안·검증계획 설계를 중심으로 운영합니다. 6개 트랙별 PBL과 데이터·AI융합 PBL이 있습니다.</p></article>
+          <article class="pp"><span class="tag">PBL Ⅱ · 3학점 · 고급</span><h4>해결안을 검증하고 성과물을 고도화합니다</h4><p>실험·시제품·공정·데이터·기술문서 검증과 현장적용형 성과물 고도화를 중심으로 운영합니다.</p></article>
+          <article class="pp"><span class="tag">데이터·AI융합 PBL Ⅰ·Ⅱ</span><h4>모든 트랙에서 선택할 수 있습니다</h4><p>데이터 품질관리, 예측·분류, 공정 최적화, 성능 검증과 결과해석을 다룹니다. 함께하는 기관: LG AI연구원 · 앵커기업 6개사</p></article>
+          <article class="pp amber"><span class="tag">현장·연구연계 Ⅰ · 3학점</span><h4>방학 4–8주 집중과정</h4><p>PBLⅠ과 연계해 기업 현장실습, 참여대학 연구실 인턴, 시험·인증기관 실습 또는 글로벌 단기프로그램을 수행합니다.</p></article>
+          <article class="pp amber"><span class="tag">현장·연구연계 Ⅱ · 3학점</span><h4>방학 4–8주 집중과정</h4><p>PBLⅡ와 연계해 연속형 기업프로젝트, 대학원 연계연구, 글로벌 공동연구 또는 고급 현장실습을 수행합니다.</p></article>
+          <article class="pp amber"><span class="tag">선발 기준</span><h4>현장·연구연계 참여 학생 선발</h4><p>PBL 성과, 개인 기여도, 직무적합도, 기업멘토 평가, 참여태도를 바탕으로 선발합니다.</p></article>
+        </div>
+        <div class="ov-cta"><p>첫 과정은 11월 20일 워케이션 챌린지 ①입니다</p><a class="btn btn-cyan" href="#apply" data-open="challenge">챌린지 신청하기 <svg class="i"><use href="#i-arrow"/></svg></a></div>
+        <p class="note-ref">※ 교육과정은 각 참여대학별로 개설 전공명 등이 상이할 수 있습니다.</p>
+        <p class="note-ref">※ AI첨단바이오 융합전공 신설계획(안)(2026.10) 기준이며, 전공 신설 절차에 따라 바뀔 수 있습니다.</p>
+      </div></section>
+      <div class="wrap" style="padding-block:24px 64px"><button class="ov-back" type="button" data-cv-close><svg class="i"><use href="#i-left"/></svg>이수 경로로 돌아가기</button></div>`;
+    $$('.tbtn', cv).forEach(b => b.addEventListener('click', () => selectTrack(b.dataset.t)));
+    $$('[data-cv-close]', cv).forEach(b => b.addEventListener('click', () => { location.hash = cvReturn; }));
+  }
+  let cvRendered = false;
+  function cvRoute(oldHash) {
+    const h = location.hash;
+    if (h === '#curriculum' || h.indexOf('#curriculum-') === 0) {
+      if (cv.hidden) {
+        cvSavedY = oldHash === undefined ? null : window.scrollY;
+        cvReturn = oldHash && oldHash.indexOf('#curriculum') !== 0 && oldHash.indexOf('#co-') !== 0 ? oldHash : '#pathway';
+      }
+      if (!cvRendered) { renderCurriculum(); cvRendered = true; }
+      const want = h.indexOf('#curriculum-') === 0 ? h.slice(12).toUpperCase() : cvTrack;
+      selectTrack(want);
+      const wasHidden = cv.hidden;
+      cv.hidden = false;
+      document.documentElement.style.overflow = 'hidden';
+      if (h.indexOf('#curriculum-') === 0) {
+        const m = $('.tmatrix', cv); if (m) m.scrollIntoView({ block: 'start' });
+      } else if (wasHidden) { cv.scrollTop = 0; }
+      const nm = $('#cvName'); if (nm && wasHidden) nm.focus({ preventScroll: true });
+    } else if (!cv.hidden) {
+      cv.hidden = true;
+      document.documentElement.style.overflow = '';
+      if (h === cvReturn && cvSavedY !== null) window.scrollTo(0, cvSavedY);
+      else { const t = h && document.getElementById(h.slice(1)); if (t) t.scrollIntoView({ block: 'start' }); }
+    }
+  }
+  window.addEventListener('hashchange', e => {
+    let oldHash = '';
+    try { oldHash = new URL(e.oldURL).hash; } catch (err) { oldHash = ''; }
+    cvRoute(oldHash);
   });
+  $('#cvBack').addEventListener('click', () => { location.hash = cvReturn; });
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !cv.hidden && $('#applyModal').hidden) location.hash = cvReturn;
+  }, true);
+  cvRoute();
+
+})();
+</script>
+<script>
+/* ULTRA ANCHOR FAQ bot — keyword matching over confirmed page content only. No network calls, no storage. */
+(function () {
+  const $ = (s, r = document) => r.querySelector(s);
+  const DEADLINE = new Date('2026-11-06T18:00:00+09:00').getTime();
+  const DEADLINE_DAY = new Date('2026-11-06T00:00:00+09:00').getTime();
+  const closed = () => Date.now() >= DEADLINE;
+  const dday = () => { const n = Date.now(); return n >= DEADLINE ? '마감' : n >= DEADLINE_DAY ? 'D-DAY' : 'D-' + Math.ceil((DEADLINE_DAY - n) / 86400000); };
+  const MAIL = 'ai.bio.engine@gmail.com';
+
+  // actions: {t:'apply'} | {t:'link', href, label} | {t:'mail'} | {t:'privacy'}
+  const A = {
+    apply: { t: 'apply' }, mail: { t: 'mail' }, privacy: { t: 'privacy' },
+    sched: { t: 'link', href: '#schedule', label: '일정 보기' },
+    ch: { t: 'link', href: '#challenge', label: '챌린지 자세히' },
+    curr: { t: 'link', href: '#curriculum', label: '교육과정 자세히 보기' },
+    finder: { t: 'link', href: '#finder', label: '30초 진로 진단' },
+    partners: { t: 'link', href: '#partners', label: '참여기관 보기' },
+    faq: { t: 'link', href: '#faq', label: 'FAQ 전체 보기' }
+  };
+
+  // k = strong keywords (2 pts), w = weak keywords (1 pt). Answers use only confirmed page content.
+  const KB = [
+    { id: 'apply', chip: '신청 방법', k: ['신청방법', '어떻게신청', '신청하려면', '신청은어디', '어디서신청', '신청서', '지원방법', '접수', '참가하려면', '참여하려면', '참여방법', '참가방법', '신청할래'], w: ['신청', '지원', '등록', '참가', '참여'],
+      a: () => `<p>이 페이지의 <b>‘챌린지 신청하기’</b> 버튼으로 신청해요. 이름·소속 대학·학번·전공·학년·관심 트랙·휴대폰 번호·이메일을 적으면 끝이에요.</p><p>참가 확정과 준비 사항은 적어 준 휴대폰 번호와 이메일로 안내해요.</p>`,
+      act: [A.apply], next: ['deadline', 'elig', 'track'] },
+    { id: 'deadline', chip: '마감 언제?', k: ['마감', '언제까지', '며칠까지', '몇일까지', '몇시까지', '기한', '데드라인', '늦었', '아직신청', '신청기간'], w: ['언제'],
+      a: () => closed()
+        ? `<p>1차 모집은 <b>11월 6일(금) 18:00</b>에 마감됐어요. 다음 모집 소식은 이 페이지에서 안내할 예정이에요.</p>`
+        : `<p>신청 마감은 <b>11월 6일(금) 18:00</b>예요. 지금 <b>${dday()}</b>!</p>`,
+      act: [A.apply], next: ['apply', 'when', 'cost'] },
+    { id: 'when', chip: '일정·장소', k: ['일정', '날짜', '장소', '언제', '어디서해', '어디서하', '어디에서', '몇일', '며칠', '합숙', '1박2일', '11월20', '1120', '집결', '위치', '숙소', '기숙사', '잠은', '어디서자'], w: ['어디', '충남', '금요일', '토요일'],
+      a: () => `<p><b>2026년 11월 20일(금)–21일(토)</b>, 충남에서 1박 2일 합숙으로 진행해요.</p><p>세부 장소·집결 장소·이동 방법은 참가 확정 때 개별로 안내해요.</p><span class="note">※ 챌린지 세부 일정은 변경될 수 있어요.</span>`,
+      act: [A.sched], next: ['cost', 'prep', 'program'] },
+    { id: 'cost', chip: '비용', k: ['비용', '참가비', '무료', '유료', '공짜', '숙박비', '식비', '교통비', '차비', '얼마들', '얼마내', '돈들', '돈내', '돈'], w: ['얼마', '밥', '식사', '숙박', '교통'],
+      a: () => `<p>참가비는 <b>무료</b>이고, <b>숙박·식사·교통</b>을 지원해요.</p>`,
+      act: [A.apply], next: ['when', 'prep', 'credit'] },
+    { id: 'credit', chip: '학점', k: ['학점', '이수구분', '성적', '학점인정'], w: ['인정', '학기', '이수'],
+      a: () => `<p>워케이션 챌린지 ①은 2026-2학기에 시범 운영하는 <b>1학점</b> 교과예요. AI제약바이오·AI의료기기 워케이션챌린지① 중 하나를 이수해요.</p><p>소속 대학별 이수 구분(전공·교양 등)은 추후 안내해요.</p>`,
+      act: [A.faq], next: ['attend', 'md', 'track'] },
+    { id: 'elig', chip: '신청 자격', k: ['자격', '누가', '대상', '학년', '신입생', '새내기', '졸업반', '비전공', '전공아니', '전공상관', '다른학교', '우리학교', '문과', '인문'], w: ['전공', '가능', '돼요', '되나', '될까'],
+      a: () => `<p><b>단국대·건양대·계명대·아주대·유한대</b> 5개 참여대학 재학생이면 <b>전공·학년에 관계없이</b> 신청할 수 있어요.</p><p>교육과정도 비전공자가 들어올 수 있도록 설계했어요.</p>`,
+      act: [A.apply], next: ['coding', 'track', 'apply'] },
+    { id: 'prep', chip: '준비물', k: ['준비물', '챙길', '챙겨', '노트북', '가져가', '가져와', '복장', '옷'], w: ['준비', '필요'],
+      a: () => `<p><b>노트북</b>을 꼭 챙겨 주세요. 그 밖의 준비물과 세부 시간표는 참가 확정 때 안내해요.</p>`,
+      act: [], next: ['when', 'program', 'coding'] },
+    { id: 'track', chip: '트랙 고르기', k: ['트랙', '제약바이오', '의료기기', '고르', '선택', '뭐가맞', '어떤걸', '차이', 'a트랙', 'b트랙'], w: ['제약', '기기', '추천'],
+      a: () => `<p>신청할 때 두 트랙 중 하나를 골라요.</p><ul><li><b>AI제약바이오</b> — AI 신약개발 실습(바이오넥서스), GMP·QA/QC·RA 사례실습(KTR), 현직자와 함께 듣는 세션</li><li><b>AI의료기기</b> — 단국대병원 AX센터 바이브코딩 워크숍(코딩 경험 없어도 OK), 기업·기술지주·변리사 멘토링</li></ul><p>고민되면 30초 진로 진단 결과를 참고하세요.</p>`,
+      act: [A.finder, A.ch], next: ['coding', 'program', 'curr'] },
+    { id: 'program', chip: '뭘 하나요?', k: ['프로그램', '내용', '뭐해', '뭘해', '무엇을해', '뭐하는', '활동', '특강', '실습', '시간표', '멘토링', '워크숍'], w: ['커리큘럼', '진행'],
+      a: () => `<p>두 트랙이 함께 <b>앵커기업 인사담당자 특강</b>을 듣고, 트랙별로 나뉘어요.</p><ul><li>AI제약바이오: AI 신약개발 실습, GMP·QA/QC·RA 사례실습, 현직자와 함께 듣는 세션</li><li>AI의료기기: 바이브코딩 워크숍, 기업·기술지주·변리사 멘토링</li></ul><p>세부 시간표는 참가 확정 때 안내해요.</p>`,
+      act: [A.ch], next: ['track', 'career', 'prep'] },
+    { id: 'coding', chip: '코딩 몰라도?', k: ['코딩', '프로그래밍', '바이브', '개발경험', 'ai몰라', 'ai를몰라', '몰라도', '초보', '처음인데', '못해도'], w: ['ai', '어려', '처음'],
+      a: () => `<p>AI의료기기 트랙의 바이브코딩 워크숍은 <b>코딩 경험이 없어도</b> 참여할 수 있도록 설계했어요. 노트북만 챙겨 오세요.</p><p>교육과정도 비전공자가 들어올 수 있도록 설계했어요.</p>`,
+      act: [A.apply], next: ['track', 'elig', 'prep'] },
+    { id: 'curr', chip: '교육과정', k: ['교육과정', '마이크로디그리', 'md', '부전공', '복수전공', '다전공', '융합전공', '전공신설', '과목', '12학점', '21학점', '42학점'], w: ['커리큘럼', '전공'],
+      a: () => `<p>AI첨단바이오 전공은 <b>마이크로디그리(12학점) → 부전공(21학점) → 복수전공(42학점)</b>으로 이어지는 단계형 과정이에요. 먼저 이수한 학점은 상위 과정에 누적 인정돼요.</p><p>제약·바이오와 의료기기 2개 산업 × 품질·제조·연구개발·규제·산업지원 3개 직무군으로 6개 트랙이 있어요.</p><span class="note">※ 교육과정은 참여대학별로 개설 전공명 등이 다를 수 있어요.</span>`,
+      act: [A.curr], next: ['md', 'credit', 'track'] },
+    { id: 'md', chip: '마이크로디그리 신청', k: ['마이크로디그리신청', 'md신청', '다전공신청', '부전공신청', '복수전공신청', '언제신청'], w: ['마이크로디그리', '다전공', '부전공', '복수전공'],
+      a: () => `<p>마이크로디그리는 <b>챌린지 기간(11.20)부터</b> 신청을 받아요. 마감은 추후 안내해요.</p><p>부전공·복수전공은 전공 신설 절차가 끝나는 대로 신청 일정을 안내해요. 신청 창구는 소속 대학 안내를 따라요.</p>`,
+      act: [A.curr], next: ['curr', 'credit', 'contact'] },
+    { id: 'attend', chip: '수업 겹치면?', k: ['공결', '출석', '결석', '수업겹', '수업이랑', '수업있', '수업빠'], w: ['수업', '겹치'],
+      a: () => `<p>출석 인정(공결) 처리 여부는 <b>소속 대학별로 추후 안내</b>해요.</p>`,
+      act: [A.mail], next: ['credit', 'when', 'contact'] },
+    { id: 'cancel', chip: '취소·변경', k: ['취소', '포기', '못가', '불참', '변경', '그만두', '중간에'], w: ['환불'],
+      a: () => `<p>포기·변경 절차와 기한은 추후 안내해요. 참가가 어려워지면 사업단 이메일로 미리 알려 주세요.</p>`,
+      act: [A.mail], next: ['contact', 'confirm', 'when'] },
+    { id: 'confirm', chip: '참가 확정', k: ['확정', '합격', '선발', '결과', '됐는지', '뽑', '정원', '몇명', '인원', '신청확인', '신청됐', '접수됐', '제출됐', '신청했는데'], w: ['연락'],
+      a: () => `<p>신청 마감 후 <b>개별로 참가 확정</b>을 안내해요. 집결 장소·이동 방법·준비물도 그때 함께 알려 드려요.</p>`,
+      act: [], next: ['when', 'prep', 'contact'] },
+    { id: 'career', chip: '취업 연계', k: ['취업', '채용', '인턴', '가점', '입사', '일자리', '연봉'], w: ['회사', '기업'],
+      a: () => `<p>유한양행·종근당·에스디바이오센서·메가젠임플란트·다산제약·세신정밀 <b>6개 앵커기업</b>이 채용연계에 참여해요. 인턴십·서류 가점 같은 연계 방식은 추후 안내해요.</p><p>챌린지에서는 앵커기업 인사담당자 특강도 들어요.</p>`,
+      act: [A.partners], next: ['startup', 'program', 'partners'] },
+    { id: 'startup', chip: '창업', k: ['창업', '스타트업', '사업화', '특허', '기술이전', '기술지주'], w: [],
+      a: () => `<p>엔포유대학연합기술지주회사와 연계한 창업 경로가 있어요. 아이디어 발굴부터 시제품 실증, 법인 설립과 지식재산 보호, 투자 유치까지 단계별로 지원해요.</p>`,
+      act: [A.partners], next: ['career', 'track', 'grad'] },
+    { id: 'grad', chip: '대학원', k: ['대학원', '석사', '박사', '진학'], w: [],
+      a: () => `<p>5개 대학이 함께 운영하는 석·박사과정 신설을 추진하고 있어요. 확정되면 이 페이지에서 안내해요.</p>`,
+      act: [], next: ['career', 'curr', 'contact'] },
+    { id: 'region', chip: '지역 정주', k: ['정주', '지역에서', '지방', '고향'], w: ['지역'],
+      a: () => `<p>충남·경기·대구의 앵커기업 채용과 지역 정주 지원을 함께 연결해요. 지원 내용은 추후 안내해요.</p>`,
+      act: [], next: ['career', 'partners', 'contact'] },
+    { id: 'partners', chip: '참여기관', k: ['참여기관', '앵커', '멘토기업', '어떤회사', '어떤기업', '병원', '지자체', '참여대학', '어느대학'], w: ['기업', '회사', '대학'],
+      a: () => `<p><b>5개 대학</b>(단국대·건양대·계명대·아주대·유한대), <b>3개 지자체</b>(충남·경기·대구), <b>8개 앵커기업·기관</b>(유한양행·종근당·다산제약·에스디바이오센서·메가젠임플란트·세신정밀·KTR·엔포유대학연합기술지주회사), <b>4개 대학병원</b>, AI 신약개발 실습기관 바이오넥서스가 함께해요.</p>`,
+      act: [A.partners], next: ['career', 'program', 'what'] },
+    { id: 'what', chip: '울트라앵커란?', k: ['울트라', '울트라앵커', '앵커가뭐', '무슨사업', '사업소개', '초광역', '뭐하는곳', '어떤사업'], w: ['사업', '소개'],
+      a: () => `<p><b>ULTRA ANCHOR</b>는 초광역 성장엔진 인재육성사업이에요. 충남·경기·대구의 5개 대학과 8개 앵커기업·기관이 함께 AI 기반 첨단바이오 제조 분야 인재를 키워요.</p><p>11월 20일 워케이션 챌린지로 시작해 마이크로디그리, 융합전공, 채용연계까지 이어져요.</p>`,
+      act: [A.ch], next: ['apply', 'curr', 'partners'] },
+    { id: 'privacy', chip: '개인정보', k: ['개인정보', '정보수집', '번호왜', '보관', '보유기간', '수집'], w: [],
+      a: () => `<p>신청서 정보는 <b>챌린지 참가 신청 접수와 참가 확정·일정 안내</b>에만 쓰여요. 사업단 계정의 Google 설문지·스프레드시트에 저장되고 사업단 담당자만 확인해요.</p>`,
+      act: [A.privacy], next: ['apply', 'contact', 'confirm'] },
+    { id: 'contact', chip: '문의하기', k: ['문의', '연락처', '전화', '이메일', '메일', '카톡', '카카오', '담당자', '사람이랑', '상담'], w: ['연락', '질문'],
+      a: () => `<p>사업단 이메일 <a href="mailto:${MAIL}">${MAIL}</a>로 문의해 주세요. 전화·카카오톡 채널은 추후 안내해요.</p>`,
+      act: [A.mail], next: ['apply', 'deadline', 'when'] },
+    { id: 'hello', chip: null, k: ['안녕', '하이', 'hello', '반가', '저기요'], w: [],
+      a: () => `<p>안녕하세요! 워케이션 챌린지 ①에 대해 궁금한 걸 편하게 물어보세요.</p>`,
+      act: [], next: ['apply', 'when', 'cost'] },
+    { id: 'thanks', chip: null, k: ['고마', '감사', '땡큐', 'thank', '덕분'], w: [],
+      a: () => closed() ? `<p>도움이 됐다니 다행이에요!</p>` : `<p>도움이 됐다니 다행이에요! 신청 마감은 <b>11월 6일(금) 18:00</b>이에요.</p>`,
+      act: [A.apply], next: ['deadline', 'prep', 'contact'] }
+  ];
+  const BY = Object.fromEntries(KB.map(e => [e.id, e]));
+  const START = ['apply', 'deadline', 'when', 'cost', 'credit', 'elig', 'track', 'contact'];
+
+  const norm = s => s.toLowerCase().replace(/[\s~!?.,·…'"“”‘’()\-_/]+/g, '');
+  function match(q) {
+    const n = norm(q); if (!n) return [];
+    const scored = KB.map(e => {
+      let s = 0;
+      e.k.forEach(k => { if (n.includes(norm(k))) s += 2; });
+      e.w.forEach(k => { if (n.includes(norm(k))) s += 1; });
+      return { e, s };
+    }).filter(x => x.s > 0).sort((a, b) => b.s - a.s);
+    return scored;
+  }
+
+  const fab = $('#botFab'), panel = $('#botPanel'), log = $('#botLog'), chips = $('#botChips'), form = $('#botForm'), input = $('#botQ');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mobile = () => window.matchMedia('(max-width:760px)').matches;
+  let started = false;
+
+  function scroll() { log.scrollTop = log.scrollHeight; }
+  function addMsg(html, who) { const d = document.createElement('div'); d.className = 'bm ' + (who === 'me' ? 'me' : 'bot-a'); d.innerHTML = html; log.appendChild(d); scroll(); return d; }
+  function esc(s) { return s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+  function addActs(list) {
+    if (!list || !list.length) return;
+    const w = document.createElement('div'); w.className = 'b-acts';
+    w.innerHTML = list.map(a => {
+      if (a.t === 'apply') return closed() ? '' : `<button type="button" class="b-act" data-open="challenge">지금 신청하기</button>`;
+      if (a.t === 'mail') return `<a class="b-act sec" href="mailto:${MAIL}">메일로 문의</a>`;
+      if (a.t === 'privacy') return `<button type="button" class="b-act sec" data-privacy>개인정보 안내</button>`;
+      return `<a class="b-act sec" href="${a.href}" data-botnav>${a.label}</a>`;
+    }).join('');
+    if (w.innerHTML.trim()) { log.appendChild(w); scroll(); }
+  }
+  function setChips(ids) {
+    chips.innerHTML = ids.filter(id => BY[id] && BY[id].chip).map(id => `<button type="button" data-q="${id}">${BY[id].chip}</button>`).join('') + (ids === START ? '' : `<button type="button" data-q="__home">처음으로</button>`);
+  }
+  function answer(e, also) {
+    const go = () => {
+      addMsg(e.a(), 'bot'); addActs(e.act);
+      if (also) addMsg(`<p>혹시 <b>‘${also.chip}’</b> 내용을 찾으셨나요? 아래 버튼을 눌러 보세요.</p>`, 'bot');
+      setChips(also ? [also.id, ...e.next.filter(x => x !== also.id)].slice(0, 3) : e.next);
+    };
+    if (reduce) return go();
+    const t = document.createElement('div'); t.className = 'bm bot-a typing'; t.innerHTML = '<i></i><i></i><i></i>'; log.appendChild(t); scroll();
+    setTimeout(() => { t.remove(); go(); }, 420);
+  }
+  function fallback() {
+    const go = () => {
+      addMsg(`<p>그 질문은 제가 확실하게 답하기 어려워요. 아직 확정되지 않은 내용일 수 있어서, 사업단 이메일로 물어봐 주세요.</p><p>아래 자주 묻는 질문에서 찾아볼 수도 있어요.</p>`, 'bot');
+      addActs([A.mail, A.faq]); setChips(['apply', 'when', 'credit', 'elig', 'track']);
+    };
+    if (reduce) return go();
+    const t = document.createElement('div'); t.className = 'bm bot-a typing'; t.innerHTML = '<i></i><i></i><i></i>'; log.appendChild(t); scroll();
+    setTimeout(() => { t.remove(); go(); }, 420);
+  }
+  function ask(q) {
+    addMsg(`<p>${esc(q)}</p>`, 'me');
+    const r = match(q);
+    if (!r.length || r[0].s < 2) return fallback();
+    const second = r[1] && r[1].s >= 2 && r[1].s >= r[0].s - 1 && r[1].e.chip ? r[1].e : null;
+    answer(r[0].e, second);
+  }
+  function welcome() {
+    log.innerHTML = '';
+    addMsg(`<p>안녕하세요! <b>ULTRA ANCHOR 안내봇</b>이에요.</p><p>워케이션 챌린지 ①(11.20–21, 충남)에 대해 궁금한 걸 물어보거나 아래 버튼을 눌러 보세요.${closed() ? '' : ` 신청 마감은 <b>11.6(금) 18:00</b> (${dday()})이에요.`}</p>`, 'bot');
+    setChips(START);
+  }
+  function open() {
+    if (!started) { welcome(); started = true; }
+    panel.hidden = false; fab.setAttribute('aria-expanded', 'true'); fab.setAttribute('aria-label', '안내봇 닫기');
+    if (mobile()) document.documentElement.style.overflow = 'hidden';
+    setTimeout(() => { if (!mobile()) input.focus(); }, 30); scroll();
+  }
+  function close(focusFab = true) {
+    panel.hidden = true; fab.setAttribute('aria-expanded', 'false'); fab.setAttribute('aria-label', '안내봇 열기: 챌린지에 대해 물어보세요');
+    if (mobile() && document.getElementById('orgview').hidden && document.getElementById('currview').hidden) document.documentElement.style.overflow = '';
+    if (focusFab) fab.focus();
+  }
+  fab.addEventListener('click', () => panel.hidden ? open() : close());
+  $('#botClose').addEventListener('click', () => close());
+  $('#botReset').addEventListener('click', () => { welcome(); input.focus(); });
+  chips.addEventListener('click', e => {
+    const b = e.target.closest('[data-q]'); if (!b) return;
+    if (b.dataset.q === '__home') { setChips(START); return; }
+    const en = BY[b.dataset.q]; addMsg(`<p>${esc(en.chip)}</p>`, 'me'); answer(en);
+  });
+  form.addEventListener('submit', e => { e.preventDefault(); const q = input.value.trim(); if (!q) return; input.value = ''; ask(q); });
+  log.addEventListener('click', e => { if (e.target.closest('[data-botnav]') || e.target.closest('a[href^="#"]')) close(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden && document.getElementById('applyModal').hidden && document.getElementById('privacyModal').hidden) close(); }, true);
+  window.ULTRA_BOT = { match: q => match(q).slice(0, 3).map(x => x.e.id + ':' + x.s) };
 })();
 </script>
 </body>
