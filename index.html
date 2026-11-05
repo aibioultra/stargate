@@ -122,6 +122,8 @@ h1 .nw{white-space:nowrap}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .deadline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 0;font-size:14.5px;color:var(--muted)}
 .deadline b{color:var(--ink)}
+.btn.is-closed,.pill.is-closed{background:var(--line);color:var(--muted);box-shadow:none}
+.cta-band .btn.is-closed,.ov-cta .btn.is-closed{background:var(--on-dark-line);color:var(--on-dark)}
 .f-contact a,.desc a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .m-priv{margin:-6px 0 0;font-size:12.5px}
 .m-priv a{color:var(--blue);font-weight:700}
@@ -680,7 +682,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       <a href="#schedule">일정</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="pill pill-cyan" href="#apply" data-open="challenge">챌린지 신청 <svg class="i"><use href="#i-arrow"/></svg></a>
+    <a class="pill pill-cyan is-closed" href="#apply" data-open="challenge">신청 마감</a>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mnav" aria-label="메뉴 열기"><svg class="i"><use href="#i-menu"/></svg></button>
   </div>
   <nav class="mnav" id="mnav" aria-label="모바일 메뉴" hidden>
@@ -705,10 +707,10 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       <h1><span class="nw">AI<span class="ic" aria-hidden="true"><svg class="i"><use href="#i-spark"/></svg></span></span> × <span class="nw">바이오<span class="ic ic-2" aria-hidden="true"><svg class="i"><use href="#i-dna"/></svg></span></span> <span class="nw">커리어,</span><br>5개 대학이 함께<br><span class="nw">닻을 올립니다<span class="ic ic-3" aria-hidden="true"><svg class="i"><use href="#i-anchor"/></svg></span></span></h1>
       <p class="lead">충남·경기·대구의 <b>5개 대학</b>과 <b>8개 앵커기업·기관</b>이 함께 여는 초광역 성장엔진 인재육성사업입니다. 11월 20일 1박 2일 워케이션 챌린지로 시작해 마이크로디그리, 융합전공, 채용연계까지 이어집니다.</p>
       <div class="cta-row">
-        <a class="btn btn-navy" href="#apply" data-open="challenge">11.20 챌린지 신청하기 <svg class="i"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-navy is-closed" href="#apply" data-open="challenge">챌린지 신청 마감</a>
         <a class="btn btn-ghost" href="#finder">30초 진로 진단</a>
       </div>
-      <p class="deadline">신청 마감 <b>11월 6일(금) 18:00</b> <span class="st now" data-deadline-dday>D-5</span></p>
+      <p class="deadline"><span class="st plan" data-deadline-dday>마감</span> 모집인원 <b>선착순 마감</b></p>
       <ul class="facts">
         <li><span class="k">WHEN</span><span class="v">2026.11.20(금)–21(토)<br>1박 2일 · 충남</span></li>
         <li><span class="k">CREDIT</span><span class="v">1학점<br>2026-2학기 시범 운영</span></li>
@@ -866,10 +868,10 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
         <h2>1학점에서 시작해 전공과 커리어까지</h2>
         <p class="desc">처음부터 모든 걸 정하지 않아도 됩니다. 워케이션 챌린지로 먼저 경험해 보고, 나와 맞으면 다음 단계로 넘어가세요.</p>
       </div>
-      <a class="more" href="#apply" data-open="challenge">챌린지 신청 <svg class="i"><use href="#i-arrow"/></svg></a>
+      <a class="more" href="#apply" data-open="challenge">신청 마감 안내 <svg class="i"><use href="#i-arrow"/></svg></a>
     </div>
     <div class="steps">
-      <div class="step is-open"><span class="no">STEP 1</span><h3>챌린지 참가 신청</h3><p>이름과 소속 대학, 관심 트랙을 남기면 참가 안내를 문자로 보내 드립니다.</p><div class="meta"><span class="st now" data-deadline-chip>지금 신청 가능</span><span class="st">~11.6(금) 18:00</span></div></div>
+      <div class="step is-open"><span class="no">STEP 1</span><h3>챌린지 참가 신청</h3><p>모집인원 선착순으로 신청이 마감되었습니다. 신청한 학생에게는 참가 안내를 문자로 보내 드립니다.</p><div class="meta"><span class="st plan" data-deadline-chip>마감</span><span class="st">선착순 마감</span></div></div>
       <div class="step is-open"><span class="no">STEP 2</span><h3>AI첨단바이오 워케이션 챌린지 ①</h3><p>충남에서 1박 2일. AI제약바이오·AI의료기기 워케이션챌린지① 중 하나를 이수합니다. 이후 ②(2학점)·③(3학점)으로 이어집니다.</p><div class="meta"><span class="st">11.20–21</span><span class="st">1학점</span></div></div>
       <div class="step"><span class="no">STEP 3</span><h3>공통교과</h3><p>인체·건강기초, 첨단바이오산업과 직무이해, 데이터·AI 활용기초 등 모든 트랙이 함께 듣는 교과입니다. 동계 계절학기 운영을 협의하고 있습니다.</p><div class="meta"><span class="st plan">협의 중</span><span class="st">2026 동계</span></div></div>
       <div class="step"><span class="no">STEP 4</span><h3>직무별 마이크로디그리 · 12학점</h3><p>6개 트랙 중 하나를 골라 공통·직무기초·직무심화 교과와 기업문제형 PBLⅠ을 이수합니다.</p><div class="meta"><span class="st">11.20부터 신청</span></div></div>
@@ -907,7 +909,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
         <h2>11월 20일, 충남에서 1박 2일</h2>
         <p class="desc">AI제약바이오 워케이션챌린지①과 AI의료기기 워케이션챌린지① 중 하나를 이수하는 1학점 교과로, 2026-2학기에 시범 운영합니다. 앵커기업 현장에 머물며 일과 학습을 병행하고, 현직자 멘토링과 활동 산출물을 성과기반학점인정제로 평가합니다. 앵커기업 특강은 함께 듣습니다.</p>
       </div>
-      <a class="more" href="#apply" data-open="challenge">챌린지 신청하기 <svg class="i"><use href="#i-arrow"/></svg></a>
+      <a class="more" href="#apply" data-open="challenge">신청 마감 안내 <svg class="i"><use href="#i-arrow"/></svg></a>
     </div>
 
     <div class="ch-info">
@@ -989,8 +991,8 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       </div>
     </div>
     <ol class="tl">
-      <li class="now"><span class="dot" aria-hidden="true"></span><div><span class="title">챌린지 참가 신청</span><span class="date">지금부터 11.6(금) 18:00까지 <span class="st now" data-deadline-chip>진행 중</span></span></div><div class="box">이 페이지의 신청서에 이름, 소속 대학, 관심 트랙(AI제약바이오 / AI의료기기)을 남깁니다.</div></li>
-      <li><span class="dot" aria-hidden="true"></span><div><span class="title">참가 확정 안내</span><span class="date">신청 마감 후 개별 안내</span></div><div class="box">참가 확정과 함께 집결 장소, 이동 방법, 준비물을 개별로 안내합니다.</div></li>
+      <li><span class="dot" aria-hidden="true"></span><div><span class="title">챌린지 참가 신청</span><span class="date">모집인원 선착순 마감 <span class="st plan" data-deadline-chip>마감</span></span></div><div class="box">이 페이지의 신청서로 접수했으며, 모집인원 선착순으로 마감되었습니다.</div></li>
+      <li class="now"><span class="dot" aria-hidden="true"></span><div><span class="title">참가 확정 안내</span><span class="date">신청 마감 후 개별 안내</span></div><div class="box">참가 확정과 함께 집결 장소, 이동 방법, 준비물을 개별로 안내합니다.</div></li>
       <li class="key"><span class="dot" aria-hidden="true"></span><div><span class="title">AI첨단바이오 워케이션 챌린지 ①</span><span class="date">11.20(금)–21(토)</span></div><div class="box">충남에서 1박 2일 합숙으로 진행합니다. AI제약바이오·AI의료기기 워케이션챌린지① 중 하나를 이수하면 1학점을 받습니다.</div></li>
       <li class="key"><span class="dot" aria-hidden="true"></span><div><span class="title">마이크로디그리·다전공 신청 시작</span><span class="date">11.20부터 · 마감 추후 안내</span></div><div class="box">챌린지 기간부터 마이크로디그리 신청을 받습니다. 부전공·복수전공은 전공 신설 절차가 끝나는 대로 신청 일정을 안내합니다.</div></li>
       <li><span class="dot" aria-hidden="true"></span><div><span class="title">공통교과 (동계 계절학기)</span><span class="date">2026.12–2027.02 <span class="st plan">협의 중</span></span></div><div class="box">공통교과를 동계 계절학기에 운영하는 방안을 각 대학 학사팀과 협의하고 있습니다.</div></li>
@@ -1035,7 +1037,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       <details class="qa" open><summary><span class="q">Q.</span>누가 신청할 수 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>단국대·건양대·계명대·아주대·유한대 5개 참여대학 재학생이면 전공·학년에 관계없이 신청할 수 있습니다.</p></div></details>
       <details class="qa"><summary><span class="q">Q.</span>바이오 전공이 아니어도 참여할 수 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>교육과정은 비전공자도 들어올 수 있도록 설계했습니다. 공통교과 「바이오제조를위한인체·건강기초」는 비보건계열 학생을 위한 과목이고, 규제·산업지원 트랙은 경영학·법학·디자인 전공 학생도 추천 대상입니다. 트랙별 추천 전공은 <a href="#curriculum">교육과정 자세히 보기</a>에서 확인하세요.</p></div></details>
       <details class="qa"><summary><span class="q">Q.</span>마이크로디그리와 다전공을 함께 신청할 수 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>마이크로디그리(12학점) → 부전공(21학점) → 복수전공(42학점)으로 이어지는 단계형 과정입니다. 먼저 이수한 학점은 상위 과정에 누적 인정되므로 마이크로디그리로 시작해 넓혀 갈 수 있습니다. 신청 절차는 소속 대학 안내를 따릅니다.</p></div></details>
-      <details class="qa"><summary><span class="q">Q.</span>어디서 신청하나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>이 페이지의 ‘챌린지 신청하기’ 버튼으로 신청합니다. 입력한 내용은 사업단 담당자만 확인하고, 참가 확정과 준비 사항은 입력한 휴대폰 번호와 이메일로 안내합니다. 학점 등록은 소속 대학 안내에 따라 따로 진행합니다.</p></div></details>
+      <details class="qa"><summary><span class="q">Q.</span>어디서 신청하나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>워케이션 챌린지 ① 신청은 모집인원 선착순으로 마감되었습니다. 신청한 학생에게는 참가 확정과 준비 사항을 입력한 휴대폰 번호와 이메일로 안내합니다. 학점 등록은 소속 대학 안내에 따라 따로 진행합니다.</p></div></details>
     </div>
 
     <div class="panel" role="tabpanel" id="p-credit" aria-labelledby="tab-credit" hidden>
@@ -1087,7 +1089,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       </div>
     </div>
     <ul class="news">
-      <li><a href="#apply" data-open="challenge"><span class="cat">모집</span><span class="ttl">AI첨단바이오 워케이션 챌린지 ① 참가자 모집 (~11.6 18:00)</span><span class="st now" data-deadline-chip>모집 중</span><span class="go"><svg class="i"><use href="#i-arrow"/></svg></span></a></li>
+      <li><a href="#apply" data-open="challenge"><span class="cat">모집</span><span class="ttl">AI첨단바이오 워케이션 챌린지 ① 참가자 모집 (선착순 마감)</span><span class="st plan" data-deadline-chip>마감</span><span class="go"><svg class="i"><use href="#i-arrow"/></svg></span></a></li>
     </ul>
   </div>
 </section>
@@ -1097,10 +1099,10 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
   <img class="mark" src="assets/mark-white.png" alt="" width="360" height="372">
   <div class="wrap inner">
     <span class="dd" data-dday>D-24</span>
-    <h2>11월 20일, 첫 항해에 함께하세요</h2>
-    <p>신청 마감은 11월 6일(금) 18:00입니다. 참가 확정과 준비 사항은 문자와 이메일로 안내해 드립니다.</p>
+    <h2>챌린지 ① 신청이 마감되었습니다</h2>
+    <p>보내 주신 관심에 감사드립니다. 모집인원 선착순으로 신청이 마감되었습니다. 신청한 학생에게는 참가 확정과 준비 사항을 문자와 이메일로 안내해 드립니다.</p>
     <div class="cta-row">
-      <a class="btn btn-cyan" href="#apply" data-open="challenge">11.20 챌린지 신청하기 <svg class="i"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-cyan" href="#curriculum">교육과정 살펴보기 <svg class="i"><use href="#i-arrow"/></svg></a>
       <a class="btn btn-line" href="#faq">자주 묻는 질문 보기</a>
     </div>
   </div>
@@ -1112,7 +1114,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
     <div class="f-grid">
       <div class="f-logo">
         <img src="assets/logo-white.png" alt="ULTRA ANCHOR 초광역 성장엔진 인재육성사업" width="720" height="245">
-        <p>AI 기반 첨단바이오 제조 인재양성 사업단<br>주관 단국대학교 · 참여 건양대 · 계명대 · 아주대 · 유한대</p>
+        <p>AI기반 첨단바이오사업단<br>주관 단국대 · 참여 건양대 · 계명대 · 아주대 · 유한대</p>
       </div>
       <div>
         <h3>MENU</h3>
@@ -1140,8 +1142,8 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
 </footer>
 
 <div class="mcta">
-  <div class="l"><b data-deadline-dday>D-5</b><span>신청 마감 11.6(금) 18:00</span></div>
-  <a class="btn btn-cyan" href="#apply" data-open="challenge">신청하기</a>
+  <div class="l"><b data-deadline-dday>마감</b><span>모집인원 선착순 마감</span></div>
+  <a class="btn btn-cyan is-closed" href="#apply" data-open="challenge">안내</a>
 </div>
 
 <!-- FAQ chatbot (rule-based: answers only from confirmed page content; nothing is sent or stored) -->
@@ -1172,7 +1174,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
     <form class="form" id="applyForm" novalidate>
       <div>
         <h2 id="mTitle">바이오워케이션 챌린지 신청</h2>
-        <p class="m-desc" id="mDesc">AI첨단바이오 워케이션 챌린지 ① · 2026.11.20.(금)–21.(토) · 충남 1박 2일 · 1학점 · 신청 마감 11.6.(금) 18:00</p>
+        <p class="m-desc" id="mDesc">AI첨단바이오 워케이션 챌린지 ① · 2026.11.20.(금)–21.(토) · 충남 1박 2일 · 1학점 · 선착순 마감</p>
       </div>
       <input type="hidden" id="f-kind" value="notify">
       <div class="row">
@@ -1214,7 +1216,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
     <div class="done" id="applyClosed" hidden>
       <div class="ok" aria-hidden="true"><svg class="i"><use href="#i-cal"/></svg></div>
       <h3>신청이 마감되었습니다</h3>
-      <p>11월 6일(금) 18:00에 참가 신청을 마감했습니다. 문의는 ai.bio.engine@gmail.com로 보내 주세요.</p>
+      <p>모집인원 선착순으로 워케이션 챌린지 ① 참가 신청이 마감되었습니다. 신청한 학생에게는 참가 확정과 준비 사항을 문자와 이메일로 개별 안내해 드립니다. 문의는 ai.bio.engine@gmail.com로 보내 주세요.</p>
       <button class="btn btn-navy" type="button" data-close>닫기</button>
     </div>
     <div class="done" id="applyDone" hidden>
@@ -1282,12 +1284,13 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
   /* application deadline (KST) */
   const DEADLINE = new Date('2026-11-06T18:00:00+09:00').getTime();
   const DEADLINE_DAY = new Date('2026-11-06T00:00:00+09:00').getTime();
-  function isClosed() { return Date.now() >= DEADLINE; }
+  const EARLY_CLOSED = true; // 모집인원 선착순 마감 (false로 바꾸면 11.6 18:00 마감 기준으로 돌아감)
+  function isClosed() { return EARLY_CLOSED || Date.now() >= DEADLINE; }
   function paintDeadline() {
     const now = Date.now();
-    const label = now >= DEADLINE ? '마감' : now >= DEADLINE_DAY ? 'D-DAY' : 'D-' + Math.ceil((DEADLINE_DAY - now) / 86400000);
+    const label = isClosed() ? '마감' : now >= DEADLINE_DAY ? 'D-DAY' : 'D-' + Math.ceil((DEADLINE_DAY - now) / 86400000);
     $$('[data-deadline-dday]').forEach(el => { el.textContent = label; });
-    if (now >= DEADLINE) $$('[data-deadline-chip]').forEach(el => { el.textContent = '마감'; el.classList.remove('now'); el.classList.add('plan'); });
+    if (isClosed()) $$('[data-deadline-chip]').forEach(el => { el.textContent = '마감'; el.classList.remove('now'); el.classList.add('plan'); });
   }
   paintDeadline(); setInterval(paintDeadline, 60000);
 
@@ -1375,7 +1378,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
        <p class="r-def">${s.def}</p>
        <dl class="r-dl"><dt>목표 직무</dt><dd>${s.jobs}</dd><dt>연계 기관</dt><dd>${s.orgs}</dd><dt>챌린지 트랙</dt><dd>${s.track}</dd><dt>교육과정</dt><dd>${(STAR_TRACKS[key] || []).map(id => `<a class="r-link" href="#curriculum-${id.toLowerCase()}">${id} ${TRACK_BY[id].name}</a>`).join(' · ')}</dd></dl>
        <div class="r-actions">
-         <a class="btn btn-cyan" href="#apply" data-open="challenge" data-track="${s.tk}">이 트랙으로 챌린지 신청</a>
+         <a class="btn btn-cyan" href="#curriculum">교육과정에서 트랙 보기</a>
          <button class="btn btn-line" type="button" id="qAgain">다시 하기</button>
        </div>`;
     $('#qAgain', quiz).addEventListener('click', () => { step = 0; picks = []; markStar(null); renderQ(); });
@@ -1394,7 +1397,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
   const modal = $('#applyModal'), form = $('#applyForm'), done = $('#applyDone');
   let lastFocus = null;
   const COPY = {
-    challenge: ['바이오워케이션 챌린지 신청', 'AI첨단바이오 워케이션 챌린지 ① · 2026.11.20.(금)–21.(토) · 충남 1박 2일 · 1학점 · 신청 마감 11.6.(금) 18:00']
+    challenge: ['바이오워케이션 챌린지 신청', 'AI첨단바이오 워케이션 챌린지 ① · 2026.11.20.(금)–21.(토) · 충남 1박 2일 · 1학점 · 선착순 마감']
   };
   /* Google Form: 바이오워케이션챌린지 신청 → 응답 시트 */
   const GFORM = {
@@ -1659,7 +1662,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       </div></section>
       ${stars ? `<section class="ov-sec"><div class="wrap"><h2 class="ov-h">연계 인재 유형</h2><div class="ov-stars">${stars}</div></div></section>` : ''}
       <section class="ov-sec"><div class="wrap">
-        <div class="ov-cta"><p>11월 20일 워케이션 챌린지에서 직접 만나 보세요</p><a class="btn btn-cyan" href="#apply" data-open="challenge">챌린지 신청하기 <svg class="i"><use href="#i-arrow"/></svg></a></div>
+        <div class="ov-cta"><p>11월 20일 워케이션 챌린지에서 직접 만나 보세요</p><a class="btn btn-cyan is-closed" href="#apply" data-open="challenge">챌린지 신청 마감</a></div>
       </div></section>
       <nav class="wrap ov-nav" aria-label="다른 기관">
         <a class="prev" href="#co-${prev.slug}"><span class="dir">← PREV</span><span class="nm">${prev.name}</span></a>
@@ -1890,7 +1893,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
           <article class="pp amber"><span class="tag">현장·연구연계 Ⅱ · 3학점</span><h4>방학 4–8주 집중과정</h4><p>PBLⅡ와 연계해 연속형 기업프로젝트, 대학원 연계연구, 글로벌 공동연구 또는 고급 현장실습을 수행합니다.</p></article>
           <article class="pp amber"><span class="tag">선발 기준</span><h4>현장·연구연계 참여 학생 선발</h4><p>PBL 성과, 개인 기여도, 직무적합도, 기업멘토 평가, 참여태도를 바탕으로 선발합니다.</p></article>
         </div>
-        <div class="ov-cta"><p>첫 과정은 11월 20일 워케이션 챌린지 ①입니다</p><a class="btn btn-cyan" href="#apply" data-open="challenge">챌린지 신청하기 <svg class="i"><use href="#i-arrow"/></svg></a></div>
+        <div class="ov-cta"><p>첫 과정은 11월 20일 워케이션 챌린지 ①입니다</p><a class="btn btn-cyan is-closed" href="#apply" data-open="challenge">챌린지 신청 마감</a></div>
         <p class="note-ref">※ 교육과정은 각 참여대학별로 개설 전공명 등이 상이할 수 있습니다.</p>
         <p class="note-ref">※ AI첨단바이오 융합전공 신설계획(안)(2026.10) 기준이며, 전공 신설 절차에 따라 바뀔 수 있습니다.</p>
       </div></section>
@@ -1942,8 +1945,9 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
   const $ = (s, r = document) => r.querySelector(s);
   const DEADLINE = new Date('2026-11-06T18:00:00+09:00').getTime();
   const DEADLINE_DAY = new Date('2026-11-06T00:00:00+09:00').getTime();
-  const closed = () => Date.now() >= DEADLINE;
-  const dday = () => { const n = Date.now(); return n >= DEADLINE ? '마감' : n >= DEADLINE_DAY ? 'D-DAY' : 'D-' + Math.ceil((DEADLINE_DAY - n) / 86400000); };
+  const EARLY_CLOSED = true; // 페이지 쪽 EARLY_CLOSED와 같이 바꿀 것
+  const closed = () => EARLY_CLOSED || Date.now() >= DEADLINE;
+  const dday = () => { const n = Date.now(); return closed() ? '마감' : n >= DEADLINE_DAY ? 'D-DAY' : 'D-' + Math.ceil((DEADLINE_DAY - n) / 86400000); };
   const MAIL = 'ai.bio.engine@gmail.com';
 
   // actions: {t:'apply'} | {t:'link', href, label} | {t:'mail'} | {t:'privacy'}
@@ -1959,12 +1963,14 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
 
   // k = strong keywords (2 pts), w = weak keywords (1 pt). Answers use only confirmed page content.
   const KB = [
-    { id: 'apply', chip: '신청 방법', k: ['신청방법', '어떻게신청', '신청하려면', '신청은어디', '어디서신청', '신청서', '지원방법', '접수', '참가하려면', '참여하려면', '참여방법', '참가방법', '신청할래'], w: ['신청', '지원', '등록', '참가', '참여'],
-      a: () => `<p>이 페이지의 <b>‘챌린지 신청하기’</b> 버튼으로 신청해요. 이름·소속 대학·학번·전공·학년·관심 트랙·휴대폰 번호·이메일을 적으면 끝이에요.</p><p>참가 확정과 준비 사항은 적어 준 휴대폰 번호와 이메일로 안내해요.</p>`,
+    { id: 'apply', chip: '신청 방법', k: ['신청방법', '어떻게신청', '신청하려면', '신청은어디', '어디서신청', '신청서', '지원방법', '접수', '참가하려면', '참여하려면', '참여방법', '참가방법', '신청할래', '신청어떻게'], w: ['신청', '지원', '등록', '참가', '참여'],
+      a: () => closed()
+        ? `<p>워케이션 챌린지 ① 신청은 <b>모집인원 선착순으로 마감</b>됐어요. 신청한 학생에게는 참가 확정과 준비 사항을 문자와 이메일로 안내해요.</p><p>다음 모집 소식은 이 페이지에서 안내할 예정이에요.</p>`
+        : `<p>이 페이지의 <b>‘챌린지 신청하기’</b> 버튼으로 신청해요. 이름·소속 대학·학번·전공·학년·관심 트랙·휴대폰 번호·이메일을 적으면 끝이에요.</p><p>참가 확정과 준비 사항은 적어 준 휴대폰 번호와 이메일로 안내해요.</p>`,
       act: [A.apply], next: ['deadline', 'elig', 'track'] },
     { id: 'deadline', chip: '마감 언제?', k: ['마감', '언제까지', '며칠까지', '몇일까지', '몇시까지', '기한', '데드라인', '늦었', '아직신청', '신청기간'], w: ['언제'],
       a: () => closed()
-        ? `<p>1차 모집은 <b>11월 6일(금) 18:00</b>에 마감됐어요. 다음 모집 소식은 이 페이지에서 안내할 예정이에요.</p>`
+        ? `<p>워케이션 챌린지 ① 신청은 <b>모집인원 선착순으로 마감</b>됐어요. 다음 모집 소식은 이 페이지에서 안내할 예정이에요.</p>`
         : `<p>신청 마감은 <b>11월 6일(금) 18:00</b>예요. 지금 <b>${dday()}</b>!</p>`,
       act: [A.apply], next: ['apply', 'when', 'cost'] },
     { id: 'when', chip: '일정·장소', k: ['일정', '날짜', '장소', '언제', '어디서해', '어디서하', '어디에서', '몇일', '며칠', '합숙', '1박2일', '11월20', '1120', '집결', '위치', '숙소', '기숙사', '잠은', '어디서자'], w: ['어디', '충남', '금요일', '토요일'],
@@ -2004,7 +2010,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       a: () => `<p>포기·변경 절차와 기한은 추후 안내해요. 참가가 어려워지면 사업단 이메일로 미리 알려 주세요.</p>`,
       act: [A.mail], next: ['contact', 'confirm', 'when'] },
     { id: 'confirm', chip: '참가 확정', k: ['확정', '합격', '선발', '결과', '됐는지', '뽑', '정원', '몇명', '인원', '신청확인', '신청됐', '접수됐', '제출됐', '신청했는데'], w: ['연락'],
-      a: () => `<p>신청 마감 후 <b>개별로 참가 확정</b>을 안내해요. 집결 장소·이동 방법·준비물도 그때 함께 알려 드려요.</p>`,
+      a: () => `<p>${closed() ? '신청이 선착순으로 마감됐고, 신청한 학생에게' : '신청 마감 후'} <b>개별로 참가 확정</b>을 안내해요. 집결 장소·이동 방법·준비물도 그때 함께 알려 드려요.</p>`,
       act: [], next: ['when', 'prep', 'contact'] },
     { id: 'career', chip: '취업 연계', k: ['취업', '채용', '인턴', '가점', '입사', '일자리', '연봉'], w: ['회사', '기업'],
       a: () => `<p>유한양행·종근당·에스디바이오센서·메가젠임플란트·다산제약·세신정밀 <b>6개 앵커기업</b>이 채용연계에 참여해요. 인턴십·서류 가점 같은 연계 방식은 추후 안내해요.</p><p>챌린지에서는 앵커기업 인사담당자 특강도 들어요.</p>`,
