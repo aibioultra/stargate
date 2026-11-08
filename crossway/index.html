@@ -1,0 +1,1655 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI-Bio 크로스웨이 탐사대 | ULTRA ANCHOR</title>
+<meta name="description" content="2027년 1월, 앵커기업·지자체·대학 관계자가 함께 JAIST, 도야마 제약 클러스터, 가나자와 CLL을 찾는 3박 4일 현장 탐사 프로그램(검토용 시안).">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1B2452">
+<link rel="icon" href="/crossway/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/crossway/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ULTRA ANCHOR · 초광역 성장엔진 인재육성사업">
+<meta property="og:title" content="AI-Bio 크로스웨이 탐사대 | 2027.1 이시카와·도야마">
+<meta property="og:description" content="현안을 들고 가서, 파트너와 함께 돌아옵니다. 앵커기업·지자체·대학 관계자 대상 일본 현장 탐사(검토용 시안)">
+<meta property="og:url" content="https://stargate-aibio.vercel.app/crossway/">
+<meta property="og:image" content="https://stargate-aibio.vercel.app/crossway/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap">
+<style>
+/* Layout: ULTRA ANCHOR microsite language (white / sky / deep-navy bands, sea-chart hero card) carried into a
+   STARGATE "gate route", re-cut for an executive delegation (CES-style: big date line, stats bar, role guides,
+   passes, plan-your-trip). Photo slots render line-art postcards until real photos are set in PHOTOS.
+   Deliberately single-theme to match the brand logo, so every color is set explicitly here. */
+:root{
+  color-scheme: light;
+  --ink:#121838; --ink-deep:#0E1330;
+  --navy:#1B2452; --navy-deep:#141B42;
+  --blue:#1F5CC4; --cyan:#27B9CF; --cyan-soft:#BFEFF6;
+  --sky:#EAF1FB; --mist:#F5F8FD; --paper:#FFFFFF; --paper-glass:rgba(255,255,255,.92);
+  --line:#DCE4F1; --muted:#586487;
+  --on-dark:#EEF3FF; --on-dark-muted:#A9B5D6; --on-dark-line:rgba(255,255,255,.14); --on-dark-fill:rgba(255,255,255,.05);
+  --sea-1:#5AA6F0; --sea-2:#2F6FD6; --sea-3:#1F4FB0; --sea-4:#1D3484; --sea-5:#151D48;
+  --tbd-ink:#8A5300; --tbd-bg:#FFF3DA; --tbd-line:#EDAA3A;
+  --shadow:rgba(27,36,82,.45); --scrim:rgba(10,14,34,.55);
+  --f-display:"Archivo","Noto Sans KR",system-ui,sans-serif;
+  --f-kr:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-kr);font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+button{font-family:inherit}
+.wrap{max-width:1180px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+svg.i{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:8px}
+
+/* draft bar + TBD chips */
+.draftbar{background:var(--tbd-bg);color:var(--tbd-ink);font-size:13px;border-bottom:1px solid var(--tbd-line)}
+.draftbar .wrap{display:flex;gap:8px 16px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-block:8px}
+.draftbar p{margin:0;font-weight:500}
+.draftbar button{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--tbd-line);background:var(--paper);color:var(--tbd-ink);border-radius:999px;padding:4px 12px;font-weight:700;font-size:12.5px;cursor:pointer}
+.tbd{display:inline-flex;align-items:center;gap:4px;padding:0 9px;border:1.5px dashed var(--tbd-line);background:var(--tbd-bg);color:var(--tbd-ink);border-radius:999px;font-size:.8em;font-weight:700;line-height:1.75;white-space:nowrap;vertical-align:baseline;font-family:var(--f-kr);letter-spacing:0;font-style:normal}
+.tbd::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--tbd-line)}
+.tbd.flash{animation:flash 1.4s ease}
+@keyframes flash{0%,100%{box-shadow:0 0 0 0 rgba(237,170,58,0)}30%{box-shadow:0 0 0 8px rgba(237,170,58,.45)}}
+.st{display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:700;background:var(--sky);color:var(--blue);white-space:nowrap}
+.st.now{background:var(--cyan);color:var(--navy)}
+
+/* header */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--paper-glass);-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.header-in{display:flex;align-items:center;gap:20px;height:70px}
+.brand{display:flex;align-items:center;gap:12px;flex:none;text-decoration:none}
+.brand img{height:42px;width:auto}
+.brand .sub{display:flex;flex-direction:column;line-height:1.2;padding-left:12px;border-left:1px solid var(--line)}
+.brand .sub b{font-family:var(--f-display);font-style:italic;font-stretch:115%;font-weight:800;font-size:13px;letter-spacing:.06em;color:var(--blue)}
+.brand .sub span{font-size:12.5px;font-weight:700;color:var(--ink)}
+.gnb{display:flex;gap:2px;margin-left:auto}
+.gnb a{padding:8px 13px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px;color:var(--ink)}
+.gnb a:hover{background:var(--sky)}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:10px 18px;font-weight:700;font-size:14px;text-decoration:none;border:0;cursor:pointer;white-space:nowrap;transition:transform .15s}
+.pill:hover{transform:translateY(-1px)}
+.pill-cyan{background:var(--cyan);color:var(--navy)}
+.menu-btn{display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;font-size:22px}
+.mnav{background:var(--paper);border-top:1px solid var(--line)}
+.mnav a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font-weight:600;text-decoration:none}
+.mnav a:last-child{border-bottom:0}
+@media (max-width:1080px){.gnb{display:none}.menu-btn{display:inline-flex}.header-in .pill-cyan{margin-left:auto}}
+@media (max-width:600px){.header-in .pill-cyan{display:none}.menu-btn{margin-left:auto}.brand img{height:36px}.brand .sub{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 26px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;cursor:pointer;border:1.5px solid transparent;transition:transform .15s,background-color .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-navy{background:var(--navy);color:var(--paper)}
+.btn-ghost{background:transparent;border-color:var(--navy);color:var(--navy)}
+.btn-cyan{background:var(--cyan);color:var(--navy)}
+.btn-line{background:transparent;border-color:rgba(255,255,255,.4);color:var(--paper)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding-block:52px 72px;background:radial-gradient(48% 60% at 92% 8%, var(--sky) 0%, transparent 70%),var(--paper)}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--line) 1.2px, transparent 1.3px);background-size:26px 26px;opacity:.55;-webkit-mask-image:linear-gradient(100deg,transparent 30%,#000 75%);mask-image:linear-gradient(100deg,transparent 30%,#000 75%);pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:52px;align-items:center}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:6px 14px 6px 10px;border-radius:999px;background:var(--sky);color:var(--blue);font-weight:700;font-size:14px;margin:0}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 4px rgba(39,185,207,.25)}
+.eyebrow b{font-family:var(--f-display);font-stretch:112%;font-style:italic;font-weight:800;color:var(--navy);letter-spacing:.02em}
+.dateline{margin:20px 0 0;font-family:var(--f-display);font-style:italic;font-stretch:120%;font-weight:900;font-size:clamp(2.6rem,6.2vw,4.7rem);line-height:.95;letter-spacing:-.02em;color:var(--navy)}
+.dateline .x{color:var(--cyan)}
+.dateline small{display:block;font-size:.34em;font-stretch:112%;font-weight:800;letter-spacing:.08em;color:var(--blue);margin-top:12px;line-height:1.3}
+h1{font-size:clamp(1.75rem,3.3vw,2.55rem);line-height:1.28;letter-spacing:-.045em;font-weight:900;margin:20px 0 8px;color:var(--ink)}
+h1 .nw{white-space:nowrap}
+.ic{display:inline-grid;place-items:center;width:.92em;height:.92em;border-radius:32%;vertical-align:-.1em;margin:0 .06em 0 .14em;color:var(--paper);background:linear-gradient(140deg,var(--sea-2),var(--cyan));box-shadow:0 10px 18px -8px var(--shadow)}
+.ic svg{width:.55em;height:.55em;stroke-width:2.4}
+.tagline{margin:0 0 16px;font-weight:800;font-size:clamp(1.05rem,1.8vw,1.25rem);color:var(--navy)}
+.lead{font-size:clamp(1.02rem,1.5vw,1.1rem);color:var(--muted);max-width:34em;margin:0}
+.lead b{color:var(--ink)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.deadline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 0;font-size:14.5px;color:var(--muted)}
+.facts{list-style:none;padding:0;margin:30px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.facts li{padding:16px 16px 0 0;min-width:0}
+.facts .k{display:block;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--blue)}
+.facts .v{display:block;font-weight:800;font-size:15px;line-height:1.5;margin-top:2px}
+.facts .v .tbd{margin-top:6px}
+
+.route-card{margin:0;border-radius:28px;color:var(--on-dark);padding:22px 22px 18px;position:relative;overflow:hidden;background:radial-gradient(120% 80% at 85% 0%, var(--sea-3) 0%, var(--navy) 55%, var(--ink-deep) 100%);box-shadow:0 40px 70px -40px var(--shadow)}
+.route-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 12px;font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:var(--on-dark-muted)}
+.route-top .badge{background:var(--cyan);color:var(--navy);border-radius:999px;padding:4px 11px;font-weight:800;font-family:var(--f-kr);letter-spacing:0;font-size:12.5px;white-space:nowrap}
+.map{width:100%;height:auto;display:block;margin-top:4px}
+.map .gridl line{stroke:rgba(255,255,255,.08);stroke-width:1}
+.map .gl{font-family:var(--f-mono);font-size:12px;fill:rgba(255,255,255,.38)}
+.map .halo{fill:rgba(39,185,207,.07);stroke:rgba(39,185,207,.38);stroke-width:1.2;stroke-dasharray:3 6}
+.map .reg-en{font-family:var(--f-mono);font-size:11px;fill:var(--cyan);letter-spacing:.14em}
+.map .route{fill:none;stroke:var(--cyan);stroke-width:2.2;stroke-dasharray:1 8;stroke-linecap:round;animation:sail 5s linear infinite}
+.map .route.air{stroke:rgba(191,239,246,.55);stroke-width:1.6;animation-duration:8s}
+.map .route.online{stroke:var(--paper);stroke-opacity:.45;stroke-dasharray:8 7;stroke-width:1.4;animation:none}
+@keyframes sail{to{stroke-dashoffset:-90}}
+.map .node{fill:var(--paper);stroke:var(--cyan);stroke-width:3.5}
+.map .node.off{fill:var(--navy);stroke:rgba(255,255,255,.55);stroke-width:2;stroke-dasharray:3 3}
+.map .hub{fill:var(--cyan);stroke:var(--paper);stroke-width:3.5}
+.map .pulse{fill:none;stroke:var(--cyan);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:pulse 2.6s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.4);opacity:0}}
+.map .uname{font-family:var(--f-kr);font-weight:800;font-size:17px;fill:var(--paper)}
+.map .urole{font-family:var(--f-mono);font-weight:600;font-size:11px;fill:var(--cyan);letter-spacing:.08em}
+.map .urole.dim{fill:var(--on-dark-muted)}
+.map .compass path{fill:var(--on-dark-muted)}
+.map .compass path.n{fill:var(--cyan)}
+.map .compass text{font-family:var(--f-mono);font-size:12px;fill:var(--on-dark-muted)}
+.route-foot{display:flex;justify-content:space-between;gap:6px 14px;flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;color:var(--on-dark-muted);border-top:1px dashed var(--on-dark-line);padding-top:12px;margin-top:4px}
+.route-foot b{color:var(--paper);font-weight:600}
+@media (max-width:960px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:40px}.route-card{max-width:560px}}
+@media (max-width:560px){.hero{padding-block:34px 52px}.facts{grid-template-columns:minmax(0,1fr)}.facts li{padding:12px 0 0}.cta-row .btn{flex:1 1 100%}}
+
+/* stats bar */
+.stats{border-block:1px solid var(--line);background:var(--paper)}
+.stats ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+.stats li{padding:24px 18px 20px;border-left:1px solid var(--line);min-width:0;display:flex;flex-direction:column;gap:6px}
+.stats li:first-child{border-left:0;padding-left:0}
+.stats b{font-family:var(--f-display);font-style:italic;font-stretch:112%;font-weight:800;font-size:clamp(1.45rem,2.3vw,1.95rem);line-height:1.05;color:var(--navy);white-space:nowrap}
+.stats span{font-size:13px;color:var(--muted);line-height:1.5}
+.stats .src{margin:0;padding:0 0 14px;font-size:12px;color:var(--muted)}
+@media (max-width:1000px){.stats ul{grid-template-columns:repeat(3,minmax(0,1fr))}.stats li:nth-child(4){border-left:0;padding-left:0}.stats li:nth-child(n+4){border-top:1px solid var(--line)}}
+@media (max-width:560px){.stats ul{grid-template-columns:repeat(2,minmax(0,1fr))}.stats li{padding:16px 12px}.stats li:nth-child(odd){border-left:0;padding-left:0}.stats li:nth-child(4){border-left:1px solid var(--line);padding-left:12px}.stats li:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* sections */
+.sec{padding-block:clamp(72px,9vw,108px)}
+.band-sky{background:var(--sky)}
+.band-navy{background:var(--navy);color:var(--on-dark)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px 32px;flex-wrap:wrap;margin-bottom:40px}
+.sec-head .t{max-width:780px;min-width:0}
+.kicker{font-family:var(--f-display);font-stretch:118%;font-style:italic;font-weight:800;font-size:13px;letter-spacing:.14em;color:var(--blue);margin:0 0 12px;text-transform:uppercase}
+.band-navy .kicker{color:var(--cyan)}
+h2{font-size:clamp(1.65rem,3.2vw,2.4rem);line-height:1.32;letter-spacing:-.04em;font-weight:800;margin:0;text-wrap:balance}
+.desc{color:var(--muted);margin:14px 0 0;font-size:1.02rem;max-width:46em}
+.band-navy .desc{color:var(--on-dark-muted)}
+.note-ref{margin:16px 0 0;font-size:13.5px;line-height:1.6;color:var(--muted)}
+.band-navy .note-ref{color:var(--on-dark-muted)}
+
+/* audience */
+.aud{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.acard{min-width:0;border:1px solid var(--line);border-radius:24px;padding:26px 22px 20px;background:var(--paper);display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+.acard::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--sea-2),var(--cyan))}
+.acard .ai{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;color:var(--paper);background:linear-gradient(140deg,var(--sea-2),var(--cyan));box-shadow:0 14px 24px -14px var(--shadow)}
+.acard .ai svg{width:26px;height:26px}
+.acard .tag{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--blue)}
+.acard h3{margin:0;font-size:1.3rem;letter-spacing:-.03em;line-height:1.35}
+.acard .who{margin:0;font-size:14px;color:var(--muted)}
+.acard .gain{margin:6px 0 0;font-size:12.5px;font-weight:800;color:var(--navy)}
+.acard ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14.5px;line-height:1.55}
+.acard li{display:flex;gap:9px;align-items:flex-start}
+.acard li svg{color:var(--cyan);margin-top:4px;width:15px;height:15px;stroke-width:2.6}
+.acard .rec{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.acard .rec a{font-weight:800;color:var(--navy);text-decoration:none;display:inline-flex;gap:4px;align-items:center}
+.aud-note{grid-column:1/-1;display:flex;align-items:center;gap:12px 16px;flex-wrap:wrap;border:1.5px dashed var(--line);border-radius:20px;padding:16px 20px;background:var(--mist)}
+.aud-note .ai2{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--paper);color:var(--blue);border:1px solid var(--line);flex:none}
+.aud-note .ai2 svg{width:20px;height:20px}
+.aud-note p{margin:0;font-size:14.5px;color:var(--muted);flex:1 1 300px}
+.aud-note p b{color:var(--ink)}
+@media (max-width:900px){.aud{grid-template-columns:minmax(0,1fr)}}
+
+/* photo slots */
+.ph{position:relative;margin:0;overflow:hidden;border-radius:22px;background:radial-gradient(120% 90% at 80% 0%, var(--sea-3) 0%, var(--navy) 55%, var(--ink-deep) 100%);isolation:isolate;min-height:0}
+.ph > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph.contain > img{object-fit:contain;background:var(--ink-deep)}
+.ph .art{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ph figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:40px 18px 16px;background:linear-gradient(180deg,rgba(10,14,34,0) 0%,rgba(10,14,34,.86) 42%,rgba(10,14,34,.94) 100%);color:var(--paper);display:grid;gap:2px}
+.ph .no{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--cyan);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ph .cap{font-weight:800;font-size:16px;line-height:1.4;letter-spacing:-.02em}
+.ph .sub{font-size:12.5px;color:var(--on-dark-muted);line-height:1.5}
+.ph .slot{position:absolute;top:12px;left:12px;z-index:2;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:999px;border:1.5px dashed rgba(255,255,255,.45);color:var(--paper);background:rgba(10,14,34,.25)}
+.ph .slot svg{width:13px;height:13px}
+.ph .credit{position:absolute;top:10px;right:10px;z-index:2;max-width:calc(100% - 20px);font-size:10.5px;line-height:1.4;color:rgba(255,255,255,.88);background:rgba(10,14,34,.5);padding:2px 8px;border-radius:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ph.has-photo .art,.ph.has-photo .slot{display:none}
+.ph.has-photo figcaption{background:linear-gradient(180deg,rgba(10,14,34,0) 0%,rgba(10,14,34,.55) 45%,rgba(10,14,34,.88) 100%)}
+.art .l{fill:none;stroke:rgba(255,255,255,.8);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.art .f{fill:rgba(255,255,255,.07)}
+.art .d{stroke:rgba(255,255,255,.28)}
+.art .c{stroke:var(--cyan)}
+.art .w{fill:rgba(255,255,255,.72);stroke:none}
+.art .cf{fill:var(--cyan);stroke:none}
+.art .win{fill:none;stroke:rgba(255,255,255,.22);stroke-width:7;stroke-dasharray:12 9}
+.art .flake{fill:#fff;animation:fall linear infinite}
+@keyframes fall{from{transform:translateY(-300px)}to{transform:translateY(300px)}}
+
+.mosaic{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);grid-template-rows:230px 230px;gap:12px}
+.mosaic .ph:nth-child(1){grid-row:1/3}
+.mosaic .ph:nth-child(4){grid-column:2/4}
+@media (max-width:860px){.mosaic{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:none}.mosaic .ph{aspect-ratio:4/3}.mosaic .ph:nth-child(1){grid-row:auto;grid-column:1/-1;aspect-ratio:16/10}.mosaic .ph:nth-child(4){grid-column:1/-1;aspect-ratio:16/8}}
+@media (max-width:520px){.mosaic{grid-template-columns:minmax(0,1fr)}.mosaic .ph{aspect-ratio:16/11}.mosaic .ph:nth-child(4){aspect-ratio:16/9}}
+
+/* gates (STARGATE system) */
+.gates{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;position:relative}
+.gate{position:relative;min-width:0;border-radius:22px;padding:20px 18px 18px;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.gate .ring{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;color:var(--blue);margin-bottom:6px}
+.gate .ring svg{width:22px;height:22px}
+.gate .en{font-family:var(--f-display);font-style:italic;font-stretch:112%;font-weight:800;font-size:14.5px;color:var(--blue);line-height:1.25}
+.gate .ko{font-weight:800;font-size:15.5px;letter-spacing:-.02em;line-height:1.4}
+.gate p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.6}
+.gate.on{background:linear-gradient(160deg,var(--sea-2),var(--sea-4));border-color:transparent;color:var(--paper);box-shadow:0 26px 50px -30px var(--shadow)}
+.gate.on .ring{border-color:var(--cyan);background:rgba(39,185,207,.18);color:var(--cyan)}
+.gate.on .en{color:var(--cyan-soft)}
+.gate.on p{color:rgba(255,255,255,.85)}
+.gate.on .here{position:absolute;top:14px;right:14px;font-size:11px;font-weight:800;background:var(--cyan);color:var(--navy);border-radius:999px;padding:2px 9px}
+@media (max-width:1000px){.gates{grid-template-columns:repeat(2,minmax(0,1fr))}.gate.on{grid-column:1/-1}}
+@media (max-width:520px){.gates{grid-template-columns:minmax(0,1fr)}}
+
+/* included + passes */
+.incl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.inc{min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:20px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;align-items:start}
+.inc .ii{grid-row:1/3;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--sky);color:var(--blue)}
+.inc .ii svg{width:22px;height:22px}
+.inc h3{margin:0;font-size:1.05rem;letter-spacing:-.02em;line-height:1.45}
+.inc p{margin:0;font-size:14px;color:var(--muted);line-height:1.6}
+@media (max-width:960px){.incl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.incl{grid-template-columns:minmax(0,1fr)}}
+.passes-head{margin:60px 0 18px;display:flex;justify-content:space-between;align-items:flex-end;gap:8px 16px;flex-wrap:wrap}
+.passes-head h3{margin:0;font-size:clamp(1.3rem,2.4vw,1.7rem);letter-spacing:-.03em;line-height:1.35}
+.passes-head p{margin:0;font-size:14px;color:var(--muted)}
+.passes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.pass{position:relative;min-width:0;border-radius:26px;display:flex;flex-direction:column;overflow:hidden;background:var(--paper);border:1.5px solid var(--navy)}
+.pass.full{background:radial-gradient(110% 90% at 90% 0%,var(--sea-3) 0%,var(--navy) 60%,var(--ink-deep) 100%);border-color:var(--navy);color:var(--on-dark)}
+.pass .ptop{padding:24px 26px 20px;display:grid;gap:6px}
+.pass .pk-name{font-family:var(--f-display);font-style:italic;font-stretch:120%;font-weight:900;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1;letter-spacing:-.01em;color:var(--navy)}
+.pass.full .pk-name{color:var(--paper)}
+.pass .pdur{font-weight:800;font-size:15px}
+.pass .prec{justify-self:start;font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;background:var(--sky);color:var(--blue)}
+.pass.full .prec{background:var(--cyan);color:var(--navy)}
+.pass .cut{position:relative;height:0;border-top:2px dashed var(--line);margin:0 18px}
+.pass.full .cut{border-top-color:var(--on-dark-line)}
+.pass .cut::before,.pass .cut::after{content:"";position:absolute;top:-13px;width:24px;height:24px;border-radius:50%;background:var(--sky)}
+.pass .cut::before{left:-32px}
+.pass .cut::after{right:-32px}
+.pass .pbody{padding:20px 26px 24px;display:flex;flex-direction:column;gap:14px;flex:1}
+.pass ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:14.5px}
+.pass li{display:flex;gap:10px;align-items:flex-start}
+.pass li .d{font-family:var(--f-mono);font-size:11.5px;font-weight:600;color:var(--blue);min-width:46px;margin-top:2px;white-space:nowrap}
+.pass.full li .d{color:var(--cyan)}
+.pass li.off{color:var(--muted)}
+.pass .price{margin:0;font-size:13.5px;color:var(--muted)}
+.pass.full .price{color:var(--on-dark-muted)}
+.pass .btn{margin-top:auto;width:100%}
+@media (max-width:760px){.passes{grid-template-columns:minmax(0,1fr)}}
+
+/* itinerary */
+.days{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.day{min-width:0;border-radius:22px;padding:20px 20px 18px;background:linear-gradient(165deg,#2A3984 0%,#1E2864 100%);border:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;gap:10px}
+.day.ret{background:transparent;border:1.5px dashed var(--on-dark-line)}
+.day .top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px 10px}
+.day .dn{white-space:nowrap;font-family:var(--f-display);font-style:italic;font-stretch:118%;font-weight:900;font-size:26px;line-height:1;color:var(--paper);letter-spacing:-.01em}
+.day .dn small{font-family:var(--f-kr);font-style:normal;font-weight:700;font-size:13px;color:var(--on-dark-muted);margin-left:6px;letter-spacing:0}
+.day .gt{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--cyan);white-space:nowrap}
+.day .pks{display:flex;gap:6px;flex-wrap:wrap}
+.pk{font-family:var(--f-mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;padding:1px 8px;border-radius:6px;background:rgba(255,255,255,.1);color:var(--on-dark)}
+.pk.ex{background:var(--cyan);color:var(--navy)}
+.pk.half{background:transparent;border:1px dashed rgba(39,185,207,.6);color:var(--cyan-soft)}
+.day h3{margin:2px 0 0;font-size:1.12rem;line-height:1.45;letter-spacing:-.03em;color:var(--paper)}
+.day ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:14px;color:var(--on-dark-muted);line-height:1.6}
+.day li{display:flex;gap:8px;align-items:flex-start}
+.day li svg{color:var(--cyan);margin-top:5px;width:14px;height:14px}
+.day li .tbd{font-size:11.5px;margin-left:2px}
+.day .foot{margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.day .place{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--paper);margin-right:auto}
+.day .place svg{color:var(--cyan)}
+.gtag{font-family:var(--f-display);font-style:italic;font-stretch:110%;font-weight:800;font-size:11.5px;letter-spacing:.04em;padding:2px 9px;border-radius:999px;background:rgba(39,185,207,.16);color:var(--cyan-soft);border:1px solid rgba(39,185,207,.35)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:0 0 16px;font-size:13px;color:var(--on-dark-muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.basecamp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+.basecamp div{border:1px solid var(--on-dark-line);border-radius:18px;padding:16px 18px;background:var(--on-dark-fill);min-width:0}
+.basecamp .k{display:block;font-family:var(--f-mono);font-size:11.5px;color:var(--cyan);letter-spacing:.1em}
+.basecamp .v{display:block;font-weight:700;margin-top:4px;line-height:1.55;color:var(--paper)}
+.basecamp .v small{display:block;font-weight:500;color:var(--on-dark-muted);font-size:13px}
+@media (max-width:1040px){.days{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.days,.basecamp{grid-template-columns:minmax(0,1fr)}}
+
+/* stay */
+.stay{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:44px;align-items:start}
+.stay .sec-head{margin-bottom:0}
+.stay-feat{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:10px}
+.stay-feat li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 14px;padding:14px 16px;border-radius:16px;background:var(--paper);border:1px solid var(--line)}
+.stay-feat .k{grid-row:1/3;font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--blue);min-width:74px;padding-top:3px}
+.stay-feat b{font-weight:800;font-size:15px;line-height:1.5}
+.stay-feat .t{font-size:14px;color:var(--muted);line-height:1.6}
+.stay-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0 0;font-size:13px;color:var(--muted)}
+.stay-ph{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.stay-ph .ph{aspect-ratio:16/10}
+.stay-ph .ph:first-child{grid-column:1/-1;aspect-ratio:16/9}
+.stay-ph .ph:not(:first-child) figcaption{padding:28px 14px 12px}
+.stay-ph .ph:not(:first-child) .cap{font-size:14.5px}
+@media (max-width:900px){.stay{grid-template-columns:minmax(0,1fr);gap:32px}}
+
+/* plan photo */
+.plan-wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:12px}
+.plan-wrap > .ph{min-height:380px}
+.plan-wrap .plan{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:900px){.plan-wrap{grid-template-columns:minmax(0,1fr)}.plan-wrap > .ph{min-height:0;aspect-ratio:16/10}}
+@media (max-width:560px){.plan-wrap .plan{grid-template-columns:minmax(0,1fr)}}
+
+/* sites */
+.sites{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.site{min-width:0;border:1px solid var(--line);border-radius:24px;background:var(--paper);overflow:hidden;display:flex;flex-direction:column}
+.site .ph{border-radius:0;aspect-ratio:16/9}
+.site .sb{padding:22px 24px 24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 20px;align-items:start}
+.site .where{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--blue)}
+.site h3{margin:0;font-size:1.2rem;letter-spacing:-.03em;line-height:1.4}
+.site h3 small{display:block;font-weight:600;font-size:13px;color:var(--muted);letter-spacing:0}
+.site .num{text-align:right;font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:2.1rem;line-height:1;color:var(--navy);font-variant-numeric:tabular-nums;white-space:nowrap}
+.site .num small{display:block;font-family:var(--f-kr);font-size:12px;font-weight:700;color:var(--muted);margin-top:6px;letter-spacing:0}
+.site p{grid-column:1/-1;margin:8px 0 0;font-size:14.5px;color:var(--muted)}
+.site .day-link{grid-column:1/-1;margin-top:6px;font-size:13px;font-weight:700;color:var(--navy)}
+.site.online{background:var(--mist);border-style:dashed}
+@media (max-width:760px){.sites{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:420px){.site .sb{grid-template-columns:minmax(0,1fr)}.site .num{text-align:left}}
+
+/* previous expedition */
+.story{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:44px;align-items:center}
+.story .sec-head{margin-bottom:0}
+.story-ph{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.story-ph .ph{aspect-ratio:4/3}
+.story-ph .ph:first-child{grid-column:1/-1;aspect-ratio:16/9}
+.story-ph .ph:not(:first-child) figcaption{padding:26px 12px 10px}
+.story-ph .ph:not(:first-child) .cap{font-size:14px}
+.teams{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:8px}
+.teams li{display:flex;gap:4px 12px;align-items:baseline;flex-wrap:wrap;font-size:14.5px;padding:10px 14px;border-radius:14px;background:var(--paper);border:1px solid var(--line)}
+.teams b{font-weight:800;white-space:nowrap}
+.teams span{color:var(--muted)}
+@media (max-width:900px){.story{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.story-ph{grid-template-columns:repeat(2,minmax(0,1fr))}.story-ph .ph:last-child{grid-column:1/-1;aspect-ratio:16/9}}
+@media (max-width:560px){
+  .stay-ph .ph:not(:first-child),.story-ph .ph:not(:first-child):not(:last-child){aspect-ratio:1/1}
+  .stay-ph .ph:not(:first-child) .no,.story-ph .ph:not(:first-child):not(:last-child) .no{display:none}
+  .stay-ph .ph:not(:first-child) figcaption{padding:24px 12px 10px}
+  .stay-ph .ph:not(:first-child) .cap{font-size:13.5px}
+  .ph .credit{font-size:9.5px;padding:1px 6px;top:8px;right:8px}
+}
+
+/* anchors */
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ptile{display:flex;flex-direction:column;gap:3px;min-width:0;padding:12px 14px 14px;border-radius:18px;background:var(--paper);border:1px solid var(--line)}
+.plogo{display:grid;place-items:center;height:68px;margin-bottom:8px;border-radius:12px;background:var(--mist)}
+.plogo img{display:block;max-width:88%;height:auto;object-fit:contain}
+.pname{font-weight:800;font-size:15px;line-height:1.4}
+.pmeta{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;color:var(--blue)}
+@media (max-width:900px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* plan your trip */
+.plan{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pl{min-width:0;border-radius:20px;padding:20px;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.pl .pi{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--navy);color:var(--cyan);margin-bottom:6px}
+.pl .pi svg{width:20px;height:20px}
+.pl .k{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--blue)}
+.pl h3{margin:0;font-size:1.08rem;letter-spacing:-.02em;line-height:1.45}
+.pl p{margin:0;font-size:14px;color:var(--muted)}
+@media (max-width:900px){.plan{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.plan{grid-template-columns:minmax(0,1fr)}}
+
+/* flow */
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.flow li{min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px 20px 20px;display:flex;flex-direction:column;gap:8px}
+.flow .no{font-family:var(--f-display);font-stretch:118%;font-style:italic;font-weight:800;font-size:13px;letter-spacing:.12em;color:var(--blue)}
+.flow h3{margin:0;font-size:1.1rem;letter-spacing:-.03em;line-height:1.45}
+.flow p{margin:0;font-size:14px;color:var(--muted)}
+.flow .meta{margin-top:auto;padding-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+.flow li.now{background:linear-gradient(160deg,var(--sea-2),var(--sea-4));border-color:transparent;color:var(--paper)}
+.flow li.now p{color:rgba(255,255,255,.84)}
+.flow li.now .no{color:var(--cyan-soft)}
+@media (max-width:960px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.flow{grid-template-columns:minmax(0,1fr)}}
+
+/* apply info */
+.apply-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:start}
+.info{display:grid;grid-template-columns:auto minmax(0,1fr);margin:0;border-top:1px solid var(--line)}
+.info dt,.info dd{margin:0;padding:15px 0;border-bottom:1px solid var(--line);font-size:15px}
+.info dt{font-weight:700;color:var(--blue);padding-right:28px;white-space:nowrap}
+.info dd b{font-weight:800}
+.apply-card{border-radius:26px;padding:26px;background:var(--navy);color:var(--on-dark);box-shadow:0 40px 70px -45px var(--shadow);position:relative;overflow:hidden}
+.apply-card::before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(39,185,207,.35),transparent 70%);pointer-events:none}
+.apply-card h3{position:relative;margin:0 0 8px;font-size:1.3rem;color:var(--paper);letter-spacing:-.03em}
+.apply-card p{position:relative;margin:0 0 16px;color:var(--on-dark-muted);font-size:14.5px}
+.apply-card ul{position:relative;list-style:none;margin:0 0 20px;padding:0;display:grid;gap:8px;font-size:14.5px}
+.apply-card li{display:flex;gap:10px;align-items:flex-start}
+.apply-card li svg{color:var(--cyan);margin-top:5px}
+.apply-card .btn{position:relative;width:100%}
+@media (max-width:900px){.apply-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.info{grid-template-columns:minmax(0,1fr)}.info dt{padding-bottom:0;border-bottom:0}.info dd{padding-top:4px}}
+
+/* faq */
+.qa{background:var(--paper);border-radius:18px;border:1px solid var(--line);margin-bottom:10px}
+.qa summary{list-style:none;cursor:pointer;padding:18px 22px;font-weight:700;display:flex;gap:12px;align-items:flex-start;line-height:1.55}
+.qa summary::-webkit-details-marker{display:none}
+.qa .q{font-family:var(--f-display);font-weight:800;font-style:italic;color:var(--blue);flex:none}
+.qa .chev{margin-left:auto;margin-top:4px;color:var(--muted);transition:transform .2s;flex:none}
+.qa[open] .chev{transform:rotate(180deg)}
+.qa .a{padding:0 22px 20px 48px;color:var(--muted);font-size:15px}
+.qa .a p{margin:0}
+
+/* cta band */
+.cta-band{position:relative;overflow:hidden;color:var(--paper);text-align:center;padding-block:clamp(80px,10vw,120px);background:radial-gradient(55% 90% at 50% 125%, var(--cyan) 0%, transparent 62%),linear-gradient(180deg,var(--sea-3) 0%,var(--sea-5) 100%)}
+.cta-band .mark{position:absolute;right:-40px;bottom:-60px;width:340px;opacity:.07;transform:rotate(-12deg);pointer-events:none}
+.cta-band .inner{position:relative}
+.cta-band .dd{display:block;font-family:var(--f-display);font-stretch:125%;font-style:italic;font-weight:900;font-size:clamp(2.8rem,9.5vw,6.6rem);line-height:1;letter-spacing:-.02em;color:var(--paper);text-shadow:0 20px 50px rgba(39,185,207,.45)}
+.cta-band h2{margin:18px 0 10px;font-size:clamp(1.6rem,3.6vw,2.5rem)}
+.cta-band p{margin:0 auto;max-width:34em;color:rgba(255,255,255,.82)}
+.cta-band .cta-row{justify-content:center}
+
+/* footer */
+.footer{background:var(--ink-deep);color:#C3CCE6;padding-top:64px;position:relative;overflow:hidden}
+.f-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr) minmax(0,1.3fr);gap:36px}
+.f-logo img{width:210px}
+.f-logo p{margin:16px 0 0;font-size:14px;line-height:1.7}
+.footer h3{margin:0 0 12px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:#8C97BC;font-weight:600}
+.footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14.5px}
+.footer a{color:#C3CCE6;text-decoration:none}
+.footer a:hover{color:var(--paper)}
+.f-contact dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 16px;margin:0;font-size:14px}
+.f-contact dt{color:#8C97BC}
+.f-contact dd{margin:0;overflow-wrap:anywhere}
+.f-water{font-family:var(--f-display);font-stretch:125%;font-style:italic;font-weight:900;font-size:clamp(2rem,7vw,6.2rem);line-height:.82;color:rgba(255,255,255,.055);white-space:nowrap;margin-top:56px;letter-spacing:-.03em;user-select:none;overflow:hidden}
+.f-copy{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:1px solid rgba(255,255,255,.08);padding-block:18px 26px;font-size:12.5px;color:#8C97BC}
+.f-copy a{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:860px){.f-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.f-logo{grid-column:1/-1}}
+@media (max-width:520px){.f-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* mobile sticky CTA */
+.mcta{display:none}
+@media (max-width:760px){
+  .mcta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:55;align-items:center;justify-content:space-between;gap:12px;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--navy);color:var(--paper);box-shadow:0 -12px 30px -10px var(--shadow)}
+  .mcta .l{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+  .mcta .l b{font-family:var(--f-display);font-stretch:112%;font-style:italic;font-weight:800;color:var(--cyan);font-size:15px}
+  .mcta .l span{font-size:13px;font-weight:600}
+  .mcta .btn{min-height:44px;padding:0 20px;font-size:15px}
+  body{padding-bottom:72px}
+}
+
+/* modal + form + toast */
+.modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:20px max(16px,env(safe-area-inset-right,0px)) 20px max(16px,env(safe-area-inset-left,0px));background:var(--scrim)}
+.m-card{width:min(600px,100%);max-height:calc(100dvh - 40px);overflow:auto;background:var(--paper);border-radius:26px;padding:28px;position:relative}
+.m-close{position:absolute;right:16px;top:16px;width:40px;height:40px;border-radius:50%;border:0;background:var(--mist);color:var(--ink);cursor:pointer;display:grid;place-items:center;font-size:18px}
+.m-card h2{font-size:1.45rem;margin:0 40px 6px 0}
+.m-desc{margin:0 0 18px;color:var(--muted);font-size:14.5px}
+.form{display:grid;gap:14px}
+.form .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.fld{display:grid;gap:6px;font-weight:700;font-size:14px;min-width:0}
+.fld small{font-weight:500;color:var(--muted);font-size:12.5px}
+.fld input:not([type=radio]):not([type=checkbox]),.fld select,.fld textarea{border-radius:12px;border:1px solid var(--line);padding:0 14px;font:500 15px var(--f-kr);background:var(--mist);color:var(--ink);width:100%}
+.fld input:not([type=radio]):not([type=checkbox]),.fld select{height:48px}
+.fld textarea{padding:12px 14px;min-height:112px;resize:vertical;line-height:1.6}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:2px solid var(--cyan);outline-offset:1px;background:var(--paper)}
+.fld .count{justify-self:end;font-family:var(--f-mono);font-size:11.5px;font-weight:500;color:var(--muted)}
+fieldset.fld{border:0;padding:0;margin:0}
+fieldset.fld legend{padding:0;margin-bottom:6px}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg label{position:relative;cursor:pointer}
+.seg input{position:absolute;opacity:0;inset:0;margin:0}
+.seg span{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--mist);font-weight:600;font-size:14px}
+.seg input:checked + span{background:var(--navy);border-color:var(--navy);color:var(--paper)}
+.seg input:focus-visible + span{outline:3px solid var(--cyan);outline-offset:2px}
+.agree{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--muted);font-weight:500}
+.agree input{width:18px;height:18px;margin-top:3px;accent-color:var(--navy);flex:none}
+.m-priv{margin:-6px 0 0;font-size:12.5px}
+.m-priv a{color:var(--blue);font-weight:700}
+.m-note{font-size:12.5px;color:var(--tbd-ink);background:var(--tbd-bg);border:1px dashed var(--tbd-line);border-radius:12px;padding:10px 12px;margin:0}
+.done{text-align:center;padding:20px 0 6px}
+.done .ok{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;background:var(--cyan);color:var(--navy);font-size:30px}
+.done h3{margin:0 0 6px;font-size:1.3rem}
+.done p{margin:0 0 16px;color:var(--muted);font-size:14.5px}
+.priv dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 16px;margin:0 0 18px;font-size:14px}
+.priv dt{font-weight:700;color:var(--blue)}
+.priv dd{margin:0}
+@media (max-width:480px){.form .row{grid-template-columns:minmax(0,1fr)}.m-card{padding:22px}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);z-index:90;background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:14px;font-size:14px;font-weight:600;opacity:0;transition:opacity .2s,transform .2s;max-width:calc(100% - 32px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (max-width:760px){.toast{bottom:calc(86px + env(safe-area-inset-bottom,0px))}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5 13.9 9 19.5 11l-5.6 2L12 18.5 10.1 13 4.5 11l5.6-2z"/><path d="M19 3v3M17.5 4.5h3"/></symbol>
+  <symbol id="i-dna" viewBox="0 0 24 24"><path d="M8 3c0 4.5 8 4.5 8 9s-8 4.5-8 9"/><path d="M16 3c0 4.5-8 4.5-8 9s8 4.5 8 9"/><path d="M9 6h6M9 18h6M10.5 9.5h3M10.5 14.5h3"/></symbol>
+  <symbol id="i-anchor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><path d="M12 7.5V21M8 11h8M4.5 13a7.5 7.5 0 0 0 15 0M4.5 13 3 15M19.5 13l1.5 2"/></symbol>
+  <symbol id="i-net" viewBox="0 0 24 24"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="12" cy="18.5" r="2.2"/><circle cx="12" cy="10" r="1.6"/><path d="M7 7l3.6 2.2M17 7l-3.6 2.2M12 11.6v4.7M6.3 8l4.5 9M17.7 8l-4.5 9"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.5 5.3 3.5 8.5s-1.1 6.1-3.5 8.5c-2.4-2.4-3.5-5.3-3.5-8.5s1.1-6.1 3.5-8.5z"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6.5L4.6 18.4A2 2 0 0 0 6.3 21.5h11.4a2 2 0 0 0 1.7-3.1L14 9.5V3"/><path d="M7.2 15h9.6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18V7M3 14h18v4M21 14v-2.5A3.5 3.5 0 0 0 17.5 8H11v6"/><circle cx="7" cy="11" r="2"/></symbol>
+  <symbol id="i-train" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l1.5-3.5M15 21l-1.5-3.5"/><circle cx="9" cy="14.5" r=".6"/><circle cx="15" cy="14.5" r=".6"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M10.5 13.5 3 11l1.5-1.5 8 1 4-4.5c.8-.8 2.2-.8 3 0s.8 2.2 0 3l-4.5 4 1 8L14.5 22 12 14.5"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="1.5"/><path d="M9 7.5h2M13 7.5h2M9 11h2M13 11h2M9 14.5h2M13 14.5h2M10.5 20.5v-3h3v3"/></symbol>
+  <symbol id="i-landmark" viewBox="0 0 24 24"><path d="M3.5 9.5 12 4l8.5 5.5z"/><path d="M6 10.5v7M10 10.5v7M14 10.5v7M18 10.5v7M3.5 20.5h17M4.5 17.5h15"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="M2.5 9 12 4.5 21.5 9 12 13.5z"/><path d="M6.5 11v4.5c0 1.5 2.5 3 5.5 3s5.5-1.5 5.5-3V11M21.5 9v5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5"/><circle cx="17" cy="9" r="2.3"/><path d="M15.5 14.6c2.3-.2 4.3 1 5 3.9"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.5h6.8L17 8h3a1 1 0 0 1 1 1v9.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5.5h11a1.5 1.5 0 0 1 1.5 1.5v6A1.5 1.5 0 0 1 15 14.5H9l-4 3.5v-3.5H4A1.5 1.5 0 0 1 2.5 13V7A1.5 1.5 0 0 1 4 5.5z"/><path d="M19 9h1a1.5 1.5 0 0 1 1.5 1.5v5A1.5 1.5 0 0 1 20 17h-.5v3l-3.5-3h-3.5"/></symbol>
+  <symbol id="i-dinner" viewBox="0 0 24 24"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M16 3c-2 1.5-2.5 4-2.5 7H16v11"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3.5h8l4 4v13H6z"/><path d="M14 3.5v4h4M9 12h6M9 15.5h6M9 9h2"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="11" rx="1.5"/><path d="M2 19.5h20M9 10.5l2 2 4-4"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></symbol>
+  <symbol id="i-lang" viewBox="0 0 24 24"><path d="M4 5.5h9M8.5 3.5v2M6 5.5c.6 3 2.6 5.5 5.5 7M11 5.5c-.7 3.2-3 6-6.5 7.5"/><path d="M12.5 20.5l3.8-9 3.8 9M13.8 17.5h5"/></symbol>
+</svg>
+
+<div class="draftbar" role="note">
+  <div class="wrap">
+    <p>시안 페이지입니다. 노란 점선 표시는 아직 확정되지 않은 항목입니다.</p>
+    <button type="button" id="tbdFind"><svg class="i"><use href="#i-search"/></svg>미확정 항목 <span id="tbdCount">0</span>개 차례로 보기</button>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="brand" href="#top"><img src="/crossway/assets/logo.png" alt="ULTRA ANCHOR 초광역 성장엔진 인재육성사업" width="720" height="245"><span class="sub"><b>BIO CROSSWAY</b><span>AI-Bio 크로스웨이 탐사대</span></span></a>
+    <nav class="gnb" aria-label="주요 메뉴">
+      <a href="#who">참가 대상</a>
+      <a href="#included">포함 사항</a>
+      <a href="#route">일정</a>
+      <a href="#sites">탐사 거점</a>
+      <a href="#plan">출장 준비</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="pill pill-cyan" href="#apply-form" data-open>참가 신청</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mnav" aria-label="메뉴 열기"><svg class="i"><use href="#i-menu"/></svg></button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="모바일 메뉴" hidden>
+    <div class="wrap">
+      <a href="#who">참가 대상</a>
+      <a href="#included">포함 사항과 참가 옵션</a>
+      <a href="#route">일정</a>
+      <a href="#stay">숙소</a>
+      <a href="#sites">탐사 거점</a>
+      <a href="#plan">출장 준비</a>
+      <a href="#apply">신청 안내</a>
+      <a href="#faq">자주 묻는 질문</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>STARGATE GLOBAL · <b>BIO CROSSWAY</b></p>
+      <p class="dateline">JAN 2027<small>ISHIKAWA <span class="x">×</span> TOYAMA · JAPAN</small></p>
+      <h1>AI-Bio <span class="nw">크로스웨이 탐사대<span class="ic" aria-hidden="true"><svg class="i"><use href="#i-globe"/></svg></span></span></h1>
+      <p class="tagline">현안을 들고 가서, 파트너와 함께 돌아옵니다</p>
+      <p class="lead">일본 제약 1번지 <b>도야마</b>, 바이오메디컬 DX 연구거점 <b>JAIST</b>, 민관협력 창업거점 <b>CLL</b>을 한 번의 출장으로 만납니다. 앵커기업·지자체·대학이 각자의 현안을 들고 가서 현지 기관과 마주 앉습니다.</p>
+      <div class="cta-row">
+        <a class="btn btn-navy" href="#apply-form" data-open>참가 신청하기<svg class="i"><use href="#i-right"/></svg></a>
+        <a class="btn btn-ghost" href="#passes">참가 옵션 보기</a>
+      </div>
+      <p class="deadline">신청 기간 <span class="tbd">추후 안내</span> 모집 인원 <span class="tbd">추후 안내</span></p>
+      <ul class="facts">
+        <li><span class="k">WHEN</span><span class="v">2027년 1월 하순<br>3박 4일 또는 2박 3일<br><span class="tbd">일자 확정 예정</span></span></li>
+        <li><span class="k">WHERE</span><span class="v">일본 이시카와·도야마<br>가나자와 한 곳에서 숙박</span></li>
+        <li><span class="k">WHO</span><span class="v">앵커기업 재직자<br>지자체·대학 관계자<br><span class="tbd">학생 동행 검토 중</span></span></li>
+      </ul>
+    </div>
+
+    <figure class="route-card" aria-label="탐사 항로도">
+      <div class="route-top"><span>CROSSWAY ROUTE · 2027</span><span class="badge">3 GATES · 1 BASE</span></div>
+      <svg class="map" viewBox="0 0 520 470" role="img" aria-labelledby="mapTitle">
+        <title id="mapTitle">고마쓰공항으로 들어와 노미시 JAIST, 가나자와 거점, 도야마를 차례로 잇고, 나가노현 마쓰모토의 신슈대와는 온라인으로 연결하는 항로</title>
+        <g class="gridl">
+          <line x1="103" y1="0" x2="103" y2="440"/><line x1="224" y1="0" x2="224" y2="440"/><line x1="345" y1="0" x2="345" y2="440"/><line x1="466" y1="0" x2="466" y2="440"/>
+          <line x1="0" y1="111" x2="520" y2="111"/><line x1="0" y1="230" x2="520" y2="230"/><line x1="0" y1="349" x2="520" y2="349"/>
+        </g>
+        <g class="gl">
+          <text x="512" y="105" text-anchor="end">36.75°N</text><text x="512" y="224" text-anchor="end">36.5°N</text><text x="512" y="343" text-anchor="end">36.25°N</text>
+          <text x="103" y="462" text-anchor="middle">136.5°E</text><text x="224" y="462" text-anchor="middle">137°E</text><text x="345" y="462" text-anchor="middle">137.5°E</text><text x="466" y="462" text-anchor="middle">138°E</text>
+        </g>
+        <ellipse class="halo" cx="112" cy="245" rx="78" ry="88"/>
+        <circle class="halo" cx="275" cy="135" r="50"/>
+        <circle class="halo" cx="458" cy="353" r="46"/>
+        <text class="reg-en" x="36" y="364">ISHIKAWA</text>
+        <text class="reg-en" x="246" y="74">TOYAMA</text>
+        <text class="reg-en" x="420" y="292">NAGANO</text>
+        <text class="urole dim" x="10" y="264">FROM ICN</text>
+        <path class="route air" d="M-6 246 Q 36 252 81 282"/>
+        <path class="route" d="M81 282 Q 98 264 124 258"/>
+        <path class="route" d="M124 258 Q 146 232 139 201"/>
+        <path class="route" d="M139 201 Q 200 140 274 135"/>
+        <path class="route online" d="M139 201 Q 330 262 458 353"/>
+        <circle class="node" cx="81" cy="282" r="7"/>
+        <circle class="node" cx="124" cy="258" r="7"/>
+        <circle class="node" cx="274" cy="135" r="7"/>
+        <circle class="node off" cx="458" cy="353" r="7"/>
+        <circle class="pulse" cx="139" cy="201" r="12"/>
+        <circle class="hub" cx="139" cy="201" r="11"/>
+        <text class="uname" x="122" y="196" text-anchor="end">가나자와</text><text class="urole" x="122" y="213" text-anchor="end">BASE · 3 NIGHTS</text><text class="urole" x="122" y="229" text-anchor="end">D3 · CLL</text>
+        <text class="uname" x="140" y="266">JAIST</text><text class="urole" x="140" y="283">D1 · NOMI</text>
+        <text class="uname" x="44" y="314">고마쓰</text><text class="urole" x="44" y="331">KMQ · IN / OUT</text>
+        <text class="uname" x="292" y="131">도야마</text><text class="urole" x="292" y="148">D2 · DAY TRIP</text>
+        <text class="uname" x="444" y="331" text-anchor="end">신슈대</text><text class="urole dim" x="444" y="390" text-anchor="end">ONLINE · MATSUMOTO</text>
+        <g class="compass">
+          <text x="466" y="20" text-anchor="middle">N</text>
+          <path class="n" d="M466 26 L472 52 L466 52 L460 52 Z"/>
+          <path d="M466 78 L472 52 L460 52 Z"/>
+          <path d="M440 52 L466 46 L466 58 Z"/>
+          <path d="M492 52 L466 46 L466 58 Z"/>
+        </g>
+      </svg>
+      <figcaption class="route-foot"><span><b>BASE</b> 가나자와 · N 36°34′ E 136°39′</span><span>FULL 3박 4일 · EXPRESS 2박 3일</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats" aria-label="숫자로 보는 크로스웨이">
+  <div class="wrap">
+    <ul>
+      <li><b>6,335억 엔</b><span>도야마현 의약품 생산액 (2024)</span></li>
+      <li><b>No.1</b><span>인구당 의약품 생산액·제조소·종사자 수 일본 1위, 도야마</span></li>
+      <li><b>22건</b><span>신슈대 병원·기업 의료기기 공동개발 사례</span></li>
+      <li><b>20여 분</b><span>가나자와–도야마 호쿠리쿠 신칸센</span></li>
+      <li><b>1 BASE</b><span>숙소는 가나자와 한 곳, 짐을 옮기지 않습니다</span></li>
+      <li><b>8곳</b><span>함께 현안을 여는 앵커기업·기관</span></li>
+    </ul>
+    <p class="src">출처: 富山県 「くすりの富山県」(2026.5), 信州大学 「医療機器等成果事例集 2026」</p>
+  </div>
+</section>
+
+<!-- ============ WHO ============ -->
+<section class="sec" id="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <p class="kicker">Who Should Join</p>
+        <h2>같은 길을 걷되, 각자의 질문을 들고 갑니다</h2>
+        <p class="desc">이번 탐사의 중심은 앵커기업 재직자, 지자체 관계자, 대학 관계자입니다. 기관의 현안을 미리 받아 방문처에 전하고, 현지에서는 그 질문으로 대화를 시작합니다.</p>
+      </div>
+    </div>
+    <div class="aud">
+      <article class="acard">
+        <span class="ai" aria-hidden="true"><svg class="i"><use href="#i-building"/></svg></span>
+        <span class="tag">ANCHOR COMPANY</span>
+        <h3>앵커기업 재직자</h3>
+        <p class="who">R&amp;D, 생산·품질, 인허가, 인재개발 담당</p>
+        <p class="gain">가져갈 것</p>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg><span>도야마 제약 클러스터의 인재 파이프라인과 재직자 연수 모델</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>JAIST 연구실과의 공동연구·기술이전 접점</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>병원 니즈에서 출발한 신슈대 의료기기 공동개발 방식</span></li>
+        </ul>
+        <div class="rec"><span>추천 옵션</span><a href="#passes">EXPRESS 2박 3일<svg class="i"><use href="#i-right"/></svg></a></div>
+      </article>
+      <article class="acard">
+        <span class="ai" aria-hidden="true"><svg class="i"><use href="#i-landmark"/></svg></span>
+        <span class="tag">LOCAL GOVERNMENT</span>
+        <h3>지자체·공공기관 관계자</h3>
+        <p class="who">바이오 산업정책, 청년 정주, 창업 지원 담당</p>
+        <p class="gain">가져갈 것</p>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg><span>'약의 도야마'를 만든 산업·교육 정책의 연결 방식</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>민관협력 창업·혁신 거점 CLL의 운영 모델</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>폐교를 창업·교류 공간으로 바꾼 지역 재생 사례</span></li>
+        </ul>
+        <div class="rec"><span>추천 옵션</span><a href="#passes">FULL 3박 4일<svg class="i"><use href="#i-right"/></svg></a></div>
+      </article>
+      <article class="acard">
+        <span class="ai" aria-hidden="true"><svg class="i"><use href="#i-cap"/></svg></span>
+        <span class="tag">UNIVERSITY</span>
+        <h3>대학 관계자</h3>
+        <p class="who">교수, 교직원, 산학협력·국제교류 담당</p>
+        <p class="gain">가져갈 것</p>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg><span>JAIST 바이오메디컬 DX 연구거점과의 교류 가능성</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>산업 수요에서 출발한 교육과정·재직자 교육 사례</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>학생 글로벌 현장 프로그램으로 넓힐 기반</span></li>
+        </ul>
+        <div class="rec"><span>추천 옵션</span><a href="#passes">FULL 3박 4일<svg class="i"><use href="#i-right"/></svg></a></div>
+      </article>
+      <div class="aud-note">
+        <span class="ai2" aria-hidden="true"><svg class="i"><use href="#i-users"/></svg></span>
+        <p><b>참여대학 학생</b> · 학생 탐사대의 동행 여부는 검토하고 있습니다. 정해지면 이 페이지에서 따로 안내합니다.</p>
+        <span class="tbd">검토 중</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCENES ============ -->
+<section class="sec band-sky" id="scenes">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <p class="kicker">Scenes on the Route</p>
+        <h2>1월의 호쿠리쿠, 이 풍경 속을 오갑니다</h2>
+        <p class="desc">눈 내리는 관문 도시 가나자와에 머물며 연구실, 제약 클러스터, 창업 거점을 오갑니다.</p>
+      </div>
+    </div>
+    <div class="mosaic">
+      <figure class="ph" data-photo="tsuzumi" data-alt="가나자와역 앞 쓰즈미몬">
+        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true" data-snow="26">
+          <path class="l d" d="M-20 178 Q200 -12 420 178M10 178 Q200 30 390 178M60 105 L60 250M120 70 L120 250M280 70 L280 250M340 105 L340 250"/>
+          <path class="l f" d="M104 54 H296 L288 68 H112 Z"/>
+          <path class="l" d="M118 46 H282"/>
+          <path class="l c" d="M114 74 H286"/>
+          <path class="l f" d="M132 70 H178 C164 130 164 190 178 250 H132 C146 190 146 130 132 70 Z"/>
+          <path class="l" d="M138.9 70 C150 130 160 190 171.1 250M148.1 70 C153 130 157 190 161.9 250M155 70 V250M161.9 70 C157 130 153 190 148.1 250M171.1 70 C160 130 150 190 138.9 250"/>
+          <path class="l f" d="M222 70 H268 C254 130 254 190 268 250 H222 C236 190 236 130 222 70 Z"/>
+          <path class="l" d="M228.9 70 C240 130 250 190 261.1 250M238.1 70 C243 130 247 190 251.9 250M245 70 V250M251.9 70 C247 130 243 190 238.1 250M261.1 70 C250 130 240 190 228.9 250"/>
+          <path class="l d" d="M0 250 H400"/>
+        </svg>
+        <span class="slot"><svg class="i"><use href="#i-camera"/></svg>사진 교체 예정</span>
+        <figcaption><span class="no">PHOTO 01 · BASE</span><span class="cap">가나자와역 쓰즈미몬</span><span class="sub">탐사의 관문. 도야마행 신칸센도 여기서 탑니다.</span></figcaption>
+      </figure>
+      <figure class="ph" data-photo="alps" data-alt="도야마 시내와 다테야마 연봉">
+        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true" data-snow="18">
+          <path class="l f" d="M0 160 L40 128 L70 142 L110 86 L135 106 L165 64 L190 96 L215 74 L250 110 L280 90 L320 126 L360 100 L400 136 V200 H0 Z"/>
+          <path class="w" d="M96 104 L110 86 L124 98 L116 100 L110 94 L103 106 Z M150 84 L165 64 L179 80 L171 83 L164 76 L157 87 Z M205 86 L215 74 L228 89 L220 90 L214 84 Z M270 100 L280 90 L293 101 L286 103 Z M350 108 L360 100 L372 109 L364 110 Z"/>
+          <path class="l" d="M20 250 V214 H46 V250 M56 250 V198 H80 V250 M90 250 V222 H120 V250 M130 250 V204 H150 V188 H165 V250 M175 250 V216 H210 V250 M220 250 V194 H245 V250 M255 250 V226 H290 V250 M300 250 V208 H330 V250 M340 250 V220 H380 V250"/>
+          <path class="l d" d="M0 250 H400"/>
+          <path class="l c" d="M0 272 Q120 256 200 268 T400 262"/>
+        </svg>
+        <span class="slot"><svg class="i"><use href="#i-camera"/></svg>사진 교체 예정</span>
+        <figcaption><span class="no">PHOTO 02 · DAY 2</span><span class="cap">도야마 시내와 다테야마 연봉</span><span class="sub">일본 제약 1번지의 겨울</span></figcaption>
+      </figure>
+      <figure class="ph" data-photo="yukitsuri" data-alt="겐로쿠엔 소나무의 유키즈리">
+        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true" data-snow="24">
+          <path class="l" style="stroke-width:1.1" d="M200 46 L85 150 M200 46 L105 160 M200 46 L125 168 M200 46 L145 174 M200 46 L165 178 M200 46 L185 180 M200 46 L215 180 M200 46 L235 178 M200 46 L255 174 M200 46 L275 168 M200 46 L295 160 M200 46 L315 150"/>
+          <path class="l c" d="M200 34 V200"/>
+          <ellipse class="l f" cx="200" cy="182" rx="118" ry="20"/>
+          <ellipse class="l f" cx="146" cy="160" rx="50" ry="13"/>
+          <ellipse class="l f" cx="258" cy="164" rx="54" ry="13"/>
+          <path class="l" d="M200 202 C194 226 206 242 198 262"/>
+          <path class="l f" d="M36 196 Q70 178 104 196 Z"/>
+          <path class="l" d="M58 198 H82 V214 H58 Z M54 214 H86 M62 214 L56 266 M80 214 L88 244"/>
+          <path class="l c" d="M0 262 Q100 250 200 262 T400 256"/>
+        </svg>
+        <span class="slot"><svg class="i"><use href="#i-camera"/></svg>사진 교체 예정</span>
+        <figcaption><span class="no">PHOTO 03 · DAY 3</span><span class="cap">겐로쿠엔의 유키즈리</span><span class="sub">눈 무게를 견디도록 소나무에 매단 밧줄</span></figcaption>
+      </figure>
+      <figure class="ph" data-photo="shinkansen" data-alt="호쿠리쿠 신칸센">
+        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true" data-snow="22">
+          <path class="l d" d="M0 172 L60 124 L95 146 L150 98 L205 140 L250 112 L300 150 L345 118 L400 160"/>
+          <path class="l f" d="M6 230 H288 C330 230 366 222 394 202 C372 188 340 180 300 180 H6 Z"/>
+          <path class="win" d="M24 194 H286"/>
+          <path class="l" d="M318 188 C342 188 362 192 378 200 L346 200 Z"/>
+          <path class="l c" style="stroke-width:2.4" d="M6 212 H330 C350 212 366 208 380 201"/>
+          <path class="l d" d="M6 218 H322"/>
+          <path class="l" d="M0 242 H400"/>
+          <path class="l d" d="M0 254 H400"/>
+          <path class="l d" style="stroke-dasharray:3 9" d="M0 248 H400"/>
+        </svg>
+        <span class="slot"><svg class="i"><use href="#i-camera"/></svg>사진 교체 예정</span>
+        <figcaption><span class="no">PHOTO 04 · MOVE</span><span class="cap">호쿠리쿠 신칸센</span><span class="sub">가나자와에서 도야마까지 20여 분</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY CROSSWAY ============ -->
+<section class="sec" id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <p class="kicker">Why Crossway</p>
+        <h2>네 개의 관문을 국경 너머의 현장과 잇는 길</h2>
+        <p class="desc">STARGATE는 인재양성·취업정주·창업·기술사업화를 네 개의 관문으로 엮은 울트라앵커사업의 항로입니다. 크로스웨이는 기업·지자체·대학이 이 관문에서 함께 풀어야 할 질문을 들고 국경 너머 현장으로 건너가는 다섯 번째 관문입니다.</p>
+      </div>
+    </div>
+    <ol class="gates">
+      <li class="gate"><span class="ring" aria-hidden="true"><svg class="i"><use href="#i-dna"/></svg></span><span class="en">Bio Pathway</span><span class="ko">초연결 공동교육</span><p>5개 대학이 함께 만드는 교육과정</p></li>
+      <li class="gate"><span class="ring" aria-hidden="true"><svg class="i"><use href="#i-anchor"/></svg></span><span class="en">Bio Rootway</span><span class="ko">초광역 취업정주</span><p>지역에 뿌리내리는 바이오 커리어</p></li>
+      <li class="gate"><span class="ring" aria-hidden="true"><svg class="i"><use href="#i-spark"/></svg></span><span class="en">Bio Launchway</span><span class="ko">완주형 기술창업</span><p>아이디어에서 창업까지</p></li>
+      <li class="gate"><span class="ring" aria-hidden="true"><svg class="i"><use href="#i-net"/></svg></span><span class="en">Bio Bridgeway</span><span class="ko">패키지형 기술이전</span><p>연구성과를 산업으로</p></li>
+      <li class="gate on"><span class="here">이번 탐사</span><span class="ring" aria-hidden="true"><svg class="i"><use href="#i-globe"/></svg></span><span class="en">Bio Crossway</span><span class="ko">글로벌 현장탐사</span><p>네 관문의 질문을 들고 국경을 건너, 현장에서 협력 파트너를 찾습니다.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ INCLUDED + PASSES ============ -->
+<section class="sec band-sky" id="included">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <p class="kicker">What's Included</p>
+        <h2>보고 듣는 데서 끝나지 않도록 짰습니다</h2>
+        <p class="desc">방문처마다 우리 기관의 질문을 미리 전하고, 현지에서는 마주 앉아 답을 듣습니다. 돌아와서는 다음 협력 과제로 정리합니다.</p>
+      </div>
+    </div>
+    <div class="incl">
+      <div class="inc"><span class="ii" aria-hidden="true"><svg class="i"><use href="#i-brief"/></svg></span><h3>사전 브리핑</h3><p>출발 전 온라인으로 방문처 정보를 나누고 기관별 질문을 다듬습니다. <span class="tbd">일정 추후 안내</span></p></div>
+      <div class="inc"><span class="ii" aria-hidden="true"><svg class="i"><use href="#i-flask"/></svg></span><h3>현장 브리핑과 투어</h3><p>연구실, 제약 클러스터, 창업 거점에서 담당자 설명을 듣고 시설을 둘러봅니다. <span class="tbd">협의 중</span></p></div>
+      <div class="inc"><span class="ii" aria-hidden="true"><svg class="i"><use href="#i-chat"/></svg></span><h3>기관 맞춤 1:1 미팅</h3><p>신청서에 적은 현안을 바탕으로 현지 기관과 따로 마주 앉는 자리를 만듭니다. <span class="tbd">협의 중</span></p></div>
+      <div class="inc"><span class="ii" aria-hidden="true"><svg class="i"><use href="#i-dinner"/></svg></span><h3>크로스웨이 네트워킹 디너</h3><p>참가 기관끼리, 그리고 현지 관계자와 저녁을 함께하며 관계를 이어 갑니다. <span class="tbd">현지 초청 협의 중</span></p></div>
+      <div class="inc"><span class="ii" aria-hidden="true"><svg class="i"><use href="#i-lang"/></svg></span><h3>이동과 통역</h3><p>공항, 숙소, 방문처 사이 이동과 현장 통역을 사업단이 준비합니다. <span class="tbd">지원 범위 추후 안내</span></p></div>
+      <div class="inc"><span class="ii" aria-hidden="true"><svg class="i"><use href="#i-doc"/></svg></span><h3>인사이트 리포트</h3><p>귀국 후 방문처별 핵심 내용과 후속 협력 과제를 정리해 참가 기관에 드립니다.</p></div>
+    </div>
+
+    <div class="passes-head" id="passes">
+      <h3>참가 옵션은 두 가지입니다</h3>
+      <p>참가비와 항공·숙박 지원 범위 <span class="tbd">추후 안내</span></p>
+    </div>
+    <div class="passes">
+      <article class="pass full">
+        <div class="ptop">
+          <span class="pk-name">FULL CROSSWAY</span>
+          <span class="pdur">전 일정 · 3박 4일 · 목–일</span>
+          <span class="prec">지자체·대학 관계자 추천</span>
+        </div>
+        <div class="cut" aria-hidden="true"></div>
+        <div class="pbody">
+          <ul>
+            <li><span class="d">DAY 1</span><span>JAIST 연구 관문 · 네트워킹 디너</span></li>
+            <li><span class="d">DAY 2</span><span>도야마 산업 관문 · 신슈대 온라인 세션</span></li>
+            <li><span class="d">DAY 3</span><span>CLL 창업·지역연계 라운드테이블</span></li>
+            <li><span class="d">DAY 4</span><span>귀국 · 인사이트 리포트</span></li>
+          </ul>
+          <p class="price">세 관문을 모두 열고, 기관별 후속 과제까지 정리합니다.</p>
+          <a class="btn btn-cyan" href="#apply-form" data-open data-option="full">FULL로 신청하기</a>
+        </div>
+      </article>
+      <article class="pass">
+        <div class="ptop">
+          <span class="pk-name">EXECUTIVE EXPRESS</span>
+          <span class="pdur">핵심 일정 · 2박 3일 · 목–토 오전</span>
+          <span class="prec">앵커기업 재직자 추천</span>
+        </div>
+        <div class="cut" aria-hidden="true"></div>
+        <div class="pbody">
+          <ul>
+            <li><span class="d">DAY 1</span><span>JAIST 연구 관문 · 네트워킹 디너</span></li>
+            <li><span class="d">DAY 2</span><span>도야마 산업 관문 · 신슈대 온라인 세션</span></li>
+            <li><span class="d">DAY 3</span><span>오전 귀국 <span class="tbd">항공편 확인 중</span></span></li>
+            <li class="off"><span class="d">AFTER</span><span>인사이트 리포트는 똑같이 받습니다</span></li>
+          </ul>
+          <p class="price">이틀 근무일만 비우고 제약·의료기기 핵심 현장을 봅니다.</p>
+          <a class="btn btn-navy" href="#apply-form" data-open data-option="express">EXPRESS로 신청하기</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROUTE ============ -->
+<section class="sec band-navy" id="route">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <p class="kicker">4-Day Route</p>
+        <h2>숙소는 한 곳, 하루에 관문 하나</h2>
+        <p class="desc">가나자와 한 곳에 머물며 매일 관문 하나를 엽니다. 도시를 옮겨 다니지 않고, 도야마는 신칸센으로 당일에 다녀옵니다.</p>
+      </div>
+    </div>
+    <p class="legend"><span><span class="pk">FULL</span>3박 4일</span><span><span class="pk ex">EXPRESS</span>2박 3일</span><span><span class="pk half">EXPRESS 오전 귀국</span></span></p>
+    <div class="days">
+      <article class="day">
+        <div class="top"><span class="dn">DAY 1<small>목</small></span><span class="gt">GATE 01 · RESEARCH</span></div>
+        <div class="pks"><span class="pk">FULL</span><span class="pk ex">EXPRESS</span></div>
+        <h3>JAIST에서 연구의 문을 두드리다</h3>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg><span>인천 → 고마쓰 도착, 노미시 JAIST로 이동</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>바이오메디컬 DX 연구거점 브리핑·연구실 투어 <span class="tbd">협의 중</span></span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>공동연구·기술이전 상담 <span class="tbd">협의 중</span></span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>저녁: 크로스웨이 네트워킹 디너</span></li>
+        </ul>
+        <div class="foot"><span class="place"><svg class="i"><use href="#i-pin"/></svg>노미 · JAIST</span><span class="gtag">Bridgeway</span><span class="gtag">Pathway</span></div>
+      </article>
+      <article class="day">
+        <div class="top"><span class="dn">DAY 2<small>금</small></span><span class="gt">GATE 02 · INDUSTRY</span></div>
+        <div class="pks"><span class="pk">FULL</span><span class="pk ex">EXPRESS</span></div>
+        <h3>일본 제약 1번지, 도야마</h3>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg><span>신칸센으로 도야마 당일 왕복</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>도야마현 약사총합연구개발센터 브리핑·시설 견학 <span class="tbd">협의 중</span></span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>제약 인재 파이프라인·재직자 연수 사례 공유 <span class="tbd">협의 중</span></span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>신슈대 의료기기 공동개발 온라인 세션 <span class="tbd">협의 중</span></span></li>
+        </ul>
+        <div class="foot"><span class="place"><svg class="i"><use href="#i-pin"/></svg>도야마</span><span class="gtag">Rootway</span><span class="gtag">Pathway</span></div>
+      </article>
+      <article class="day">
+        <div class="top"><span class="dn">DAY 3<small>토</small></span><span class="gt">GATE 03 · LAUNCH</span></div>
+        <div class="pks"><span class="pk">FULL</span><span class="pk half">EXPRESS 오전 귀국</span></div>
+        <h3>가나자와, 지역과 창업을 잇다</h3>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg><span>CLL(金沢未来のまち創造館) 투어·라운드테이블 <span class="tbd">협의 중</span></span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>기관별 후속 협력 과제 정리</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>오후: 겐로쿠엔·오미초 시장 탐방</span></li>
+        </ul>
+        <div class="foot"><span class="place"><svg class="i"><use href="#i-pin"/></svg>가나자와</span><span class="gtag">Launchway</span></div>
+      </article>
+      <article class="day ret">
+        <div class="top"><span class="dn">DAY 4<small>일</small></span><span class="gt">RETURN</span></div>
+        <div class="pks"><span class="pk">FULL</span></div>
+        <h3>파트너와 다음 과제를 들고 귀환</h3>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg><span>고마쓰 → 인천</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span>인사이트 리포트·성과 공유 <span class="tbd">일정 추후 안내</span></span></li>
+        </ul>
+        <div class="foot"><span class="place"><svg class="i"><use href="#i-plane"/></svg>KMQ → ICN</span></div>
+      </article>
+    </div>
+    <div class="basecamp">
+      <div><span class="k">BASE</span><span class="v">가나자와 한 곳에서 숙박<small>디자인 호텔 SOKI KANAZAWA <span class="tbd">예정</span> · <a href="#stay">숙소 보기</a></small></span></div>
+      <div><span class="k">MOVE</span><span class="v">도시 간 이동은 도야마 왕복뿐<small>가나자와–도야마 신칸센 20여 분</small></span></div>
+      <div><span class="k">FLIGHT</span><span class="v">인천 ⇄ 고마쓰<small>동계 운항 일정 확인 후 안내 <span class="tbd">확인 중</span></small></span></div>
+    </div>
+    <p class="note-ref">기관 방문은 협의 중이며, 일정과 순서는 바뀔 수 있습니다. 확정된 일정은 참가가 확정된 분께 따로 안내합니다.</p>
+  </div>
+</section>
+
+<!-- ============ STAY ============ -->
+<section class="sec band-sky" id="stay">
+  <div class="wrap stay">
+    <div>
+      <div class="sec-head">
+        <div class="t">
+          <p class="kicker">Base Camp · Stay</p>
+          <h2>머무는 곳도 탐사의 일부입니다</h2>
+          <p class="desc">숙소로 검토하고 있는 SOKI KANAZAWA는 가나자와의 공예와 소재로 지은 디자인 호텔입니다. 'SO'는 꾸밈없음, 'KI'는 그릇이라는 뜻처럼, 나무·돌·흙·철을 그대로 드러낸 공간에서 하루의 관문을 정리합니다.</p>
+        </div>
+      </div>
+      <ul class="stay-feat">
+        <li><span class="k">CRAFT</span><b>가나자와의 손기술을 담은 공간</b><span class="t">가나자와 전통 기법 아라이다시로 마감한 바닥, 가가 고사이(加賀五彩) 다섯 색을 쓴 실내</span></li>
+        <li><span class="k">BATH</span><b>가가 온천을 본뜬 1층 대욕장</b><span class="t">도야마 당일 왕복을 마친 저녁, 온천식 대욕장에서 쉬어 갑니다</span></li>
+        <li><span class="k">LOCATION</span><b>오미초 시장 바로 옆</b><span class="t">가나자와역에서 걸어서 15분 안팎, 버스정류장까지 1분</span></li>
+        <li><span class="k">AWARD</span><b>iF 디자인 어워드 · A' 디자인 어워드 수상</b><span class="t">인테리어 DAIKEI MILLS, 기획·운영 UDS. 8층 건물에 객실 130실</span></li>
+      </ul>
+      <p class="stay-meta">숙박 확정 <span class="tbd">예정</span> · 출처: UDS Hotels 공식 사이트, iF Design, A' Design Award</p>
+    </div>
+    <div class="stay-ph">
+      <figure class="ph" data-photo="hotel1" data-alt="SOKI KANAZAWA 외관">
+        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true" data-snow="24">
+          <path class="l f" d="M120 44 H290 V250 H120 Z"/>
+          <path class="l d" d="M120 76 H290 M120 100 H290 M120 124 H290 M120 148 H290 M120 172 H290 M120 196 H290"/>
+          <path class="win" d="M134 64 H276 M134 88 H276 M134 112 H276 M134 136 H276 M134 160 H276 M134 184 H276"/>
+          <path class="l c" d="M282 58 V140"/>
+          <path class="l" d="M132 250 V216 H278 V250 M168 216 V250 M205 216 V250 M242 216 V250"/>
+          <path class="l c" d="M106 210 H304"/>
+          <path class="l f" d="M300 250 V206 Q342 186 394 206 V250 Z"/>
+          <path class="l d" d="M314 212 V250 M334 204 V250 M354 202 V250 M374 205 V250"/>
+          <path class="l" d="M64 250 V168 H82"/>
+          <circle class="cf" cx="84" cy="171" r="3"/>
+          <path class="l d" d="M0 250 H400"/>
+        </svg>
+        <span class="slot"><svg class="i"><use href="#i-camera"/></svg>사진 교체 예정</span>
+        <figcaption><span class="no">BASE CAMP · FUKUROMACHI</span><span class="cap">SOKI KANAZAWA</span><span class="sub">오미초 시장 옆, 3박을 머무는 베이스캠프</span></figcaption>
+      </figure>
+      <figure class="ph" data-photo="hotel4" data-alt="SOKI KANAZAWA 1층 공용 공간">
+        <span class="slot"><svg class="i"><use href="#i-camera"/></svg>사진 교체 예정</span>
+        <figcaption><span class="no">LOBBY</span><span class="cap">나무와 빛으로 채운 1층</span></figcaption>
+      </figure>
+      <figure class="ph" data-photo="hotel5" data-alt="SOKI KANAZAWA 쪽빛 벽의 라운지">
+        <span class="slot"><svg class="i"><use href="#i-camera"/></svg>사진 교체 예정</span>
+        <figcaption><span class="no">LOUNGE</span><span class="cap">쪽빛 벽과 공예 오브제</span></figcaption>
+      </figure>
+      <figure class="ph" data-photo="hotel2" data-alt="SOKI KANAZAWA 객실">
+        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path class="l d" style="stroke-dasharray:2 6" d="M40 30 V226 M80 30 V226 M120 30 V226 M160 30 V226 M200 30 V226 M240 30 V226 M280 30 V226"/>
+          <path class="l f" d="M300 54 H372 V170 H300 Z"/>
+          <path class="l" d="M336 54 V170 M300 112 H372"/>
+          <path class="l f" d="M84 136 H286 V172 H84 Z"/>
+          <path class="l f" d="M76 172 H294 V214 H76 Z"/>
+          <path class="l" d="M84 214 V226 M286 214 V226"/>
+          <rect class="l" x="100" y="150" width="76" height="18" rx="9"/>
+          <rect class="l" x="194" y="150" width="76" height="18" rx="9"/>
+          <path class="l c" style="stroke-width:6;stroke-linecap:butt" d="M76 196 H294"/>
+          <path class="l" d="M50 226 V150"/>
+          <path class="l f" d="M36 150 H64 L58 126 H42 Z"/>
+          <path class="l d" d="M0 226 H400"/>
+        </svg>
+        <span class="slot"><svg class="i"><use href="#i-camera"/></svg>사진 교체 예정</span>
+        <figcaption><span class="no">ROOM</span><span class="cap">군더더기 없이 정돈된 객실</span></figcaption>
+      </figure>
+      <figure class="ph" data-photo="hotel3" data-alt="SOKI KANAZAWA 대욕장">
+        <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path class="l d" d="M0 60 H400 M0 100 H400 M0 140 H400 M60 20 V180 M140 20 V180 M220 20 V180 M300 20 V180 M380 20 V180"/>
+          <path class="l f" d="M70 186 H330 V250 H70 Z"/>
+          <path class="l d" d="M110 186 V250 M150 186 V250 M190 186 V250 M230 186 V250 M270 186 V250 M310 186 V250"/>
+          <path class="l c" d="M76 198 Q118 192 160 198 T240 198 T324 198"/>
+          <path class="l" style="stroke-opacity:.55" d="M140 178 C130 162 150 152 140 134 C132 120 146 112 140 98 M200 178 C190 162 210 152 200 134 C192 120 206 112 200 98 M260 178 C250 162 270 152 260 134 C252 120 266 112 260 98"/>
+          <path class="l f" d="M330 120 H376 V132 H330 Z"/>
+          <path class="l c" d="M336 132 C333 150 338 168 333 186"/>
+          <path class="l d" d="M0 262 H400"/>
+        </svg>
+        <span class="slot"><svg class="i"><use href="#i-camera"/></svg>사진 교체 예정</span>
+        <figcaption><span class="no">PUBLIC BATH</span><span class="cap">가가 온천을 본뜬 대욕장</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SITES ============ -->
+<section class="sec" id="sites">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <p class="kicker">Exploration Sites</p>
+        <h2>세 개의 관문, 하나의 온라인 연결</h2>
+        <p class="desc">연구, 산업, 창업이 각각 강한 곳을 골랐습니다. 의료기기 공동개발로 이름난 신슈대는 이동 부담을 줄이려고 온라인으로 연결합니다.</p>
+      </div>
+    </div>
+    <div class="sites">
+      <article class="site">
+        <figure class="ph" data-photo="jaist" data-alt="JAIST 캠퍼스">
+          <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true" data-snow="14">
+            <path class="l c" d="M40 70 C60 90 80 90 100 70 S140 50 160 70 S200 90 220 70 M40 70 C60 50 80 50 100 70 S140 90 160 70 S200 50 220 70"/>
+            <path class="l d" d="M60 64 V76 M80 58 V82 M120 58 V82 M140 64 V76 M180 58 V82 M200 64 V76"/>
+            <path class="l f d" d="M0 214 Q100 184 200 202 T400 192 V300 H0 Z"/>
+            <path class="l f" d="M120 120 H290 V206 H120 Z M250 96 H290 V120 H250 Z"/>
+            <path class="win" d="M134 140 H278 M134 162 H278 M134 184 H278"/>
+            <circle class="l f" cx="90" cy="196" r="18"/><circle class="l f" cx="104" cy="182" r="13"/>
+            <circle class="l f" cx="322" cy="194" r="16"/><circle class="l f" cx="340" cy="182" r="11"/>
+          </svg>
+          <span class="slot"><svg class="i"><use href="#i-camera"/></svg>사진 교체 예정</span>
+          <figcaption><span class="no">DAY 1 · NOMI</span><span class="cap">JAIST 캠퍼스</span></figcaption>
+        </figure>
+        <div class="sb">
+          <span class="where">ISHIKAWA · NOMI <span class="tbd">협의 중</span></span>
+          <h3>JAIST<small>북륙첨단과학기술대학원대학</small></h3>
+          <span class="num">eMEDX<small>바이오메디컬 DX 연구거점</small></span>
+          <p>신약개발 플랫폼, 조기진단, 재생의료 소재를 소재과학과 데이터과학으로 연구하는 거점이 있습니다. 핵산의약, 약물전달, 혈액분석 칩처럼 제약과 의료기기 양쪽의 연구실을 만나고 공동연구 접점을 찾습니다.</p>
+          <span class="day-link">DAY 1 · GATE 01 RESEARCH</span>
+        </div>
+      </article>
+      <article class="site">
+        <figure class="ph" data-photo="toyama" data-alt="도야마현 약사총합연구개발센터">
+          <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <path class="l c d" d="M315.6 61 L315.6 79 L300 88 L284.4 79 L284.4 61 L300 52 Z M346.8 61 L346.8 79 L331.2 88 L315.6 79 L315.6 61 L331.2 52 Z M331.2 88 L331.2 106 L315.6 115 L300 106 L300 88 L315.6 79 Z"/>
+            <rect class="l f" x="70" y="118" width="74" height="30" rx="15" transform="rotate(-25 107 133)"/>
+            <path class="l" d="M107 118 V148" transform="rotate(-25 107 133)"/>
+            <rect class="l f" x="96" y="170" width="60" height="24" rx="12" transform="rotate(18 126 182)"/>
+            <path class="l c" d="M126 170 V194" transform="rotate(18 126 182)"/>
+            <path class="l f" d="M200 136 H320 V226 H200 Z"/>
+            <path class="l" d="M200 156 H320"/>
+            <path class="l c" style="stroke-width:3" d="M260 172 V208 M242 190 H278"/>
+            <circle class="l f" cx="150" cy="236" r="12"/><path class="l d" d="M140 236 H160"/>
+            <circle class="l f" cx="178" cy="252" r="9"/>
+            <path class="l d" d="M0 262 H400"/>
+          </svg>
+          <span class="slot"><svg class="i"><use href="#i-camera"/></svg>사진 교체 예정</span>
+          <figcaption><span class="no">DAY 2 · TOYAMA</span><span class="cap">도야마현 제약 클러스터</span></figcaption>
+        </figure>
+        <div class="sb">
+          <span class="where">TOYAMA <span class="tbd">협의 중</span></span>
+          <h3>도야마현 제약 클러스터<small>약사총합연구개발센터 등</small></h3>
+          <span class="num">6,335억 엔<small>2024년 의약품 생산액</small></span>
+          <p>인구당 의약품 생산액, 제조소 수, 종사자 수가 모두 일본 1위인 지역입니다. 고등학교 제약 학과부터 재직자 연수까지 이어지는 인재 양성 체계와 산·관·학 협력 방식을 직접 봅니다.</p>
+          <span class="day-link">DAY 2 · GATE 02 INDUSTRY</span>
+        </div>
+      </article>
+      <article class="site">
+        <figure class="ph" data-photo="cll" data-alt="CLL 金沢未来のまち創造館">
+          <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true" data-snow="16">
+            <path class="l f" d="M60 140 H340 V232 H60 Z"/>
+            <path class="l f" d="M175 140 V96 H225 V140"/>
+            <path class="l" d="M168 96 L200 70 L232 96 Z"/>
+            <circle class="l" cx="200" cy="118" r="11"/>
+            <path class="l c" d="M200 118 V111 M200 118 L205 121"/>
+            <path class="win" style="stroke-width:12;stroke-dasharray:16 10" d="M76 162 H164 M236 162 H326 M76 198 H164 M236 198 H326"/>
+            <path class="l" d="M188 232 V204 H212 V232"/>
+            <path class="l c" d="M318 58 L322 70 L334 74 L322 78 L318 90 L314 78 L302 74 L314 70 Z"/>
+            <path class="l d" d="M0 232 H400"/>
+          </svg>
+          <span class="slot"><svg class="i"><use href="#i-camera"/></svg>사진 교체 예정</span>
+          <figcaption><span class="no">DAY 3 · KANAZAWA</span><span class="cap">옛 초등학교를 고친 창업 거점</span></figcaption>
+        </figure>
+        <div class="sb">
+          <span class="where">ISHIKAWA · KANAZAWA <span class="tbd">협의 중</span></span>
+          <h3>CLL · 金沢未来のまち創造館<small>민관협력 창업·혁신 거점</small></h3>
+          <span class="num">2021<small>폐교를 고쳐 문을 연 해</small></span>
+          <p>옛 초등학교를 고친 건물에서 창업 멘토링, 액셀러레이터, 지역 제조기업 교류를 운영합니다. 지자체·대학·기업이 함께 쓰는 거점의 운영 방식을 라운드테이블에서 듣습니다.</p>
+          <span class="day-link">DAY 3 · GATE 03 LAUNCH</span>
+        </div>
+      </article>
+      <article class="site online">
+        <figure class="ph" data-photo="shinshu" data-alt="신슈대학 의학부 부속병원 수술실 견학">
+          <svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <path class="l d" d="M0 186 L70 128 L110 158 L170 98 L230 148 L280 112 L340 158 L400 128"/>
+            <path class="l f" d="M110 92 H290 A6 6 0 0 1 296 98 V206 H104 V98 A6 6 0 0 1 110 92 Z"/>
+            <path class="l" d="M84 214 H316 L304 226 H96 Z"/>
+            <path class="l d" d="M118 104 H196 V148 H118 Z M204 104 H282 V148 H204 Z M118 154 H196 V198 H118 Z M204 154 H282 V198 H204 Z"/>
+            <circle class="l" cx="157" cy="120" r="7"/><path class="l" d="M145 140 C147 132 167 132 169 140"/>
+            <circle class="l" cx="243" cy="120" r="7"/><path class="l" d="M231 140 C233 132 253 132 255 140"/>
+            <circle class="l" cx="157" cy="170" r="7"/><path class="l" d="M145 190 C147 182 167 182 169 190"/>
+            <path class="l c" style="stroke-width:3" d="M243 164 V188 M231 176 H255"/>
+            <circle class="cf" cx="284" cy="99" r="3"/>
+          </svg>
+          <span class="slot"><svg class="i"><use href="#i-camera"/></svg>사진 교체 예정</span>
+          <figcaption><span class="no">DAY 2 · ONLINE</span><span class="cap">병원 현장에서 출발하는 의료기기 개발</span></figcaption>
+        </figure>
+        <div class="sb">
+          <span class="where">NAGANO · MATSUMOTO · ONLINE <span class="tbd">협의 중</span></span>
+          <h3>신슈대학 의학부 부속병원<small>의료기기 공동개발 모델</small></h3>
+          <span class="num">22건<small>성과사례집 2026 수록</small></span>
+          <p>병원 의료진의 현장 니즈를 지역 기업 기술과 연결해 의료기기를 만들어 왔습니다. 치과 임플란트와 치과용 CT 사례도 있어 의료기기 앵커기업에 특히 도움이 됩니다.</p>
+          <span class="day-link">DAY 2 · 온라인 세션</span>
+        </div>
+      </article>
+    </div>
+    <p class="note-ref">출처: 富山県 「くすりの富山県」(2026.5), 信州大学 「医療機器等成果事例集 2026」, JAIST 연구거점 소개 자료.</p>
+  </div>
+</section>
+
+<!-- ============ PREVIOUS EXPEDITION ============ -->
+<section class="sec band-sky" id="story">
+  <div class="wrap story">
+    <div>
+      <div class="sec-head">
+        <div class="t">
+          <p class="kicker">Dankook × JAIST</p>
+          <h2>단국대와 JAIST가 함께 다져 온 길</h2>
+          <p class="desc">단국대와 JAIST는 현장 교류를 이어 오며 협력을 다져 왔습니다. 2026년 8월에는 JAIST와 가나자와 CLL에서 연구 발표와 현장 세션을 함께 진행했습니다. 이번 탐사는 이 협력을 앵커기업과 지자체로 넓히는 다음 걸음입니다.</p>
+        </div>
+      </div>
+      <ul class="teams">
+        <li><b>2026.08 · JAIST</b><span>연구 발표와 공동 피드백 세션</span></li>
+        <li><b>2026.08 · CLL</b><span>가나자와 창업 거점에서 현장 세션</span></li>
+        <li><b>2027.01 · CROSSWAY</b><span>앵커기업·지자체와 함께 넓히는 다음 협력</span></li>
+      </ul>
+    </div>
+    <div class="story-ph">
+      <figure class="ph" data-photo="jump1" data-alt="2026년 8월 가나자와 CLL 현장 세션">
+        <span class="slot"><svg class="i"><use href="#i-camera"/></svg>현장 사진 자리</span>
+        <figcaption><span class="no">2026.08 · KANAZAWA</span><span class="cap">CLL 현장 세션</span></figcaption>
+      </figure>
+      <figure class="ph" data-photo="jump2" data-alt="2026년 8월 JAIST 연구 발표">
+        <span class="slot"><svg class="i"><use href="#i-camera"/></svg>현장 사진 자리</span>
+        <figcaption><span class="no">08.20 · JAIST</span><span class="cap">JAIST 연구 발표</span></figcaption>
+      </figure>
+      <figure class="ph" data-photo="jump3" data-alt="2026년 8월 JAIST 공동 작업">
+        <span class="slot"><svg class="i"><use href="#i-camera"/></svg>현장 사진 자리</span>
+        <figcaption><span class="no">08.20 · JAIST</span><span class="cap">JAIST 공동 작업</span></figcaption>
+      </figure>
+      <figure class="ph" data-photo="jump4" data-alt="2026년 8월 CLL 현장 피드백">
+        <span class="slot"><svg class="i"><use href="#i-camera"/></svg>현장 사진 자리</span>
+        <figcaption><span class="no">08.21 · CLL</span><span class="cap">CLL 현장 피드백</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANCHORS ============ -->
+<section class="sec" id="anchors">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <p class="kicker">Anchor Partners</p>
+        <h2>8개 앵커기업·기관과 함께 현안을 엽니다</h2>
+        <p class="desc">울트라앵커사업의 앵커기업·기관입니다. 기업별 재직자 참여와 현안 세션 구성은 협의하고 있습니다. <span class="tbd">협의 중</span></p>
+      </div>
+    </div>
+    <div class="tiles" id="tiles"></div>
+  </div>
+</section>
+
+<!-- ============ PLAN ============ -->
+<section class="sec band-sky" id="plan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <p class="kicker">Plan Your Trip</p>
+        <h2>출장 준비, 이것만 확인하세요</h2>
+        <p class="desc">숙소와 이동은 사업단이 한꺼번에 준비합니다. 참가가 확정되면 세부 안내서를 따로 보내 드립니다.</p>
+      </div>
+    </div>
+    <div class="plan-wrap">
+    <figure class="ph" data-photo="omicho" data-alt="가나자와 오미초 시장">
+      <span class="slot"><svg class="i"><use href="#i-camera"/></svg>사진 교체 예정</span>
+      <figcaption><span class="no">NEAR THE BASE</span><span class="cap">오미초 시장</span><span class="sub">숙소 바로 옆, '가나자와의 부엌'이라 불리는 시장</span></figcaption>
+    </figure>
+    <div class="plan">
+      <div class="pl"><span class="pi" aria-hidden="true"><svg class="i"><use href="#i-bed"/></svg></span><span class="k">STAY</span><h3>가나자와 한 곳에서 숙박</h3><p>오미초 시장 옆 디자인 호텔 SOKI KANAZAWA(후쿠로마치) 숙박을 검토하고 있습니다. <a href="#stay">숙소 보기</a> <span class="tbd">예정</span></p></div>
+      <div class="pl"><span class="pi" aria-hidden="true"><svg class="i"><use href="#i-plane"/></svg></span><span class="k">FLIGHT</span><h3>인천 ⇄ 고마쓰</h3><p>고마쓰공항으로 들어가고 나옵니다. EXPRESS 참가자의 토요일 오전 귀국편도 함께 확인하고 있습니다. <span class="tbd">확인 중</span></p></div>
+      <div class="pl"><span class="pi" aria-hidden="true"><svg class="i"><use href="#i-train"/></svg></span><span class="k">MOVE</span><h3>현지 이동</h3><p>공항과 JAIST는 차량으로, 도야마는 호쿠리쿠 신칸센으로 오갑니다. <span class="tbd">차량 추후 안내</span></p></div>
+      <div class="pl"><span class="pi" aria-hidden="true"><svg class="i"><use href="#i-snow"/></svg></span><span class="k">WEATHER</span><h3>1월 호쿠리쿠 날씨</h3><p>눈과 비가 잦은 때입니다. 방수 신발과 따뜻한 겉옷을 챙겨 주세요.</p></div>
+      <div class="pl"><span class="pi" aria-hidden="true"><svg class="i"><use href="#i-lang"/></svg></span><span class="k">LANGUAGE</span><h3>한국어로 진행</h3><p>현장 설명과 미팅은 통역을 준비합니다. 일본어를 몰라도 괜찮습니다. <span class="tbd">통역 범위 추후 안내</span></p></div>
+      <div class="pl"><span class="pi" aria-hidden="true"><svg class="i"><use href="#i-doc"/></svg></span><span class="k">PAPERWORK</span><h3>출장 처리</h3><p>소속 기관 출장 처리에 필요한 안내 공문과 일정표를 보내 드립니다. <span class="tbd">발송 방식 추후 안내</span></p></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLOW ============ -->
+<section class="sec" id="flow">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <p class="kicker">How It Works</p>
+        <h2>신청부터 후속 협력까지 네 단계</h2>
+      </div>
+    </div>
+    <ol class="flow">
+      <li class="now"><span class="no">STEP 1</span><h3>참가 신청</h3><p>기관 정보와 현지에서 묻고 싶은 질문을 적어 주세요.</p><div class="meta"><span class="st now">지금 단계</span></div></li>
+      <li><span class="no">STEP 2</span><h3>참가 확정·사전 브리핑</h3><p>참가 옵션을 확정하고, 방문처별 질문을 함께 다듬습니다.</p><div class="meta"><span class="tbd">일정 추후 안내</span></div></li>
+      <li><span class="no">STEP 3</span><h3>탐사</h3><p>JAIST, 도야마, 가나자와에서 관문을 하나씩 엽니다.</p><div class="meta"><span class="st">2027년 1월 하순</span></div></li>
+      <li><span class="no">STEP 4</span><h3>인사이트 리포트·후속 협력</h3><p>방문처별 핵심 내용과 다음 협력 과제를 정리해 공유합니다.</p><div class="meta"><span class="tbd">일정 추후 안내</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ APPLY ============ -->
+<section class="sec band-sky" id="apply">
+  <div class="wrap apply-grid">
+    <div>
+      <div class="sec-head">
+        <div class="t">
+          <p class="kicker">Apply</p>
+          <h2>신청 전에 확인하세요</h2>
+        </div>
+      </div>
+      <dl class="info">
+        <dt>대상</dt><dd><b>앵커기업 재직자 · 지자체·공공기관 관계자 · 대학 관계자</b><br>참여대학 학생 동행 <span class="tbd">검토 중</span></dd>
+        <dt>일정</dt><dd>2027년 1월 하순 · FULL 3박 4일(목–일) / EXPRESS 2박 3일(목–토 오전) <span class="tbd">일자 확정 예정</span></dd>
+        <dt>모집 인원</dt><dd><span class="tbd">추후 안내</span></dd>
+        <dt>신청 기간</dt><dd><span class="tbd">추후 안내</span></dd>
+        <dt>참가 확정</dt><dd>신청서 검토 뒤 개별 안내 <span class="tbd">방식 추후 안내</span></dd>
+        <dt>비용</dt><dd>참가비와 항공·숙박·현지 이동 지원 범위 <span class="tbd">추후 안내</span></dd>
+        <dt>준비물</dt><dd><b>유효한 여권</b>, 명함, 1:1 미팅용 기관 소개 자료</dd>
+        <dt>문의</dt><dd>ai.bio.engine@gmail.com</dd>
+      </dl>
+    </div>
+    <aside class="apply-card" aria-labelledby="applyCardTitle">
+      <h3 id="applyCardTitle">탐사대 참가 신청서</h3>
+      <p>3분이면 작성할 수 있어요. 현지에서 묻고 싶은 질문은 400자 안으로 적어 주세요.</p>
+      <ul>
+        <li><svg class="i"><use href="#i-check"/></svg>이름·기관·부서·직위</li>
+        <li><svg class="i"><use href="#i-check"/></svg>참가 옵션과 관심 세션</li>
+        <li><svg class="i"><use href="#i-check"/></svg>현지에서 묻고 싶은 질문과 연락처</li>
+      </ul>
+      <a class="btn btn-cyan" href="#apply-form" data-open>신청서 작성하기<svg class="i"><use href="#i-right"/></svg></a>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <p class="kicker">FAQ</p>
+        <h2>자주 묻는 질문</h2>
+        <p class="desc">답이 없는 질문은 사업단 이메일(ai.bio.engine@gmail.com)로 보내 주세요.</p>
+      </div>
+    </div>
+    <details class="qa"><summary><span class="q">Q</span>일정의 일부만 참여할 수 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>네. 오래 자리를 비우기 어려운 재직자를 위해 목요일부터 토요일 오전까지의 EXPRESS(2박 3일) 일정을 따로 두었습니다. 그 밖의 부분 참여는 신청서에 적어 주시면 협의합니다.</p></div></details>
+    <details class="qa"><summary><span class="q">Q</span>비용은 어떻게 되나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>참가비와 항공·숙박·현지 이동 지원 범위는 확정되는 대로 이 페이지에 안내합니다. 출장 처리에 필요한 안내 공문도 함께 보내 드립니다.</p></div></details>
+    <details class="qa"><summary><span class="q">Q</span>일본어나 영어를 해야 하나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>아니요. 프로그램은 한국어로 진행하고, 현장 설명과 미팅에는 통역을 준비합니다.</p></div></details>
+    <details class="qa"><summary><span class="q">Q</span>우리 기관만의 미팅을 요청할 수 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>신청서의 '현지에서 묻고 싶은 질문' 칸에 원하는 미팅 상대와 주제를 적어 주세요. 현지 기관과 협의해 1:1 미팅을 잡아 봅니다.</p></div></details>
+    <details class="qa"><summary><span class="q">Q</span>학생도 함께 가나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>학생 탐사대의 동행 여부는 검토하고 있습니다. 정해지면 이 페이지에서 따로 안내합니다.</p></div></details>
+    <details class="qa"><summary><span class="q">Q</span>여권 말고 준비할 것이 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>출국일 기준으로 유효한 여권이 있어야 합니다. 1:1 미팅이 있는 분은 명함과 기관 소개 자료를 챙겨 주세요. 나머지 준비 사항은 참가가 확정된 뒤 안내합니다.</p></div></details>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta-band">
+  <img class="mark" src="/crossway/assets/mark-white.png" alt="" width="340" height="340">
+  <div class="wrap inner">
+    <span class="dd">CROSSWAY</span>
+    <h2>다음 관문은 국경 너머에 있습니다</h2>
+    <p>기관의 현안을 들고 함께 건널 탐사대원을 모집합니다. 모집 인원과 신청 기간은 확정되는 대로 이 페이지에 안내합니다.</p>
+    <div class="cta-row">
+      <a class="btn btn-cyan" href="#apply-form" data-open>참가 신청하기</a>
+      <a class="btn btn-line" href="#passes">참가 옵션 보기</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-logo">
+        <img src="/crossway/assets/logo-white.png" alt="ULTRA ANCHOR 초광역 성장엔진 인재육성사업" width="720" height="245">
+        <p>AI기반 첨단바이오사업단<br>주관 단국대 · 참여 건양대 · 계명대 · 아주대 · 유한대</p>
+      </div>
+      <div>
+        <h3>MENU</h3>
+        <ul>
+          <li><a href="#who">참가 대상</a></li>
+          <li><a href="#included">포함 사항과 참가 옵션</a></li>
+          <li><a href="#route">일정</a></li>
+          <li><a href="#stay">숙소</a></li>
+          <li><a href="#sites">탐사 거점</a></li>
+          <li><a href="#plan">출장 준비</a></li>
+          <li><a href="#faq">자주 묻는 질문</a></li>
+          <li><a href="/">ULTRA ANCHOR 홈</a></li>
+        </ul>
+      </div>
+      <div class="f-contact">
+        <h3>CONTACT</h3>
+        <dl>
+          <dt>사업단</dt><dd>초광역 성장엔진 인재육성사업단</dd>
+          <dt>이메일</dt><dd>ai.bio.engine@gmail.com</dd>
+          <dt>전화·카카오톡</dt><dd>추후 안내</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="f-water" aria-hidden="true">BIO CROSSWAY</div>
+    <div class="f-copy"><span>© 2026 ULTRA ANCHOR · 초광역 성장엔진 인재육성사업</span><a href="#privacy" data-privacy>개인정보 수집·이용 안내</a></div>
+  </div>
+</footer>
+
+<div class="mcta">
+  <div class="l"><b>JAPAN 2027</b><span>1월 하순 · 2박 3일부터</span></div>
+  <a class="btn btn-cyan" href="#apply-form" data-open>신청하기</a>
+</div>
+
+<div class="modal" id="applyModal" role="dialog" aria-modal="true" aria-labelledby="mTitle" hidden>
+  <div class="m-card">
+    <button class="m-close" type="button" data-close aria-label="닫기"><svg class="i"><use href="#i-close"/></svg></button>
+    <form class="form" id="applyForm" novalidate>
+      <div>
+        <h2 id="mTitle">크로스웨이 탐사대 참가 신청</h2>
+        <p class="m-desc">AI-Bio 크로스웨이 탐사대 · 2027년 1월 하순 · 일본 이시카와·도야마</p>
+      </div>
+      <div class="row">
+        <label class="fld" for="f-name">이름<input id="f-name" name="name" autocomplete="name" required placeholder="홍길동"></label>
+        <label class="fld" for="f-orgtype">기관 유형
+          <select id="f-orgtype" name="orgType" required>
+            <option value="">선택하세요</option>
+            <option>앵커기업</option><option>지자체·공공기관</option><option>대학·연구기관</option><option>기타</option>
+          </select>
+        </label>
+      </div>
+      <div class="row">
+        <label class="fld" for="f-org">기관명<input id="f-org" name="org" required autocomplete="organization" placeholder="예: ○○제약"></label>
+        <label class="fld" for="f-pos">부서·직위<input id="f-pos" name="position" required autocomplete="organization-title" placeholder="예: 생산기술팀 책임"></label>
+      </div>
+      <fieldset class="fld">
+        <legend>참가 옵션</legend>
+        <div class="seg">
+          <label><input type="radio" name="option" id="f-opt-full" value="FULL 3박 4일" checked><span>FULL 3박 4일</span></label>
+          <label><input type="radio" name="option" id="f-opt-express" value="EXPRESS 2박 3일"><span>EXPRESS 2박 3일</span></label>
+          <label><input type="radio" name="option" id="f-opt-undecided" value="아직 정하지 못함"><span>아직 정하지 못했어요</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="fld">
+        <legend>관심 세션 <small>여러 개 고를 수 있어요</small></legend>
+        <div class="seg">
+          <label><input type="checkbox" name="sessions" value="JAIST 연구실·공동연구"><span>JAIST 연구실·공동연구</span></label>
+          <label><input type="checkbox" name="sessions" value="도야마 제약 클러스터"><span>도야마 제약 클러스터</span></label>
+          <label><input type="checkbox" name="sessions" value="CLL 창업·지역연계"><span>CLL 창업·지역연계</span></label>
+          <label><input type="checkbox" name="sessions" value="신슈대 의료기기(온라인)"><span>신슈대 의료기기(온라인)</span></label>
+          <label><input type="checkbox" name="sessions" value="기관 1:1 미팅"><span>기관 1:1 미팅</span></label>
+        </div>
+      </fieldset>
+      <label class="fld" for="f-question">현지에서 묻고 싶은 질문 <small>기관의 현안, 만나고 싶은 상대, 꼭 확인하고 싶은 내용을 적어 주세요.</small>
+        <textarea id="f-question" name="question" required maxlength="400" placeholder="예: 도야마현의 제약 재직자 연수가 기업 수요를 어떻게 반영하는지 담당 부서와 이야기해 보고 싶습니다."></textarea>
+        <span class="count" id="qCount" aria-live="polite">0 / 400</span>
+      </label>
+      <fieldset class="fld">
+        <legend>여권 준비 상태</legend>
+        <div class="seg">
+          <label><input type="radio" name="passport" id="f-pass-yes" value="유효한 여권 있음" checked><span>유효한 여권 있음</span></label>
+          <label><input type="radio" name="passport" id="f-pass-plan" value="발급·갱신 예정"><span>발급·갱신 예정</span></label>
+        </div>
+      </fieldset>
+      <div class="row">
+        <label class="fld" for="f-phone">휴대폰 번호<input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="010-0000-0000" pattern="01[016789]-?[0-9]{3,4}-?[0-9]{4}" title="010-0000-0000 형식으로 입력해 주세요"></label>
+        <label class="fld" for="f-email">이메일<input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="name@example.com"></label>
+      </div>
+      <label class="agree" for="f-agree"><input type="checkbox" id="f-agree" required>참가 신청과 안내를 위한 개인정보 수집·이용에 동의합니다. (수집 항목: 이름, 기관 유형·기관명, 부서·직위, 참가 옵션, 관심 세션, 현지 질문, 여권 준비 상태, 휴대폰 번호, 이메일 · 보유 기간: 사업 종료 시까지)</label>
+      <p class="m-priv"><a href="#privacy" data-privacy>개인정보 수집·이용 안내 자세히 보기</a></p>
+      <p class="m-note" id="mError" role="alert" hidden></p>
+      <button class="btn btn-navy" type="submit" id="fSubmit">신청서 제출하기</button>
+    </form>
+    <div class="done" id="applyDone" hidden>
+      <div class="ok" aria-hidden="true"><svg class="i"><use href="#i-check"/></svg></div>
+      <h3 id="doneTitle">신청이 접수됐어요</h3>
+      <p id="doneText">참가 확정과 사전 브리핑 일정은 입력한 휴대폰 번호와 이메일로 안내해 드립니다.</p>
+      <button class="btn btn-navy" type="button" data-close>닫기</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="pTitle" hidden>
+  <div class="m-card priv">
+    <button class="m-close" type="button" data-pclose aria-label="닫기"><svg class="i"><use href="#i-close"/></svg></button>
+    <h2 id="pTitle">개인정보 수집·이용 안내</h2>
+    <p class="m-desc">초광역 성장엔진 인재육성사업단은 AI-Bio 크로스웨이 탐사대 참가 신청을 받기 위해 아래와 같이 개인정보를 수집·이용합니다.</p>
+    <dl>
+      <dt>목적</dt><dd>탐사대 참가 신청 접수, 참가 확정, 방문처 미팅 준비, 일정·준비 사항 안내</dd>
+      <dt>항목</dt><dd>이름, 기관 유형, 기관명, 부서·직위, 참가 옵션, 관심 세션, 현지 질문, 여권 준비 상태, 휴대폰 번호, 이메일</dd>
+      <dt>보유 기간</dt><dd>사업 종료 시까지</dd>
+      <dt>저장</dt><dd>Google 설문지·스프레드시트(사업단 계정)에 저장하며, 사업단 담당자만 확인합니다.</dd>
+      <dt>외부 전달</dt><dd>1:1 미팅을 위해 기관명·직위·질문을 방문 기관에 전해야 할 때는 전달 전에 따로 동의를 받습니다.</dd>
+      <dt>동의 거부</dt><dd>동의하지 않을 수 있으며, 이 경우 신청이 제한됩니다.</dd>
+      <dt>문의</dt><dd>ai.bio.engine@gmail.com</dd>
+    </dl>
+    <button class="btn btn-navy" type="button" data-pclose>확인</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+  /* ---- 신청서 연결 설정 ----
+     정식 배포(Vercel) 때 구글 폼의 formResponse 주소와 각 질문의 entry 번호를 넣으면 실제 접수가 됩니다.
+     비워 두면 시안 모드로 동작하며 입력 내용은 어디에도 저장·전송되지 않습니다. */
+  const FORM = {
+    action: '',
+    entry: { name: '', orgType: '', org: '', position: '', option: '', sessions: '', question: '', passport: '', phone: '', email: '', agree: '' }
+  };
+
+  /* ---- 사진 설정 ----
+     사진 파일을 crossway/assets/photos/ 에 올리고 src와 credit(저작자·라이선스)을 채우면 일러스트 대신 사진이 나옵니다.
+     contain: true 는 자르지 않고 원본 비율 그대로 보여 줍니다(변경 금지 라이선스용). */
+  const COMMONS = '사진: Wikimedia Commons';
+  const SOKI = '사진: SOKI KANAZAWA';
+  const PHOTOS = {
+    tsuzumi:    { src: '/crossway/assets/photos/tsuzumi.jpg', credit: COMMONS },
+    alps:       { src: '/crossway/assets/photos/alps.jpg', credit: COMMONS },
+    yukitsuri:  { src: '/crossway/assets/photos/kenrokuen.jpg', credit: COMMONS, pos: '50% 40%' },
+    shinkansen: { src: '/crossway/assets/photos/shinkansen.jpg', credit: COMMONS, pos: '50% 62%' },
+    hotel1:     { src: '/crossway/assets/photos/soki-exterior.jpg', credit: SOKI },
+    hotel2:     { src: '/crossway/assets/photos/soki-room.jpg', credit: SOKI },
+    hotel3:     { src: '/crossway/assets/photos/soki-bath.jpg', credit: SOKI },
+    hotel4:     { src: '/crossway/assets/photos/soki-lobby.jpg', credit: SOKI },
+    hotel5:     { src: '/crossway/assets/photos/soki-lounge.jpg', credit: SOKI },
+    omicho:     { src: '/crossway/assets/photos/omicho.jpg', credit: COMMONS },
+    jaist:      { src: '/crossway/assets/photos/jaist.jpg', credit: COMMONS, pos: '50% 62%' },
+    toyama:     { src: '/crossway/assets/photos/toyama-cluster.jpg', credit: '', pos: '50% 45%' },
+    cll:        { src: '/crossway/assets/photos/cll-session.jpg', credit: '', pos: '50% 35%' },
+    shinshu:    { src: '/crossway/assets/photos/shinshu-or.jpg', credit: '', pos: '50% 40%' },
+    jump1:      { src: '/crossway/assets/photos/jump-cll-team.jpg', credit: '', pos: '50% 35%' },
+    jump2:      { src: '/crossway/assets/photos/jump-jaist-talk.jpg', credit: '' },
+    jump3:      { src: '/crossway/assets/photos/jump-jaist-team.jpg', credit: '', pos: '50% 30%' },
+    jump4:      { src: '/crossway/assets/photos/jump-cll-desk.jpg', credit: '', pos: '50% 30%' }
+  };
+  $$('.ph[data-photo]').forEach(f => {
+    const p = PHOTOS[f.dataset.photo];
+    if (!p || !p.src) return;
+    const img = document.createElement('img');
+    img.src = p.src; img.alt = f.dataset.alt || ''; img.decoding = 'async'; img.loading = 'lazy';
+    if (p.pos) img.style.objectPosition = p.pos;
+    f.prepend(img);
+    f.classList.add('has-photo');
+    if (p.contain) f.classList.add('contain');
+    if (p.credit) { const c = document.createElement('span'); c.className = 'credit'; c.textContent = p.credit; f.append(c); }
+  });
+
+  /* ---- snow on illustrated postcards ---- */
+  let seed = 7;
+  const rnd = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+  const NS = 'http://www.w3.org/2000/svg';
+  $$('.ph:not(.has-photo) svg.art[data-snow]').forEach(svg => {
+    const n = +svg.dataset.snow || 0;
+    const vb = svg.viewBox.baseVal;
+    for (let i = 0; i < n; i++) {
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('class', 'flake');
+      c.setAttribute('cx', (rnd() * vb.width).toFixed(1));
+      c.setAttribute('cy', (rnd() * vb.height).toFixed(1));
+      c.setAttribute('r', (0.8 + rnd() * 1.8).toFixed(2));
+      c.style.opacity = (0.3 + rnd() * 0.5).toFixed(2);
+      c.style.animationDuration = (10 + rnd() * 12).toFixed(1) + 's';
+      c.style.animationDelay = (-rnd() * 22).toFixed(1) + 's';
+      svg.appendChild(c);
+    }
+  });
+
+  /* ---- toast ---- */
+  let toastTimer;
+  function toast(msg) {
+    const t = $('#toast');
+    t.textContent = msg; t.hidden = false;
+    requestAnimationFrame(() => t.classList.add('show'));
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { t.classList.remove('show'); setTimeout(() => { t.hidden = true; }, 250); }, 2600);
+  }
+
+  /* ---- mobile menu ---- */
+  const menuBtn = $('#menuBtn'), mnav = $('#mnav');
+  menuBtn.addEventListener('click', () => {
+    const open = mnav.hidden;
+    mnav.hidden = !open;
+    menuBtn.setAttribute('aria-expanded', String(open));
+  });
+  $$('#mnav a').forEach(a => a.addEventListener('click', () => { mnav.hidden = true; menuBtn.setAttribute('aria-expanded', 'false'); }));
+
+  /* ---- TBD finder ---- */
+  const tbds = $$('main .tbd');
+  $('#tbdCount').textContent = tbds.length;
+  let tbdIdx = -1;
+  $('#tbdFind').addEventListener('click', () => {
+    if (!tbds.length) return;
+    tbdIdx = (tbdIdx + 1) % tbds.length;
+    const el = tbds[tbdIdx];
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+    toast(`미확정 항목 ${tbdIdx + 1} / ${tbds.length}`);
+  });
+
+  /* ---- anchor tiles ---- */
+  const ANCHORS = [
+    { slug: 'yuhan', name: '유한양행', meta: 'PHARMA', r: 4.51, k: 0.9 },
+    { slug: 'ckd', name: '종근당', meta: 'PHARMA', r: 4.08, k: 0.86 },
+    { slug: 'dasan', name: '다산제약', meta: 'PHARMA · CDMO', r: 2.77 },
+    { slug: 'sdbio', name: '에스디바이오센서', meta: 'DIAGNOSTICS', r: 8.77 },
+    { slug: 'megagen', name: '메가젠임플란트', meta: 'MEDICAL DEVICE', r: 3.84 },
+    { slug: 'saeshin', name: '세신정밀', meta: 'MEDICAL DEVICE', r: 1.79 },
+    { slug: 'ktr', name: '한국화학융합시험연구원', meta: 'KTR · TESTING', r: 2.02, k: 0.92 },
+    { slug: 'n4u', name: '엔포유대학연합기술지주회사', meta: 'TECH HOLDING', r: 1.29, k: 0.92 }
+  ];
+  // 면적 기준 정규화: 가로로 긴 로고는 낮게, 정사각형에 가까운 로고는 높게 그려 시각적 무게를 맞춥니다.
+  function logoSize(r, k = 1) {
+    const A = 3800, maxW = 132, maxH = 50;
+    let h = Math.min(Math.sqrt(A / r), maxH), w = h * r;
+    if (w > maxW) { w = maxW; h = w / r; }
+    w = Math.min(w * k, maxW); h = w / r;
+    return { w: Math.round(w), h: Math.round(h) };
+  }
+  $('#tiles').innerHTML = ANCHORS.map(o => {
+    const { w, h } = logoSize(o.r, o.k);
+    return `<div class="ptile"><span class="plogo"><img src="/crossway/assets/logos/${o.slug}.png" alt="${o.name} 로고" width="${w}" height="${h}" style="width:${w}px" decoding="async" loading="lazy"></span><span class="pname">${o.name}</span><span class="pmeta">${o.meta}</span></div>`;
+  }).join('');
+
+  /* ---- modals ---- */
+  const modal = $('#applyModal'), form = $('#applyForm'), done = $('#applyDone'), err = $('#mError');
+  const pmodal = $('#privacyModal');
+  let lastFocus = null;
+  function openApply(e) {
+    if (e) e.preventDefault();
+    lastFocus = document.activeElement;
+    form.hidden = false; done.hidden = true; err.hidden = true;
+    const opt = e && e.currentTarget && e.currentTarget.dataset ? e.currentTarget.dataset.option : '';
+    if (opt) { const r = document.getElementById('f-opt-' + opt); if (r) r.checked = true; }
+    modal.hidden = false;
+    document.documentElement.style.overflow = 'hidden';
+    setTimeout(() => $('#f-name').focus(), 30);
+  }
+  function closeApply() {
+    modal.hidden = true;
+    document.documentElement.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  $$('[data-open]').forEach(a => a.addEventListener('click', openApply));
+  $$('[data-close]').forEach(b => b.addEventListener('click', closeApply));
+  modal.addEventListener('click', e => { if (e.target === modal) closeApply(); });
+
+  function openPrivacy(e) { if (e) e.preventDefault(); pmodal.hidden = false; setTimeout(() => $('[data-pclose]', pmodal).focus(), 30); }
+  function closePrivacy() { pmodal.hidden = true; }
+  $$('[data-privacy]').forEach(a => a.addEventListener('click', openPrivacy));
+  $$('[data-pclose]').forEach(b => b.addEventListener('click', closePrivacy));
+  pmodal.addEventListener('click', e => { if (e.target === pmodal) closePrivacy(); });
+
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (!pmodal.hidden) closePrivacy();
+    else if (!modal.hidden) closeApply();
+  });
+
+  /* ---- form ---- */
+  const question = $('#f-question'), qc = $('#qCount');
+  const syncCount = () => { qc.textContent = `${question.value.length} / 400`; };
+  question.addEventListener('input', syncCount); syncCount();
+
+  const LABEL = { 'f-name': '이름', 'f-orgtype': '기관 유형', 'f-org': '기관명', 'f-pos': '부서·직위', 'f-question': '현지에서 묻고 싶은 질문', 'f-phone': '휴대폰 번호', 'f-email': '이메일', 'f-agree': '개인정보 수집·이용 동의' };
+  function firstInvalid() {
+    for (const id of Object.keys(LABEL)) {
+      const el = document.getElementById(id);
+      if (el.type === 'checkbox' ? !el.checked : !el.value.trim() || !el.checkValidity()) return el;
+    }
+    return null;
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const bad = firstInvalid();
+    if (bad) {
+      const name = LABEL[bad.id];
+      err.textContent = bad.type === 'checkbox' ? `${name}에 체크해 주세요.` : (bad.value.trim() ? `${name} 형식을 확인해 주세요.` : `${name}을(를) 입력해 주세요.`);
+      err.hidden = false; bad.focus();
+      return;
+    }
+    err.hidden = true;
+    const picked = name => (form.querySelector(`input[name="${name}"]:checked`) || {}).value || '';
+    const data = {
+      name: $('#f-name').value.trim(), orgType: $('#f-orgtype').value, org: $('#f-org').value.trim(), position: $('#f-pos').value.trim(),
+      option: picked('option'), sessions: $$('input[name="sessions"]:checked', form).map(i => i.value),
+      question: question.value.trim(), passport: picked('passport'),
+      phone: $('#f-phone').value.trim(), email: $('#f-email').value.trim(), agree: '예'
+    };
+    const btn = $('#fSubmit');
+    if (!FORM.action) {
+      $('#doneTitle').textContent = '시안에서는 접수되지 않아요';
+      $('#doneText').textContent = '이 페이지는 신청서 연결 전 시안이라 입력한 내용이 어디에도 저장되지 않았습니다. 정식 페이지가 열리면 같은 양식으로 신청할 수 있어요.';
+      form.hidden = true; done.hidden = false;
+      return;
+    }
+    btn.disabled = true; btn.textContent = '보내는 중…';
+    try {
+      const body = new URLSearchParams();
+      Object.entries(FORM.entry).forEach(([k, id]) => {
+        if (!id) return;
+        const v = data[k];
+        (Array.isArray(v) ? v : [v]).forEach(x => body.append(id, x));
+      });
+      await fetch(FORM.action, { method: 'POST', mode: 'no-cors', body });
+      $('#doneTitle').textContent = `${data.name}님, 신청이 접수됐어요`;
+      $('#doneText').textContent = '참가 확정과 사전 브리핑 일정은 입력한 휴대폰 번호와 이메일로 안내해 드립니다.';
+      form.reset(); syncCount();
+      form.hidden = true; done.hidden = false;
+    } catch (_) {
+      err.textContent = '전송하지 못했어요. 잠시 뒤 다시 시도하거나 ai.bio.engine@gmail.com으로 문의해 주세요.';
+      err.hidden = false;
+    } finally {
+      btn.disabled = false; btn.textContent = '신청서 제출하기';
+    }
+  });
+
+  if (location.hash === '#apply-form') openApply();
+})();
+</script>
+</body>
+</html>
