@@ -1,0 +1,1930 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="울트라앵커 AI첨단바이오 바이오워케이션챌린지 온라인 채용박람회. 앵커기업관을 둘러보고 사전과제 4단계를 진행합니다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ULTRA ANCHOR 온라인 채용박람회">
+<meta property="og:description" content="앵커기업관을 둘러보고, 11.20 진로 토크콘서트에서 현직자를 만나요">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231B2452'/%3E%3Cg fill='none' stroke='%2327B9CF' stroke-width='2.6' stroke-linecap='round'%3E%3Ccircle cx='16' cy='8' r='2.6'/%3E%3Cpath d='M16 10.6V26M10 14h12M7.5 18a8.5 8.5 0 0 0 17 0'/%3E%3C/g%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>ULTRA ANCHOR 온라인 채용박람회</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+KR:wght@400;500;700;900&family=Silkscreen:wght@400;700&display=swap">
+<style>
+/* Layout: harbor-town game window (pixel map) + mission log column. One bright theme on purpose: the pixel world is daylight. */
+:root{
+  color-scheme: light;
+  --ink:#141A3A;
+  --navy:#1B2452;
+  --navy-deep:#11173A;
+  --blue:#1F5CC4;
+  --cyan:#27B9CF;
+  --cyan-soft:#DDF6FA;
+  --cyan-ink:#0B6676;
+  --sea:#3480CF;
+  --paper:#FFFFFF;
+  --mist:#F3F6FC;
+  --line:#DCE3F0;
+  --muted:#56628A;
+  --amber:#E59A2F; --amber-bg:#FFF4DE; --amber-line:#EDAA3A; --amber-ink:#7E4B00;
+  --ok:#17875A; --ok-bg:#E2F5EC;
+  --scrim:rgba(10,14,34,.58);
+  --hud:rgba(17,23,58,.86);
+
+  --f-kr:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-px:"Silkscreen","IBM Plex Mono",ui-monospace,monospace;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--mist);color:var(--ink);font-family:var(--f-kr);font-size:15px;line-height:1.6;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--navy)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+svg.i{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* ---------- app frame ---------- */
+.app{display:flex;flex-direction:column;height:100%}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--navy);color:var(--paper)}
+.tb{display:flex;align-items:center;gap:14px;min-height:58px;padding-block:8px}
+.tb-logo{height:30px;width:auto;display:block;flex:none}
+.tb-title{display:flex;flex-direction:column;line-height:1.3;min-width:0;padding-left:14px;border-left:1px solid rgba(255,255,255,.18)}
+.tb-title .px{font-family:var(--f-px);font-size:11px;letter-spacing:.06em;color:var(--cyan)}
+.tb-title b{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-meta{margin-left:auto;display:flex;gap:8px;align-items:center;flex:none}
+.hchip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.1);font-size:13px;white-space:nowrap}
+.hchip b{font-family:var(--f-px);font-weight:700;color:var(--cyan);font-size:13px;letter-spacing:.02em}
+.draft{background:var(--amber-bg);color:var(--amber-ink);border-bottom:1px solid var(--amber-line);font-size:13px;line-height:1.5}
+.draft p{margin:0;padding-block:7px}
+.draft b{font-weight:700}
+
+.main{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 368px;grid-template-rows:minmax(0,1fr);gap:16px;padding-block:16px}
+.stage{position:relative;min-height:0;border-radius:18px;overflow:hidden;background:var(--sea);border:3px solid var(--navy);box-shadow:0 6px 0 var(--navy)}
+#cv{position:absolute;inset:0;display:block;width:100%;height:100%;touch-action:manipulation;outline:none;cursor:default}
+.side{min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:14px;padding-bottom:6px;scrollbar-width:thin}
+.side > *{flex:none}
+
+/* ---------- stage HUD ---------- */
+.hud{position:absolute;left:12px;top:12px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;pointer-events:none;max-width:calc(100% - 180px)}
+.zone{display:inline-flex;align-items:center;gap:6px;background:var(--hud);color:var(--paper);border-radius:10px;padding:6px 12px;font-size:13px;font-weight:700}
+.zone svg{color:var(--cyan)}
+.keys{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.9);color:var(--navy);border-radius:10px;padding:4px 10px;font-size:12px;font-weight:600}
+.keys kbd,.act kbd{font-family:var(--f-px);font-size:11px;background:var(--navy);color:var(--paper);border-radius:5px;padding:1px 6px;line-height:1.5}
+.minimap{position:absolute;right:12px;top:12px;width:138px;height:90px;border:2px solid var(--navy);border-radius:8px;background:var(--sea);image-rendering:pixelated;cursor:pointer;box-shadow:0 3px 0 var(--navy)}
+.act{position:absolute;left:50%;bottom:78px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:3px solid var(--navy);border-radius:12px;background:var(--cyan);color:var(--navy);font-weight:900;font-size:15px;box-shadow:0 4px 0 var(--navy);white-space:nowrap;max-width:calc(100% - 24px);animation:bob 1.6s ease-in-out infinite}
+.act:active{transform:translate(-50%,3px);box-shadow:0 1px 0 var(--navy)}
+@keyframes bob{50%{margin-bottom:3px}}
+.toolbar{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:2px;padding:5px;border-radius:14px;background:var(--hud);max-width:calc(100% - 24px);overflow-x:auto;scrollbar-width:none}
+.tool{display:inline-flex;flex-direction:column;align-items:center;gap:2px;padding:6px 11px;border:0;border-radius:10px;background:transparent;color:var(--paper);font-size:11.5px;font-weight:700;white-space:nowrap}
+.tool svg{width:18px;height:18px}
+.tool:hover{background:rgba(255,255,255,.12)}
+.tool .sw{width:14px;height:14px;border-radius:4px;border:2px solid var(--paper)}
+
+.dlg{position:absolute;left:12px;right:12px;bottom:78px;margin-inline:auto;max-width:640px;display:flex;gap:14px;padding:14px 16px;background:var(--paper);border:3px solid var(--navy);border-radius:14px;box-shadow:0 5px 0 var(--navy)}
+.dlg canvas{width:64px;height:64px;image-rendering:pixelated;background:var(--cyan-soft);border-radius:10px;flex:none;border:2px solid var(--navy)}
+.dlg .txt{min-width:0;flex:1}
+.dlg .nm{display:flex;align-items:center;gap:8px;font-weight:900;font-size:14px;color:var(--navy)}
+.dlg .nm span{font-family:var(--f-px);font-size:10.5px;color:var(--blue);font-weight:400}
+.dlg p{margin:2px 0 10px;font-size:14.5px;line-height:1.6}
+.dlg .x{position:absolute;right:8px;top:8px;width:30px;height:30px;border:0;border-radius:8px;background:var(--mist);color:var(--navy);display:grid;place-items:center}
+.ch{display:flex;flex-wrap:wrap;gap:8px}
+
+/* chunky pixel buttons */
+.pbtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 14px;border:2px solid var(--navy);border-radius:10px;background:var(--paper);color:var(--navy);font-weight:700;font-size:14px;line-height:1.3;box-shadow:0 3px 0 var(--navy);text-decoration:none;white-space:nowrap;transition:transform .08s}
+.pbtn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--navy)}
+.pbtn.cy{background:var(--cyan)}
+.pbtn.nv{background:var(--navy);color:var(--paper)}
+.pbtn.sm{padding:5px 10px;font-size:13px;box-shadow:0 2px 0 var(--navy)}
+.pbtn svg{width:15px;height:15px}
+
+/* ---------- side panel ---------- */
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.intro{background:var(--navy);color:var(--paper);border:0;position:relative;overflow:hidden}
+.intro::after{content:"";position:absolute;right:-30px;bottom:-40px;width:150px;height:150px;background:url(assets/mark-white.png) center/contain no-repeat;opacity:.08;pointer-events:none}
+.intro .px{font-family:var(--f-px);color:var(--cyan);font-size:11px;letter-spacing:.06em}
+.intro h1{font-size:19px;line-height:1.45;margin:6px 0 8px;letter-spacing:-.03em;font-weight:900;text-wrap:balance}
+.intro p{margin:0;color:#B9C3E0;font-size:13.5px;line-height:1.65;position:relative}
+.intro .run{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.1);font-size:12.5px;font-weight:700}
+.sh{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:0 0 10px}
+.sh h2{font-size:15px;margin:0;letter-spacing:-.02em}
+.sh .ct{font-family:var(--f-px);font-size:12px;color:var(--blue)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.step{display:grid;grid-template-columns:32px minmax(0,1fr);gap:2px 10px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--mist)}
+.step .no{grid-row:span 3;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:var(--navy);color:var(--paper);font-family:var(--f-px);font-weight:700;font-size:14px}
+.step.done .no{background:var(--ok)}
+.step h3{margin:0;font-size:14px;line-height:1.45;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.step .meta{font-size:12.5px;color:var(--muted);line-height:1.5}
+.step .acts{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.st{font-size:11px;font-weight:700;padding:0 8px;border-radius:999px;background:var(--paper);border:1px solid var(--line);color:var(--muted);line-height:1.7;white-space:nowrap}
+.st.ok{background:var(--ok-bg);color:var(--ok);border-color:transparent}
+.st.go{background:var(--cyan-soft);color:var(--cyan-ink);border-color:transparent}
+.stamps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.stamp{position:relative;aspect-ratio:1.3;border-radius:12px;border:1.5px dashed #C3CEE4;background:var(--paper);display:grid;place-items:center;padding:8px;min-width:0}
+.stamp img{max-width:100%;max-height:26px;filter:grayscale(1);opacity:.32}
+.stamp.on{border:2px solid var(--navy)}
+.stamp.on img{filter:none;opacity:1}
+.stamp.on::after{content:"";position:absolute;right:-6px;top:-6px;width:20px;height:20px;border-radius:50%;border:2px solid var(--paper);background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7'/%3E%3C/svg%3E") center/11px no-repeat}
+.stamp .tag{position:absolute;left:6px;bottom:3px;font-family:var(--f-px);font-size:8.5px;color:var(--muted);letter-spacing:.04em}
+.hint{margin:10px 0 0;font-size:12.5px;color:var(--muted);line-height:1.55}
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.flow li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:10px;padding:9px 0;border-top:1px dashed var(--line)}
+.flow li:first-child{border-top:0;padding-top:0}
+.flow .ph{font-family:var(--f-px);font-size:11px;font-weight:700;color:var(--blue);padding-top:2px}
+.flow b{display:block;font-size:13.5px}
+.flow span{font-size:12.5px;color:var(--muted)}
+.flow li.live .ph{color:var(--ok)}
+.foot-note{font-size:12px;color:var(--muted);padding:0 4px;line-height:1.6}
+.foot-note code{font-family:var(--f-mono);font-size:12px;color:var(--ink);user-select:all}
+
+/* ---------- TBD chip (안내페이지와 같은 표기) ---------- */
+.tbd{display:inline-flex;align-items:center;gap:4px;padding:0 9px;border:1.5px dashed var(--amber-line);background:var(--amber-bg);color:var(--amber-ink);border-radius:999px;font-size:12px;font-weight:700;line-height:1.75;white-space:nowrap;vertical-align:baseline}
+.tbd::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--amber-line)}
+[hidden]{display:none!important}
+img{max-width:100%}
+
+/* ---------- company data (public-source draft) ---------- */
+.notice{display:flex;align-items:flex-start;gap:8px;padding:9px 18px;background:var(--amber-bg);color:var(--amber-ink);border-bottom:1px solid var(--amber-line);font-size:13px;line-height:1.55;flex:none}
+.notice.ok{background:var(--ok-bg);color:var(--ok);border-color:transparent}
+.notice svg{margin-top:3px}
+.src{display:block;margin-top:6px;font-size:12px;color:var(--muted);line-height:1.55}
+.src a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+.sites{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.sites b{display:inline-block;min-width:5.5em;font-weight:700}
+.news{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.news a{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--paper);text-decoration:none;min-width:0}
+.news a:hover{border-color:var(--cyan)}
+.news b{font-size:14px;line-height:1.45}
+.news span{font-size:12px;color:var(--muted)}
+.slot .v{flex:1 1 100%;min-width:0;font-size:14px;line-height:1.65}
+.talent{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:6px}
+.talent li{padding:8px 10px;border-radius:10px;background:var(--mist);font-size:13.5px;line-height:1.5;min-width:0}
+.talent li b{display:block;font-size:13.5px;color:var(--navy)}
+.talent.third li{background:var(--amber-bg)}
+.flowp{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:4px}
+.flowp span{padding:3px 10px;border-radius:999px;background:var(--navy);color:var(--paper);font-size:12.5px;font-weight:700}
+.flowp i{font-style:normal;color:var(--muted);font-size:12px}
+.chiprow{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.chiprow span{padding:3px 10px;border-radius:999px;background:var(--cyan-soft);color:var(--cyan-ink);font-size:12.5px;font-weight:700}
+.recent{padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--mist);margin-bottom:16px}
+.recent h4{margin:0 0 2px;font-size:14.5px}
+.essay{margin-top:14px;padding:14px 16px;border-radius:14px;border:2px solid var(--navy);background:var(--paper)}
+.essay h4{margin:0 0 4px;font-size:14.5px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.essay ol{margin:6px 0 0;padding-left:20px;font-size:14px;line-height:1.7}
+.me{display:grid;gap:8px}
+.me .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+.me input,.me select{padding:8px 10px;font-size:14px}
+.me label{font-size:12.5px;font-weight:700;color:var(--muted);display:grid;gap:3px}
+.who{margin-top:16px;padding:12px 14px;border-radius:12px;background:var(--mist);border:1px solid var(--line)}
+.who .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:6px}
+.who label{font-size:12.5px;font-weight:700;color:var(--muted);display:grid;gap:3px}
+.who input,.who select{padding:8px 10px;font-size:14px}
+@media (max-width:600px){.who .row{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- sheet (modal) ---------- */
+.sheet-wrap{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.scrim{position:absolute;inset:0;background:var(--scrim)}
+.sheet{position:relative;width:min(880px,100%);max-height:100%;display:flex;flex-direction:column;background:var(--paper);border:3px solid var(--navy);border-radius:18px;box-shadow:0 8px 0 var(--navy);overflow:hidden}
+.sh-head{display:flex;gap:14px;align-items:center;padding:16px 18px;background:var(--navy);color:var(--paper);flex:none}
+.sh-head .lg{width:104px;height:58px;border-radius:10px;background:var(--paper);display:grid;place-items:center;padding:8px 10px;flex:none}
+.sh-head .lg img{max-width:100%;max-height:40px}
+.sh-head .lg.badge{width:58px;background:var(--cyan);color:var(--navy);font-family:var(--f-px);font-weight:700;font-size:24px}
+.sh-head .lg.badge svg{width:28px;height:28px}
+.sh-head .tt{min-width:0;flex:1}
+.sh-head .px{font-family:var(--f-px);font-size:11px;color:var(--cyan);letter-spacing:.06em}
+.sh-head h2{margin:0;font-size:20px;letter-spacing:-.03em;line-height:1.35;outline:none}
+.sh-head .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{font-size:12px;font-weight:700;padding:1px 10px;border-radius:999px;background:rgba(255,255,255,.12);color:var(--paper);line-height:1.7}
+.chip.new{background:var(--cyan);color:var(--navy)}
+.x{align-self:flex-start;width:38px;height:38px;border-radius:10px;border:2px solid rgba(255,255,255,.3);background:transparent;color:var(--paper);display:grid;place-items:center;flex:none}
+.x svg{width:18px;height:18px}
+.tabs{display:flex;gap:2px;padding:0 12px;border-bottom:1px solid var(--line);overflow-x:auto;background:var(--paper);flex:none;scrollbar-width:none}
+.tab{padding:12px 12px 10px;border:0;background:none;font-weight:700;font-size:14px;color:var(--muted);border-bottom:3px solid transparent;white-space:nowrap}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--navy);border-bottom-color:var(--cyan)}
+.sh-body{overflow-y:auto;padding:20px 22px 24px;flex:1;min-height:0;overscroll-behavior:contain}
+.sh-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 18px;border-top:1px solid var(--line);background:var(--mist);flex:none}
+.sh-foot .due{font-size:12.5px;color:var(--muted);margin-right:auto}
+@media (max-width:640px){
+  .sheet-wrap{padding:0}
+  .sheet{border-radius:0;border:0;box-shadow:none;height:100%;max-height:none;width:100%}
+  .sh-head{padding-top:calc(14px + env(safe-area-inset-top,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .sh-head .lg{width:72px;height:46px;padding:6px}
+  .sh-head .lg.badge{width:46px}
+  .sh-head h2{font-size:18px}
+  .sh-body{padding:18px max(16px,env(safe-area-inset-right,0px)) 22px max(16px,env(safe-area-inset-left,0px))}
+  .sh-foot{padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+  .sh-foot .due{width:100%}
+}
+
+/* sheet content */
+.lead{margin:0 0 16px;font-size:15.5px;line-height:1.7;max-width:44em}
+.h{margin:22px 0 8px;font-size:15.5px;letter-spacing:-.02em;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.h:first-child{margin-top:0}
+.h small{font-size:12.5px;font-weight:500;color:var(--muted)}
+.note{margin:12px 0 0;font-size:13px;color:var(--muted);line-height:1.6}
+.kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0;margin:0 0 18px;border-top:1px solid var(--line);font-size:14.5px}
+.kv dt,.kv dd{margin:0;padding:10px 0;border-bottom:1px solid var(--line)}
+.kv dt{color:var(--muted);font-weight:700;padding-right:22px;white-space:nowrap}
+.kv dd a{color:var(--blue);font-weight:700;overflow-wrap:anywhere}
+.kv dd .src a{color:var(--muted);font-weight:400}
+.mission{border:2px solid var(--navy);border-radius:14px;padding:14px 16px;background:var(--cyan-soft);box-shadow:0 3px 0 var(--navy)}
+.mission .px{font-family:var(--f-px);font-size:11px;color:var(--blue);letter-spacing:.06em}
+.mission h4{margin:2px 0 6px;font-size:15px}
+.mission ul{margin:0;padding-left:18px;font-size:14px;line-height:1.7}
+.tgroup{margin-top:14px}
+.tgroup:first-child{margin-top:0}
+.tgh{display:flex;align-items:center;gap:8px;margin:0 0 8px;font-size:14.5px;font-weight:800}
+.tid{font-family:var(--f-px);font-size:11.5px;font-weight:700;background:var(--navy);color:var(--cyan);border-radius:6px;padding:1px 7px}
+.jobs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.job{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--mist);min-width:0}
+.job b{font-size:14.5px;line-height:1.4}
+.job span{font-size:13px;color:var(--muted);line-height:1.55}
+.job .pick{margin-top:auto;align-self:flex-start;border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:2px 9px;font-size:12px;font-weight:700;color:var(--navy)}
+.job .pick[aria-pressed="true"]{background:var(--navy);color:var(--paper);border-color:var(--navy)}
+.slots{display:grid;gap:8px;margin-bottom:16px}
+.slot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px;padding:12px 14px;border-radius:12px;border:1px solid var(--line)}
+.slot .k{font-weight:700;font-size:14.5px}
+.vid{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:14px;background:repeating-linear-gradient(45deg,#1B2452 0 14px,#1F2A5E 14px 28px);display:grid;place-items:center;color:var(--paper);text-align:center;padding:16px;margin-bottom:16px}
+.vid .pl{width:58px;height:58px;border-radius:14px;background:var(--cyan);color:var(--navy);display:grid;place-items:center;margin:0 auto 10px;box-shadow:0 4px 0 #0B1030}
+.vid .pl svg{width:26px;height:26px;fill:currentColor;stroke:none}
+.vid p{margin:6px 0 0;font-size:13px;color:#B9C3E0}
+.qs{margin:0;padding-left:22px;font-size:14.5px;line-height:1.8}
+.roles{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.role{padding:14px 16px;border-radius:12px;background:var(--mist);border:1px solid var(--line);min-width:0}
+.role .tag{font-family:var(--f-mono);font-size:11.5px;color:var(--blue)}
+.role h4{margin:2px 0 4px;font-size:15px}
+.role p{margin:0;font-size:13.5px;color:var(--muted)}
+
+/* forms */
+.fld{display:grid;gap:6px;margin-top:14px}
+.fld:first-child{margin-top:0}
+.fld label,.fld .lb{font-weight:700;font-size:14px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.fld label small,.fld .lb small{font-weight:500;font-size:12.5px;color:var(--muted)}
+.no-b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--navy);color:var(--paper);font-family:var(--f-px);font-size:11px;flex:none}
+input[type=text],select,textarea{width:100%;min-width:0;border:1.5px solid #C9D3E6;border-radius:10px;padding:10px 12px;background:var(--paper);font-size:14.5px;line-height:1.55}
+textarea{resize:vertical;min-height:76px}
+input[type=text]:focus,select:focus,textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(39,185,207,.25)}
+textarea:disabled{background:repeating-linear-gradient(45deg,#F3F6FC 0 10px,#EBEFF7 10px 20px);color:var(--muted)}
+.cnt{justify-self:end;font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.qrow{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:center}
+.qrow .qn{font-family:var(--f-px);font-size:12px;color:var(--blue)}
+.check{display:flex;gap:8px;align-items:flex-start;font-size:14px}
+.check input{width:18px;height:18px;margin-top:3px;accent-color:var(--navy);flex:none}
+.opts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.opt{display:flex;flex-direction:column;align-items:flex-start;gap:1px;padding:10px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);text-align:left;min-width:0}
+.opt b{font-family:var(--f-px);font-size:10.5px;color:var(--blue);line-height:1.35;font-weight:400}
+.opt span{font-size:13.5px;font-weight:700;line-height:1.4}
+.opt[aria-pressed="true"]{border-color:var(--navy);background:var(--navy);color:var(--paper)}
+.opt[aria-pressed="true"] b{color:var(--cyan)}
+.matrix{display:grid;grid-template-columns:96px repeat(3,minmax(0,1fr));gap:8px}
+.matrix .mh{display:flex;align-items:center;font-size:13px;font-weight:800;color:var(--muted)}
+.tbtn{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:0;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);text-align:left}
+.tbtn .tidl{font-family:var(--f-px);font-size:11.5px;color:var(--blue)}
+.tbtn b{font-size:14px;line-height:1.4}
+.tbtn .ind{display:none;font-size:12px;color:var(--muted)}
+.tbtn .rec{position:absolute;right:8px;top:8px;font-size:10.5px;font-weight:800;background:var(--cyan);color:var(--navy);border-radius:999px;padding:0 7px;line-height:1.7}
+.tbtn[aria-pressed="true"]{border-color:var(--navy);background:var(--navy);color:var(--paper)}
+.tbtn[aria-pressed="true"] .tidl{color:var(--cyan)}
+.tbtn[aria-pressed="true"] .ind{color:#B9C3E0}
+.jpick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.jp{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--mist);text-align:left;min-width:0}
+.jp b{font-size:14px}
+.jp span{font-size:12.5px;color:var(--muted);line-height:1.5}
+.jp[aria-pressed="true"]{border-color:var(--cyan);background:var(--cyan-soft);box-shadow:0 0 0 3px rgba(39,185,207,.25)}
+.rates{display:grid;gap:8px}
+.rate{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 12px;border-radius:12px;background:var(--mist)}
+.rate b{font-size:14px}
+.rate small{display:block;font-size:12px;color:var(--muted);font-weight:400}
+.dots{display:flex;gap:4px}
+.dots button{width:30px;height:30px;border-radius:8px;border:1.5px solid #C9D3E6;background:var(--paper);font-family:var(--f-px);font-size:11px;color:var(--muted)}
+.dots button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--cyan)}
+.empty{padding:14px 16px;border-radius:12px;border:1.5px dashed #C3CEE4;color:var(--muted);font-size:14px;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between}
+.msg{margin:14px 0 0;padding:10px 14px;border-radius:10px;font-size:13.5px;line-height:1.6}
+.msg.ok{background:var(--ok-bg);color:var(--ok)}
+.msg.warn{background:var(--amber-bg);color:var(--amber-ink)}
+.pipe{list-style:none;margin:0 0 18px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;counter-reset:p}
+.pipe li{position:relative;padding:12px 12px 12px;border-radius:12px;background:var(--mist);border:1px solid var(--line);font-size:13px;line-height:1.5;min-width:0}
+.pipe li b{display:block;font-size:14px}
+.pipe li .d{font-family:var(--f-mono);font-size:11.5px;color:var(--blue)}
+.pipe li.hi{background:var(--navy);color:var(--paper);border-color:var(--navy)}
+.pipe li.hi .d{color:var(--cyan)}
+.qlist{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.qlist li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:start;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--paper)}
+.qlist .co{font-size:12px;font-weight:800;color:var(--blue);display:block}
+.qlist .del{border:0;background:var(--mist);border-radius:8px;width:30px;height:30px;display:grid;place-items:center;color:var(--muted)}
+.addq{display:grid;grid-template-columns:180px minmax(0,1fr) auto;gap:8px;margin-top:10px}
+.lock{display:flex;align-items:center;gap:8px;margin:0 0 6px;font-size:13px;font-weight:700;color:var(--muted)}
+.lock svg{color:var(--amber)}
+.phase{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.phase span{padding:4px 12px;border-radius:999px;font-size:13px;font-weight:700;border:1.5px solid var(--line);color:var(--muted)}
+.phase span.on{background:var(--navy);color:var(--paper);border-color:var(--navy)}
+.qa4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.qa4 .box{padding:14px;border-radius:14px;border:1px solid var(--line);background:var(--mist);min-width:0}
+.qa4 .box h4{margin:0 0 2px;font-size:14.5px}
+.qa4 .box p{margin:0 0 8px;font-size:12.5px;color:var(--muted)}
+.qa4 .box input,.qa4 .box textarea{margin-top:6px}
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.tl li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:14px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--mist)}
+.tl li.hi{background:var(--navy);color:var(--paper);border-color:var(--navy)}
+.tl .when{font-family:var(--f-px);font-size:11.5px;color:var(--blue);line-height:1.5}
+.tl li.hi .when{color:var(--cyan)}
+.tl .when b{display:block;font-family:var(--f-kr);font-size:15px;color:inherit}
+.tl li.hi .when b{color:var(--paper)}
+.tl h4{margin:0 0 4px;font-size:15px}
+.tl p{margin:0;font-size:13.5px;line-height:1.6;color:var(--muted)}
+.tl li.hi p{color:#C9D2EC}
+.ctable{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
+.ctable th,.ctable td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.ctable thead th{background:var(--navy);color:var(--paper);font-size:13px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin-top:8px}
+.lgroup{margin-top:18px}
+.lgroup:first-child{margin-top:0}
+.lrows{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.lrow{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 12px;border-radius:12px;border:1px solid var(--line)}
+.lrow .lg{height:40px;border-radius:8px;background:var(--mist);display:grid;place-items:center;padding:6px}
+.lrow .lg img{max-width:100%;max-height:26px}
+.lrow .lg.ic{background:var(--navy);color:var(--cyan);font-family:var(--f-px);font-size:15px}
+.lrow .lg.ic svg{width:20px;height:20px}
+.lrow b{display:block;font-size:14.5px}
+.lrow span{font-size:12.5px;color:var(--muted)}
+.lrow .a{display:flex;gap:6px}
+.ctrl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 18px;margin:0;font-size:14.5px}
+.ctrl dt{font-weight:800}
+.ctrl dd{margin:0;color:var(--muted)}
+.ctrl kbd{font-family:var(--f-px);font-size:11px;background:var(--navy);color:var(--paper);border-radius:5px;padding:1px 6px}
+
+.toast{position:fixed;left:50%;top:calc(76px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:90;display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;background:var(--navy);color:var(--paper);font-weight:700;font-size:14px;border:2px solid var(--cyan);box-shadow:0 4px 0 #0B1030;max-width:calc(100% - 32px)}
+.toast svg{color:var(--cyan)}
+
+@media (max-width:1020px){
+  .main{grid-template-columns:minmax(0,1fr) 320px}
+}
+@media (max-width:900px){
+  .app{height:auto;min-height:100%}
+  .main{grid-template-columns:minmax(0,1fr);grid-template-rows:auto}
+  .stage{height:min(68svh,600px);min-height:400px}
+  .side{overflow:visible}
+  .jobs,.jpick{grid-template-columns:minmax(0,1fr)}
+  .opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pipe{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .opts .opt:last-child{grid-column:1/-1}
+}
+@media (max-width:600px){
+  .tb-title{display:none}
+  .tb-logo{height:26px}
+  .hchip{padding:4px 10px;font-size:12px}
+  .minimap{width:92px;height:60px}
+  .hud{max-width:calc(100% - 130px)}
+  .keys{display:none}
+  .matrix{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .matrix .mh{display:none}
+  .tbtn .ind{display:block}
+  .row2,.qa4{grid-template-columns:minmax(0,1fr)}
+  .addq{grid-template-columns:minmax(0,1fr)}
+  .tl li{grid-template-columns:minmax(0,1fr);gap:6px}
+  .lrow{grid-template-columns:60px minmax(0,1fr)}
+  .lrow .a{grid-column:1/-1}
+  .dlg{gap:10px;padding:12px}
+  .dlg canvas{width:48px;height:48px}
+  .pipe{grid-template-columns:minmax(0,1fr)}
+}
+@media (pointer:coarse){.act kbd{display:none}}
+@media (prefers-reduced-motion:reduce){.act{animation:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+  <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21l2-4M16 21l-2-4M7 9h5M7 12h8"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h7"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-anchor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.2"/><path d="M12 7.2V21M7 11h10M4.5 14a7.5 7.5 0 0 0 15 0"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 12h6M9 16h6"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
+</svg>
+
+<div class="app">
+  <header class="topbar">
+    <div class="tb gut">
+      <img class="tb-logo" src="assets/logo-white.png" alt="ULTRA ANCHOR">
+      <div class="tb-title"><span class="px">ANCHOR HARBOR · ONLINE JOB FAIR</span><b>온라인 채용박람회 · 앵커기업관</b></div>
+      <div class="tb-meta">
+        <span class="hchip">워케이션 <b id="dday">D-12</b></span>
+        <span class="hchip">사전과제 <b id="progTop">0/4</b></span>
+      </div>
+    </div>
+  </header>
+  <div class="draft gut"><p id="draftTxt"><b>시안</b> · 기업 정보는 공개자료로 만든 초안이라 기업 확인 후 바뀔 수 있어요. 입력한 내용은 이 브라우저에만 임시 저장되고, 실제로 제출되지는 않습니다.</p></div>
+
+  <main class="main gut">
+    <section class="stage" id="stage" aria-label="채용박람회 지도">
+      <canvas id="cv" tabindex="0" aria-label="앵커 하버 지도. 방향키로 이동하고 건물 앞에서 F 키로 들어갑니다. 아래 도구 막대의 목록 보기에서 모든 장소를 바로 열 수 있습니다."></canvas>
+      <div class="hud">
+        <span class="zone"><svg class="i"><use href="#i-pin"/></svg><span id="zone">입항 광장</span></span>
+        <span class="keys"><kbd>←↑→↓</kbd> 이동 <kbd>F</kbd> 입장 · 클릭해도 이동해요</span>
+      </div>
+      <canvas id="mini" class="minimap" width="138" height="90" aria-label="미니맵. 누르면 그 위치로 이동합니다." role="img"></canvas>
+      <button id="act" class="act" type="button" hidden><kbd>F</kbd><span id="actTxt">입장하기</span></button>
+      <div id="dlg" class="dlg" role="dialog" aria-label="앵커 가이드" hidden>
+        <canvas id="face" width="16" height="16" aria-hidden="true"></canvas>
+        <div class="txt">
+          <div class="nm">앵커 가이드 <span>GUIDE NPC</span></div>
+          <p id="dlgTxt"></p>
+          <div class="ch" id="dlgCh"></div>
+        </div>
+        <button class="x" type="button" data-dlg-close aria-label="대화 닫기"><svg class="i"><use href="#i-x"/></svg></button>
+      </div>
+      <nav class="toolbar" aria-label="지도 도구">
+        <button class="tool" type="button" data-tool="list"><svg class="i"><use href="#i-list"/></svg>목록 보기</button>
+        <button class="tool" type="button" data-tool="board"><svg class="i"><use href="#i-board"/></svg>직무지도</button>
+        <button class="tool" type="button" data-tool="pier"><svg class="i"><use href="#i-flag"/></svg>11.20 안내</button>
+        <button class="tool" type="button" data-tool="help"><svg class="i"><use href="#i-help"/></svg>조작법</button>
+        <button class="tool" type="button" data-tool="avatar"><span class="sw" id="sw"></span>아바타</button>
+      </nav>
+      <p id="sr" class="sr" aria-live="polite"></p>
+    </section>
+
+    <aside class="side" aria-label="나의 사전과제">
+      <div class="card intro">
+        <span class="px">ANCHOR HARBOR · ONLINE JOB FAIR</span>
+        <h1>앵커기업관을 둘러보고, 11.20 진로 토크콘서트에서 현직자를 만나요</h1>
+        <p>6개 앵커기업관과 2개 커리어 탐색관을 둘러보며 사전과제 4단계를 마치세요. 여기서 남긴 질문은 11.20(금) 오후 현직자 진로 토크콘서트에서 답을 들어요.</p>
+        <span class="run">운영 11.12(목) – 11.18(수) <span class="tbd">안</span></span>
+      </div>
+
+      <section class="card">
+        <div class="sh"><h2>참가자 정보</h2><span class="ct" id="meState">입력 전</span></div>
+        <div class="me">
+          <label for="me-name">이름<input type="text" id="me-name" maxlength="20" data-bind="me.name" autocomplete="name"></label>
+          <div class="row">
+            <label for="me-univ">소속 대학<select id="me-univ" data-bind="me.univ"><option value="">선택</option><option>단국대학교</option><option>건양대학교</option><option>계명대학교</option><option>아주대학교</option><option>유한대학교</option></select></label>
+            <label for="me-sid">학번<input type="text" id="me-sid" maxlength="15" inputmode="numeric" data-bind="me.sid"></label>
+          </div>
+        </div>
+        <p class="hint" id="meHint">과제를 제출할 때 함께 보내져요.</p>
+      </section>
+
+      <section class="card">
+        <div class="sh"><h2>나의 사전과제</h2><span class="ct" id="progSide">0/4</span></div>
+        <ol class="steps" id="stepList"></ol>
+      </section>
+
+      <section class="card">
+        <div class="sh"><h2>기업관 스탬프</h2><span class="ct" id="stampN">0/8</span></div>
+        <div class="stamps" id="stamps"></div>
+        <p class="hint">기업관에 들어가면 스탬프가 찍혀요. 내 트랙 분야 2곳과 다른 분야 1곳, 모두 3곳 이상 둘러보세요.</p>
+      </section>
+
+      <section class="card">
+        <div class="sh"><h2>현장으로 이어져요</h2></div>
+        <ol class="flow">
+          <li class="live"><span class="ph">PRE</span><div><b>온라인 기업관 · 사전과제</b><span>11.12(목) – 11.18(수) · 질문은 11.18에 기업에 전달</span></div></li>
+          <li><span class="ph">DAY 1</span><div><b>트랙별 실습 · 현직자 진로 토크콘서트</b><span>11.20(금) · 토크콘서트 16:00부터 약 1시간 30분, 남긴 질문에 답해요</span></div></li>
+          <li><span class="ph">DAY 2</span><div><b>2일차 프로그램</b><span>11.21(토) · 추후 안내</span></div></li>
+          <li><span class="ph">POST</span><div><b>지원서 완성 · 멘토 피드백</b><span>11.22(일) – 12.4(금)</span></div></li>
+        </ol>
+      </section>
+
+      <p class="foot-note">기업 정보는 각 기업의 검수를 거쳐 확정됩니다. 문의 <code>ai.bio.engine@gmail.com</code><br>AI기반 첨단바이오사업단 / 주관 단국대 · 참여 건양대 · 계명대 · 아주대 · 유한대</p>
+    </aside>
+  </main>
+</div>
+
+<div id="sheet" class="sheet-wrap" hidden>
+  <div class="scrim" data-close></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle"></div>
+</div>
+<div id="toast" class="toast" role="status" hidden><svg class="i"><use href="#i-star"/></svg><span id="toastTxt"></span></div>
+
+<script>
+(() => {
+'use strict';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const RM = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)').matches : false;
+const icon = (id, cls = 'i') => `<svg class="${cls}"><use href="#${id}"/></svg>`;
+
+/* ================= dates (KST) ================= */
+const DAY = 864e5;
+const kst = new Date(Date.now() + 9 * 36e5);
+const today = Date.UTC(kst.getUTCFullYear(), kst.getUTCMonth(), kst.getUTCDate());
+const D_EVENT = Date.UTC(2026, 10, 20);
+const D_UNLOCK = Date.UTC(2026, 10, 21);
+const dLeft = Math.round((D_EVENT - today) / DAY);
+const unlocked = today >= D_UNLOCK;
+$('#dday').textContent = dLeft > 0 ? `D-${dLeft}` : dLeft === 0 ? 'D-DAY' : dLeft === -1 ? 'DAY 2' : 'END';
+
+/* ================= state ================= */
+const KEY = 'ua-jobfair-v1';
+const S = {
+  visited: [], star: '', track: '', job: '', rate: {}, notes: {},
+  t2: { co: '', a1: '', a2: '', a3: '', a4: '', a5: '', q: ['', '', ''], ai: false, aiNote: '', src: '', done: false },
+  t3: { pick: [true, true, true], extra: [], rt1: '', rt2: '', done: false },
+  t4: { co: '', m: {}, e: {}, done: false },
+  me: { name: '', univ: '', sid: '' }, t1done: false, sent: {},
+  shirt: 0, welcomed: false
+};
+
+/* ================= 구글 폼 연결 =================
+ * 1) 구글 폼에 질문 6개를 이 순서로 만듭니다(모두 '단답형', 마지막만 '장문형'):
+ *    이름 · 소속 대학 · 학번 · 과제 단계 · 기업 · 제출 내용
+ *    폼 설정에서 '로그인 필요'와 '이메일 주소 수집'은 꺼 두세요. 켜면 이 페이지에서 보낸 응답이 저장되지 않습니다.
+ * 2) 폼 편집 화면 ⋮ → '미리 채워진 링크 가져오기'에서 칸마다 NAME, UNIV, SID, STEP, COMPANY, CONTENT 를 그대로 적고
+ *    '링크 가져오기' → '링크 복사'.
+ * 3) 아래 따옴표 안에 붙여 넣습니다. 비워 두면 시안 모드(브라우저에만 저장, 제출 안 됨)로 동작합니다.
+ */
+const FORM_PREFILL_URL = '';
+const FORM = (() => {
+  if (!FORM_PREFILL_URL) return null;
+  try {
+    const u = new URL(FORM_PREFILL_URL);
+    const e = {};
+    u.searchParams.forEach((v, k) => { if (k.startsWith('entry.')) e[v.trim().toUpperCase()] = k; });
+    const need = ['NAME', 'UNIV', 'SID', 'STEP', 'COMPANY', 'CONTENT'];
+    if (!need.every(k => e[k])) { console.warn('구글 폼 링크에 빠진 칸이 있어요:', need.filter(k => !e[k])); return null; }
+    return { action: u.origin + u.pathname.replace(/\/viewform.*$/, '/formResponse'), e };
+  } catch (err) { console.warn('구글 폼 링크를 읽지 못했어요', err); return null; }
+})();
+async function sendForm(step, company, content) {
+  const body = new URLSearchParams();
+  body.append(FORM.e.NAME, S.me.name.trim());
+  body.append(FORM.e.UNIV, S.me.univ);
+  body.append(FORM.e.SID, S.me.sid.trim());
+  body.append(FORM.e.STEP, step);
+  body.append(FORM.e.COMPANY, company || '');
+  body.append(FORM.e.CONTENT, content);
+  await fetch(FORM.action, { method: 'POST', mode: 'no-cors', body });
+}
+const meReady = () => !!(S.me.name.trim() && S.me.univ && S.me.sid.trim());
+const stamp = () => { const d = new Date(Date.now() + 9 * 36e5); return `${d.getUTCMonth() + 1}.${d.getUTCDate()} ${String(d.getUTCHours()).padStart(2, '0')}:${String(d.getUTCMinutes()).padStart(2, '0')}`; };
+/* 제출 공통: 시안 모드면 완료 표시만, 폼이 연결되면 전송 */
+async function submitStep(n, label, company, content, msgEl, okText) {
+  if (FORM && !meReady()) {
+    msgEl.innerHTML = '<p class="msg warn">아래 제출자 정보(이름 · 소속 대학 · 학번)를 먼저 채워 주세요.</p>';
+    const w = $('.who', sheetEl); if (w) w.scrollIntoView({ block: 'center' });
+    return false;
+  }
+  if (!FORM) {
+    msgEl.innerHTML = `<p class="msg ok">${esc(okText)} 시안이라 실제로 전송되지는 않아요. 구글 폼을 연결하면 사업단으로 전송됩니다.</p>`;
+    return true;
+  }
+  msgEl.innerHTML = '<p class="msg ok">보내는 중이에요…</p>';
+  try {
+    await sendForm(label, company, content);
+    S.sent[n] = stamp(); save();
+    msgEl.innerHTML = `<p class="msg ok">${esc(okText)} 사업단으로 보냈어요(${esc(S.sent[n])}). 고쳐서 다시 내면 마지막 제출본을 기준으로 봐요.</p>`;
+    return true;
+  } catch (err) {
+    msgEl.innerHTML = '<p class="msg warn">보내지 못했어요. 인터넷 연결을 확인하고 다시 눌러 주세요. 계속 안 되면 ai.bio.engine@gmail.com으로 알려 주세요.</p>';
+    return false;
+  }
+}
+const whoHtml = () => FORM ? `<div class="who"><b style="font-size:13.5px">제출자 정보</b> <small style="color:var(--muted)">오른쪽 참가자 정보와 같아요</small>
+  <div class="row"><label for="w-name">이름<input type="text" id="w-name" maxlength="20" data-bind="me.name"></label>
+  <label for="w-univ">소속 대학<select id="w-univ" data-bind="me.univ"><option value="">선택</option><option>단국대학교</option><option>건양대학교</option><option>계명대학교</option><option>아주대학교</option><option>유한대학교</option></select></label>
+  <label for="w-sid">학번<input type="text" id="w-sid" maxlength="15" inputmode="numeric" data-bind="me.sid"></label></div></div>` : '';
+function deepAssign(t, s) {
+  for (const k in s) {
+    if (s[k] && typeof s[k] === 'object' && !Array.isArray(s[k]) && t[k] && typeof t[k] === 'object' && !Array.isArray(t[k])) deepAssign(t[k], s[k]);
+    else t[k] = s[k];
+  }
+}
+try { const v = JSON.parse(localStorage.getItem(KEY) || 'null'); if (v && typeof v === 'object') deepAssign(S, v); } catch (e) { /* storage unavailable */ }
+let saveTimer = 0;
+function save() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* ignore */ } }, 200);
+}
+function getPath(path) { return path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), S); }
+function setPath(path, val) {
+  const ks = path.split('.'); let o = S;
+  for (let i = 0; i < ks.length - 1; i++) { if (o[ks[i]] == null) o[ks[i]] = {}; o = o[ks[i]]; }
+  o[ks[ks.length - 1]] = val;
+}
+
+/* ================= content ================= */
+const TRACKS = {
+  T1: { ind: 'pharma', grp: '품질·제조', name: '제약·바이오 품질·제조', jobs: [
+    ['QC 품질관리', '원료와 완제품을 시험·분석해 규격에 맞는지 확인해요'],
+    ['QA 품질보증', 'GMP 문서와 일탈·변경을 관리하고 밸리데이션을 맡아요'],
+    ['생산·공정관리', '제조공정을 운영하고 수율과 공정 편차를 관리해요']] },
+  T2: { ind: 'pharma', grp: '연구개발', name: '제약·바이오 연구개발', jobs: [
+    ['제형·공정개발 연구원', '제형을 설계하고 실험실 공정을 생산 규모로 키워요'],
+    ['품질평가 연구원', '분석법을 개발하고 제품 품질을 평가해요'],
+    ['AI 신약개발 연구원', '데이터와 AI로 후보물질을 탐색하고 평가해요']] },
+  T3: { ind: 'pharma', grp: '규제·산업지원', name: '제약·바이오 규제·산업지원', jobs: [
+    ['인허가(RA)', '허가 자료를 작성하고 규제기관 심사에 대응해요'],
+    ['학술·기술마케팅', '제품 근거 자료를 정리해 의료 현장과 시장에 전해요'],
+    ['사업개발(BD)', '기술도입, 수출, 라이선스 같은 사업 기회를 찾아요']] },
+  T4: { ind: 'device', grp: '품질·제조', name: '의료기기 품질·제조', jobs: [
+    ['품질관리·QMS', 'ISO 13485 기반 품질시스템과 문서를 운영해요'],
+    ['제조 엔지니어', '가공·조립 공정을 설계하고 불량을 줄여요'],
+    ['시험·검사', '제품의 성능과 안전성을 시험하고 기록해요']] },
+  T5: { ind: 'device', grp: '연구개발', name: '의료기기 연구개발', jobs: [
+    ['설계·개발 연구원', '제품을 설계하고 시제품을 만들어 성능을 평가해요'],
+    ['체외진단 개발', '진단 시약과 키트를 개발하고 성능을 검증해요'],
+    ['의료AI 성능평가', '의료데이터로 AI·소프트웨어 기능을 검증해요']] },
+  T6: { ind: 'device', grp: '규제·산업지원', name: '의료기기 규제·산업지원', jobs: [
+    ['인허가·국제인증', '국내 허가와 CE·FDA 같은 해외 인증 자료를 준비해요'],
+    ['기술서비스·해외영업', '국내외 고객을 지원하고 제품 교육을 맡아요'],
+    ['사용적합성 평가', '사용자가 제품을 안전하고 쉽게 쓰는지 평가해요']] }
+};
+const IND_KO = { pharma: '제약·바이오', device: '의료기기' };
+const STAR = {
+  Q: { en: 'Quality & Manufacturing', ko: '품질·생산 전문가', rec: ['T1', 'T4'] },
+  G: { en: 'Growth Partner', ko: '성장 파트너', rec: ['T3', 'T6'] },
+  F: { en: 'Founder-in-Training', ko: '예비 창업가', rec: ['T5', 'T3'] },
+  T: { en: 'Tech Transfer Associate', ko: '기술사업화 주니어', rec: ['T3', 'T6'] },
+  AI: { en: 'AI-Native Bio', ko: 'AI·데이터 융합 인재', rec: ['T2', 'T5'] }
+};
+const ROLE = {
+  hire: { tag: '채용연계', t: '이수자 채용연계', d: '과정 이수자를 대상으로 채용연계에 참여합니다. 인턴십·서류 가점 같은 연계 방식은 확정되는 대로 안내합니다.' },
+  yuhanU: { tag: '대학 연계', t: '유한대학교와 함께', d: '제조 허브인 유한대학교와 연계해 생산 현장 중심의 교육을 함께 만듭니다.' },
+  device: { tag: 'DAY 1 · AI의료기기 트랙', t: 'AI의료기기 트랙 멘토링', d: '바이브코딩 워크숍에서 나온 아이디어의 현장 적용 가능성과 사업성에 피드백을 줍니다.' },
+  ktrLab: { tag: 'DAY 1 · AI제약바이오 트랙', t: 'GMP · QA/QC · RA 사례실습', d: '의약품 품질관리와 인허가의 실제 사례로 실습을 진행합니다.' },
+  ktrTour: { tag: '방학 중 별도 운영', t: '시험소 견학', d: '시험·인증이 이뤄지는 현장을 직접 둘러보는 견학을 방학 중에 따로 진행합니다.' },
+  n4uMent: { tag: 'DAY 1 · AI의료기기 트랙', t: '기술지주 멘토링', d: '워크숍 아이디어가 창업이나 기술이전으로 이어질 수 있는지 기술지주 관점에서 피드백합니다.' },
+  startup: { tag: '창업 경로', t: '단계별 창업 지원', d: '예비창업팀 발굴부터 시제품 실증, 법인 설립과 지식재산 보호, 투자 유치까지 단계별로 지원합니다.' },
+  transfer: { tag: '기술사업화', t: '기술이전 · 사업화 연계', d: '대학 연구성과가 기술이전과 사업화로 이어지는 과정을 배울 수 있도록 연계합니다.' }
+};
+const ORGS = [
+  { id: 'yuhan', kind: 'anchor', ind: 'pharma', name: '유한양행', hall: '유한양행관', en: 'Yuhan Corporation', sector: '제약', region: '서울 본사',
+    intro: '1926년 설립된 제약기업입니다. 전문의약품과 신약개발, 생산을 아우르며 국내 제약산업을 이끌어 왔습니다.',
+    url: 'https://www.yuhan.co.kr', logo: 'assets/logos/yuhan.png', meet: ['talk', 'round', 'hire', 'yuhanU'], x: 4, y: 9, roof: 'blue' },
+  { id: 'ckd', kind: 'anchor', ind: 'pharma', name: '종근당', hall: '종근당관', en: 'Chong Kun Dang', sector: '제약', region: '충남 천안 생산공장',
+    intro: '1941년 설립된 제약기업으로, 전문의약품과 신약개발을 이어 오고 있습니다. 충남 천안에 생산공장을 두고 있습니다.',
+    url: 'https://www.ckdpharm.com', logo: 'assets/logos/ckd.png', meet: ['talk', 'round', 'hire'], x: 10, y: 9, roof: 'blue' },
+  { id: 'dasan', kind: 'anchor', ind: 'pharma', name: '다산제약', hall: '다산제약관', en: 'Dasan Pharmaceutical', sector: '제약 · 위탁생산', region: '충남 생산공장',
+    intro: '충남에 생산공장을 둔 제약기업으로, 의약품 제조와 위탁생산을 해 왔습니다.',
+    url: 'http://www.dspharm.com/', logo: 'assets/logos/dasan.png', meet: ['talk', 'round', 'hire'], x: 16, y: 9, roof: 'blue' },
+  { id: 'sdbio', kind: 'anchor', ind: 'device', name: '에스디바이오센서', hall: '에스디바이오센서관', en: 'SD Biosensor', sector: '체외진단', region: '경기 수원 본사',
+    intro: '체외진단 기업으로, 신속진단 키트와 면역진단 장비 같은 진단 제품을 개발하고 생산합니다.',
+    url: 'https://www.sdbiosensor.com', logo: 'assets/logos/sdbio.png', meet: ['talk', 'round', 'hire'], x: 25, y: 9, roof: 'cyan' },
+  { id: 'megagen', kind: 'anchor', ind: 'device', name: '메가젠임플란트', hall: '메가젠임플란트관', en: 'MegaGen Implant', sector: '의료기기 · 치과 임플란트', region: '대구 본사',
+    intro: '대구에 본사를 둔 치과 임플란트 기업으로, 100여 개국에 제품을 공급하고 있습니다.',
+    url: 'https://imegagen.com', logo: 'assets/logos/megagen.png', meet: ['talk', 'round', 'hire', 'device'], x: 31, y: 9, roof: 'cyan' },
+  { id: 'saeshin', kind: 'anchor', ind: 'device', name: '세신정밀', hall: '세신정밀관', en: 'Saeshin Precision', sector: '의료기기 · 치과 장비', region: '대구',
+    intro: '치과용 마이크로모터와 임플란트 수술용 모터 같은 치과 의료기기를 만드는 기업입니다.',
+    url: 'https://www.saeshin.com/kr', logo: 'assets/logos/saeshin.png', meet: ['talk', 'round', 'hire', 'device'], x: 37, y: 9, roof: 'cyan' },
+  { id: 'ktr', kind: 'explore', name: '한국화학융합시험연구원', hall: 'KTR 시험·인증관', short: 'KTR', en: 'KTR', sector: '시험 · 인증',
+    intro: '제품의 품질과 안전성을 시험·검사·인증하는 전문기관입니다. 의료기기와 바이오 분야의 시험인증도 수행합니다.',
+    role: '시험·인증 실습 협력 기관',
+    url: 'https://www.ktr.or.kr', logo: 'assets/logos/ktr.png', meet: ['talk', 'ktrLab', 'ktrTour'], x: 14, y: 3, roof: 'amber',
+    paths: [['시험·분석 연구원', '의약품과 의료기기의 성능·안전성을 시험하고 성적서를 만들어요', 'T1 · T4'],
+      ['인증·심사', '제품이 국내외 규격에 맞는지 심사하고 인증해요', 'T3 · T6'],
+      ['기술지원·컨설팅', '기업의 인허가와 품질시스템 구축을 기술적으로 도와요', 'T3 · T6']] },
+  { id: 'n4u', kind: 'explore', name: '엔포유대학연합기술지주회사', hall: '엔포유 창업·기술사업화관', short: '엔포유', en: 'University Alliance Tech Holdings', sector: '기술지주 · 창업 지원',
+    intro: '여러 대학이 함께 만든 연합 기술지주회사로, 대학의 연구성과를 창업과 기술이전으로 연결합니다.',
+    role: '창업·기술사업화 지원 기관',
+    url: '', logo: 'assets/logos/n4u.png', meet: ['talk', 'n4uMent', 'startup', 'transfer'], x: 27, y: 3, roof: 'amber',
+    paths: [['기술이전 매니저', '대학의 연구성과를 찾아 기업에 이전하고 계약을 조율해요', 'T3'],
+      ['창업 보육·투자 심사', '초기 창업팀을 발굴하고 성장 단계에 맞춰 지원해요', 'T5 · T3'],
+      ['사업화 기획', '기술의 시장성을 분석하고 사업모델을 설계해요', 'T3 · T6']] }
+];
+const ANCHORS = ORGS.filter(o => o.kind === 'anchor');
+const ORG = Object.fromEntries(ORGS.map(o => [o.id, o]));
+/* 기업 정보: data/companies.json 내용을 그대로 넣습니다(기업 확인을 받으면 checked를 true로). */
+const DATA = /*INFO*/{"asOf":"2026.11.08","companies":[{"id":"yuhan","name":"유한양행","checked":false,"intro":{"v":"1926년 유일한 박사가 창립한 제약기업으로, 2026년 창립 100주년을 맞았습니다. 전문·일반의약품과 신약 연구개발을 하며, 폐암 표적항암제 렉라자(레이저티닙)는 2024년 8월 병용요법으로 미국 FDA 허가를 받았습니다.","src":[1,2]},"region":"서울 본사 · 충북 오창공장 · 경기 용인 연구소","sites":{"v":[["본사","서울 동작구"],["오창공장","충북 청주 오창"],["중앙연구소","경기 용인 기흥"],["오송 신공장","충북 청주 오송 · 2026.12 준공 목표"]],"note":"지속가능경영보고서(2023)와 2026년 공고의 근무지를 대조했어요.","src":[3,4]},"talent":{"state":"none","title":"","items":[],"note":"공식 인재상 문구를 공개자료에서 확인하지 못했어요. 참고로 지속가능경영보고서의 핵심가치는 Progress(혁신·개선·진보)와 Integrity(청렴·정직·성실)입니다.","src":[3]},"process":{"steps":["서류전형","AI 역량검사","면접전형","채용검진","인턴(2개월)·최종평가","최종합격"],"note":"2026.07·10 신입(인턴) 공고 기준이에요.","src":[5,6,7]},"timing":{"v":"공채 표기 없이 연중 여러 차례 신입(인턴)·경력 채용을 열어요. 2026년에는 7·8·9·10월에 공고가 있었어요.","src":[7,10]},"jobs":{"list":["약품영업(ETC)","PV(약물감시)","생산","QA","합성신약 연구","바이오CMC","제품제제·제품분석","RA(인허가)"],"note":"2025.09~2026.09 공고 기준이에요. QA는 오창공장, 바이오CMC는 용인 근무로 공고된 적이 있어요.","src":[8,5]},"essay":{"label":"2026.08~09 신입(인턴) 공고 공통 문항","qs":["지원한 직무에 필요한 역량은 무엇이라고 생각하며, 본인이 해당 직무에 적합하다고 판단할 수 있는 근거를 기술하시기 바랍니다.","성격의 장단점을 기술하고, 단점을 극복하기 위해 노력했던 경험이나 사례를 기술하시기 바랍니다.","유한양행에서 이루고 싶은 꿈과 본인의 계획을 기술하시기 바랍니다.","유한양행 홈페이지에서 유일한 정신과 관련된 내용(기업이념, 핵심가치, 인재상, 어록 등) 중 본인과 어울리는 한 가지를 선정하고, 그 이유와 함께 기술하시기 바랍니다."],"note":"5번 문항은 공고마다 달라요. 글자 수 제한은 공개본에 표시되지 않았어요.","src":[9]},"careers":"https://yuhan.recruiter.co.kr","news":[{"t":"유한양행 오송 신공장 기공…年 7억정 경구용 고형제 생산","o":"한국경제","d":"2025.09.19","u":"https://www.hankyung.com/article/202509194662i"},{"t":"TPD·AI·비만과 뉴코 설립...유한양행의 차세대 성장전략","o":"데일리팜","d":"2026.01.21","u":"https://m.dailypharm.com/user/news/335015"}],"ask":["인재상 공식 문구","근무지 최신화(오송 신공장 포함 여부)","자기소개서 문항을 학생에게 보여 줘도 되는지"],"sources":[["데일리메디 2026.10.20 (창립 100주년)","https://dailymedi.com/news/news_view.php?wr_id=941621"],["데일리팜 2024.08.20 (렉라자 FDA 허가)","https://dailypharm.com/user/news/14121"],["유한양행 지속가능경영보고서 2022-2023","https://kind.krx.co.kr/external/2023/07/28/000555/20230728001227/%EC%9C%A0%ED%95%9C%EC%96%91%ED%96%89%20%EC%A7%80%EC%86%8D%EA%B0%80%EB%8A%A5%EA%B2%BD%EC%98%81%EB%B3%B4%EA%B3%A0%EC%84%9C%202022-2023%20%EA%B5%AD%EB%AC%B8.pdf"],["한국경제 2025.09.19 (오송 신공장 기공)","https://www.hankyung.com/article/202509194662i"],["2026.07 신입(인턴) 공고 · 코멘토 게재본","https://comento.kr/career/recruit/%EC%9C%A0%ED%95%9C%EC%96%91%ED%96%89-168388"],["2026.10 신입(인턴) 공고 · 코멘토 게재본","https://comento.kr/career/recruit/%EC%9C%A0%ED%95%9C%EC%96%91%ED%96%89-181140"],["2026.08~09 신입(인턴) 공고 · 사람인","https://m.saramin.co.kr/job-search/view?rec_idx=54865164"],["2026.08~09 신입(인턴) 공고 · 링커리어 게재본","https://linkareer.com/activity/346955"],["2026.08~09 공고 자소서 문항 · 하이잡 게재본","https://www.haijob.co.kr/posting/13556"],["2025 공고 이력 · 자소설닷컴","https://jasoseol.com/recruit/100181"],["데일리팜 2026.01.21 (차세대 성장전략)","https://m.dailypharm.com/user/news/335015"]]},{"id":"ckd","name":"종근당","checked":false,"intro":{"v":"1941년 창립한 제약기업으로 전문·일반의약품과 건강기능식품을 만들고 판매합니다. 1972년 업계 최초로 중앙연구소를 세웠고, 2023년에는 신약 후보물질 CKD-510을 노바티스에 기술수출했습니다.","src":[1,2]},"region":"서울 본사 · 충남 천안공장 · 경기 용인 연구소","sites":{"v":[["본사","서울 서대문구"],["천안공장","충남 천안 서북구"],["효종연구소","경기 용인 기흥"],["배곧 바이오 R&D 단지","경기 시흥 · 건설 중, 2028 하반기 가동 목표"]],"note":"","src":[1,3,12]},"talent":{"state":"none","title":"","items":[],"note":"공식 인재상 문구를 공개자료에서 확인하지 못했어요. 참고로 경영이념은 '우수 의약품을 개발하여 인류건강을 지키며 복지사회 구현에 이바지한다'입니다.","src":[1]},"process":{"steps":["지원서 작성","AI역량검사","서류전형","1·2차 면접","채용검진","최종합격"],"note":"2025.12 천안공장 신입·경력 수시채용 기준이에요.","src":[4,5]},"timing":{"v":"수시채용 중심이에요. 2025.11·12, 2026.04·07·09에 공고가 있었고, 마지막 공개채용은 2024 하반기 제약영업(MR) 공채였어요.","src":[6,7,8]},"jobs":{"list":["바이오QC","바이오생산","GMP 평가","바이오QA","세포주·배양·정제공정 연구","관리약사","마케팅PM","CDMO 사업기획","구매","시장조사(데이터분석)"],"note":"2025.12~2026.07 공고 기준이에요. 천안공장 공고에는 바이오QC·생산·GMP 평가가 있었어요.","src":[4,7,8]},"essay":{"label":"2024 하반기 제약영업(MR) 공채 문항","qs":["해당 직무에 지원한 이유와 종근당 입사 후 목표를 구체적으로 작성해 주십시오.","지원한 직무에서 가장 중요하다고 생각하는 역량을 정의하고, 해당 역량 향상을 위해 노력한 경험을 작성해 주십시오.","현재 또는 과거 소속집단(직장/학교/커뮤니티 등)에서의 경험 중 실패사례와 극복과정을 작성해 주십시오.","자신을 잘 표현할 수 있는 키워드(단어/문장 등)와 그 이유를 지원한 직무와 연결하여 설명해 주십시오."],"note":"2025~2026 신입 공고의 문항은 확인하지 못했어요.","src":[9]},"careers":"https://recruit.ckd.co.kr","news":[{"t":"종근당, 국내 제약업계 최초 AI 지능형 관제시스템 구축","o":"스마트투데이","d":"2025.09.19","u":"https://www.smarttoday.co.kr/ko-kr/articles/91734"},{"t":"종근당, 2.2조 배곧 바이오단지 투자 본격화…사업비 22% 집행","o":"CEO스코어데일리","d":"2026.06.12","u":"https://www.ceoscoredaily.com/page/view/2026061214574216631"}],"ask":["인재상 공식 문구","최근 신입 자기소개서 문항과 학생 공개 가능 여부","천안공장 AI 관제시스템을 '구축'으로 써도 되는지"],"sources":[["종근당 공식 홈페이지 · 기업개요","https://www.ckdpharm.com/company/summary_ckd.do?tab=0"],["머니투데이 2026.04.08 (CKD-510)","https://www.mt.co.kr/thebio/2026/04/08/2026040815251016693"],["종근당홀딩스 2023 지속가능경영보고서","https://kind.krx.co.kr/external/2024/06/21/000560/20240621001286/2023%20%EC%A2%85%EA%B7%BC%EB%8B%B9%ED%99%80%EB%94%A9%EC%8A%A4%20%EC%A7%80%EC%86%8D%EA%B0%80%EB%8A%A5%EA%B2%BD%EC%98%81%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf"],["2025.12 천안공장 수시채용 · 링커리어 게재본","https://linkareer.com/activity/288582"],["2026.01 공고 · 인크루트 게재본","https://job.incruit.com/s_common/jobpost/jobpostcont.asp?job=2512120002142"],["2025.11 신입·경력 수시채용 · 사람인","https://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=52300868"],["2026.04 수시채용 · 링커리어 게재본","https://linkareer.com/activity/315335"],["2026.07 수시채용 · 링커리어 게재본","https://linkareer.com/activity/335517"],["2024 하반기 MR 공채 자소서 문항 · 하이잡 게재본","https://www.haijob.co.kr/posting/5896"],["스마트투데이 2025.09.19 (AI 지능형 관제시스템)","https://www.smarttoday.co.kr/ko-kr/articles/91734"],["CEO스코어데일리 2026.06.12 (배곧 바이오단지)","https://www.ceoscoredaily.com/page/view/2026061214574216631"],["데일리메디 2026.09.14 (배곧 2028 가동 목표)","https://dailymedi.com/news/news_view.php?wr_id=940484"]]},{"id":"dasan","name":"다산제약","checked":false,"intro":{"v":"1996년 원료의약품 유통사로 출발해, 지금은 원료의약품(API)부터 완제의약품까지 만드는 CDMO(위탁개발생산) 기업입니다. 유동층 코팅 같은 약물전달(DDS) 기술로 고혈압·비뇨기·중추신경계 제제를 수탁생산하며, 일본 PMDA의 GMP 실사에서 적합 판정을 받았습니다.","src":[1,2]},"region":"충남 아산 본사·공장","sites":{"v":[["본사·공장","충남 아산 도고면 (아산 제1·2공장)"],["서울 사무소","서울 영등포구"],["R&D","수원시와 R&D 시설 확충 투자협약 (2026.06)"]],"note":"본사 표기가 자료마다 달라(아산/서울) 확인이 필요해요.","src":[3,4,5]},"talent":{"state":"third","title":"기업비전 (채용사이트 기업정보)","items":[["","정도와 원칙"],["","도전과 창의"],["","소통과 협력"],["","사회공헌 추구"]],"note":"채용사이트 기업정보에 실린 기업비전이에요. 공식 인재상인지, 지금도 쓰는 문구인지 확인이 필요해요.","src":[6]},"process":{"steps":[],"note":"공개된 신입 채용 절차를 찾지 못했어요.","src":[]},"timing":{"v":"수시채용으로 보여요. 다만 근거가 2021~2022년 공고와 2026년 경력 공고뿐이에요.","src":[7,4]},"jobs":{"list":["구매","공무(설비보전)","품질보증","생산기획(WMS·MES)"],"note":"2021 상반기 신입·경력 공고 기준이라 오래된 정보예요.","src":[7]},"essay":{"label":"","qs":[],"note":"회사 자체 입사지원서로 받아 문항이 공개되지 않았어요.","src":[]},"careers":"http://www.dspharm.com/jobs/jobs.php","news":[{"t":"다산제약, 단국대와 15억 AI 인재양성·AX 추진","o":"데일리팜","d":"2026.09.14","u":"https://www.dailypharm.com/user/news/342482"},{"t":"다산제약, 일본 PMDA GMP 실사 적합…CNS 사업 확대","o":"데일리팜","d":"2026.08.31","u":"https://dailypharm.com/user/news/341979"}],"ask":["설립일(1996.07 / 1996.12 / 1997.01로 자료마다 다름)","본사 표기(아산 / 서울)","인재상","신입 채용 절차·시기·직무","자기소개서 문항"],"sources":[["데일리팜 2026.07.03 (창립 30년)","https://www.dailypharm.com/user/news/340075"],["데일리팜 2026.08.31 (일본 PMDA GMP 실사 적합)","https://dailypharm.com/user/news/341979"],["잡코리아 기업정보","https://www.jobkorea.co.kr/recruit/co_read/c/dasanmed"],["2026.06 글로벌사업팀 공고 · 잡코리아","https://m.jobkorea.co.kr/Recruit/GI_Read/49441230"],["데일리팜 2026.06 (수원시 R&D 투자협약)","https://dailypharm.com/user/news/340185"],["사람인 기업정보 (기업비전)","https://www.saramin.co.kr/zf_user/company-info/view/csn/U2gwTEpwUFRYdkRIeFVpR0kwb0pCQT09/company_nm/(%EC%A3%BC)%EB%8B%A4%EC%82%B0%EC%A0%9C%EC%95%BD"],["자소설닷컴 채용 이력 (2021~2022)","https://jasoseol.com/companies/11796/careers"],["데일리팜 2026.09.14 (단국대와 AI 인재양성·AX)","https://www.dailypharm.com/user/news/342482"]]},{"id":"sdbio","name":"에스디바이오센서","checked":false,"intro":{"v":"2010년 창립한 체외진단(IVD) 시약·장비 기업입니다. 신속진단(STANDARD Q), 형광면역(STANDARD F), 현장 분자진단(STANDARD M10) 등의 제품군을 갖추고 있으며, 2021년 코스피에 상장했습니다.","src":[1,2]},"region":"경기 수원 본사 · 충북 오송·증평 공장","sites":{"v":[["본사","경기 수원 영통구"],["공장","충북 청주 오송, 충북 증평(M10 카트리지)"],["연구","수원 영통(공고 근무지 기준) · 광교 R&D센터 신설 계획"],["그 밖의 공고 근무지","경기 평택, 경기 용인 기흥, 서울 강남"]],"note":"평택·기흥·강남은 공식 사이트가 아니라 채용공고 근무지로만 확인했어요.","src":[3,2,5,8]},"talent":{"state":"official","title":"","items":[["성실성","기본과 원칙에 따라 업무 수행"],["신뢰성","정직함과 책임으로 솔선수범"],["열정","인류 건강에 기여하는 비전 달성"],["적극성","자유로운 사고와 책임의식"],["팀워크","존중과 배려를 통해 서로 소통"]],"note":"핵심가치: 도전중심 · 효율중심 · 관계중심","src":[4,1]},"process":{"steps":["서류전형","AI역량검사 및 실무면접","최종면접","채용검진","최종합격"],"note":"2025.12·2026.10 신입·경력 공고 기준이에요. 일부 공고에는 AI역량검사가 빠져 있어요.","src":[5,6]},"timing":{"v":"직무별 월간 수시채용이에요. '[N월/신입경력/근무지]' 형식으로 2025.08·12, 2026.07·09·10에 공고가 있었어요.","src":[5,6,7]},"jobs":{"list":["센서개발 연구원","측정기 품질관리","기구설계 개발","IVD·분자진단 해외영업","Field Service Engineer","IP(지식재산) 담당"],"note":"신입 지원이 가능한 2025.08~2026.10 공고 기준이에요.","src":[5,6,7]},"essay":{"label":"2026.10 신입·경력 공고 문항 (2025.12 공고와 같음)","qs":["지원동기와 입사 후 포부를 구체적으로 소개해 주십시오. (500~1,000자)","지원한 직무에 본인이 적합하다고 판단하는 이유와 근거를 작성해 주십시오. (500~1,000자)"],"note":"기구설계 직무는 포트폴리오와 사전과제가 추가돼요.","src":[5]},"careers":"https://www.sdbiosensor.co.kr/recruit/hmr","news":[{"t":"에스디바이오, 광교에 R&D센터","o":"한국경제","d":"2026.03.22","u":"https://www.hankyung.com/article/2026032280411"},{"t":"에스디바이오센서 체질 개선 속도…\"다음 성장축은 CGM\"","o":"메디칼타임즈","d":"2026.07.30","u":"https://medicaltimes.com/Main/News/NewsView.html?ID=1169960"}],"ask":["평택·기흥·강남 사업장을 근무지로 써도 되는지","연구소 위치","전형에 AI역량검사가 늘 포함되는지"],"sources":[["에스디바이오센서 공식 · 회사소개","https://www.sdbiosensor.co.kr/company/about"],["에스디바이오센서 공식 · 연혁","https://www.sdbiosensor.co.kr/company/history"],["에스디바이오센서 공식 · 오시는 길","https://www.sdbiosensor.co.kr/company/location"],["에스디바이오센서 공식 채용 · 인재상","https://www.sdbiosensor.co.kr/recruit/hmr"],["2026.10 기구설계(신입·경력) 공고 · 링커리어 게재본","https://linkareer.com/activity/359663"],["2025.12 평택 측정기 품질관리 공고 · 링커리어 게재본","https://linkareer.com/activity/288440"],["2025.08 센서개발 연구원 공고 · 링커리어 게재본","https://linkareer.com/activity/264659"],["한국경제 2026.03.22 (광교 R&D센터)","https://www.hankyung.com/article/2026032280411"],["메디칼타임즈 2026.07.30 (다음 성장축 CGM)","https://medicaltimes.com/Main/News/NewsView.html?ID=1169960"]]},{"id":"megagen","name":"메가젠임플란트","checked":false,"intro":{"v":"2002년 설립된 치과 임플란트·디지털 치의학 기업입니다. AnyRidge, BLUEDIAMOND Implant 같은 임플란트와 디지털 솔루션 R2GATE를 개발하며, 100개국 이상에 제품을 공급합니다.","src":[1,2]},"region":"대구 본사·공장 · 서울 강남사옥","sites":{"v":[["본사·공장","대구 달성군 다사읍"],["강남사옥","서울 강남구"],["디지털센터","대구 성서5차산단 · 2025.12 가동 목표로 투자협약"],["영업·해외","전국 영업지역, 해외법인"]],"note":"디지털센터가 실제 가동 중인지는 확인하지 못했어요.","src":[3,8,6]},"talent":{"state":"official","title":"다운 사람 · 정직 · 긍정 · 이타심","items":[["Expert","전문적인, 프로다운, 스스로 진화하는"],["Teamwork","소통과 협업이 되는, 함께 가능한, 긍정적인 영향력을 가진"],["Passion","열정적인, 당당한, 도전하는"],["Ownership","주인의식을 겸비한, 책임감 있는, 주도적인"]],"note":"제목 앞에 '메가젠'이 붙는 표기('메가젠다운 사람')인지 확인 중이에요.","src":[3]},"process":{"steps":[],"note":"최근 신입 정규직 공고에는 전형 단계가 공개돼 있지 않아요. 참고로 2025.03 인턴 공고는 서류전형 → 1차면접 → 2차면접 → 최종합격이었어요.","src":[5]},"timing":{"v":"공식 채용사이트 FAQ에 따르면 상시 채용과 상반기·하반기 공고가 함께 있어요. 2025~2026년에는 직무별 공고가 수시로 올라왔어요.","src":[4,6]},"jobs":{"list":["임플란트·의료장비 영업","디지털 파트 PM(계약직)","생산","품질보증·품질관리","구매·물류·수주","연구"],"note":"공식 직무 분류는 영업 / 생산(생산·품질보증·품질관리·구매·물류·수주) / 연구 / 지원이에요. 신입·경력으로 명시된 최근 공고는 영업(경기 화성, 2026.09)과 디지털 PM(계약직, 2025.12)이었어요.","src":[3,6,7]},"essay":{"label":"","qs":[],"note":"공개된 자기소개서 문항을 찾지 못했어요. 공식 FAQ에는 '이력서 자유 양식, 지원동기 포함'으로 안내돼 있어요.","src":[4]},"careers":"https://recruit.imegagen.com","news":[{"t":"메가젠임플란트, 연결기준 사상 최대 실적","o":"치과신문","d":"2026.04.24","u":"https://www.dentalnews.or.kr/mobile/article.html?no=47099"},{"t":"메가젠, SIDEX 2026서 혁신 신제품 대공개","o":"치과신문","d":"2026.05.22","u":"https://dentalnews.or.kr/mobile/article.html?no=47321"}],"ask":["인재상 제목 표기('메가젠다운 사람' 여부)","신입 정규직 전형 절차","디지털센터 가동 여부","자기소개서 문항"],"sources":[["메가젠임플란트 공식 · About","https://imegagen.com/about/about_megagen/"],["치과신문 2026.04.24 (사상 최대 실적)","https://www.dentalnews.or.kr/mobile/article.html?no=47099"],["메가젠 공식 채용사이트 · 인재상","https://recruit.imegagen.com/about/careers"],["메가젠 공식 채용사이트 · FAQ","https://recruit.imegagen.com/faqs/"],["2025.03 미래내일 일경험 인턴 공고 · 사람인","https://m.saramin.co.kr/job-search/view?rec_idx=50355034"],["2026.09 경기서부 영업(신입·경력) 공고 · 잡코리아","https://www.jobkorea.co.kr/Recruit/GI_Read/50080392"],["2025.12 상품개발팀 디지털 PM 공고 · 잡코리아","https://www.jobkorea.co.kr/Recruit/GI_Read/48229853"],["경북매일 2025.04.28 (성서 디지털센터 투자협약)","https://kbmaeil.com/article/20250428500581"],["치과신문 2026.05.22 (SIDEX 2026 신제품)","https://dentalnews.or.kr/mobile/article.html?no=47321"]]},{"id":"saeshin","name":"세신정밀","checked":false,"intro":{"v":"1976년 세신정밀공업사로 창립한 치과용 핸드피스 전문 기업으로, 2026년 창립 50주년을 맞았습니다. 마이크로모터, 임플란트 수술용 모터, 근관치료 모터를 만들어 120개국에 수출합니다.","src":[1,2,4]},"region":"대구 달성 본사·공장","sites":{"v":[["본사·공장","대구 달성군 다사읍 (성서5차산업단지)"],["기업부설연구소","2006년 설립 · 위치 확인 중"]],"note":"","src":[2,3]},"talent":{"state":"third","title":"인재상 (채용사이트 기업정보)","items":[["","회사와 자신의 삶에 신의를 원칙으로 하는 사람"],["","무에서 유를 창조할 때 희열을 느낄 수 있는 사람"],["","젊음을 불태워 세계속에 자아를 찾고자 하는 사람"],["","하고자 하는 목표를 향해 진취적으로 뻗어 나가는 사람"]],"note":"채용사이트 기업정보에 실린 문구예요. 회사 공식 문구인지 확인이 필요해요.","src":[2]},"process":{"steps":[],"note":"2024~2026년에 공개된 채용 공고를 찾지 못했어요.","src":[]},"timing":{"v":"","src":[]},"jobs":{"list":[],"note":"최근 공고를 찾지 못했어요. 2019~2020년 경력 공고는 해외영업·전산 직무였어요.","src":[5]},"essay":{"label":"","qs":[],"note":"공개된 자기소개서 문항을 찾지 못했어요.","src":[]},"careers":"","news":[{"t":"세신정밀, 경북대치과병원에 발전기금 전달","o":"치과신문","d":"2026.10.24","u":"https://www.dentalnews.or.kr/news/article.html?no=48528"},{"t":"미국 FDA 510(k) K251407 승인 · Motor Handpiece and Control Unit (SDI10)","o":"미국 FDA","d":"2026.01.30","u":"https://www.accessdata.fda.gov/cdrh_docs/pdf25/K251407.pdf"}],"ask":["인재상 공식 문구","신입 채용 절차·시기·주요 직무","채용 안내 페이지 주소","연구소 위치"],"sources":[["세신정밀 공식 (영문) 회사소개","http://www.saeshin.com/content/30"],["잡코리아 기업정보","https://m.jobkorea.co.kr/company/42474739"],["미국 FDA 510(k) K251407 (2026.01.30)","https://www.accessdata.fda.gov/cdrh_docs/pdf25/K251407.pdf"],["치과신문 2026.10.24 (창립 50주년 발전기금)","https://www.dentalnews.or.kr/news/article.html?no=48528"],["대구메디온 채용공고 (2019~2020, 경력)","https://medion.re.kr/pt/recruit/dmptRecruitView.do?recSeq=65"]]}]}/*END*/;
+const INFO = Object.fromEntries(DATA.companies.map(c => [c.id, c]));
+ORGS.forEach(o => { const c = INFO[o.id]; if (c) { o.region = c.region; o.intro = c.intro.v; } });
+const srcLine = (c, nums, lead = '출처') => (c && nums && nums.length) ? `<span class="src">${lead}: ${nums.map(n => { const s = c.sources[n - 1]; return s ? `<a href="${esc(s[1])}" target="_blank" rel="noopener">${esc(s[0])}</a>` : ''; }).filter(Boolean).join(' · ')}</span>` : '';
+const FAC = [
+  { id: 'lab', step: 2, name: '기업분석 연구실', sign: 'LAB', x: 6, y: 17, roof: 'indigo' },
+  { id: 'lounge', step: 3, name: '진로 토크 라운지', sign: 'LOUNGE', x: 29, y: 17, roof: 'stripe' },
+  { id: 'desk', step: 4, name: '커리어 데스크', sign: 'DESK', x: 37, y: 17, roof: 'navy' }
+];
+const STEPS = [
+  { n: 1, title: '기업관 둘러보기 + 목표직무 정하기', place: 'board', where: '입항 광장 · 직무지도 게시판', due: '11.14(토)' },
+  { n: 2, title: '기업분석 보고서', place: 'lab', where: '기업분석 연구실', due: '11.17(화)' },
+  { n: 3, title: '현직자에게 질문 남기기', place: 'lounge', where: '진로 토크 라운지', due: '11.17(화)' },
+  { n: 4, title: '입사지원서 뼈대 쓰기', place: 'desk', where: '커리어 데스크', due: '뼈대 11.18(수) · 완성 12.4(금)' }
+];
+const COMP = [
+  ['c1', '산업·제품 이해', '이 산업의 제품과 만드는 과정을 설명할 수 있어요'],
+  ['c2', '품질·규정 문서 이해', 'GMP·QMS 같은 규정과 문서를 읽을 수 있어요'],
+  ['c3', '데이터·AI 활용', '데이터를 정리하고 AI 도구로 분석해 본 적이 있어요'],
+  ['c4', '소통·협업', '팀 프로젝트에서 역할을 맡아 결과를 낸 적이 있어요']
+];
+const APPQ = [
+  ['motive', '지원동기', '왜 이 회사, 이 직무인가요?'],
+  ['skill', '직무역량', '목표직무에 필요한 역량을 무엇으로 증명하나요?'],
+  ['team', '협업·문제해결 경험', '함께 문제를 푼 경험 하나를 고른다면?'],
+  ['future', '입사 후 포부', '입사 3년 뒤 어떤 일을 하고 싶나요?']
+];
+
+/* ================= map grid ================= */
+const T = 16, MW = 46, MH = 30;
+const G = Array.from({ length: MH }, () => Array(MW).fill('G'));
+const BLK = Array.from({ length: MH }, () => new Uint8Array(MW));
+const CLK = Array.from({ length: MH }, () => Array(MW).fill(null));
+const fillG = (x0, y0, x1, y1, t) => { for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) G[y][x] = t; };
+const blockR = (x0, y0, x1, y1) => { for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) BLK[y][x] = 1; };
+const clickR = (x0, y0, x1, y1, id) => { for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) if (y >= 0 && y < MH && x >= 0 && x < MW) CLK[y][x] = id; };
+
+fillG(0, 23, MW - 1, 23, 'S');
+fillG(0, 24, MW - 1, MH - 1, 'W');
+fillG(2, 15, 43, 16, 'B');
+fillG(12, 8, 33, 8, 'P');
+fillG(22, 7, 23, 14, 'P');
+fillG(3, 22, 42, 22, 'P');
+fillG(17, 17, 28, 22, 'Z');
+fillG(22, 23, 23, 26, 'D');
+fillG(21, 27, 24, 28, 'D');
+for (let y = 0; y < MH; y++) for (let x = 0; x < MW; x++) if (G[y][x] === 'W') BLK[y][x] = 1;
+
+const BUILD = [];
+ORGS.forEach(o => BUILD.push({ id: o.id, x: o.x, y: o.y, w: 5, h: 5, roof: o.roof, logo: o.logo, label: o.short ? o.hall : o.name }));
+FAC.forEach(f => BUILD.push({ id: f.id, x: f.x, y: f.y, w: 5, h: 5, roof: f.roof, text: f.sign, label: `${'①②③④'[f.step - 1]} ${f.name}` }));
+BUILD.forEach(b => {
+  blockR(b.x, b.y, b.x + b.w - 1, b.y + b.h - 1);
+  clickR(b.x, b.y, b.x + b.w - 1, b.y + b.h - 1, b.id);
+  if (b.y === 9) fillG(b.x + 1, 14, b.x + 3, 14, 'P');
+});
+
+const TREES = [];
+for (let x = 0; x < MW; x++) TREES.push([x, 0], [x, 1]);
+for (let y = 2; y <= 22; y++) TREES.push([0, y], [1, y], [44, y], [45, y]);
+TREES.push([3, 3], [6, 4], [9, 3], [4, 6], [8, 6], [11, 5], [36, 3], [39, 4], [42, 3], [34, 6], [41, 6], [37, 6],
+  [2, 10], [2, 13], [43, 10], [43, 13], [3, 18], [2, 20], [12, 17], [15, 17], [11, 20], [43, 18]);
+const BUSH = [[20, 4, 1], [25, 4, 1], [20, 6, 0], [25, 6, 0], [3, 13, 1], [42, 13, 1], [16, 20, 1], [5, 20, 0], [42, 20, 1], [34, 17, 0], [17, 21, 1], [28, 21, 1]];
+const LAMPS = [[9, 13], [15, 13], [30, 13], [36, 13], [21, 14], [24, 14], [17, 17], [28, 17]];
+const BENCH = [[13, 19]];
+const TABLES = [[35, 18], [35, 20]];
+TREES.forEach(([x, y]) => BLK[y][x] = 1);
+BUSH.forEach(([x, y]) => BLK[y][x] = 1);
+LAMPS.forEach(([x, y]) => BLK[y][x] = 1);
+BENCH.forEach(([x, y]) => { BLK[y][x] = 1; BLK[y][x + 1] = 1; });
+TABLES.forEach(([x, y]) => BLK[y][x] = 1);
+blockR(22, 5, 23, 6);       // fountain
+blockR(22, 18, 23, 19);     // anchor statue
+blockR(25, 17, 26, 18);     // job map board
+BLK[19][20] = 1;            // guide NPC
+clickR(25, 17, 26, 18, 'board');
+clickR(20, 18, 20, 19, 'guide');
+clickR(21, 26, 24, 28, 'pier');
+clickR(25, 25, 29, 28, 'pier');
+clickR(22, 17, 23, 19, 'guide');
+
+/* ================= places ================= */
+const BID = Object.fromEntries(BUILD.map(b => [b.id, b]));
+const PL = {};
+function place(id, p) { PL[id] = Object.assign({ id }, p); }
+ORGS.forEach(o => place(o.id, { name: o.hall, act: `${o.hall} 입장`, fronts: [[o.x + 1, o.y + 5], [o.x + 2, o.y + 5], [o.x + 3, o.y + 5]], open: () => openOrg(o), b: BID[o.id] }));
+FAC.forEach(f => place(f.id, { name: f.name, act: `${f.name} 들어가기`, fronts: [[f.x + 1, f.y + 5], [f.x + 2, f.y + 5], [f.x + 3, f.y + 5]], open: () => openTask(f.step), b: BID[f.id] }));
+place('board', { name: '직무지도 게시판', act: '직무지도 게시판 보기', fronts: [[24, 17], [24, 18], [25, 19], [26, 19], [27, 17], [27, 18]], open: () => openTask(1), b: { x: 25, y: 17, w: 2, h: 2 } });
+place('guide', { name: '앵커 가이드', act: '앵커 가이드와 대화', fronts: [[19, 19], [21, 19], [20, 18], [20, 20]], open: () => showDlg('menu'), b: { x: 20, y: 19, w: 1, h: 1 } });
+const pierFronts = []; for (let y = 26; y <= 28; y++) for (let x = 21; x <= 24; x++) if (G[y][x] === 'D') pierFronts.push([x, y]);
+place('pier', { name: '출항 부두', act: '11.20 워케이션 안내 보기', fronts: pierFronts, open: () => openPier(), b: { x: 21, y: 26, w: 4, h: 3 } });
+const PLACES = Object.values(PL);
+const nearOf = (tx, ty) => PLACES.find(p => p.fronts.some(f => f[0] === tx && f[1] === ty)) || null;
+
+/* ================= static map render ================= */
+const mapC = document.createElement('canvas'); mapC.width = MW * T; mapC.height = MH * T;
+const g = mapC.getContext('2d');
+const R = (c, x, y, w, h) => { g.fillStyle = c; g.fillRect(x, y, w, h); };
+function rnd(x, y, s) {
+  let h = (x * 374761393 + y * 668265263 + s * 1442695041) | 0;
+  h = Math.imul(h ^ (h >>> 13), 1274126177);
+  return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
+}
+const ROOF = {
+  blue: ['#2F6FD6', '#1F4FB0', '#6C9CEB'], cyan: ['#27B9CF', '#178A9C', '#7FDCEA'], amber: ['#E59A2F', '#B26F17', '#F4C277'],
+  indigo: ['#3D4FA3', '#28357A', '#6F80CB'], navy: ['#1B2452', '#0F1536', '#46538C'], stripe: ['#27B9CF', '#178A9C', '#FFFFFF']
+};
+function drawGround() {
+  for (let y = 0; y < MH; y++) for (let x = 0; x < MW; x++) {
+    const X = x * T, Y = y * T, t = G[y][x], r = s => rnd(x, y, s);
+    if (t === 'G') {
+      R('#8FCB6B', X, Y, T, T);
+      for (let i = 0; i < 4; i++) R('#7CBB5A', X + ((r(i) * 14) | 0), Y + ((r(i + 9) * 13) | 0), 1, 2);
+      if (r(40) < .35) R('#A6DA85', X + ((r(41) * 13) | 0), Y + ((r(42) * 14) | 0), 2, 1);
+      if (r(30) < .07) { const c = ['#FFFFFF', '#FFD54A', '#FF9FB5'][(r(34) * 3) | 0]; const fx = X + 3 + ((r(32) * 10) | 0), fy = Y + 3 + ((r(33) * 10) | 0); R(c, fx, fy, 2, 2); R('#F2B632', fx + 0.5, fy + 0.5, 1, 1); }
+    } else if (t === 'P') {
+      R('#EADCBD', X, Y, T, T); R('#D8C69E', X, Y + 7, T, 1); R('#D8C69E', X, Y + 15, T, 1);
+      R('#D8C69E', X + (x % 2 ? 4 : 11), Y, 1, 7); R('#D8C69E', X + (x % 2 ? 11 : 4), Y + 8, 1, 7);
+      if (y > 0 && G[y - 1][x] === 'G') R('rgba(60,90,40,.18)', X, Y, T, 1);
+    } else if (t === 'B') {
+      R('#E2E6F1', X, Y, T, T); R('#CBD2E3', X, Y + 7, T, 1); R('#CBD2E3', X, Y + 15, T, 1);
+      R('#CBD2E3', X + (x % 2 ? 2 : 10), Y, 1, 7); R('#CBD2E3', X + (x % 2 ? 10 : 2), Y + 8, 1, 7);
+      if (y === 15) R('rgba(60,90,40,.16)', X, Y, T, 1);
+    } else if (t === 'Z') {
+      R((x + y) % 2 ? '#E8ECF5' : '#F1F4FA', X, Y, T, T); R('#D7DEEC', X, Y, T, 1); R('#D7DEEC', X, Y, 1, T);
+    } else if (t === 'S') {
+      R('#F2E1AE', X, Y, T, T);
+      for (let i = 0; i < 3; i++) R('#E2C98A', X + ((r(i + 50) * 15) | 0), Y + ((r(i + 60) * 15) | 0), 1, 1);
+      if (G[y - 1] && G[y - 1][x] === 'G') R('rgba(60,90,40,.18)', X, Y, T, 1);
+    } else if (t === 'W') {
+      R(y <= 24 ? '#4796DD' : y === 25 ? '#3D8BD8' : '#3480CF', X, Y, T, T);
+      for (let i = 0; i < 2; i++) R('#62AAE9', X + ((r(i + 70) * 12) | 0), Y + ((r(i + 80) * 14) | 0), 3, 1);
+      if (G[y - 1] && G[y - 1][x] === 'S') { R('#E9F6FF', X, Y, T, 2); R('#BFE2FA', X, Y + 2, T, 1); R('#E9F6FF', X + 2, Y + 2, 3, 1); R('#E9F6FF', X + 10, Y + 2, 3, 1); }
+    } else if (t === 'D') {
+      R('#B98352', X, Y, T, T);
+      for (let i = 3; i < T; i += 4) R('#9A6A3F', X, Y + i, T, 1);
+      const l = G[y][x - 1] !== 'D', rr = G[y][x + 1] !== 'D', d = !G[y + 1] || G[y + 1][x] !== 'D';
+      if (l) R('#7E5432', X, Y, 2, T);
+      if (rr) R('#7E5432', X + T - 2, Y, 2, T);
+      if (d) { R('#7E5432', X, Y + T - 2, T, 2); R('#5E3E25', X + 1, Y + T, 3, 5); R('#5E3E25', X + T - 4, Y + T, 3, 5); }
+    }
+  }
+}
+function tree(x, y) {
+  const X = x * T, Y = y * T;
+  R('rgba(20,50,30,.2)', X + 2, Y + 12, 13, 4);
+  R('#7B5233', X + 6, Y + 8, 4, 7);
+  R('#2E7A45', X + 2, Y - 5, 12, 14); R('#2E7A45', X, Y - 1, 16, 8); R('#2E7A45', X + 4, Y - 7, 8, 2);
+  R('#3F9B5A', X + 3, Y - 5, 10, 12); R('#3F9B5A', X + 1, Y - 1, 14, 6);
+  R('#5DBB72', X + 4, Y - 4, 6, 3); R('#5DBB72', X + 3, Y - 2, 3, 3); R('#83D493', X + 5, Y - 4, 2, 1);
+}
+function bush(x, y, flower) {
+  const X = x * T, Y = y * T;
+  R('rgba(20,50,30,.2)', X + 1, Y + 12, 15, 3);
+  R('#2E7A45', X + 1, Y + 3, 14, 11); R('#4FAE66', X + 2, Y + 2, 12, 10); R('#6CC57F', X + 4, Y + 3, 4, 2);
+  if (flower) { R('#FF9FB5', X + 4, Y + 6, 2, 2); R('#FFFFFF', X + 9, Y + 4, 2, 2); R('#FFD54A', X + 11, Y + 8, 2, 2); R('#FF9FB5', X + 7, Y + 9, 2, 2); }
+}
+function lamp(x, y) {
+  const X = x * T + 7, Y = y * T;
+  R('rgba(0,0,0,.16)', X - 2, Y + 13, 8, 3);
+  R('#1B2452', X, Y - 6, 2, 19); R('#1B2452', X - 2, Y + 12, 6, 2);
+  R('#1B2452', X - 2, Y - 10, 6, 4); R('#FFE08A', X - 1, Y - 9, 4, 2);
+}
+function bench(x, y) {
+  const X = x * T, Y = y * T;
+  R('rgba(0,0,0,.14)', X + 2, Y + 12, 28, 3);
+  R('#94643A', X + 3, Y + 9, 2, 5); R('#94643A', X + 27, Y + 9, 2, 5);
+  R('#B98352', X + 2, Y + 3, 28, 3); R('#C99563', X + 2, Y + 7, 28, 3);
+}
+function table(x, y) {
+  const X = x * T, Y = y * T;
+  R('rgba(0,0,0,.15)', X + 1, Y + 11, 15, 4);
+  R('#1B2452', X, Y + 9, 3, 4); R('#1B2452', X + 13, Y + 9, 3, 4);
+  R('#FFFFFF', X + 4, Y + 8, 8, 5); R('#C7CFDF', X + 7, Y + 2, 2, 8);
+  R('#178A9C', X + 1, Y - 3, 14, 6); R('#27B9CF', X + 1, Y - 4, 14, 5);
+  R('#FFFFFF', X + 5, Y - 4, 3, 5); R('#FFFFFF', X + 11, Y - 4, 2, 5); R('#27B9CF', X + 4, Y - 6, 8, 2);
+}
+function fountain(x, y) {
+  const X = x * T, Y = y * T;
+  R('rgba(0,0,0,.14)', X + 2, Y + 27, 30, 4);
+  R('#AEB9CF', X + 3, Y + 3, 26, 26); R('#AEB9CF', X, Y + 7, 32, 18);
+  R('#D3DAE8', X + 3, Y + 3, 26, 2); R('#D3DAE8', X, Y + 7, 2, 18);
+  R('#5BA4E6', X + 5, Y + 7, 22, 18); R('#5BA4E6', X + 3, Y + 10, 26, 12);
+  R('#86C2F0', X + 7, Y + 9, 6, 2); R('#86C2F0', X + 19, Y + 19, 5, 1);
+  R('#E4E9F3', X + 14, Y + 8, 4, 12); R('#FFFFFF', X + 13, Y + 6, 6, 3);
+}
+function statue(x, y) {
+  const X = x * T, Y = y * T, n = '#1B2452', hl = '#3A4A8E';
+  R('rgba(0,0,0,.16)', X + 3, Y + 30, 28, 3);
+  R('#AEB9CF', X + 3, Y + 15, 26, 16); R('#D6DDEA', X + 3, Y + 15, 26, 3); R('#C2CBDC', X + 5, Y + 18, 22, 1);
+  R(n, X + 11, Y + 23, 10, 5); R('#27B9CF', X + 12, Y + 24, 8, 1);
+  R(n, X + 13, Y - 9, 6, 2); R(n, X + 12, Y - 7, 2, 4); R(n, X + 18, Y - 7, 2, 4); R(n, X + 13, Y - 3, 6, 2);
+  R(n, X + 15, Y - 1, 2, 15); R(n, X + 10, Y + 1, 12, 2); R(hl, X + 15, Y, 1, 12);
+  R(n, X + 9, Y + 12, 14, 2); R(n, X + 7, Y + 8, 2, 5); R(n, X + 23, Y + 8, 2, 5);
+  R(n, X + 5, Y + 7, 5, 2); R(n, X + 22, Y + 7, 5, 2); R(hl, X + 10, Y + 12, 4, 1);
+}
+function board(x, y) {
+  const X = x * T, Y = y * T;
+  R('rgba(0,0,0,.15)', X + 1, Y + 29, 30, 3);
+  R('#7E5432', X + 3, Y + 12, 3, 19); R('#7E5432', X + 26, Y + 12, 3, 19);
+  R('#5E3E25', X - 1, Y, 34, 3); R('#8E5E36', X, Y + 3, 32, 20); R('#D9B07A', X + 2, Y + 5, 28, 16);
+  R('#FFFFFF', X + 4, Y + 7, 7, 6); R('#BFEFF6', X + 13, Y + 6, 6, 7); R('#FFE08A', X + 21, Y + 8, 6, 5);
+  R('#FFFFFF', X + 6, Y + 14, 9, 5); R('#FFD1C4', X + 18, Y + 14, 7, 5);
+  R('#E5484D', X + 7, Y + 7, 1, 1); R('#1F5CC4', X + 15, Y + 6, 1, 1); R('#E5484D', X + 23, Y + 8, 1, 1);
+}
+function boat(x, y) {
+  const X = x * T, Y = y * T;
+  R('rgba(20,40,80,.25)', X + 4, Y + 43, 76, 3);
+  R('#1B2452', X + 2, Y + 24, 78, 12); R('#1B2452', X + 6, Y + 36, 70, 4); R('#1B2452', X + 11, Y + 40, 60, 3);
+  R('#27B9CF', X + 2, Y + 27, 78, 2); R('#E4E9F3', X + 2, Y + 21, 78, 3);
+  R('#FFFFFF', X + 20, Y + 9, 34, 12); R('#1F5CC4', X + 18, Y + 6, 38, 4);
+  R('#7FC3EC', X + 24, Y + 12, 6, 5); R('#7FC3EC', X + 34, Y + 12, 6, 5); R('#7FC3EC', X + 44, Y + 12, 6, 5);
+  R('#1B2452', X + 64, Y - 10, 2, 32); R('#27B9CF', X + 66, Y - 10, 11, 7); R('#FFFFFF', X + 70, Y - 8, 3, 3);
+  R('#E9F6FF', X, Y + 44, 6, 1); R('#E9F6FF', X + 74, Y + 44, 8, 1);
+}
+function rock(x, y) {
+  const X = x * T, Y = y * T;
+  R('#7C879C', X + 2, Y + 6, 12, 8); R('#98A3B8', X + 4, Y + 4, 8, 6); R('#B7C0D2', X + 5, Y + 5, 3, 2); R('#E9F6FF', X, Y + 14, 16, 1);
+}
+function building(b) {
+  const X = b.x * T, Y = b.y * T, W = b.w * T, H = b.h * T, [rc, rd, rl] = ROOF[b.roof];
+  const WY = Y + 2 * T, WH = H - 2 * T;
+  R('rgba(18,28,60,.2)', X + 4, Y + H, W, 4); R('rgba(18,28,60,.2)', X + W, Y + 10, 4, H - 6);
+  R('#F3F5FA', X, WY, W, WH); R('#DCE2EE', X + W - 3, WY, 3, WH); R('#C7CFDF', X, Y + H - 3, W, 3);
+  R(rd, X - 2, Y - 2, W + 4, 2 * T + 5);
+  R(rc, X - 2, Y - 2, W + 4, 2 * T + 1);
+  if (b.roof === 'stripe') { for (let i = 0; i < W + 4; i += 8) R('#FFFFFF', X - 2 + i, Y + 1, 4, 2 * T - 2); }
+  else for (let yy = Y + 4; yy < Y + 2 * T - 2; yy += 6) R(rd, X - 2, yy, W + 4, 1);
+  R(rl, X - 2, Y - 2, W + 4, 2);
+  R('rgba(0,0,0,.12)', X, WY + 3, W, 2);
+  const sx = X + 5, sy = WY + 6, sw = W - 10, sh = 15;
+  R('#1B2452', sx - 1, sy - 1, sw + 2, sh + 2); R('#FFFFFF', sx, sy, sw, sh);
+  b.signR = [sx, sy, sw, sh];
+  for (const wx of [X + 7, X + W - 19]) { R('#8E9AB8', wx - 1, WY + 24, 14, 11); R('#86C8EE', wx, WY + 25, 12, 9); R('#CDEBFA', wx + 1, WY + 26, 3, 2); R('#8E9AB8', wx + 5, WY + 25, 1, 9); }
+  const ax = X + W / 2 - 11;
+  for (let i = 0; i < 22; i += 4) R(i % 8 === 0 ? rc : '#FFFFFF', ax + i, WY + 26, 4, 5);
+  R(rd, ax, WY + 31, 22, 1);
+  const dx = X + W / 2 - 7;
+  R('#11173A', dx - 1, WY + 32, 16, WH - 32); R('#2B3570', dx, WY + 33, 14, WH - 33);
+  R('#3A4690', dx + 2, WY + 35, 4, 6); R('#3A4690', dx + 8, WY + 35, 4, 6); R('#F2C14E', dx + 10, WY + 42, 2, 2);
+  R('#C9B48A', dx - 1, Y + H, 16, 3);
+}
+function renderStatic() {
+  g.clearRect(0, 0, mapC.width, mapC.height);
+  drawGround();
+  const objs = [];
+  TREES.forEach(([x, y]) => objs.push([y, () => tree(x, y)]));
+  BUSH.forEach(([x, y, f]) => objs.push([y, () => bush(x, y, f)]));
+  LAMPS.forEach(([x, y]) => objs.push([y, () => lamp(x, y)]));
+  BENCH.forEach(([x, y]) => objs.push([y, () => bench(x, y)]));
+  TABLES.forEach(([x, y]) => objs.push([y, () => table(x, y)]));
+  BUILD.forEach(b => objs.push([b.y + b.h - 1, () => building(b)]));
+  objs.push([6, () => fountain(22, 5)]);
+  objs.push([19, () => statue(22, 18)]);
+  objs.push([18, () => board(25, 17)]);
+  objs.push([28, () => boat(25, 26)]);
+  objs.push([26, () => rock(6, 26)]);
+  objs.push([25, () => rock(39, 25)]);
+  objs.push([27, () => rock(12, 27)]);
+  objs.sort((a, b) => a[0] - b[0]).forEach(o => o[1]());
+}
+renderStatic();
+
+/* ================= sprites ================= */
+const SPR = {
+  down: ['...hhhhhh...', '..hhhhhhhh..', '.hhhhhhhhhh.', '.hhsssssshh.', '.hssssssssh.', '.hsessssesh.', '..ssssssss..', '...ssssss...', '..cccccccc..', '.cccccccccc.', '.sccccccccs.', '..cccccccc..', '..pppppppp..'],
+  up: ['...hhhhhh...', '..hhhhhhhh..', '.hhhhhhhhhh.', '.hhhhhhhhhh.', '.hhhhhhhhhh.', '.hhhhhhhhhh.', '..hhhhhhhh..', '...ssssss...', '..cccccccc..', '.cccccccccc.', '.sccccccccs.', '..cccccccc..', '..pppppppp..'],
+  right: ['...hhhhhh...', '..hhhhhhhh..', '.hhhhhhhhhh.', '.hhhhssssss.', '.hhhsssssss.', '.hhsssssess.', '..hsssssss..', '...ssssss...', '..cccccccc..', '..cccccccc..', '..ccccsccc..', '..cccccccc..', '..pppppppp..']
+};
+const LEGS = { i: ['..ppp..ppp..', '..ppp..ppp..', '..bbb..bbb..'], a: ['..ppp..ppp..', '..bbb..ppp..', '.......bbb..'], b: ['..ppp..ppp..', '..ppp..bbb..', '..bbb.......'] };
+const SHIRTS = ['#27B9CF', '#FF7A59', '#1F5CC4', '#3DB46D', '#F2B632'];
+const sprCache = new Map();
+function sprite(dir, leg, shirt, hair, pants) {
+  const key = [dir, leg, shirt, hair, pants].join('|');
+  if (sprCache.has(key)) return sprCache.get(key);
+  const rows = SPR[dir === 'left' ? 'right' : dir].concat(LEGS[leg]);
+  const pal = { h: hair, s: '#F6D2B4', e: '#1B1B2F', c: shirt, p: pants, b: '#11173A' };
+  const c = document.createElement('canvas'); c.width = 14; c.height = 18;
+  const x = c.getContext('2d');
+  const at = (i, j) => j >= 0 && j < rows.length && i >= 0 && i < 12 && rows[j][i] !== '.';
+  x.fillStyle = 'rgba(17,23,58,.6)';
+  for (let j = 0; j < rows.length; j++) for (let i = 0; i < 12; i++) {
+    if (!at(i, j)) continue;
+    [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(([di, dj]) => { if (!at(i + di, j + dj)) x.fillRect(i + di + 1, j + dj + 1, 1, 1); });
+  }
+  for (let j = 0; j < rows.length; j++) for (let i = 0; i < 12; i++) {
+    const ch = rows[j][i]; if (ch === '.') continue;
+    x.fillStyle = pal[ch]; x.fillRect(i + 1, j + 1, 1, 1);
+  }
+  let out = c;
+  if (dir === 'left') {
+    out = document.createElement('canvas'); out.width = 14; out.height = 18;
+    const o = out.getContext('2d'); o.translate(14, 0); o.scale(-1, 1); o.drawImage(c, 0, 0);
+  }
+  sprCache.set(key, out);
+  return out;
+}
+
+/* ================= player ================= */
+const P = { tx: 22, ty: 21, x: 22 * T, y: 21 * T, dir: 'up', moving: false, from: [22, 21], to: [22, 21], t: 0, path: [], walk: 0 };
+const SPEED = 7.5;
+let pending = null, dest = null, near = null, hoverId = null;
+const keys = {};
+let lastKey = null;
+const walkable = (x, y) => x >= 0 && y >= 0 && x < MW && y < MH && !BLK[y][x];
+function bfs(sx, sy, goals) {
+  const gs = new Set(goals.map(([x, y]) => y * MW + x));
+  const start = sy * MW + sx;
+  if (gs.has(start)) return [];
+  const prev = new Int32Array(MW * MH).fill(-1);
+  const q = [start]; prev[start] = start;
+  for (let qi = 0; qi < q.length; qi++) {
+    const c = q[qi], cx = c % MW, cy = (c / MW) | 0;
+    if (gs.has(c)) {
+      const path = []; let n = c;
+      while (n !== start) { path.push([n % MW, (n / MW) | 0]); n = prev[n]; }
+      return path.reverse();
+    }
+    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+      const nx = cx + dx, ny = cy + dy;
+      if (!walkable(nx, ny)) continue;
+      const ni = ny * MW + nx;
+      if (prev[ni] !== -1) continue;
+      prev[ni] = c; q.push(ni);
+    }
+  }
+  return null;
+}
+function nearestWalkable(tx, ty) {
+  for (let r = 0; r <= 4; r++) for (let dy = -r; dy <= r; dy++) for (let dx = -r; dx <= r; dx++) {
+    if (Math.max(Math.abs(dx), Math.abs(dy)) !== r) continue;
+    if (walkable(tx + dx, ty + dy)) return [tx + dx, ty + dy];
+  }
+  return null;
+}
+function pathTo(goals, openId) {
+  const s = P.moving ? P.to : [P.tx, P.ty];
+  const path = bfs(s[0], s[1], goals);
+  if (!path) return false;
+  P.path = path;
+  pending = openId || null;
+  dest = path.length ? path[path.length - 1] : s;
+  if (!path.length && !P.moving) arrive();
+  return true;
+}
+function goTo(id, autoOpen = true) {
+  const p = PL[id]; if (!p) return;
+  if (sheetOpen) closeSheet(true);
+  hideDlg();
+  if (!P.moving && p.fronts.some(f => f[0] === P.tx && f[1] === P.ty)) { if (autoOpen) p.open(); return; }
+  pathTo(p.fronts, autoOpen ? id : null);
+  if (window.innerWidth <= 900) $('#stage').scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'center' });
+  cv.focus({ preventScroll: true });
+}
+function arrive() {
+  dest = null;
+  if (pending) { const id = pending; pending = null; const p = PL[id]; if (p && p.fronts.some(f => f[0] === P.tx && f[1] === P.ty)) p.open(); }
+}
+function heldDir() {
+  const map = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
+  if (lastKey && keys[lastKey]) return map[lastKey];
+  for (const k of ['up', 'down', 'left', 'right']) if (keys[k]) return map[k];
+  return null;
+}
+function update(dt) {
+  if (P.moving) {
+    P.t += dt * SPEED; P.walk += dt * SPEED;
+    if (P.t >= 1) {
+      P.tx = P.to[0]; P.ty = P.to[1]; P.moving = false; P.t = 0;
+      if (!P.path.length && dest) arrive();
+      refreshNear();
+    }
+  }
+  if (!P.moving) {
+    let d = null;
+    const manual = !sheetOpen && !dlgOpen ? heldDir() : null;
+    if (manual) { P.path = []; pending = null; dest = null; d = manual; }
+    else if (P.path.length) { const n = P.path.shift(); d = [n[0] - P.tx, n[1] - P.ty]; }
+    if (d && (d[0] || d[1])) {
+      P.dir = d[0] > 0 ? 'right' : d[0] < 0 ? 'left' : d[1] > 0 ? 'down' : 'up';
+      const nx = P.tx + d[0], ny = P.ty + d[1];
+      if (walkable(nx, ny)) { P.from = [P.tx, P.ty]; P.to = [nx, ny]; P.moving = true; P.t = 0; }
+      else { P.path = []; }
+    }
+  }
+  const t = P.moving ? P.t : 0;
+  P.x = (P.from[0] + (P.to[0] - P.from[0]) * t) * T;
+  P.y = (P.from[1] + (P.to[1] - P.from[1]) * t) * T;
+  if (!P.moving) { P.x = P.tx * T; P.y = P.ty * T; }
+}
+const ZONES = [
+  [y => y >= 23, () => true, '출항 부두'],
+  [y => y >= 17, x => x >= 17 && x <= 28, '입항 광장'],
+  [y => y >= 17, x => x < 17, '연구실 거리'],
+  [y => y >= 17, x => x > 28, '라운지 거리'],
+  [y => y <= 8, () => true, '커리어 탐색 언덕'],
+  [y => y >= 9, x => x <= 21, '제약·바이오 거리'],
+  [y => y >= 9, x => x >= 24, '의료기기 거리'],
+  [() => true, () => true, '중앙 산책로']
+];
+let zoneName = '';
+function refreshNear() {
+  const z = ZONES.find(([fy, fx]) => fy(P.ty) && fx(P.tx))[2];
+  if (z !== zoneName) { zoneName = z; $('#zone').textContent = z; }
+  const n = P.moving ? null : nearOf(P.tx, P.ty);
+  if (n !== near) {
+    near = n;
+    const btn = $('#act');
+    if (n && !dlgOpen) { $('#actTxt').textContent = n.act; btn.hidden = false; $('#sr').textContent = `${n.name} 앞이에요. F 키나 버튼으로 들어갈 수 있어요.`; }
+    else btn.hidden = true;
+  }
+}
+
+/* ================= canvas render ================= */
+const cv = $('#cv'), ctx = cv.getContext('2d');
+let K = 4, SC = 2, VW = 0, VH = 0, DPR = 1;
+function resize() {
+  const r = cv.getBoundingClientRect();
+  DPR = window.devicePixelRatio || 1;
+  SC = r.width >= 1150 ? 3 : 2;
+  K = Math.max(1, Math.round(SC * DPR));
+  cv.width = Math.max(1, Math.round(r.width * DPR)); cv.height = Math.max(1, Math.round(r.height * DPR));
+  VW = cv.width / K; VH = cv.height / K;
+}
+const fz = css => css * DPR / K;
+function camera() {
+  const MWp = MW * T, MHp = MH * T;
+  let cx = P.x + 8 - VW / 2, cy = P.y + 8 - VH / 2;
+  cx = VW >= MWp ? (MWp - VW) / 2 : Math.max(0, Math.min(MWp - VW, cx));
+  cy = VH >= MHp ? (MHp - VH) / 2 : Math.max(0, Math.min(MHp - VH, cy));
+  return [Math.round(cx * K) / K, Math.round(cy * K) / K];
+}
+const imgs = {};
+ORGS.forEach(o => { const im = new Image(); im.src = o.logo; imgs[o.id] = im; });
+function rr(x, y, w, h, r) { ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, r); else ctx.rect(x, y, w, h); }
+function label(text, cx, by, opt = {}) {
+  const fs = fz(opt.size || 12.5);
+  ctx.font = `${opt.weight || 700} ${fs}px "Noto Sans KR", sans-serif`;
+  const tw = ctx.measureText(text).width, pad = fz(8), h = fs * 1.75, extra = opt.check ? fs * 1.3 : 0;
+  const w = tw + pad * 2 + extra, x = cx - w / 2, y = by - h;
+  ctx.fillStyle = opt.bg || 'rgba(17,23,58,.88)'; rr(x, y, w, h, h / 2); ctx.fill();
+  if (opt.ring) { ctx.strokeStyle = opt.ring; ctx.lineWidth = fz(2); ctx.stroke(); }
+  ctx.fillStyle = opt.fg || '#FFFFFF'; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+  ctx.fillText(text, x + pad + extra, y + h / 2 + fs * .04);
+  if (opt.check) {
+    const r = fs * .5, ccx = x + pad + r, ccy = y + h / 2;
+    ctx.fillStyle = '#1E9E6A'; ctx.beginPath(); ctx.arc(ccx, ccy, r, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = fs * .16; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.beginPath(); ctx.moveTo(ccx - r * .45, ccy); ctx.lineTo(ccx - r * .1, ccy + r * .38); ctx.lineTo(ccx + r * .5, ccy - r * .35); ctx.stroke();
+  }
+}
+function drawChar(x, y, dir, leg, shirt, hair, pants) {
+  ctx.fillStyle = 'rgba(17,23,58,.22)'; ctx.fillRect(x + 3, y + 12, 10, 3);
+  ctx.drawImage(sprite(dir, leg, shirt, hair, pants), x + 1, y - 4);
+}
+function draw(ts) {
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.fillStyle = '#2E7A45'; ctx.fillRect(0, 0, cv.width, cv.height);
+  const [cx, cy] = camera();
+  ctx.setTransform(K, 0, 0, K, -cx * K, -cy * K);
+  ctx.imageSmoothingEnabled = false;
+  ctx.fillStyle = '#3480CF'; ctx.fillRect(-2000, 24 * T, MW * T + 4000, 2000);
+  ctx.drawImage(mapC, 0, 0);
+  const x0 = Math.max(0, Math.floor(cx / T)), x1 = Math.min(MW - 1, Math.ceil((cx + VW) / T));
+  const y0 = Math.max(0, Math.floor(cy / T)), y1 = Math.min(MH - 1, Math.ceil((cy + VH) / T));
+  const tt = ts / 1000;
+
+  if (!RM) {
+    for (let y = Math.max(y0, 24); y <= y1; y++) for (let x = x0; x <= x1; x++) {
+      if (G[y][x] !== 'W') continue;
+      const ph = (tt * .8 + rnd(x, y, 7) * 5) % 5;
+      if (ph < 1.1) { ctx.fillStyle = 'rgba(233,246,255,.85)'; ctx.fillRect(x * T + ((rnd(x, y, 8) * 11) | 0), y * T + ((rnd(x, y, 9) * 13) | 0), ph < .55 ? 3 : 2, 1); }
+    }
+    const fp = Math.floor(tt * 6) % 3;
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(22 * T + 14 - fp, 5 * T + 3 + fp, 1, 1); ctx.fillRect(22 * T + 18 + fp, 5 * T + 4 + fp, 1, 1);
+    for (let i = 0; i < 2; i++) {
+      const gx = ((tt * (9 + i * 4) + i * 260) % (MW * T + 80)) - 40, gy = 25.5 * T + i * 22 + Math.sin(tt * 1.4 + i) * 6;
+      const wing = Math.floor(tt * 5 + i) % 2;
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(gx, gy + wing, 2, 1); ctx.fillRect(gx + 2, gy + 1, 1, 1); ctx.fillRect(gx + 3, gy + wing, 2, 1);
+      ctx.fillStyle = '#9FB0C9'; ctx.fillRect(gx + 2, gy + 2, 1, 1);
+    }
+  }
+
+  // highlight near / hovered building
+  const hl = [near && near.id, hoverId].filter(Boolean);
+  new Set(hl).forEach(id => {
+    const b = PL[id] && PL[id].b; if (!b) return;
+    const a = .55 + .35 * Math.sin(tt * 4);
+    ctx.strokeStyle = `rgba(39,185,207,${a})`; ctx.lineWidth = 2;
+    const pad = 3, top = (b.w >= 5 ? 2 : 1);
+    ctx.strokeRect(b.x * T - pad, b.y * T - pad - top, (b.w || 1) * T + pad * 2, (b.h || 1) * T + pad * 2 + top);
+  });
+
+  // destination marker
+  if (dest) {
+    const a = .5 + .5 * Math.sin(tt * 6);
+    ctx.strokeStyle = `rgba(255,255,255,${.6 + .4 * a})`; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.ellipse(dest[0] * T + 8, dest[1] * T + 12, 6 + a * 1.5, 3 + a * .7, 0, 0, Math.PI * 2); ctx.stroke();
+  }
+
+  // NPC
+  const bob = RM ? 0 : (Math.floor(tt * 2) % 2);
+  drawChar(20 * T, 19 * T - bob, 'down', 'i', '#FFFFFF', '#1B2452', '#1B2452');
+  ctx.fillStyle = '#FFD54A'; ctx.fillRect(20 * T + 5, 19 * T - 17 - bob, 6, 8); ctx.fillStyle = '#1B2452';
+  ctx.fillRect(20 * T + 7, 19 * T - 16 - bob, 2, 4); ctx.fillRect(20 * T + 7, 19 * T - 11 - bob, 2, 1);
+  ctx.fillStyle = '#FFD54A'; ctx.fillRect(20 * T + 7, 19 * T - 9 - bob, 2, 1);
+
+  // player
+  const leg = P.moving ? (Math.floor(P.walk * 2) % 2 ? 'a' : 'b') : 'i';
+  drawChar(Math.round(P.x * K) / K, Math.round(P.y * K) / K - (P.moving && !RM ? (Math.floor(P.walk * 2) % 2) : 0), P.dir, leg, SHIRTS[S.shirt % SHIRTS.length], '#3A2E4A', '#2B3570');
+
+  // crisp layer: signs, labels
+  ctx.imageSmoothingEnabled = true;
+  BUILD.forEach(b => {
+    if (!b.signR) return;
+    if ((b.x + b.w) * T < cx - 40 || b.x * T > cx + VW + 40 || (b.y + b.h) * T < cy - 30 || b.y * T > cy + VH + 30) return;
+    const [sx, sy, sw, sh] = b.signR;
+    if (b.logo) {
+      const im = imgs[b.id];
+      if (im && im.complete && im.naturalWidth) {
+        const mw = sw - 5, mh = sh - 4, s = Math.min(mw / im.naturalWidth, mh / im.naturalHeight);
+        const w = im.naturalWidth * s, h = im.naturalHeight * s;
+        ctx.drawImage(im, sx + (sw - w) / 2, sy + (sh - h) / 2, w, h);
+      }
+    } else {
+      ctx.fillStyle = '#1B2452'; ctx.font = `700 9px Silkscreen, monospace`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(b.text, sx + sw / 2, sy + sh / 2 + .5);
+    }
+    const visited = S.visited.includes(b.id);
+    const isNear = (near && near.id === b.id) || hoverId === b.id;
+    label(b.label, b.x * T + b.w * T / 2, b.y * T - 5, { check: visited, bg: isNear ? '#27B9CF' : undefined, fg: isNear ? '#11173A' : undefined });
+  });
+  label('직무지도 게시판', 26 * T, 17 * T - 3, { bg: (near && near.id === 'board') || hoverId === 'board' ? '#27B9CF' : '#F2B632', fg: '#11173A', size: 12 });
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.font = `700 ${fz(13)}px "Noto Sans KR", sans-serif`; ctx.fillStyle = 'rgba(27,36,82,.42)';
+  ctx.fillText('◀  제약·바이오 거리', 12.5 * T, 15.45 * T);
+  ctx.fillText('의료기기 거리  ▶', 33.5 * T, 15.45 * T);
+  ctx.font = `400 ${fz(9.5)}px Silkscreen, monospace`; ctx.fillStyle = 'rgba(27,36,82,.38)';
+  ctx.fillText('CAREER EXPLORE HILL', 22.5 * T, 8.5 * T);
+  ctx.fillText('ANCHOR PLAZA', 22.5 * T, 22.5 * T);
+  ctx.fillStyle = '#FFFFFF'; ctx.font = `400 5px Silkscreen, monospace`;
+  ctx.fillText('ULTRA ANCHOR', 25 * T + 41, 26 * T + 32);
+
+  label('앵커 가이드', 20 * T + 8, 19 * T - 19 - bob, { bg: 'rgba(255,255,255,.95)', fg: '#1B2452', size: 11.5 });
+  label('나', P.x + 8, P.y - 6, { size: 11.5, ring: SHIRTS[S.shirt % SHIRTS.length] });
+  if (near && !P.moving && !dlgOpen && !sheetOpen) {
+    const a = RM ? 0 : Math.sin(tt * 5) * 1.2;
+    const kx = P.x + 8, ky = P.y - 6 - fz(36) + a;
+    ctx.fillStyle = '#FFFFFF'; rr(kx - fz(11), ky - fz(11), fz(22), fz(20), fz(5)); ctx.fill();
+    ctx.strokeStyle = '#1B2452'; ctx.lineWidth = fz(2); ctx.stroke();
+    ctx.fillStyle = '#1B2452'; ctx.font = `700 ${fz(11)}px Silkscreen, monospace`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(coarse ? '!' : 'F', kx, ky - fz(1));
+  }
+}
+const coarse = window.matchMedia ? matchMedia('(pointer: coarse)').matches : false;
+
+/* minimap */
+const mini = $('#mini'), mctx = mini.getContext('2d');
+const miniBase = document.createElement('canvas'); miniBase.width = MW * 3; miniBase.height = MH * 3;
+(() => { const m = miniBase.getContext('2d'); m.imageSmoothingEnabled = true; m.drawImage(mapC, 0, 0, MW * 3, MH * 3); })();
+function drawMini(ts) {
+  mctx.clearRect(0, 0, 138, 90);
+  mctx.drawImage(miniBase, 0, 0);
+  ORGS.forEach(o => {
+    const on = S.visited.includes(o.id);
+    mctx.fillStyle = on ? '#1E9E6A' : (o.kind === 'anchor' ? '#FFFFFF' : '#FFE08A');
+    mctx.fillRect((o.x + 2) * 3 - 2, (o.y + 2) * 3 - 2, 5, 5);
+    mctx.strokeStyle = '#11173A'; mctx.lineWidth = 1; mctx.strokeRect((o.x + 2) * 3 - 2.5, (o.y + 2) * 3 - 2.5, 6, 6);
+  });
+  const px = P.x / T * 3 + 1.5, py = P.y / T * 3 + 1.5, pulse = RM ? 0 : (Math.sin(ts / 200) + 1);
+  mctx.fillStyle = 'rgba(39,185,207,.35)'; mctx.beginPath(); mctx.arc(px, py, 4 + pulse, 0, Math.PI * 2); mctx.fill();
+  mctx.fillStyle = '#FFFFFF'; mctx.strokeStyle = '#11173A'; mctx.lineWidth = 1.2;
+  mctx.beginPath(); mctx.arc(px, py, 2.6, 0, Math.PI * 2); mctx.fill(); mctx.stroke();
+  const [cx, cy] = camera();
+  mctx.strokeStyle = 'rgba(255,255,255,.85)'; mctx.lineWidth = 1;
+  mctx.strokeRect(Math.max(0, cx / T * 3) + .5, Math.max(0, cy / T * 3) + .5, Math.min(MW * 3, VW / T * 3) - 1, Math.min(MH * 3, VH / T * 3) - 1);
+}
+
+let lastTs = 0;
+function frame(ts) {
+  const dt = Math.min(.05, (ts - lastTs) / 1000 || 0); lastTs = ts;
+  update(dt);
+  draw(ts);
+  drawMini(ts);
+  requestAnimationFrame(frame);
+}
+
+/* ================= input ================= */
+const KEYMAP = { ArrowUp: 'up', KeyW: 'up', ArrowDown: 'down', KeyS: 'down', ArrowLeft: 'left', KeyA: 'left', ArrowRight: 'right', KeyD: 'right' };
+const typing = el => el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT' || el.isContentEditable);
+document.addEventListener('keydown', e => {
+  if (sheetOpen) { if (e.key === 'Escape') { e.preventDefault(); closeSheet(); } return; }
+  if (e.key === 'Escape' && dlgOpen) { hideDlg(); return; }
+  if (typing(document.activeElement)) return;
+  const onMap = document.activeElement === cv || document.activeElement === document.body;
+  const k = KEYMAP[e.code];
+  if (k && (onMap || !e.code.startsWith('Key'))) {
+    e.preventDefault();
+    if (dlgOpen) hideDlg();
+    keys[k] = true; lastKey = k; return;
+  }
+  if (onMap && (e.code === 'KeyF' || e.code === 'Space' || e.code === 'Enter')) {
+    if (e.code === 'Space' && document.activeElement === cv) e.preventDefault();
+    if (near && !P.moving) { e.preventDefault(); if (dlgOpen) hideDlg(); near.open(); }
+    else if (dlgOpen && e.code !== 'Space') { e.preventDefault(); hideDlg(); }
+  }
+});
+document.addEventListener('keyup', e => { const k = KEYMAP[e.code]; if (k) keys[k] = false; });
+window.addEventListener('blur', () => { for (const k in keys) keys[k] = false; });
+function tileFromEvent(e) {
+  const r = cv.getBoundingClientRect();
+  const [cx, cy] = camera();
+  const lx = (e.clientX - r.left) * DPR / K + cx, ly = (e.clientY - r.top) * DPR / K + cy;
+  return [Math.floor(lx / T), Math.floor(ly / T)];
+}
+cv.addEventListener('click', e => {
+  cv.focus({ preventScroll: true });
+  if (dlgOpen) hideDlg();
+  const [tx, ty] = tileFromEvent(e);
+  if (tx < 0 || ty < 0 || tx >= MW || ty >= MH) return;
+  const id = CLK[ty][tx];
+  if (id) { goTo(id, true); return; }
+  const w = walkable(tx, ty) ? [tx, ty] : nearestWalkable(tx, ty);
+  if (w) pathTo([w], null);
+});
+cv.addEventListener('mousemove', e => {
+  const [tx, ty] = tileFromEvent(e);
+  const id = tx >= 0 && ty >= 0 && tx < MW && ty < MH ? CLK[ty][tx] : null;
+  hoverId = id; cv.style.cursor = id ? 'pointer' : 'default';
+});
+cv.addEventListener('mouseleave', () => { hoverId = null; });
+mini.addEventListener('click', e => {
+  const r = mini.getBoundingClientRect();
+  const tx = Math.floor((e.clientX - r.left) / r.width * MW), ty = Math.floor((e.clientY - r.top) / r.height * MH);
+  const id = CLK[ty] && CLK[ty][tx];
+  if (id) { goTo(id, false); return; }
+  const w = walkable(tx, ty) ? [tx, ty] : nearestWalkable(tx, ty);
+  if (w) { hideDlg(); pathTo([w], null); }
+});
+$('#act').addEventListener('click', () => { if (near) near.open(); });
+$$('[data-tool]').forEach(b => b.addEventListener('click', () => {
+  const t = b.dataset.tool;
+  if (t === 'list') openList();
+  else if (t === 'board') goTo('board', true);
+  else if (t === 'pier') openPier();
+  else if (t === 'help') openHelp();
+  else if (t === 'avatar') { S.shirt = (S.shirt + 1) % SHIRTS.length; save(); paintSwatch(); }
+}));
+function paintSwatch() { $('#sw').style.background = SHIRTS[S.shirt % SHIRTS.length]; }
+
+/* ================= guide dialog ================= */
+let dlgOpen = false;
+(() => {
+  const f = $('#face'), fc = f.getContext('2d');
+  fc.imageSmoothingEnabled = false;
+  fc.drawImage(sprite('down', 'i', '#FFFFFF', '#1B2452', '#1B2452'), 0, 0, 14, 18, 1, 1, 14, 18);
+})();
+const DLG = {
+  welcome: {
+    t: '어서 와요! 여기는 울트라앵커 앵커 하버예요. 앵커기업관 6곳과 커리어 탐색관 2곳을 둘러보고 사전과제 4단계를 마치면, 11.20 워케이션의 현직자 진로 토크콘서트에서 남긴 질문의 답을 들어요.',
+    c: [['과제 순서 알려 주세요', 'steps', 'cy'], ['기업관은 어디 있어요?', 'where'], ['바로 둘러볼게요', 'close']]
+  },
+  menu: {
+    t: '무엇을 도와줄까요? 길을 모르겠으면 저한테 물어보세요.',
+    c: [['과제 순서', 'steps', 'cy'], ['기업관 위치', 'where'], ['11.20 행사 안내', 'pier'], ['괜찮아요', 'close']]
+  },
+  steps: {
+    t: '사전과제는 4단계예요. ① 기업관 3곳 이상 둘러보고 직무지도 게시판에서 목표직무 정하기 → ② 기업분석 연구실에서 보고서 쓰기 → ③ 진로 토크 라운지에 현직자 질문 남기기 → ④ 커리어 데스크에서 지원서 뼈대 쓰기. 버튼을 누르면 길을 안내할게요.',
+    c: [['① 직무지도 게시판', 'go:board', 'cy'], ['② 기업분석 연구실', 'go:lab'], ['③ 진로 토크 라운지', 'go:lounge'], ['④ 커리어 데스크', 'go:desk']]
+  },
+  where: {
+    t: '큰길 왼쪽이 제약·바이오 거리(유한양행·종근당·다산제약), 오른쪽이 의료기기 거리(에스디바이오센서·메가젠임플란트·세신정밀)예요. 위쪽 언덕에는 KTR과 엔포유 커리어 탐색관이 있어요.',
+    c: [['목록으로 보기', 'list', 'cy'], ['유한양행관부터 가기', 'go:yuhan'], ['닫기', 'close']]
+  }
+};
+function showDlg(k) {
+  const d = DLG[k]; if (!d) return;
+  $('#dlgTxt').textContent = d.t;
+  $('#dlgCh').innerHTML = d.c.map(([l, a, c]) => `<button type="button" class="pbtn sm ${c || ''}" data-dlg="${a}">${esc(l)}</button>`).join('');
+  $('#dlg').hidden = false; dlgOpen = true; $('#act').hidden = true; near = null;
+  if (k !== 'welcome') { S.welcomed = true; save(); }
+}
+function hideDlg() {
+  if (!dlgOpen) return;
+  $('#dlg').hidden = true; dlgOpen = false; S.welcomed = true; save(); near = undefined; refreshNear();
+}
+$('#dlg').addEventListener('click', e => {
+  if (e.target.closest('[data-dlg-close]')) { hideDlg(); return; }
+  const b = e.target.closest('[data-dlg]'); if (!b) return;
+  const a = b.dataset.dlg;
+  if (a === 'close') hideDlg();
+  else if (a === 'list') { hideDlg(); openList(); }
+  else if (a === 'pier') { hideDlg(); openPier(); }
+  else if (a.startsWith('go:')) goTo(a.slice(3), true);
+  else showDlg(a);
+});
+
+/* ================= side panel ================= */
+const stepDone = n => n === 1 ? !!S.t1done : n === 2 ? !!S.t2.done : n === 3 ? !!S.t3.done : !!S.t4.done;
+const stepStarted = n => n === 1 ? !!(S.track || S.visited.length) : n === 2 ? !!(S.t2.co || S.t2.a1) : n === 3 ? !!(S.t3.extra.length || S.t3.rt1) : !!(S.t4.co || Object.values(S.t4.m).some(Boolean));
+function renderSide() {
+  const n = [1, 2, 3, 4].filter(stepDone).length;
+  $('#progTop').textContent = `${n}/4`; $('#progSide').textContent = `${n}/4 완료`;
+  $('#stepList').innerHTML = STEPS.map(s => {
+    const d = stepDone(s.n), st = stepStarted(s.n);
+    return `<li class="step ${d ? 'done' : ''}">
+      <span class="no">${d ? icon('i-check') : s.n}</span>
+      <h3>${esc(s.title)} <span class="st ${d ? 'ok' : st ? 'go' : ''}">${d ? '완료' : st ? '진행 중' : '시작 전'}</span></h3>
+      <span class="meta">${esc(s.where)} · 마감 ${esc(s.due)}</span>
+      <div class="acts"><button type="button" class="pbtn sm cy" data-open-step="${s.n}">열기</button><button type="button" class="pbtn sm" data-go="${s.place}">${icon('i-route')}길 안내</button></div>
+    </li>`;
+  }).join('');
+  $('#stampN').textContent = `${S.visited.length}/8`;
+  $$('[data-bind]', sideEl).forEach(el => { const v = getPath(el.dataset.bind); if (document.activeElement !== el) el.value = v == null ? '' : v; });
+  renderMe();
+  $('#stamps').innerHTML = ORGS.map(o => {
+    const on = S.visited.includes(o.id);
+    return `<button type="button" class="stamp ${on ? 'on' : ''}" data-go="${o.id}" aria-label="${esc(o.hall)} ${on ? '방문함' : '아직 방문 전'} · 길 안내"><img src="${o.logo}" alt=""><span class="tag">${o.kind === 'anchor' ? (o.ind === 'pharma' ? 'PHARMA' : 'DEVICE') : 'EXPLORE'}</span></button>`;
+  }).join('');
+}
+const sideEl = document.querySelector('.side');
+function renderMe() {
+  const ready = meReady();
+  $('#meState').textContent = ready ? '입력 완료' : '입력 전';
+  $('#meHint').textContent = FORM ? '과제를 제출할 때 이 정보가 함께 보내져요. 이 브라우저에도 저장돼요.' : '시안에서는 이 브라우저에만 저장돼요. 구글 폼을 연결하면 과제와 함께 보내져요.';
+}
+sideEl.addEventListener('input', e => {
+  const el = e.target.closest('[data-bind]'); if (!el) return;
+  setPath(el.dataset.bind, el.value); save(); renderMe();
+});
+sideEl.addEventListener('change', e => {
+  const el = e.target.closest('[data-bind]'); if (!el) return;
+  setPath(el.dataset.bind, el.value); save(); renderMe();
+});
+sideEl.addEventListener('click', e => {
+  const g = e.target.closest('[data-go]'); if (g) { goTo(g.dataset.go, true); return; }
+  const o = e.target.closest('[data-open-step]'); if (o) openTask(+o.dataset.openStep);
+});
+
+/* ================= sheet ================= */
+const wrap = $('#sheet'), sheetEl = $('.sheet', wrap);
+let sheetOpen = false, lastFocus = null, sheetCtx = null;
+function openSheet(o) {
+  lastFocus = document.activeElement;
+  for (const k in keys) keys[k] = false;
+  sheetCtx = o;
+  const head = o.logo ? `<div class="lg"><img src="${o.logo}" alt=""></div>` : o.badge ? `<div class="lg badge">${o.badge}</div>` : '';
+  sheetEl.innerHTML = `
+    <div class="sh-head">${head}
+      <div class="tt"><span class="px">${esc(o.kicker || '')}</span><h2 id="sheetTitle" tabindex="-1">${esc(o.title)}</h2>
+        ${o.chips ? `<div class="chips">${o.chips.map(c => `<span class="chip ${c.cls || ''}">${esc(c.t || c)}</span>`).join('')}</div>` : ''}</div>
+      <button class="x" type="button" data-close aria-label="닫기">${icon('i-x')}</button>
+    </div>
+    ${o.tabs ? `<div class="tabs" role="tablist">${o.tabs.map((t, i) => `<button class="tab" role="tab" type="button" id="tab-${t.id}" aria-selected="${i === 0}" aria-controls="pane-${t.id}" data-tab="${t.id}">${esc(t.label)}</button>`).join('')}</div>` : ''}
+    ${o.notice ? `<div class="notice ${o.noticeOk ? 'ok' : ''}">${icon(o.noticeOk ? 'i-check' : 'i-doc')}<span>${esc(o.notice)}</span></div>` : ''}
+    <div class="sh-body" id="shBody">${o.tabs ? o.tabs.map((t, i) => `<section class="pane" role="tabpanel" id="pane-${t.id}" aria-labelledby="tab-${t.id}" ${i ? 'hidden' : ''}>${t.html}</section>`).join('') : o.body}</div>
+    ${o.foot ? `<div class="sh-foot">${o.foot}</div>` : ''}`;
+  wrap.hidden = false; sheetOpen = true;
+  document.documentElement.style.overflow = 'hidden';
+  $('#sheetTitle').focus({ preventScroll: true });
+  bindFields(sheetEl);
+  if (o.onMount) o.onMount(sheetEl);
+}
+function closeSheet(silent) {
+  if (!sheetOpen) return;
+  wrap.hidden = true; sheetOpen = false; sheetCtx = null;
+  document.documentElement.style.overflow = '';
+  renderSide();
+  if (!silent) { if (lastFocus && lastFocus.focus && document.contains(lastFocus)) lastFocus.focus({ preventScroll: true }); else cv.focus({ preventScroll: true }); }
+}
+function rerenderBody(html) {
+  const b = $('#shBody'), st = b.scrollTop;
+  b.innerHTML = html; bindFields(sheetEl); b.scrollTop = st;
+}
+function bindFields(root) {
+  $$('[data-bind]', root).forEach(el => {
+    const v = getPath(el.dataset.bind);
+    if (el.type === 'checkbox') el.checked = !!v; else el.value = v == null ? '' : v;
+    updCount(el);
+  });
+}
+function updCount(el) {
+  const c = el.id && $(`[data-count="${el.id}"]`, sheetEl);
+  if (c) c.textContent = `${el.value.length}/${el.maxLength > 0 ? el.maxLength : ''}`;
+}
+wrap.addEventListener('input', e => {
+  const el = e.target.closest('[data-bind]'); if (!el) return;
+  setPath(el.dataset.bind, el.type === 'checkbox' ? el.checked : el.value);
+  updCount(el); save();
+  if (sheetCtx && sheetCtx.onInput) sheetCtx.onInput(el);
+});
+wrap.addEventListener('change', e => {
+  const el = e.target.closest('[data-bind]'); if (!el) return;
+  setPath(el.dataset.bind, el.type === 'checkbox' ? el.checked : el.value); save();
+  if (sheetCtx && sheetCtx.onChange) sheetCtx.onChange(el);
+});
+wrap.addEventListener('click', e => {
+  if (e.target.closest('[data-close]')) { closeSheet(); return; }
+  const tab = e.target.closest('[data-tab]');
+  if (tab) {
+    $$('[data-tab]', sheetEl).forEach(t => t.setAttribute('aria-selected', String(t === tab)));
+    $$('.pane', sheetEl).forEach(p => p.hidden = p.id !== `pane-${tab.dataset.tab}`);
+    $('#shBody').scrollTop = 0; return;
+  }
+  const go = e.target.closest('[data-go]'); if (go) { goTo(go.dataset.go, true); return; }
+  const op = e.target.closest('[data-open-step]'); if (op) { openTask(+op.dataset.openStep, op.dataset.co ? { co: op.dataset.co } : {}); return; }
+  if (sheetCtx && sheetCtx.onClick) sheetCtx.onClick(e);
+});
+wrap.addEventListener('keydown', e => {
+  if (e.key !== 'Tab') return;
+  const f = $$('button, a[href], input, select, textarea, [tabindex="-1"]#sheetTitle', sheetEl).filter(el => !el.disabled && el.offsetParent !== null);
+  if (!f.length) return;
+  const first = f[0], last = f[f.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
+let toastT = 0;
+function toast(msg) {
+  $('#toastTxt').textContent = msg; $('#toast').hidden = false;
+  clearTimeout(toastT); toastT = setTimeout(() => { $('#toast').hidden = true; }, 2600);
+}
+
+/* ================= org hall ================= */
+function trackIds(o) { return o.ind === 'pharma' ? ['T1', 'T2', 'T3'] : ['T4', 'T5', 'T6']; }
+function openOrg(o) {
+  const first = !S.visited.includes(o.id);
+  if (first) { S.visited.push(o.id); save(); toast(`스탬프를 받았어요 · ${S.visited.length}/8`); }
+  const anchor = o.kind === 'anchor';
+  const c = INFO[o.id];
+  const tabs = [
+    { id: 'ov', label: anchor ? '회사 한눈에' : '기관 한눈에', html: ovHtml(o) },
+    { id: 'jobs', label: anchor ? '직무 지도' : '이 기관에서 만나는 진로', html: anchor ? jobsHtml(o) : pathsHtml(o) }
+  ];
+  if (anchor) tabs.push({ id: 'hire', label: '인재상·채용', html: hireHtml(o) });
+  const chips = [o.sector];
+  if (o.region) chips.push(o.region);
+  chips.push(anchor ? trackIds(o).join(' · ') + ' 연결' : '진로 탐색관');
+  if (first) chips.push({ t: 'NEW 스탬프', cls: 'new' });
+  openSheet({
+    kicker: anchor ? (o.ind === 'pharma' ? 'PHARMA & BIO STREET' : 'MEDICAL DEVICE STREET') : 'CAREER EXPLORE HILL',
+    title: o.hall, logo: o.logo, chips, tabs,
+    notice: c ? (c.checked ? `${o.name}에서 확인한 내용이에요.` : `공개자료(${DATA.asOf} 기준)로 사업단이 만든 초안이에요. 기업 확인을 거쳐 바뀔 수 있어요.`) : '기관 확인을 거쳐 내용을 채울 예정이에요.',
+    noticeOk: !!(c && c.checked),
+    foot: `${anchor ? `<button type="button" class="pbtn cy" data-open-step="2" data-co="${o.id}">${icon('i-doc')}이 기업으로 기업분석 쓰기</button>` : ''}
+      <button type="button" class="pbtn" data-open-step="3" data-co="${o.id}">${icon('i-chat')}질문 남기기</button>
+      ${o.url ? `<a class="pbtn" href="${o.url}" target="_blank" rel="noopener">공식 홈페이지 ${icon('i-ext')}</a>` : ''}`,
+    onClick(e) {
+      const b = e.target.closest('[data-goal]'); if (!b) return;
+      const [tid, job] = b.dataset.goal.split('|');
+      S.track = tid; S.job = job; save();
+      $$('[data-goal]', sheetEl).forEach(x => x.setAttribute('aria-pressed', String(x.dataset.goal === b.dataset.goal)));
+      toast(`목표직무를 ${job}(으)로 정했어요`);
+    }
+  });
+}
+const newsHtml = c => (c && c.news && c.news.length) ? `<ul class="news">${c.news.map(n => `<li><a href="${esc(n.u)}" target="_blank" rel="noopener"><b>${esc(n.t)}</b><span>${esc(n.o)} · ${esc(n.d)}</span></a></li>`).join('')}</ul>` : '';
+function ovHtml(o) {
+  const anchor = o.kind === 'anchor';
+  const c = INFO[o.id];
+  const sites = c ? `<ul class="sites">${c.sites.v.map(([k, v]) => `<li><b>${esc(k)}</b>${esc(v)}</li>`).join('')}</ul>${c.sites.note ? `<span class="src">${esc(c.sites.note)}</span>` : ''}${srcLine(c, c.sites.src)}`
+    : (o.region ? esc(o.region) : '');
+  return `<p class="lead" style="margin-bottom:4px">${esc(o.intro)}</p>${c ? srcLine(c, c.intro.src) : ''}
+    <dl class="kv" style="margin-top:14px">
+      <dt>분야</dt><dd>${esc(o.sector)}</dd>
+      ${sites ? `<dt>근무지</dt><dd>${sites}</dd>` : ''}
+      <dt>컨소시엄 역할</dt><dd>${anchor ? '이수자 채용연계 참여 앵커기업' : esc(o.role)}</dd>
+      <dt>공식 홈페이지</dt><dd>${o.url ? `<a href="${o.url}" target="_blank" rel="noopener">${esc(o.url.replace(/^https?:\/\//, '').replace(/\/$/, ''))}</a>` : '<span class="tbd">추후 안내</span>'}</dd>
+    </dl>
+    ${c && c.news.length ? `<h3 class="h">기업분석에 참고할 기사 <small>보고서 ④번 칸에 활용해요</small></h3>${newsHtml(c)}` : ''}
+    <div class="mission" style="margin-top:18px"><span class="px">MISSION</span><h4>${anchor ? '이 기업관에서 할 일' : '이 관에서 할 일'}</h4>
+      <ul>${anchor
+        ? '<li>공식 홈페이지에서 주력 제품이나 서비스 2개를 찾아요</li><li>인재상·채용 탭을 보고 인재상 키워드를 기업분석 보고서 ②번 칸에 적어요</li><li>가장 궁금한 직무 1개를 직무 지도 탭에서 골라 둬요</li>'
+        : '<li>이 기관에서 일하는 사람들이 어떤 진로를 거쳤는지 살펴봐요</li><li>내 목표직무와 맞닿는 지점을 하나 찾아 직무지도 게시판 메모에 적어요</li>'}</ul>
+    </div>`;
+}
+function jobsHtml(o) {
+  const c = INFO[o.id];
+  const recent = c ? `<div class="recent"><h4>이 회사 최근 공고에 나온 직무</h4>
+      ${c.jobs.list.length ? `<div class="chiprow">${c.jobs.list.map(j => `<span>${esc(j)}</span>`).join('')}</div>` : '<span class="tbd">기업 확인 중</span>'}
+      <span class="src">${esc(c.jobs.note)}</span>${srcLine(c, c.jobs.src)}</div>` : '';
+  return recent + trackIds(o).map(tid => {
+    const t = TRACKS[tid];
+    return `<div class="tgroup"><p class="tgh"><span class="tid">${tid}</span>${esc(t.name)}</p>
+      <div class="jobs">${t.jobs.map(([n, d]) => `<div class="job"><b>${esc(n)}</b><span>${esc(d)}</span>
+        <button type="button" class="pick" data-goal="${tid}|${esc(n)}" aria-pressed="${S.track === tid && S.job === n}">목표직무로 정하기</button></div>`).join('')}</div></div>`;
+  }).join('') + `<p class="note">트랙별 직무는 산업 공통 기준의 예시예요. 목표직무로 정하면 직무지도 게시판(1단계)에 바로 반영돼요.</p>`;
+}
+function pathsHtml(o) {
+  return `<div class="jobs">${o.paths.map(([n, d, tr]) => `<div class="job"><b>${esc(n)}</b><span>${esc(d)}</span><span class="tid" style="align-self:flex-start;margin-top:auto">${esc(tr)}</span></div>`).join('')}</div>
+    <p class="note">진로 예시예요. 기관 확인 후 실제 직무와 경력 경로로 바꿔 표시합니다.</p>`;
+}
+function hireHtml(o) {
+  const c = INFO[o.id];
+  if (!c) return '<span class="tbd">기업 확인 중</span>';
+  const tl = c.talent, pr = c.process, wait = '<span class="tbd">기업 확인 중</span>';
+  const talent = tl.state === 'none'
+    ? `${wait}<span class="src">${esc(tl.note)}</span>${srcLine(c, tl.src, '참고')}`
+    : `${tl.title ? `<b style="font-size:14px">${esc(tl.title)}</b>` : ''}<ul class="talent ${tl.state === 'third' ? 'third' : ''}">${tl.items.map(([k, v]) => `<li>${k ? `<b>${esc(k)}</b>` : ''}${esc(v)}</li>`).join('')}</ul>
+       ${tl.note ? `<span class="src">${tl.state === 'third' ? '<span class="tbd">기업 확인 중</span> ' : ''}${esc(tl.note)}</span>` : ''}${srcLine(c, tl.src)}`;
+  const proc = pr.steps.length
+    ? `<div class="flowp">${pr.steps.map((s, i) => `${i ? '<i>→</i>' : ''}<span>${esc(s)}</span>`).join('')}</div><span class="src">${esc(pr.note)}</span>${srcLine(c, pr.src)}`
+    : `${wait}<span class="src">${esc(pr.note)}</span>${srcLine(c, pr.src, '참고')}`;
+  const timing = c.timing.v ? `${esc(c.timing.v)}${srcLine(c, c.timing.src)}` : wait;
+  return `<div class="slots">
+      <div class="slot"><span class="k">인재상</span><div class="v">${talent}</div></div>
+      <div class="slot"><span class="k">신입 채용 절차</span><div class="v">${proc}</div></div>
+      <div class="slot"><span class="k">채용 방식·시기</span><div class="v">${timing}</div></div>
+      <div class="slot"><span class="k">공식 채용 페이지</span><div class="v">${c.careers ? `<a href="${esc(c.careers)}" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700">${esc(c.careers.replace(/^https?:\/\//, ''))}</a>` : wait}</div></div>
+      <div class="slot"><span class="k">이수자 채용연계 방식</span><span class="tbd">확정되는 대로 안내</span></div>
+    </div>
+    <div class="mission"><span class="px">BEFORE YOU ASK</span><h4>질문하기 전에 먼저 찾아보세요</h4>
+      <ul><li>채용 플랫폼에 옮겨 실린 공고는 원문과 다를 수 있어요. 지원할 때는 공식 채용 페이지를 꼭 확인해요</li>
+      <li>인재상 키워드를 기업분석 보고서 ②번 칸에 옮겨 적어요</li>
+      <li>여기서 풀리지 않는 궁금증만 토크콘서트 질문으로 남겨요</li></ul></div>`;
+}
+/* ================= tasks ================= */
+const coOpts = (list, sel, ph) => `<option value="">${esc(ph)}</option>` + list.map(o => `<option value="${o.id}" ${sel === o.id ? 'selected' : ''}>${esc(o.name)}</option>`).join('');
+const goalLine = () => S.track && S.job ? `<b>${esc(S.job)}</b> <span class="tid">${S.track}</span> ${esc(TRACKS[S.track].name)}` : '<span class="tbd">아직 정하지 않았어요</span>';
+function openTask(n, opt = {}) {
+  if (n === 1) return openT1();
+  if (n === 2) { if (opt.co && ORG[opt.co] && ORG[opt.co].kind === 'anchor' && !S.t2.done) { S.t2.co = opt.co; save(); } return openT2(); }
+  if (n === 3) return openT3(opt.co);
+  if (n === 4) return openT4();
+}
+
+function t1Html() {
+  const rec = S.star ? STAR[S.star].rec : [];
+  const tb = tid => { const t = TRACKS[tid]; return `<button type="button" class="tbtn" data-track="${tid}" aria-pressed="${S.track === tid}">${rec.includes(tid) ? '<span class="rec">추천</span>' : ''}<span class="tidl">${tid}</span><b>${esc(t.grp)}</b><span class="ind">${IND_KO[t.ind]}</span></button>`; };
+  const visited = S.visited.map(id => ORG[id]).filter(Boolean);
+  return `<p class="lead">목표 트랙과 직무를 하나 정해요. 지금은 가설이어도 괜찮아요. 기업관과 워케이션을 거치며 언제든 바꿀 수 있어요.</p>
+    <h3 class="h"><span class="no-b">1</span>내 STAR 유형 <small>선택 · 안내페이지의 30초 진로 진단 결과</small></h3>
+    <div class="opts">${Object.entries(STAR).map(([k, v]) => `<button type="button" class="opt" data-star="${k}" aria-pressed="${S.star === k}"><b>${esc(v.en)}</b><span>${esc(v.ko)}</span></button>`).join('')}</div>
+    <h3 class="h"><span class="no-b">2</span>트랙과 목표직무 ${rec.length ? `<small>추천 ${rec.join(' · ')}</small>` : ''}</h3>
+    <div class="matrix">
+      <span class="mh"></span><span class="mh">품질·제조</span><span class="mh">연구개발</span><span class="mh">규제·산업지원</span>
+      <span class="mh">제약·바이오</span>${tb('T1')}${tb('T2')}${tb('T3')}
+      <span class="mh">의료기기</span>${tb('T4')}${tb('T5')}${tb('T6')}
+    </div>
+    ${S.track ? `<div class="jpick">${TRACKS[S.track].jobs.map(([n, d]) => `<button type="button" class="jp" data-job="${esc(n)}" aria-pressed="${S.job === n}"><b>${esc(n)}</b><span>${esc(d)}</span></button>`).join('')}</div>` : '<p class="note">트랙을 고르면 직무가 나타나요.</p>'}
+    <h3 class="h"><span class="no-b">3</span>지금 내 수준 <small>1 처음 들어 봄 · 5 남에게 설명할 수 있음</small></h3>
+    <div class="rates">${COMP.map(([k, n, d]) => `<div class="rate"><div><b>${esc(n)}</b><small>${esc(d)}</small></div><div class="dots" role="group" aria-label="${esc(n)}">${[1, 2, 3, 4, 5].map(v => `<button type="button" data-rate="${k}:${v}" aria-pressed="${S.rate[k] === v}" aria-label="${v}점">${v}</button>`).join('')}</div></div>`).join('')}</div>
+    <h3 class="h"><span class="no-b">4</span>둘러본 기업관 메모 <small>${visited.length}/3곳 이상 · 내 트랙 분야 2곳 + 다른 분야 1곳 권장</small></h3>
+    ${visited.length ? visited.map(o => `<div class="fld"><label for="note-${o.id}">${esc(o.hall)} <small>인상 깊은 직무나 사실 하나</small></label><input type="text" id="note-${o.id}" maxlength="80" data-bind="notes.${o.id}" placeholder="예: 생산공장이 충남에 있어 품질관리 직무 채용이 꾸준하다"></div>`).join('')
+      : `<div class="empty"><span>아직 들어간 기업관이 없어요.</span><button type="button" class="pbtn sm cy" data-go="yuhan">유한양행관부터 가기</button></div>`}
+    ${whoHtml()}
+    <div id="t1msg">${S.t1done ? `<p class="msg ok">${S.sent[1] ? `제출했어요(${esc(S.sent[1])}).` : '완료로 표시되어 있어요.'} 고쳐서 다시 낼 수 있어요.</p>` : ''}</div>`;
+}
+const trackName = () => S.track ? `${S.track} ${TRACKS[S.track].name}` : '-';
+const coName = id => (ORG[id] ? ORG[id].name : '');
+function t1Content() {
+  return [`트랙: ${trackName()}`, `목표직무: ${S.job || '-'}`, `STAR 유형: ${S.star ? STAR[S.star].ko : '선택 안 함'}`,
+    `자가점검(1~5): ${COMP.map(([k, n]) => `${n} ${S.rate[k] || '-'}`).join(', ')}`,
+    `둘러본 기업관 ${S.visited.length}곳`, ...S.visited.map(id => `- ${ORG[id] ? ORG[id].hall : id}: ${S.notes[id] || ''}`)].join('\n');
+}
+function openT1() {
+  openSheet({
+    kicker: 'STEP 1 · 직무지도 게시판', title: '목표직무 정하기', badge: '1',
+    chips: [`마감 11.14(토) 안`], body: t1Html(),
+    foot: `<span class="due">완료 조건: 트랙·직무 선택 + 기업관 3곳 이상</span><button type="button" class="pbtn cy" data-act="t1submit">제출하기</button>`,
+    onClick(e) {
+      const st = e.target.closest('[data-star]'), tr = e.target.closest('[data-track]'), jb = e.target.closest('[data-job]'), rt = e.target.closest('[data-rate]'), act = e.target.closest('[data-act="t1submit"]');
+      if (st) { S.star = S.star === st.dataset.star ? '' : st.dataset.star; save(); rerenderBody(t1Html()); }
+      else if (tr) { if (S.track !== tr.dataset.track) { S.track = tr.dataset.track; S.job = ''; } save(); rerenderBody(t1Html()); }
+      else if (jb) { S.job = jb.dataset.job; save(); rerenderBody(t1Html()); }
+      else if (rt) { const [k, v] = rt.dataset.rate.split(':'); S.rate[k] = +v; save(); $$(`[data-rate^="${k}:"]`, sheetEl).forEach(b => b.setAttribute('aria-pressed', String(b === rt))); }
+      else if (act) {
+        const miss = [];
+        if (!S.track || !S.job) miss.push('트랙과 목표직무');
+        if (S.visited.length < 3) miss.push(`기업관 ${3 - S.visited.length}곳 더`);
+        if (miss.length) { $('#t1msg').innerHTML = `<p class="msg warn">저장했어요. 제출하려면 ${esc(miss.join(', '))}이(가) 남았어요.</p>`; return; }
+        submitStep(1, '1 목표직무', S.visited.map(coName).filter(Boolean).join(', '), t1Content(), $('#t1msg'), '1단계를 제출했어요.').then(ok => {
+          if (!ok) return; S.t1done = true; save(); renderSide(); toast('1단계 완료 · 다음은 기업분석 연구실');
+        });
+      }
+    }
+  });
+}
+
+function t2News() {
+  const c = INFO[S.t2.co];
+  return c && c.news.length ? `<span class="src">참고 기사: ${c.news.map(n => `<a href="${esc(n.u)}" target="_blank" rel="noopener">${esc(n.t)} (${esc(n.o)} ${esc(n.d)})</a>`).join(' · ')}</span>` : '';
+}
+function t2Html() {
+  const f = (k, n, title, hint, ph, rows = 3, extra = '') => `<div class="fld"><label for="t2-${k}"><span class="no-b">${n}</span>${title} <small>${hint}</small></label>
+    <textarea id="t2-${k}" rows="${rows}" maxlength="300" data-bind="t2.${k}" placeholder="${esc(ph)}"></textarea>${extra}<span class="cnt" data-count="t2-${k}"></span></div>`;
+  return `<p class="lead">목표직무의 눈으로 앵커기업 한 곳을 분석해요. 마지막 칸의 질문은 진로 토크 라운지로 이어져 토크콘서트에서 답을 들어요.</p>
+    <div class="row2">
+      <div class="fld"><label for="t2-co">분석할 기업 <small>채용연계 앵커기업 6곳 중</small></label><select id="t2-co" data-bind="t2.co">${coOpts(ANCHORS, S.t2.co, '기업을 고르세요')}</select></div>
+      <div class="fld"><span class="lb">내 목표직무</span><div style="padding:10px 0">${goalLine()}</div></div>
+    </div>
+    ${f('a1', 1, '사업 한 줄 요약', '이 회사는 무엇으로 돈을 버나요?', '예: 전문의약품과 원료의약품을 만들고, 신약 기술이전으로 수익을 냅니다', 2)}
+    ${f('a2', 2, '인재상 키워드 3개', '기업관 인재상·채용 탭과 공식 홈페이지 기준', '예: 성실성 · 신뢰성 · 팀워크 (출처 페이지도 함께 적어요)', 2)}
+    ${f('a3', 3, '가치사슬 속 내 목표직무', '제품이 만들어져 고객에게 가기까지, 내 직무는 어디서 무엇을 하나요?', '예: 생산된 완제품이 출하되기 전 QC가 시험해 규격 적합 여부를 판정합니다')}
+    ${f('a4', 4, '최근 이슈와 AI·데이터 전환 포인트', '기사·공시·보도자료 1개 이상', '예: 공정 데이터를 모아 품질 이상을 미리 잡는 시스템을 도입했다는 기사', 3, t2News())}
+    ${f('a5', 5, '내가 기여할 수 있는 점', '전공·경험과 연결해서', '예: 분석화학 실험에서 HPLC를 다뤄 본 경험으로 시험 업무에 빨리 적응할 수 있습니다')}
+    <div class="fld"><span class="lb"><span class="no-b">6</span>이 회사에 묻고 싶은 질문 3개 <small>홈페이지로 풀리지 않는 것 · 진로 토크 라운지로 넘어가요</small></span>
+      ${[0, 1, 2].map(i => `<div class="qrow"><span class="qn">Q${i + 1}</span><input type="text" id="t2-q${i}" maxlength="120" data-bind="t2.q.${i}" placeholder="${['예: 신입 QC가 첫해에 가장 많이 다루는 시험은 무엇인가요?', '예: 생산공장 근무와 본사 근무는 어떻게 배치되나요?', '예: 현업에서 데이터 분석을 쓰는 업무가 있나요?'][i]}"></div>`).join('')}
+    </div>
+    <h3 class="h">AI 활용 기록 <small>AI를 써도 괜찮아요. 어디에 썼는지만 남겨 주세요</small></h3>
+    <label class="check"><input type="checkbox" id="t2-ai" data-bind="t2.ai"> 이 보고서를 쓰며 AI 도구를 활용했어요</label>
+    <div class="row2" style="margin-top:8px">
+      <div class="fld"><label for="t2-aiNote">어디에 어떻게 <small>예: 사업보고서 요약, 문장 다듬기</small></label><textarea id="t2-aiNote" rows="2" maxlength="200" data-bind="t2.aiNote"></textarea></div>
+      <div class="fld"><label for="t2-src">참고한 자료 <small>링크나 자료명</small></label><textarea id="t2-src" rows="2" maxlength="300" data-bind="t2.src"></textarea></div>
+    </div>
+    ${whoHtml()}
+    <div id="t2msg">${S.t2.done ? `<p class="msg ok">${S.sent[2] ? `제출했어요(${esc(S.sent[2])}).` : '제출 완료로 표시되어 있어요.'} 고친 내용도 자동으로 임시 저장되고, 다시 낼 수 있어요.</p>` : ''}</div>`;
+}
+function t2Content() {
+  const L = ['1 사업 요약', '2 인재상 키워드', '3 가치사슬 속 목표직무', '4 최근 이슈·AI 전환', '5 기여점'];
+  return [`목표직무: ${S.job || '-'} (${trackName()})`, ...['a1', 'a2', 'a3', 'a4', 'a5'].map((k, i) => `[${L[i]}]\n${S.t2[k] || ''}`),
+    `[6 질문]\n${S.t2.q.filter(q => q && q.trim()).map((q, i) => `Q${i + 1} ${q}`).join('\n')}`,
+    `[AI 활용] ${S.t2.ai ? '예' : '아니오'} ${S.t2.aiNote || ''}`, `[참고 자료] ${S.t2.src || ''}`].join('\n\n');
+}
+function openT2() {
+  const co = ORG[S.t2.co];
+  openSheet({
+    kicker: 'STEP 2 · 기업분석 연구실', title: '기업분석 보고서', badge: '2', logo: co ? co.logo : null,
+    chips: ['마감 11.17(화) 안', '자동 임시저장'], body: t2Html(),
+    foot: `<span class="due">입력하는 대로 이 브라우저에 저장돼요</span><button type="button" class="pbtn" data-go="lounge">${icon('i-route')}진로 토크 라운지로</button><button type="button" class="pbtn cy" data-act="t2submit">제출하기</button>`,
+    onChange(el) {
+      if (el.id !== 't2-co') return;
+      const o = ORG[S.t2.co]; const lg = $('.sh-head .lg', sheetEl);
+      if (o && lg) { lg.className = 'lg'; lg.innerHTML = `<img src="${o.logo}" alt="">`; }
+      rerenderBody(t2Html());
+    },
+    onClick(e) {
+      if (!e.target.closest('[data-act="t2submit"]')) return;
+      const miss = [];
+      if (!S.t2.co) miss.push('기업');
+      ['a1', 'a2', 'a3', 'a4', 'a5'].forEach((k, i) => { if (!String(S.t2[k] || '').trim()) miss.push(`${i + 1}번`); });
+      if (!S.t2.q.some(q => String(q || '').trim())) miss.push('질문 1개 이상');
+      if (miss.length) { $('#t2msg').innerHTML = `<p class="msg warn">${esc(miss.join(', '))}을(를) 채워 주세요.</p>`; return; }
+      submitStep(2, '2 기업분석 보고서', coName(S.t2.co), t2Content(), $('#t2msg'), '기업분석 보고서를 제출했어요.').then(ok => {
+        if (!ok) return; S.t2.done = true; save(); renderSide(); toast('2단계 완료 · 질문이 진로 토크 라운지로 넘어갔어요');
+      });
+    }
+  });
+}
+
+function t3List() {
+  const own = S.t2.q.map((q, i) => [q, i]).filter(([q, i]) => String(q || '').trim() && S.t3.pick[i]).map(([q]) => ({ co: coName(S.t2.co), q }));
+  return own.concat(S.t3.extra.map(x => ({ co: coName(x.co), q: x.q })));
+}
+function t3Html(preCo) {
+  const co = ORG[S.t2.co];
+  const fromT2 = S.t2.q.map((q, i) => [q, i]).filter(([q]) => String(q || '').trim());
+  return `<p class="lead">질문을 기업별로 모아 상위 5개를 토크콘서트에 나오는 현직자에게 미리 전달해요. 답은 11.20(금) 오후 진로 토크콘서트에서 직접 들어요.</p>
+    <ol class="pipe">
+      <li class="hi"><span class="d">~ 11.17(화)</span><b>질문 모으기</b>지금 여기서 남겨요</li>
+      <li><span class="d">11.17 – 18</span><b>기업별 상위 5개 선정</b>비슷한 질문은 묶어요</li>
+      <li><span class="d">11.18(수)</span><b>현직자에게 전달</b>답변을 준비해 오세요</li>
+      <li><span class="d">11.20(금) 16:00</span><b>현직자 진로 토크콘서트</b>약 1시간 30분, 현장에서 답을 들어요</li>
+    </ol>
+    <h3 class="h">기업분석 보고서에서 가져온 질문 ${co ? `<small>${esc(co.name)}</small>` : ''}</h3>
+    ${fromT2.length ? `<ul class="qlist">${fromT2.map(([q, i]) => `<li><input type="checkbox" id="t3-p${i}" data-bind="t3.pick.${i}" aria-label="이 질문 보내기" style="width:18px;height:18px;margin-top:3px;accent-color:#1B2452"><label for="t3-p${i}"><span class="co">${esc(co ? co.name : '기업 미선택')}</span>${esc(q)}</label><span></span></li>`).join('')}</ul>`
+      : `<div class="empty"><span>기업분석 보고서 6번 칸에 질문을 쓰면 여기로 넘어와요.</span><button type="button" class="pbtn sm" data-open-step="2">기업분석 보고서 열기</button></div>`}
+    <h3 class="h">다른 기업·기관에 질문 더하기 <small>8곳 모두 가능</small></h3>
+    ${S.t3.extra.length ? `<ul class="qlist">${S.t3.extra.map((x, i) => `<li><span class="qn" style="font-family:var(--f-px);font-size:12px;color:var(--blue);padding-top:2px">+${i + 1}</span><span><span class="co">${esc(coName(x.co))}</span>${esc(x.q)}</span><button type="button" class="del" data-del="${i}" aria-label="질문 삭제">${icon('i-x')}</button></li>`).join('')}</ul>` : ''}
+    <div class="addq"><select id="t3-co" aria-label="질문할 기업">${coOpts(ORGS, preCo || '', '기업·기관 선택')}</select><input type="text" id="t3-q" maxlength="120" placeholder="질문을 한 문장으로 적어요"><button type="button" class="pbtn" data-act="t3add">추가</button></div>
+    <h3 class="h">이야기를 꼭 듣고 싶은 기업 <small>현직자 섭외와 멘토링 배정에 참고해요</small></h3>
+    <div class="row2">
+      <div class="fld"><label for="t3-rt1">1지망</label><select id="t3-rt1" data-bind="t3.rt1">${coOpts(ANCHORS, S.t3.rt1, '선택')}</select></div>
+      <div class="fld"><label for="t3-rt2">2지망</label><select id="t3-rt2" data-bind="t3.rt2">${coOpts(ANCHORS, S.t3.rt2, '선택')}</select></div>
+    </div>
+    ${whoHtml()}
+    <div id="t3msg">${S.t3.done ? `<p class="msg ok">${S.sent[3] ? `질문을 제출했어요(${esc(S.sent[3])}).` : '질문 제출 완료로 표시되어 있어요.'} 질문을 더하면 다시 낼 수 있어요.</p>` : ''}</div>`;
+}
+function openT3(preCo) {
+  openSheet({
+    kicker: 'STEP 3 · 진로 토크 라운지', title: '현직자에게 질문 남기기', badge: '3', preCo: preCo || '',
+    chips: ['질문 마감 11.17(화) 안', '11.20 토크콘서트 답변'], body: t3Html(preCo),
+    foot: `<span class="due">보낼 질문을 체크하거나 추가하세요</span><button type="button" class="pbtn cy" data-act="t3submit">질문 제출하기</button>`,
+    onClick(e) {
+      const add = e.target.closest('[data-act="t3add"]'), del = e.target.closest('[data-del]'), sub = e.target.closest('[data-act="t3submit"]');
+      if (add) {
+        const co = $('#t3-co').value, q = $('#t3-q').value.trim();
+        if (!co || !q) { $('#t3msg').innerHTML = '<p class="msg warn">기업과 질문을 모두 적어 주세요.</p>'; return; }
+        S.t3.extra.push({ co, q }); save(); sheetCtx.preCo = co; rerenderBody(t3Html(sheetCtx.preCo)); $('#t3-q').focus();
+      } else if (del) {
+        S.t3.extra.splice(+del.dataset.del, 1); save(); rerenderBody(t3Html(sheetCtx.preCo));
+      } else if (sub) {
+        const list = t3List();
+        if (!list.length) { $('#t3msg').innerHTML = '<p class="msg warn">보낼 질문을 1개 이상 체크하거나 추가해 주세요.</p>'; return; }
+        const content = list.map(x => `[${x.co}] ${x.q}`).join('\n') + `\n\n듣고 싶은 기업 1지망: ${coName(S.t3.rt1) || '-'} / 2지망: ${coName(S.t3.rt2) || '-'}`;
+        const cos = [...new Set(list.map(x => x.co).filter(Boolean))].join(', ');
+        submitStep(3, '3 현직자 질문', cos, content, $('#t3msg'), `질문 ${list.length}개를 제출했어요.`).then(ok => {
+          if (!ok) return; S.t3.done = true; save(); renderSide(); toast('3단계 완료 · 마지막은 커리어 데스크');
+        });
+      }
+    }
+  });
+}
+
+function essayBox(id) {
+  const c = INFO[id];
+  if (!c) return '';
+  if (!c.essay.qs.length) return `<div class="essay"><h4>${esc(c.name)}의 실제 자소서 문항 <span class="tbd">기업 확인 중</span></h4><span class="src">${esc(c.essay.note)}</span></div>`;
+  return `<div class="essay"><h4>${esc(c.name)}의 최근 자소서 문항 <span class="tbd">공개자료 기준</span></h4>
+    <span class="src" style="margin-top:0">${esc(c.essay.label)}${c.essay.note ? ' · ' + esc(c.essay.note) : ''}</span>
+    <ol>${c.essay.qs.map(q => `<li>${esc(q)}</li>`).join('')}</ol>${srcLine(c, c.essay.src)}
+    <span class="src">위 4개 유형에 메시지를 정리해 두면 실제 문항에 맞춰 옮겨 쓰기 쉬워요.</span></div>`;
+}
+function t4Html() {
+  const cid = S.t4.co || S.t2.co;
+  return `<div class="phase"><span class="${unlocked ? '' : 'on'}">지금 · 뼈대 쓰기 ~ 11.18(수)</span><span class="${unlocked ? 'on' : ''}">11.21 이후 · 실습 경험 넣어 완성 ~ 12.4(금)</span></div>
+    <p class="lead">지원서는 워케이션 뒤에 완성해요. 현장 실습이 곧 지원서에 쓸 직무 경험이 되거든요. 지금은 문항별 핵심 메시지와 쓸 소재만 정해 둬요.</p>
+    <div class="row2">
+      <div class="fld"><label for="t4-co">지원할 기업</label><select id="t4-co" data-bind="t4.co">${coOpts(ANCHORS, cid, '기업을 고르세요')}</select></div>
+      <div class="fld"><span class="lb">목표직무</span><div style="padding:10px 0">${goalLine()}</div></div>
+    </div>
+    <h3 class="h">자기소개서 문항 뼈대 <small>공통 문항 유형 4개</small></h3>
+    <div class="qa4">${APPQ.map(([k, n, d]) => `<div class="box"><h4>${esc(n)}</h4><p>${esc(d)}</p>
+      <label class="sr" for="t4-m-${k}">${esc(n)} 핵심 메시지</label><input type="text" id="t4-m-${k}" maxlength="80" data-bind="t4.m.${k}" placeholder="핵심 메시지 한 줄">
+      <label class="sr" for="t4-e-${k}">${esc(n)} 쓸 경험</label><textarea id="t4-e-${k}" rows="2" maxlength="200" data-bind="t4.e.${k}" placeholder="쓸 경험·근거"></textarea></div>`).join('')}</div>
+    ${cid ? essayBox(cid) : ''}
+    <h3 class="h">워케이션 실습 경험</h3>
+    <p class="lock">${icon(unlocked ? 'i-check' : 'i-lock')}${unlocked ? '열렸어요. 실습에서 맡은 역할과 결과를 적어 보세요.' : '11.21 이후에 열려요'}</p>
+    <textarea id="t4-camp" rows="3" maxlength="400" data-bind="t4.camp" ${unlocked ? '' : 'disabled'} placeholder="실습에서 맡은 역할, 해결한 문제, 배운 점을 지원서 소재로 옮겨요"></textarea>
+    <h3 class="h">멘토 피드백</h3>
+    <p class="note" style="margin-top:0">완성본을 내면 기업 멘토나 담당 교원이 피드백을 줘요. <span class="tbd">운영 방식 추후 안내</span></p>
+    ${whoHtml()}
+    <div id="t4msg">${S.t4.done ? `<p class="msg ok">${S.sent[4] ? `뼈대를 제출했어요(${esc(S.sent[4])}).` : '뼈대 제출 완료로 표시되어 있어요.'} 11.21 이후 실습 경험을 넣어 다시 낼 수 있어요.</p>` : ''}</div>`;
+}
+function t4Content() {
+  return [`목표직무: ${S.job || '-'} (${trackName()})`,
+    ...APPQ.map(([k, n]) => `[${n}] ${S.t4.m[k] || ''}\n- 소재: ${S.t4.e[k] || ''}`),
+    unlocked ? `[워케이션 실습 경험]\n${S.t4.camp || ''}` : ''].filter(Boolean).join('\n\n');
+}
+function openT4() {
+  openSheet({
+    kicker: 'STEP 4 · 커리어 데스크', title: '입사지원서 뼈대 쓰기', badge: '4',
+    chips: ['뼈대 11.18(수) 안', '완성 12.4(금) 안'], body: t4Html(),
+    foot: `<span class="due">문항 2개 이상 핵심 메시지를 쓰면 제출할 수 있어요</span><button type="button" class="pbtn cy" data-act="t4submit">${unlocked ? '지원서 제출하기' : '뼈대 제출하기'}</button>`,
+    onChange(el) { if (el.id === 't4-co') rerenderBody(t4Html()); },
+    onClick(e) {
+      if (!e.target.closest('[data-act="t4submit"]')) return;
+      if (!S.t4.co && S.t2.co) S.t4.co = S.t2.co;
+      const n = APPQ.filter(([k]) => String(S.t4.m[k] || '').trim()).length;
+      if (!S.t4.co || n < 2) { $('#t4msg').innerHTML = `<p class="msg warn">${!S.t4.co ? '기업을 고르고, ' : ''}핵심 메시지를 2개 이상 적어 주세요. (지금 ${n}개)</p>`; return; }
+      submitStep(4, unlocked ? '4 지원서 완성본' : '4 지원서 뼈대', coName(S.t4.co), t4Content(), $('#t4msg'), unlocked ? '지원서를 제출했어요.' : '지원서 뼈대를 제출했어요.').then(ok => {
+        if (!ok) return; S.t4.done = true; save(); renderSide(); toast('사전과제 4단계를 모두 마쳤어요 · 11.20에 만나요');
+      });
+    }
+  });
+}
+
+/* ================= pier / list / help ================= */
+function openPier() {
+  openSheet({
+    kicker: 'DEPARTURE PIER', title: '11.20 워케이션 챌린지로 이어져요', badge: icon('i-anchor'),
+    chips: ['1박 2일 · 1학점', '단국대학교'],
+    body: `<ol class="tl">
+        <li><span class="when">PRE<b>11.12 – 11.18</b></span><div><h4>온라인 기업관 · 사전과제 4단계</h4><p>기업관 둘러보기, 목표직무, 기업분석 보고서, 질문, 지원서 뼈대까지. 질문은 11.18에 기업으로 전달돼요.</p></div></li>
+        <li><span class="when">DAY 1<b>11.20(금)</b></span><div><h4>트랙별 실습</h4><p>AI제약바이오 트랙은 KTR의 GMP·QA/QC·RA 사례실습과 AI 신약개발 실습, AI의료기기 트랙은 단국대병원 AX센터와 함께하는 바이브코딩 워크숍이에요.</p></div></li>
+        <li class="hi"><span class="when">DAY 1 · 16:00<b>약 1시간 30분</b></span><div><h4>현직자 진로 토크콘서트</h4><p>앵커기업 현직자가 자신의 진로 이야기를 들려주고, 사전 질문 중 기업별 상위 5개에 답해요.</p></div></li>
+        <li><span class="when">DAY 2<b>11.21(토)</b></span><div><h4>2일차 프로그램</h4><p><span class="tbd">추후 안내</span></p></div></li>
+        <li><span class="when">POST<b>11.22 – 12.4</b></span><div><h4>지원서 완성 · 멘토 피드백</h4><p>실습 경험을 넣어 입사지원서를 완성하고 피드백을 받아요.</p></div></li>
+      </ol>
+      <h3 class="h">사전과제는 현장에서 이렇게 쓰여요</h3>
+      <div class="tw"><table class="ctable"><thead><tr><th>사전과제 결과물</th><th>현장·사후에서</th></tr></thead><tbody>
+        <tr><td>목표직무·직무카드</td><td>실습을 목표직무의 눈으로 보고, 토크콘서트에서 무엇을 물을지 정하는 기준이 돼요</td></tr>
+        <tr><td>기업분석 보고서</td><td>현직자 이야기를 들을 때 비교해 볼 나만의 메모가 돼요</td></tr>
+        <tr><td>현직자 질문</td><td>DAY 1 진로 토크콘서트에서 답을 들어요</td></tr>
+        <tr><td>입사지원서 뼈대</td><td>실습 경험을 넣어 12.4까지 완성해요</td></tr>
+      </tbody></table></div>
+      <p class="note">장소와 세부 시간표 <span class="tbd">참가 확정 때 안내</span></p>`,
+    foot: `<button type="button" class="pbtn cy" data-close>지도로 돌아가기</button>`
+  });
+}
+function openList() {
+  const row = (lg, name, sub, id, isOrg) => `<li class="lrow">${lg}<div><b>${esc(name)}</b><span>${esc(sub)}</span></div>
+    <div class="a"><button type="button" class="pbtn sm" data-go-only="${id}">${icon('i-route')}길 안내</button><button type="button" class="pbtn sm cy" data-open-place="${id}">바로 열기</button></div></li>`;
+  const orgRow = o => row(`<div class="lg"><img src="${o.logo}" alt=""></div>`, o.hall + (S.visited.includes(o.id) ? ' ✓' : ''), `${o.sector}${o.region ? ' · ' + o.region : ''}`, o.id, true);
+  const icRow = (ic, name, sub, id) => row(`<div class="lg ic">${ic}</div>`, name, sub, id);
+  openSheet({
+    kicker: 'DIRECTORY', title: '모든 장소 목록', badge: icon('i-list'),
+    body: `<div class="lgroup"><h3 class="h">제약·바이오 거리 <small>채용연계 앵커기업</small></h3><ul class="lrows">${ANCHORS.filter(o => o.ind === 'pharma').map(orgRow).join('')}</ul></div>
+      <div class="lgroup"><h3 class="h">의료기기 거리 <small>채용연계 앵커기업</small></h3><ul class="lrows">${ANCHORS.filter(o => o.ind === 'device').map(orgRow).join('')}</ul></div>
+      <div class="lgroup"><h3 class="h">커리어 탐색 언덕 <small>진로 탐색관</small></h3><ul class="lrows">${ORGS.filter(o => o.kind === 'explore').map(orgRow).join('')}</ul></div>
+      <div class="lgroup"><h3 class="h">사전과제 공간</h3><ul class="lrows">
+        ${icRow('1', '직무지도 게시판', '입항 광장 · 목표직무 정하기', 'board')}
+        ${icRow('2', '기업분석 연구실', '연구실 거리 · 기업분석 보고서', 'lab')}
+        ${icRow('3', '진로 토크 라운지', '라운지 거리 · 현직자 질문 남기기', 'lounge')}
+        ${icRow('4', '커리어 데스크', '라운지 거리 · 지원서 뼈대', 'desk')}</ul></div>
+      <div class="lgroup"><h3 class="h">안내</h3><ul class="lrows">
+        ${icRow(icon('i-chat'), '앵커 가이드', '입항 광장 · 길 안내와 과제 순서', 'guide')}
+        ${icRow(icon('i-anchor'), '출항 부두', '11.20 워케이션 안내', 'pier')}</ul></div>`,
+    onClick(e) {
+      const g = e.target.closest('[data-go-only]'), o = e.target.closest('[data-open-place]');
+      if (g) goTo(g.dataset.goOnly, true);
+      else if (o) { const id = o.dataset.openPlace; closeSheet(true); PL[id].open(); }
+    }
+  });
+}
+function openHelp() {
+  openSheet({
+    kicker: 'HOW TO PLAY', title: '조작법', badge: icon('i-help'),
+    body: `<dl class="ctrl">
+        <dt>이동</dt><dd><kbd>←↑→↓</kbd> 또는 <kbd>W A S D</kbd> · 지도를 클릭하거나 터치하면 그곳까지 걸어가요</dd>
+        <dt>입장</dt><dd>건물 앞에서 <kbd>F</kbd>, <kbd>Space</kbd>, <kbd>Enter</kbd> 또는 화면의 입장 버튼 · 건물을 클릭하면 걸어가서 바로 들어가요</dd>
+        <dt>닫기</dt><dd><kbd>Esc</kbd> 또는 오른쪽 위 닫기 버튼</dd>
+        <dt>미니맵</dt><dd>오른쪽 위 작은 지도를 누르면 그 위치로 이동해요</dd>
+        <dt>목록 보기</dt><dd>지도 없이 모든 장소를 목록으로 열 수 있어요</dd>
+        <dt>저장</dt><dd>입력한 내용은 이 브라우저에만 저장돼요. 다른 기기에서는 이어지지 않아요</dd>
+      </dl>`,
+    foot: `<button type="button" class="pbtn cy" data-close>알겠어요</button>`
+  });
+}
+
+/* ================= boot ================= */
+if (FORM) $('#draftTxt').innerHTML = '<b>안내</b> · 기업 정보는 공개자료로 만든 초안이라 기업 확인 후 바뀔 수 있어요. 과제는 각 단계의 제출 버튼을 누를 때 사업단으로 보내지고, 입력 중인 내용은 이 브라우저에 저장돼요.';
+paintSwatch();
+renderSide();
+const ro = new ResizeObserver(() => resize());
+ro.observe(cv);
+resize();
+refreshNear();
+if (!S.welcomed) showDlg('welcome');
+requestAnimationFrame(frame);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { /* canvas text redraws every frame */ });
+})();
+</script>
+</body>
+</html>

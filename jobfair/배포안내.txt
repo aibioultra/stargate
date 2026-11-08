@@ -1,0 +1,31 @@
+울트라앵커 온라인 채용박람회 · Vercel 배포 안내
+
+[폴더 구성]
+- index.html : 페이지 전체 (기업 정보·구글 폼 설정이 이 파일 안에 있음)
+- assets/ : 로고 이미지
+- data/companies.json : 기업 정보 원본(참고용 사본). 페이지에는 이미 들어가 있음
+
+[처음 배포 - 새 Vercel 프로젝트]
+1. GitHub에서 새 저장소를 만듭니다(예: aibioultra/jobfair).
+2. 'uploading an existing file'을 눌러 이 폴더 안의 파일과 폴더를 그대로 끌어다 놓고 Commit 합니다.
+   (index.html이 저장소 맨 위에 있어야 합니다)
+3. vercel.com → Add New → Project → 방금 만든 저장소 Import
+   Framework Preset은 'Other', Build Command·Output Directory는 비워 둔 채 Deploy.
+4. 주소를 바꾸려면 Project → Settings → Domains에서 원하는 이름(예: ultra-anchor-jobfair.vercel.app)으로 수정합니다.
+
+[학생 과제 제출 연결 - 구글 폼]
+1. 구글 폼을 새로 만들고 질문 6개를 이 순서로 추가합니다.
+   이름(단답형) · 소속 대학(단답형) · 학번(단답형) · 과제 단계(단답형) · 기업(단답형) · 제출 내용(장문형)
+   - 모두 '필수'는 끄고, 설정에서 '로그인 필요'와 '이메일 주소 수집'도 꺼 둡니다(켜면 응답이 저장되지 않음).
+2. 폼 편집 화면 오른쪽 위 ⋮ → '미리 채워진 링크 가져오기'
+   칸마다 NAME, UNIV, SID, STEP, COMPANY, CONTENT 를 그대로 적고 '링크 가져오기' → '링크 복사'.
+3. GitHub에서 index.html을 열어 연필(편집) 버튼 → Ctrl+F로 FORM_PREFILL_URL 을 찾아
+   const FORM_PREFILL_URL = '';  의 따옴표 안에 복사한 링크를 붙여 넣고 Commit.
+   1~2분 뒤 Vercel이 자동으로 다시 배포합니다.
+4. 시험 제출: 페이지에서 참가자 정보를 넣고 1단계를 제출한 뒤, 폼 '응답' 탭이나 연결된 시트에 줄이 생기는지 확인합니다.
+   응답 시트에서 '과제 단계'와 '학번'으로 정렬하면 학생별 제출 현황을 볼 수 있습니다.
+
+[기업 확인을 받은 뒤]
+- index.html에서 Ctrl+F로 "name":"유한양행","checked":false 처럼 기업 이름을 찾아 false를 true로 바꾸면
+  그 기업관의 '공개자료 초안' 안내가 '기업에서 확인한 내용'으로 바뀝니다.
+- 내용을 고칠 때는 index.html 안의 같은 문구를 찾아 바꾸면 됩니다.
