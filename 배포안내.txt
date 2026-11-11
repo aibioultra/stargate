@@ -1,0 +1,50 @@
+STARGATE 리크루트 라인 · 워케이션챌린지② 사전과제 · Vercel 배포 안내
+
+[올릴 것] recruit 폴더 하나 (이 안내 파일은 올리지 않습니다)
+  recruit/index.html            페이지 전체(공고·직무 과제·부스 코드 등 설정이 이 파일 안에 있음)
+  recruit/img/                  크루 캐릭터 포즈·얼굴, 캠퍼스 그림
+  recruit/video/                지역 GATE 샘플 영상 6편과 표지 그림(공개 기사·기관 자료 기반 시안)
+  recruit/data/results.sample.json   서류 발표·오퍼 결과 파일 예시(가짜 지원자 1명)
+
+[배포 순서 - GitHub 웹에서]
+1. https://github.com/aibioultra/stargate 에서 [Add file] → [Upload files]를 누릅니다.
+2. 탐색기에서 'recruit' 폴더를 통째로 끌어다 업로드 칸에 놓습니다.
+   (폴더 안의 파일만 끌면 폴더 구조가 사라집니다. 폴더 자체를 끌어 주세요.)
+3. 목록에 recruit/index.html, recruit/img/…, recruit/video/… 처럼 앞에 recruit/ 가 붙어 있는지 확인합니다.
+4. 아래 Commit changes 칸에 'recruit 업로드'라고 적고 [Commit changes]를 누릅니다.
+5. Vercel이 자동으로 배포합니다. 1~2분 뒤 https://stargate-aibio.vercel.app/recruit/ 에서 열립니다.
+   Vercel 대시보드 Deployments에서 Ready 표시를 확인할 수 있습니다.
+
+[고칠 때]
+- 같은 recruit 폴더를 다시 끌어 올리면 같은 이름의 파일이 새 내용으로 바뀝니다.
+- 설정만 바꿀 때는 GitHub에서 recruit/index.html을 열고 연필 버튼(Edit) → Ctrl+F로 찾아 고친 뒤 Commit changes.
+
+[운영 전에 index.html에서 바꿀 것]
+- FORM_PREFILL_URL : 구글 폼 '미리 채워진 링크'. 질문 6개(이름·소속 대학·학번·과제 단계·기업 단답형 + 제출 내용 장문형)에
+  NAME, UNIV, SID, STEP, COMPANY, CONTENT 를 적어 만든 링크를 붙여 넣습니다. 비워 두면 시안 모드(브라우저에만 저장)입니다.
+  제출 내용 맨 앞에 지원자번호(예: [UA27-7K2Q])가 붙어 응답 시트에서 학생별로 묶을 수 있습니다.
+- VOD : G1·G2(경기), C1·C2(충남), D1·D2(대구) 실제 영상 주소. 넣으면 샘플 대신 '영상 보기' 버튼이 나옵니다.
+- SAMPLE_VOD : 실제 클립 전까지 보여 줄 샘플 영상(video 폴더). 빼려면 값을 '' 로 바꿉니다.
+- BOOTHS : 부스별 code(부스 QR·코드)와 pin(담당자 확인 번호). 지금 값은 예시이니 꼭 바꿔 주세요.
+
+[박람회 부스 QR]
+- 부스마다 아래 주소를 QR로 만들어 붙입니다. 학생이 찍으면 그 부스(앵커 스테이션)에 도킹(체크인)되고 ① 기업 브리핑이 기록됩니다.
+  https://stargate-aibio.vercel.app/recruit/?booth=부스코드   (예: ?booth=CK27)
+- ②~⑤는 인사담당자가 학생 화면에 확인 번호(pin)를 넣어 줍니다. 번호는 부스 담당자에게만 알려 주세요.
+
+[서류 발표·오퍼 결과 올리기]
+1. 응답 시트의 S3(서류)·S4(직무과제) 제출과 지원 카드를 기업별로 묶어 인사담당자에게 보냅니다(기업 전달 동의자만).
+2. 기업이 면접 초대 학생을 고르면 recruit/data/results.json 을 아래 모양으로 만들어 올립니다.
+   {"applicants": {"UA27-7K2Q": {"invite": ["ckd-qc"], "open": ["dasan-qa"], "offer": []}}}
+   - invite : 면접 초대한 공고 id / open : 열린 면접 안내 공고 id / offer : 오퍼를 준 회사 id
+   - 공고 id: yuhan-cmc, yuhan-ra, sdbio-qc, sdbio-sensor, ckd-qc, ckd-cdmo, dasan-qa, dasan-mes, megagen-qa, megagen-rnd, saeshin-qc, saeshin-sales
+   - 회사 id: yuhan, sdbio, ckd, dasan, megagen, saeshin
+3. 1.5(화) 09:00 이후 학생 화면의 GATE 05 서류발표에서 결과가 열립니다. offer 는 1.8(금) 15:00 이후 GATE 07 오퍼에 보입니다.
+
+[알아 둘 점]
+- 별빛 포인트·크루 등급·휘장은 참여를 돕는 재미 요소이며 학점 평가와 관계없습니다.
+- 학생 기록은 학생 브라우저에만 저장되고, 구글 폼으로 보낸 내용만 사업단에 남습니다. 브라우저를 바꾸면 이어서 할 수 없습니다.
+- 부스 코드와 확인 번호는 페이지 소스에서 보일 수 있어, 학점 증빙으로 쓸 때는 부스 담당자의 현장 확인을 함께 둡니다.
+  본격 운영은 통합교육지원플랫폼(로그인·서버 저장)으로 옮기는 것을 권합니다.
+- 모의 공고 12개는 공개 채용공고의 직무명으로 만든 초안이라 기업 확인이 필요합니다.
+- 샘플 영상의 수치는 각 자료의 기준 시점 값입니다. 실제 클립 제작 때 다시 확인합니다.

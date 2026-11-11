@@ -1,0 +1,18 @@
+{
+  "updated": "2027-01-05",
+  "note": "예시 파일입니다. 운영진이 기업 회신을 정리한 뒤 이름을 results.json으로 바꿔 같은 폴더에 올리면 GATE 05 서류발표·GATE 07 오퍼에 반영됩니다.",
+  "applicants": {
+    "UA27-EX01": {
+      "invite": [
+        "ckd-qc",
+        "dasan-qa"
+      ],
+      "open": [
+        "sdbio-qc"
+      ],
+      "offer": [
+        "ckd"
+      ]
+    }
+  }
+}
