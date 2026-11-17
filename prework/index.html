@@ -55,7 +55,7 @@ img{max-width:100%;display:block}
 .hero-img img{width:100%;height:100%;object-fit:cover}
 .hero-img .hero-tag{position:absolute;left:14px;top:14px;font-size:11px;color:var(--cyan-soft);background:rgba(11,16,48,.72);border:1px solid rgba(191,239,246,.35);border-radius:999px;padding:4px 11px}
 .hero-img.noimg{aspect-ratio:auto;height:56px;background:transparent}
-.hero-t{padding:20px 22px 24px}
+.hero-t{padding:26px 22px 24px}
 .hero-k{margin:0 0 6px;font-size:12px;color:var(--on-dark-muted)}
 .hero h1{font-size:clamp(22px,5.4vw,27px);font-weight:700;line-height:1.25;letter-spacing:-.025em;margin:0 0 10px;color:var(--on-dark)}
 .hero h1 em{font-style:normal;color:var(--cyan)}
@@ -134,7 +134,6 @@ img{max-width:100%;display:block}
 .qs{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .qs li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;background:var(--paper);border-radius:12px;padding:11px 14px}
 .qs .l{font-weight:700;font-size:15px}
-.qs .l.new::after{content:"NEW";font-family:var(--f-display);font-style:italic;font-weight:900;font-size:10px;letter-spacing:.08em;color:var(--ink-deep);background:var(--amber-soft);border-radius:999px;padding:1px 7px;margin-left:6px;vertical-align:2px}
 .qs .h{grid-column:1/-1;font-size:14px;color:var(--muted)}
 .qs .fmt{grid-row:1;grid-column:2;align-self:center;font-family:var(--f-mono);font-size:11px;color:var(--ok);background:var(--ok-tint);border-radius:6px;padding:1px 7px}
 details.ex{margin-top:14px;border:1px solid var(--rule);border-radius:14px;background:var(--paper)}
@@ -186,6 +185,8 @@ details.ex>summary small{font-weight:500;color:var(--muted);font-size:13px}
 .consent{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:12px 14px;font-size:13.5px}
 .consent input{width:19px;height:19px;margin:2px 0 0;accent-color:var(--navy);flex:none}
 .consent>span{flex:1;min-width:0}
+.consent.photo{flex-direction:column;margin-top:8px}
+.consent.photo>span{flex:none}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .submit-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:16px}
 .submit-row .btn{min-width:200px;min-height:48px;font-size:15.5px}
@@ -285,11 +286,6 @@ footer a{color:var(--navy);font-weight:700;text-decoration:none}
 
 <main class="wrap">
 <section class="hero" aria-label="소개">
-  <div class="hero-img" id="heroImg">
-    <img src="../recruit/img/campus-hero.webp" alt="STARGATE 캠퍼스의 게이트 앞에 선 다섯 크루" decoding="async"
-      onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://stargate-aibio.vercel.app/recruit/img/campus-hero.webp'}else{this.remove();document.getElementById('heroImg').classList.add('noimg')}">
-    <span class="hero-tag code">BIO WORKATION · 1N2D</span>
-  </div>
   <div class="hero-t">
     <p class="hero-k code">ULTRA ANCHOR · BIO WORKATION</p>
     <h1>리서치 카드 한 장으로,<br><em>현장 실습</em>을 바로 시작합니다</h1>
@@ -374,11 +370,11 @@ footer a{color:var(--navy);font-weight:700;text-decoration:none}
         </ul>
         <h4>작성 문항</h4>
         <ul class="qs">
-          <li><span class="l">① 대상 질환</span><span class="h">1순위 분야에서 다룰 질환 하나. 하위 유형·변이까지 구체적으로(폐암 → EGFR 변이 비소세포폐암)</span><span class="fmt">단답</span></li>
-          <li><span class="l new">② 질환 기전</span><span class="h">질환이 생기고 진행되는 핵심 표적·경로를 2~3문장으로</span><span class="fmt">300자</span></li>
-          <li><span class="l">③ 표준 치료제와 작용기전</span><span class="h">현재 쓰이는 대표 치료제 1~2개와 각각의 작용기전</span><span class="fmt">300자</span></li>
-          <li><span class="l">④ 치료의 한계</span><span class="h">현재 치료로 해결되지 않는 한계나 극복해야 할 문제(미충족 수요)</span><span class="fmt">200자</span></li>
-          <li><span class="l">⑤ 근거 자료</span><span class="h">자료 2~3개(공공 자료 1개 + 리뷰 논문 1편 이상, 링크·DOI). AI를 썼다면 도구와 질문, 원문으로 확인한 내용 한 줄</span><span class="fmt">서술</span></li>
+          <li><span class="l">① 대상 질환</span><span class="h">1순위 분야에서 다룰 질환 하나. 하위 유형·변이까지 구체적으로(폐암 → EGFR 변이 비소세포폐암)</span></li>
+          <li><span class="l">② 질환 기전</span><span class="h">질환이 생기고 진행되는 핵심 표적·경로를 2~3문장으로</span></li>
+          <li><span class="l">③ 표준 치료제와 작용기전</span><span class="h">현재 쓰이는 대표 치료제 1~2개와 각각의 작용기전</span></li>
+          <li><span class="l">④ 치료의 한계</span><span class="h">현재 치료로 해결되지 않는 한계나 극복해야 할 문제(미충족 수요)</span></li>
+          <li><span class="l">⑤ 근거 자료</span><span class="h">자료 2~3개(공공 자료 1개 + 리뷰 논문 1편 이상, 링크·DOI). AI를 썼다면 도구와 질문, 원문으로 확인한 내용 한 줄</span></li>
         </ul>
         <details class="ex">
           <summary>작성 예시 <small>EGFR 변이 비소세포폐암</small></summary>
@@ -428,11 +424,11 @@ footer a{color:var(--navy);font-weight:700;text-decoration:none}
         </ul>
         <h4>작성 문항</h4>
         <ul class="qs">
-          <li><span class="l">① 대상 사용자</span><span class="h">문제를 겪는 사람(환자·보호자·의사·간호사·기타)</span><span class="fmt">선택</span></li>
-          <li><span class="l">② 문제 상황</span><span class="h">언제, 어디서, 무엇이 문제인지 한 문장</span><span class="fmt">200자</span></li>
-          <li><span class="l">③ 현재 해결 방식과 한계</span><span class="h">지금은 어떻게 해결하고 있고, 그 방식의 한계는 무엇인지</span><span class="fmt">200자</span></li>
-          <li><span class="l new">④ 문제의 크기</span><span class="h">빈도·시간·위험 중 하나 이상을 근거와 함께(통계·자료·경험)</span><span class="fmt">200자</span></li>
-          <li><span class="l">⑤ 근거 자료</span><span class="h">자료 2개(통계·논문·허가 제품·기사 등, 링크), 비슷한 기존 제품·서비스가 있으면 1개. AI를 썼다면 도구와 확인 내용 한 줄</span><span class="fmt">서술</span></li>
+          <li><span class="l">① 대상 사용자</span><span class="h">문제를 겪는 사람(환자·보호자·의사·간호사·기타)</span></li>
+          <li><span class="l">② 문제 상황</span><span class="h">언제, 어디서, 무엇이 문제인지 한 문장</span></li>
+          <li><span class="l">③ 현재 해결 방식과 한계</span><span class="h">지금은 어떻게 해결하고 있고, 그 방식의 한계는 무엇인지</span></li>
+          <li><span class="l">④ 문제의 크기</span><span class="h">빈도·시간·위험 중 하나 이상을 근거와 함께(통계·자료·경험)</span></li>
+          <li><span class="l">⑤ 근거 자료</span><span class="h">자료 2개(통계·논문·허가 제품·기사 등, 링크), 비슷한 기존 제품·서비스가 있으면 1개. AI를 썼다면 도구와 확인 내용 한 줄</span></li>
         </ul>
         <details class="ex">
           <summary>작성 예시 <small>임플란트 수술 후 2주 자가관리</small></summary>
@@ -496,20 +492,20 @@ footer a{color:var(--navy);font-weight:700;text-decoration:none}
       <fieldset>
         <legend>03 · Research card</legend>
         <div class="grid2">
-          <div class="fld full" data-q="pharma"><label for="f-p1">① 대상 질환<span class="req" aria-hidden="true">*</span></label><input type="text" id="f-p1" maxlength="120" placeholder="예) EGFR 변이 비소세포폐암(엑손19 결실·L858R)"></div>
-          <div class="fld full" data-q="pharma"><label for="f-p2">② 질환 기전<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-p2"></span></label><textarea id="f-p2" data-max="300" placeholder="핵심 표적·경로를 2~3문장으로"></textarea></div>
-          <div class="fld full" data-q="pharma"><label for="f-p3">③ 표준 치료제와 작용기전<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-p3"></span></label><textarea id="f-p3" data-max="300" placeholder="대표 치료제 1~2개와 각각의 작용기전"></textarea></div>
-          <div class="fld full" data-q="pharma"><label for="f-p4">④ 치료의 한계<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-p4"></span></label><textarea id="f-p4" data-max="200" placeholder="현재 치료로 해결되지 않는 한계나 극복해야 할 문제"></textarea></div>
-          <div class="fld full" data-q="pharma"><label for="f-p5">⑤ 근거 자료<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-p5"></span></label><textarea id="f-p5" data-max="500" placeholder="자료 2~3개(링크·DOI), AI를 썼다면 도구·질문·확인 내용"></textarea></div>
+          <div class="fld full" data-q="pharma"><label for="f-p1">① 대상 질환<span class="req" aria-hidden="true">*</span></label><input type="text" id="f-p1" placeholder="예) EGFR 변이 비소세포폐암(엑손19 결실·L858R)"></div>
+          <div class="fld full" data-q="pharma"><label for="f-p2">② 질환 기전<span class="req" aria-hidden="true">*</span></label><textarea id="f-p2" placeholder="핵심 표적·경로를 2~3문장으로"></textarea></div>
+          <div class="fld full" data-q="pharma"><label for="f-p3">③ 표준 치료제와 작용기전<span class="req" aria-hidden="true">*</span></label><textarea id="f-p3" placeholder="대표 치료제 1~2개와 각각의 작용기전"></textarea></div>
+          <div class="fld full" data-q="pharma"><label for="f-p4">④ 치료의 한계<span class="req" aria-hidden="true">*</span></label><textarea id="f-p4" placeholder="현재 치료로 해결되지 않는 한계나 극복해야 할 문제"></textarea></div>
+          <div class="fld full" data-q="pharma"><label for="f-p5">⑤ 근거 자료<span class="req" aria-hidden="true">*</span></label><textarea id="f-p5" placeholder="자료 2~3개(링크·DOI), AI를 썼다면 도구·질문·확인 내용"></textarea></div>
 
           <div class="fld full" data-q="device"><span class="lbl" id="l-who">① 대상 사용자<span class="req" aria-hidden="true">*</span></span>
             <div class="seg" role="radiogroup" aria-labelledby="l-who">
               <label><input type="radio" name="who" value="환자">환자</label><label><input type="radio" name="who" value="보호자">보호자</label><label><input type="radio" name="who" value="의사">의사</label><label><input type="radio" name="who" value="간호사">간호사</label><label><input type="radio" name="who" value="기타">기타</label>
             </div></div>
-          <div class="fld full" data-q="device"><label for="f-d2">② 문제 상황<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-d2"></span></label><textarea id="f-d2" data-max="200" placeholder="언제, 어디서, 무엇이 문제인지 한 문장"></textarea></div>
-          <div class="fld full" data-q="device"><label for="f-d3">③ 현재 해결 방식과 한계<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-d3"></span></label><textarea id="f-d3" data-max="200" placeholder="지금의 해결 방식과 그 한계"></textarea></div>
-          <div class="fld full" data-q="device"><label for="f-d4">④ 문제의 크기<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-d4"></span></label><textarea id="f-d4" data-max="200" placeholder="빈도·시간·위험 중 하나 이상, 근거와 함께"></textarea></div>
-          <div class="fld full" data-q="device"><label for="f-d5">⑤ 근거 자료<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-d5"></span></label><textarea id="f-d5" data-max="500" placeholder="자료 2개(링크), 비슷한 기존 제품·서비스, AI 사용 기록"></textarea><span class="hint">경험을 적을 때 이름 등 개인정보는 제외하십시오.</span></div>
+          <div class="fld full" data-q="device"><label for="f-d2">② 문제 상황<span class="req" aria-hidden="true">*</span></label><textarea id="f-d2" placeholder="언제, 어디서, 무엇이 문제인지 한 문장"></textarea></div>
+          <div class="fld full" data-q="device"><label for="f-d3">③ 현재 해결 방식과 한계<span class="req" aria-hidden="true">*</span></label><textarea id="f-d3" placeholder="지금의 해결 방식과 그 한계"></textarea></div>
+          <div class="fld full" data-q="device"><label for="f-d4">④ 문제의 크기<span class="req" aria-hidden="true">*</span></label><textarea id="f-d4" placeholder="빈도·시간·위험 중 하나 이상, 근거와 함께"></textarea></div>
+          <div class="fld full" data-q="device"><label for="f-d5">⑤ 근거 자료<span class="req" aria-hidden="true">*</span></label><textarea id="f-d5" placeholder="자료 2개(링크), 비슷한 기존 제품·서비스, AI 사용 기록"></textarea><span class="hint">경험을 적을 때 이름 등 개인정보는 제외하십시오.</span></div>
         </div>
       </fieldset>
     </div>
@@ -532,6 +528,11 @@ footer a{color:var(--navy);font-weight:700;text-decoration:none}
 
     <div class="hp" aria-hidden="true"><label for="f-website">웹사이트</label><input type="text" id="f-website" tabindex="-1" autocomplete="off"></div>
     <label class="consent"><input type="checkbox" id="f-consent"><span><b>개인정보 수집·이용에 동의합니다.</b> 이름·소속 대학·학번·전공·학년과 리서치 카드는 조 편성과 현장 운영에만 쓰고, 행사 종료 후 파기합니다.</span></label>
+    <div class="consent photo"><span><b id="l-photo">현장 사진·동영상 촬영 및 활용에 동의하십니까?<span class="req" aria-hidden="true">*</span></b> 행사 현장에서 사진과 동영상을 촬영하며, 촬영물은 사업 결과보고와 홍보(누리집·SNS·보도자료 등)에 쓰일 수 있습니다. 동의하지 않아도 참여와 평가에 불이익은 없으며, 동의하지 않은 학생은 촬영물 공개 대상에서 제외합니다.</span>
+      <div class="seg" role="radiogroup" aria-labelledby="l-photo">
+        <label><input type="radio" name="photo" value="동의">동의합니다</label>
+        <label><input type="radio" name="photo" value="미동의">동의하지 않습니다</label>
+      </div></div>
     <div class="submit-row">
       <button type="submit" class="btn btn-cta" id="submitBtn">리서치 카드 제출 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       <small>작성 중인 내용은 이 브라우저에 임시 저장됩니다.</small>
@@ -599,6 +600,7 @@ footer a{color:var(--navy);font-weight:700;text-decoration:none}
     <li><span class="code">Laptop</span><b>노트북과 충전기 (필수)</b><span>현장에서 노트북을 대여하지 않으니 반드시 지참하십시오.</span></li>
     <li><span class="code">Login</span><b>실습 도구 로그인</b><span>제약바이오: NexusRAG 접속 · 의료기기: GitHub 계정과 Claude 데스크톱 앱 설치</span></li>
     <li><span class="code">Overnight</span><b>1박 2일 개인 준비물</b><span>세면도구 등 개인 물품을 챙겨 오십시오. 숙소 배정은 현장에서 안내합니다.</span></li>
+    <li><span class="code">Dress code</span><b>발표용 단정한 복장</b><span>본선에 진출하면 2일차 오전 국제회의장에서 공개 프레젠테이션을 합니다. 발표자로 서기에 알맞은 단정한 복장(세미 정장 등)을 함께 준비하십시오.</span></li>
   </ul>
   <div class="actions"><a class="btn btn-line" data-tool href="#pack">실습 도구 안내</a></div>
 </section>
@@ -790,11 +792,7 @@ footer a{color:var(--navy);font-weight:700;text-decoration:none}
     const t = TRACK_OF[a.dataset.pick], r = form.querySelector('input[name="track"][value="' + t + '"]');
     if (r && !r.checked) { r.checked = true; setTrack(t); saveDraft(); }
   }));
-  const counters = () => form.querySelectorAll('textarea[data-max]').forEach((ta) => {
-    const c = form.querySelector('.count[data-for="' + ta.id + '"]'), n = ta.value.trim().length, max = +ta.dataset.max;
-    if (c) { c.textContent = n + ' / ' + max; c.classList.toggle('over', n > max); }
-  });
-  form.addEventListener('input', () => { counters(); saveDraft(); });
+  form.addEventListener('input', () => saveDraft());
   form.addEventListener('change', () => saveDraft());
 
   const qIds = { pharma: ['f-p1', 'f-p2', 'f-p3', 'f-p4', 'f-p5'], device: [null, 'f-d2', 'f-d3', 'f-d4', 'f-d5'] };
@@ -804,7 +802,7 @@ footer a{color:var(--navy);font-weight:700;text-decoration:none}
       name: $('f-name').value.trim(), univ: $('f-univ').value, sid: $('f-sid').value.trim(), track,
       c1: $('f-c1').value, c2: $('f-c2').value, major: $('f-major').value, majorName: $('f-majorName').value.trim(),
       grade: $('f-grade').value, laptop: (form.querySelector('input[name="laptop"]:checked') || {}).value || '',
-      consent: $('f-consent').checked, website: $('f-website').value
+      consent: $('f-consent').checked, photo: (form.querySelector('input[name="photo"]:checked') || {}).value || '', website: $('f-website').value
     };
     if (k) qIds[k].forEach((id, i) => {
       d['q' + (i + 1)] = id ? $(id).value.trim() : ((form.querySelector('input[name="who"]:checked') || {}).value || '');
@@ -833,14 +831,14 @@ footer a{color:var(--navy);font-weight:700;text-decoration:none}
       qIds[k].forEach((id, i) => {
         const v = d['q' + (i + 1)], label = LABELS[k][i].slice(2);
         if (!id) { need(v, form.querySelector('[aria-labelledby="l-who"]'), '대상 사용자를 선택하십시오.'); return; }
-        const el = $(id), max = +el.dataset.max || 0;
-        need(v && (!max || v.length <= max), el, v ? max + '자 이내로 줄여 주십시오.' : label + ' 칸을 작성하십시오.');
+        need(v, $(id), label + ' 칸을 작성하십시오.');
       });
     }
     need(d.major, $('f-major'), '전공 계열을 선택하십시오.');
     need(d.grade, $('f-grade'), '학년을 선택하십시오.');
     need(d.laptop, form.querySelector('[aria-labelledby="l-laptop"]'), '노트북 지참 여부를 선택하십시오.');
     need(d.consent, $('f-consent'), '개인정보 수집·이용에 동의해야 제출할 수 있습니다.');
+    need(d.photo, form.querySelector('[aria-labelledby="l-photo"]'), '촬영 동의 여부를 선택하십시오.');
     return bad;
   };
   const say = (el, cls, msg) => { el.className = 'status ' + cls; el.textContent = msg; el.hidden = false; };
@@ -860,6 +858,7 @@ footer a{color:var(--navy);font-weight:700;text-decoration:none}
     const tr = form.querySelector('input[name="track"][value="' + d.track + '"]');
     if (tr) { tr.checked = true; setTrack(d.track, d); }
     const lp = form.querySelector('input[name="laptop"][value="' + d.laptop + '"]'); if (lp) lp.checked = true;
+    const ph = form.querySelector('input[name="photo"][value="' + d.photo + '"]'); if (ph) ph.checked = true;
     const k = KEY[d.track];
     if (k) qIds[k].forEach((id, i) => {
       const v = d['q' + (i + 1)] || '';
@@ -867,7 +866,6 @@ footer a{color:var(--navy);font-weight:700;text-decoration:none}
     });
     restoring = false;
   })();
-  counters();
 
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const showDone = (d, at) => {
