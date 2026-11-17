@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>워케이션챌린지 참가 안내</title>
+<meta name="description" content="2026 AI바이오워케이션챌린지Ⅰ 리서치 카드 제출, 현장 시간표, D-MOOC 사후학습">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap">
+<style>
+/* STARGATE 톤: 짙은 남색 헤더·히어로, 밝은 종이 배경 위 흰 박스, Archivo 이탤릭 라벨, 시안 포인트. 구조는 일정 가이드형(날짜 카드 → 흐름 → 과제 → 시간표 → 준비물·FAQ) */
+:root{
+  --ink:#121838; --ink-deep:#0B1030; --navy:#1B2452; --navy-up:#2E4CA8; --blue:#1F5CC4;
+  --cyan:#27B9CF; --cyan-soft:#BFEFF6; --ok:#0A7D90; --ok-tint:rgba(39,185,207,.15);
+  --amber:#E59A2F; --amber-soft:#FFD27A; --warn:#9E5C08; --warn-tint:rgba(229,154,47,.16);
+  --paper:#F5F8FD; --panel:#FFFFFF; --soft:#EAF1FB; --rule:#DCE4F1; --muted:#586487;
+  --on-dark:#EEF3FF; --on-dark-muted:#A9B5D6; --on-dark-line:rgba(255,255,255,.14);
+  --red:#C2413A; --red-tint:#FDECEA;
+  --f-body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-display:"Archivo","Noto Sans KR",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.65;word-break:keep-all;overflow-wrap:anywhere}
+[hidden]{display:none!important}
+a{color:var(--blue)}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.code{font-family:var(--f-display);font-style:italic;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(11,16,48,.97);color:var(--on-dark);border-bottom:1px solid var(--on-dark-line)}
+.top-row{display:flex;align-items:center;gap:12px;padding-top:12px;padding-bottom:10px}
+.top-row .logo-a{flex:none}
+.top-row .logo{height:34px;width:auto}
+.top-row .ttl{flex:1 1 auto;min-width:0;padding-left:12px;border-left:1px solid var(--on-dark-line)}
+.top-row strong{display:block;font-family:var(--f-display);font-style:italic;font-weight:900;font-size:15.5px;letter-spacing:.04em;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top-row strong em{font-style:inherit;color:var(--cyan)}
+.top-row small{display:block;font-size:12px;color:var(--on-dark-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top-row .home{margin-left:auto;flex:none;font-size:12.5px;color:var(--cyan-soft);background:rgba(39,185,207,.16);border:1px solid rgba(39,185,207,.55);border-radius:999px;padding:6px 12px;text-decoration:none}
+.jump{display:flex;gap:6px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none}
+.jump::-webkit-scrollbar{display:none}
+.jump a{flex:none;font-size:12.5px;color:var(--on-dark);text-decoration:none;border:1px solid var(--on-dark-line);border-radius:999px;padding:5px 12px}
+.jump a.dday{border-color:rgba(39,185,207,.55);background:rgba(39,185,207,.16);color:var(--cyan-soft)}
+.jump a.dday b{font-family:var(--f-display);font-style:italic;font-weight:900;color:#fff;margin-left:4px}
+@media (max-width:440px){.top-row small{display:none}.top-row strong{font-size:13.5px;letter-spacing:.02em}.top-row .logo{height:28px}}
+
+/* hero */
+.hero{margin-top:18px;border-radius:24px;overflow:hidden;background:linear-gradient(180deg,var(--navy) 0%,var(--ink-deep) 100%);color:var(--on-dark);box-shadow:0 30px 60px -36px rgba(27,36,82,.9)}
+.hero-img{position:relative;background:#9FC3EC;aspect-ratio:2/1}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img .hero-tag{position:absolute;left:14px;top:14px;font-size:11px;color:var(--cyan-soft);background:rgba(11,16,48,.72);border:1px solid rgba(191,239,246,.35);border-radius:999px;padding:4px 11px}
+.hero-img.noimg{aspect-ratio:auto;height:56px;background:transparent}
+.hero-t{padding:20px 22px 24px}
+.hero-k{margin:0 0 6px;font-size:12px;color:var(--on-dark-muted)}
+.hero h1{font-size:clamp(22px,5.4vw,27px);font-weight:700;line-height:1.25;letter-spacing:-.025em;margin:0 0 10px;color:var(--on-dark)}
+.hero h1 em{font-style:normal;color:var(--cyan)}
+.hero p.lead{margin:0 0 16px;color:var(--on-dark)}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.meta span{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;color:var(--cyan-soft);border:1px solid var(--on-dark-line);border-radius:999px;padding:3px 10px}
+.now{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:16px;background:rgba(39,185,207,.12);border:1px solid rgba(39,185,207,.45);border-radius:14px;padding:12px 14px}
+.now .code{font-size:11px;color:var(--ink-deep);background:var(--cyan);border-radius:999px;padding:3px 10px;letter-spacing:.1em}
+.now .txt{flex:1 1 240px;min-width:0}
+.now b{display:block;font-size:15.5px;color:#fff}
+.now span.t{display:block;font-size:13.5px;color:var(--on-dark-muted)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:42px;padding:9px 18px;border-radius:999px;font:inherit;font-weight:700;font-size:14.5px;text-decoration:none;cursor:pointer;border:1px solid transparent;white-space:nowrap}
+.btn svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.btn-cta{background:var(--cyan);color:var(--ink-deep)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--blue)}
+.btn-ghost{background:transparent;color:var(--on-dark);border-color:var(--on-dark-line)}
+.btn-line{background:var(--panel);color:var(--navy);border-color:var(--rule)}
+.btn[aria-disabled="true"],.btn:disabled{background:var(--soft);color:var(--muted);border-color:var(--rule);cursor:not-allowed}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+
+/* 세 단계 날짜 카드 */
+.gates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0 0;padding:0;list-style:none}
+.gates>li{position:relative;background:var(--panel);border:1px solid var(--rule);border-radius:14px;padding:14px 14px 16px;min-width:0;display:flex;flex-direction:column}
+.gates>li.is-now{border:2px solid var(--cyan);box-shadow:0 8px 24px -14px rgba(39,185,207,.9)}
+.gates>li.is-now::after{content:"NOW";position:absolute;top:10px;right:10px;font-family:var(--f-display);font-style:italic;font-weight:900;font-size:10.5px;letter-spacing:.1em;color:var(--ink-deep);background:var(--cyan);border-radius:999px;padding:2px 8px}
+.gates .code{font-size:10.5px;color:var(--blue)}
+.gates .date{font-family:var(--f-display);font-style:italic;font-weight:900;font-size:22px;letter-spacing:-.01em;color:var(--navy);margin:4px 0 0;line-height:1.15}
+.gates .day{font-size:12.5px;color:var(--muted)}
+.gates h3{margin:8px 0 2px;font-size:15px}
+.gates .where{font-size:12.5px;color:var(--muted);margin-bottom:10px}
+.gates .actions{margin-top:auto}
+.gates .btn{min-height:34px;padding:6px 12px;font-size:13px}
+@media (max-width:620px){.gates{grid-template-columns:1fr}}
+
+/* boxes */
+.box{background:var(--panel);border:1px solid var(--rule);border-radius:14px;padding:22px 20px;margin-top:14px;scroll-margin-top:110px}
+.box>.code:first-child{display:block;font-size:12px;color:var(--blue);margin-bottom:4px}
+.box h2{font-size:19px;font-weight:700;letter-spacing:-.02em;margin:0 0 6px;line-height:1.35}
+.box h2 small{display:inline-block;vertical-align:2px;font-size:12px;font-weight:700;color:var(--warn);background:var(--warn-tint);border-radius:999px;padding:2px 10px;margin-left:6px;letter-spacing:0}
+.desc{color:var(--muted);margin:0 0 16px;font-size:14.5px}
+@media (max-width:480px){.box{padding:20px 16px}}
+
+/* 7단계 흐름 */
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.flow li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center;border:1px solid var(--rule);border-radius:14px;padding:10px 14px}
+.flow .gn{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--ink-deep);color:var(--cyan);font-family:var(--f-display);font-style:italic;font-weight:900;font-size:13px;box-shadow:inset 0 0 0 2px rgba(39,185,207,.5)}
+.flow b{font-size:15px}
+.flow b .code{font-size:11px;color:var(--blue);margin-left:6px}
+.flow span.s{display:block;font-size:13.5px;color:var(--muted)}
+.flow li.hl{background:var(--ok-tint);border-color:rgba(39,185,207,.5)}
+
+/* 트랙 탭 */
+.tabs{display:inline-flex;gap:4px;padding:4px;background:var(--soft);border-radius:999px;max-width:100%;margin:4px 0 16px}
+.tabs button{border:0;background:transparent;font:inherit;font-weight:700;font-size:14.5px;color:var(--navy);padding:8px 16px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.tabs button[aria-selected="true"]{background:var(--navy);color:#fff}
+.track-head p{margin:0 0 14px;font-size:14.5px;color:var(--muted)}
+.track-head b{color:var(--ink)}
+.steps{display:grid;gap:14px}
+.step-top{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.step-no{font-family:var(--f-display);font-style:italic;font-weight:800;font-size:11.5px;letter-spacing:.08em;color:var(--cyan);background:var(--ink-deep);border-radius:999px;padding:4px 11px}
+.chip{font-size:12.5px;font-weight:700;color:var(--navy);background:var(--soft);border-radius:999px;padding:3px 10px}
+.chip.due{color:var(--warn);background:var(--warn-tint)}
+.step h3{font-size:18px;margin:4px 0 4px;letter-spacing:-.02em}
+.step .why{margin:0;color:var(--muted);font-size:14.5px}
+.step h4{font-family:var(--f-display);font-style:italic;font-weight:800;font-size:11.5px;letter-spacing:.12em;color:var(--blue);text-transform:uppercase;margin:20px 0 8px}
+.cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0;padding:0;list-style:none}
+@media (max-width:520px){.cats{grid-template-columns:1fr}}
+.cats li{border:1px solid var(--rule);border-radius:14px;padding:10px 14px}
+.cats b{display:block;font-size:14.5px}
+.cats span{display:block;font-size:13px;color:var(--muted)}
+.cats span::before{content:"예) "}
+.qs{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.qs li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;background:var(--paper);border-radius:12px;padding:11px 14px}
+.qs .l{font-weight:700;font-size:15px}
+.qs .l.new::after{content:"NEW";font-family:var(--f-display);font-style:italic;font-weight:900;font-size:10px;letter-spacing:.08em;color:var(--ink-deep);background:var(--amber-soft);border-radius:999px;padding:1px 7px;margin-left:6px;vertical-align:2px}
+.qs .h{grid-column:1/-1;font-size:14px;color:var(--muted)}
+.qs .fmt{grid-row:1;grid-column:2;align-self:center;font-family:var(--f-mono);font-size:11px;color:var(--ok);background:var(--ok-tint);border-radius:6px;padding:1px 7px}
+details.ex{margin-top:14px;border:1px solid var(--rule);border-radius:14px;background:var(--paper)}
+details.ex>summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:12px 16px;font-weight:700;color:var(--navy)}
+details.ex>summary::-webkit-details-marker{display:none}
+details.ex>summary::after{content:"+";margin-left:auto;font-family:var(--f-display);font-weight:900;font-size:18px;line-height:1}
+details.ex[open]>summary::after{content:"−"}
+details.ex>summary small{font-weight:500;color:var(--muted);font-size:13px}
+.ex-body{padding:0 16px 16px}
+.ex-note{font-size:13px;color:var(--warn);background:var(--warn-tint);border-radius:10px;padding:8px 12px;margin:0 0 10px}
+.fields{display:grid;gap:8px}
+.f{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:10px 14px}
+.f .l{display:block;font-size:12.5px;font-weight:700;color:var(--blue);margin-bottom:2px}
+.f .v{font-size:14.5px}
+.f .v p{margin:0}.f .v p+p{margin-top:6px}
+.step.next{background:linear-gradient(180deg,var(--navy) 0%,var(--ink-deep) 100%);color:var(--on-dark);border-radius:14px;padding:18px}
+.step.next .chip{background:rgba(255,255,255,.1);color:var(--on-dark)}
+.flowline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0 0;padding:0;list-style:none;counter-reset:f}
+@media (max-width:520px){.flowline{grid-template-columns:1fr}}
+.flowline li{counter-increment:f;border:1px solid var(--on-dark-line);border-radius:12px;padding:10px 12px}
+.flowline li::before{content:"0" counter(f);font-family:var(--f-display);font-style:italic;font-weight:900;color:var(--cyan);margin-right:8px}
+.flowline b{font-size:14.5px}
+.flowline span{display:block;font-size:13px;color:var(--on-dark-muted);margin-top:2px}
+.judge{margin:12px 0 0;font-size:13px;color:var(--on-dark-muted)}
+.judge b{color:var(--cyan-soft);font-weight:700;margin-right:4px}
+
+/* 제출 폼 */
+.form-card fieldset{border:0;margin:0 0 22px;padding:0;min-width:0}
+.form-card legend{font-family:var(--f-display);font-style:italic;font-weight:800;font-size:11.5px;letter-spacing:.12em;color:var(--blue);margin-bottom:10px;padding:0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 14px}
+.grid2 .full{grid-column:1/-1}
+@media (max-width:600px){.grid2{grid-template-columns:1fr}}
+.fld label,.fld .lbl{display:block;font-weight:700;font-size:13.5px;margin-bottom:6px}
+.fld .req{color:var(--red);margin-left:2px}
+.fld .opt{font-weight:500;color:var(--muted);font-size:12.5px;margin-left:4px}
+.fld .hint{display:block;font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.5}
+.fld input[type=text],.fld select,.fld textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:10px 12px;min-height:46px}
+.fld textarea{min-height:96px;resize:vertical;line-height:1.6}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(31,92,196,.14)}
+.fld [aria-invalid="true"]{border-color:var(--red);background:var(--red-tint)}
+.fld .err,.consent .err{display:block;color:var(--red);font-size:12.5px;font-weight:700;margin-top:4px}
+.count{float:right;font-family:var(--f-mono);font-size:11.5px;color:var(--muted);font-weight:500}
+.count.over{color:var(--red)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);border-radius:999px;padding:8px 14px;font-weight:600;cursor:pointer;margin:0;min-height:44px;background:var(--panel);font-size:14.5px}
+.seg input{accent-color:var(--navy);width:17px;height:17px;margin:0}
+.seg label:has(input:checked){border-color:var(--navy);background:var(--soft)}
+.seg:has([aria-invalid="true"]) label{border-color:var(--red)}
+.consent{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:12px 14px;font-size:13.5px}
+.consent input{width:19px;height:19px;margin:2px 0 0;accent-color:var(--navy);flex:none}
+.consent>span{flex:1;min-width:0}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.submit-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:16px}
+.submit-row .btn{min-width:200px;min-height:48px;font-size:15.5px}
+.submit-row small{color:var(--muted);font-size:12.5px}
+.status{margin:12px 0 0;padding:11px 14px;border-radius:12px;font-weight:700;font-size:14.5px}
+.status.ok{background:var(--ok-tint);color:var(--ok)}
+.status.bad{background:var(--red-tint);color:var(--red)}
+.status.wait{background:var(--soft);color:var(--navy)}
+.pass{border-radius:16px;overflow:hidden;background:linear-gradient(180deg,var(--navy) 0%,var(--ink-deep) 100%);color:var(--on-dark)}
+.pass .tk-h{display:flex;justify-content:space-between;gap:10px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--on-dark-muted);padding:12px 16px;border-bottom:1px dashed var(--on-dark-line)}
+.pass .tk-b{padding:16px}
+.pass h3{margin:0 0 4px;font-size:19px;color:#fff}
+.pass h3 em{font-style:normal;color:var(--cyan)}
+.pass p{margin:0 0 12px;color:var(--on-dark-muted);font-size:14px}
+.pass dl{display:grid;grid-template-columns:130px minmax(0,1fr);gap:6px 12px;margin:0 0 14px;font-size:14px}
+.pass dt{color:var(--cyan-soft);font-weight:600}
+.pass dd{margin:0}
+@media (max-width:520px){.pass dl{grid-template-columns:1fr}.pass dd{margin-bottom:6px}}
+.check{margin-top:14px;background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:16px}
+.check h3{margin:0 0 2px;font-size:16px}
+.check p.d{margin:0 0 10px;color:var(--muted);font-size:13.5px}
+.check form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:10px;align-items:end}
+@media (max-width:600px){.check form{grid-template-columns:1fr}}
+
+/* 시간표 */
+.daytabs{display:inline-flex;gap:4px;padding:4px;background:var(--soft);border-radius:999px;margin:4px 0 6px}
+.daytabs button{border:0;font:inherit;font-weight:700;font-size:13.5px;background:transparent;color:var(--navy);border-radius:999px;padding:7px 14px;cursor:pointer}
+.daytabs button[aria-selected="true"]{background:var(--navy);color:#fff}
+.place{font-size:13.5px;color:var(--muted);margin:8px 0 2px}
+.tt{list-style:none;margin:0;padding:0}
+.tt li{display:grid;grid-template-columns:92px minmax(0,1fr);gap:12px;padding:13px 2px;border-bottom:1px dashed var(--rule)}
+.tt li:last-child{border-bottom:0}
+.tt time{font-family:var(--f-display);font-weight:800;font-size:17px;color:var(--navy);line-height:1.25}
+.tt time small{display:block;font-size:12px;font-weight:600;color:var(--muted)}
+.tt b{display:block;font-size:15.5px}
+.tt span{display:block;font-size:13.5px;color:var(--muted)}
+.tt li.hl{background:var(--warn-tint);border-radius:12px;border-bottom:0;padding:13px 12px;margin:6px 0}
+.tt li.hl time,.tt li.hl b{color:var(--warn)}
+@media (max-width:420px){.tt li{grid-template-columns:74px minmax(0,1fr);gap:10px}.tt time{font-size:15.5px}}
+.remember{margin:16px 0 0;background:var(--ink-deep);color:var(--on-dark);border-radius:12px;padding:13px 16px;font-size:14px;font-weight:600}
+.remember em{font-style:normal;color:var(--amber-soft)}
+
+/* 카드 목록 */
+.perks{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.perks li{border:1px solid var(--rule);border-radius:14px;padding:12px 14px}
+.perks .code{display:block;font-size:11.5px;color:var(--blue);margin-bottom:2px}
+.perks b{display:block;font-size:15px}
+.perks span{display:block;font-size:13.5px;color:var(--muted)}
+.course{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;background:linear-gradient(180deg,var(--navy) 0%,var(--ink-deep) 100%);color:var(--on-dark);border-radius:14px;padding:16px;margin:0 0 12px}
+.course .txt{flex:1 1 240px;min-width:0}
+.course .code{display:block;font-size:11px;color:var(--cyan)}
+.course b{display:block;font-size:15.5px;color:#fff}
+
+/* 참고 DB · FAQ */
+.lib details,.faq details{border-top:1px dashed var(--rule)}
+.lib details:last-of-type,.faq details:last-of-type{border-bottom:1px dashed var(--rule)}
+.lib summary,.faq summary{cursor:pointer;list-style:none;display:flex;gap:10px;padding:13px 2px;font-weight:700;font-size:15px}
+.lib summary::-webkit-details-marker,.faq summary::-webkit-details-marker{display:none}
+.lib summary::after,.faq summary::after{content:"+";margin-left:auto;font-family:var(--f-display);font-weight:900;font-size:18px;line-height:1;color:var(--navy)}
+.lib details[open] summary::after,.faq details[open] summary::after{content:"−"}
+.faq summary::before{content:"Q.";font-family:var(--f-display);font-style:italic;font-weight:900;color:var(--blue)}
+.lib ul{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:9px}
+.lib li a{font-weight:700;text-decoration:none}
+.lib li a:hover{text-decoration:underline}
+.lib li span{display:block;font-size:13px;color:var(--muted)}
+.faq details p{margin:0;padding:0 2px 14px;font-size:14.5px}
+
+/* 문의 */
+.contact{margin-top:14px;border-radius:24px;overflow:hidden;background:linear-gradient(180deg,var(--navy) 0%,var(--ink-deep) 100%);color:var(--on-dark);display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end}
+.contact .txt{padding:24px 22px}
+.contact .code{display:block;font-size:11.5px;color:var(--cyan);margin-bottom:6px}
+.contact h2{margin:0 0 10px;font-size:20px;color:#fff;letter-spacing:-.02em}
+.contact p{margin:0;color:var(--on-dark-muted);font-size:14px}
+.contact a{color:var(--cyan-soft);font-weight:700}
+.contact img{height:150px;width:auto;margin-right:12px}
+@media (max-width:480px){.contact img{height:110px}}
+footer{padding:20px 0 40px;font-size:12.5px;color:var(--muted)}
+footer a{color:var(--navy);font-weight:700;text-decoration:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="top-row">
+      <a href="../" class="logo-a"><img class="logo" src="../assets/logo-white.png" alt="ULTRA ANCHOR 초광역 성장엔진 인재육성사업" width="100" height="34" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://stargate-aibio.vercel.app/assets/logo-white.png'}"></a>
+      <div class="ttl"><strong><em>WORKATION</em> CHALLENGE Ⅰ</strong><small>AI첨단바이오 컨소시엄 · 워케이션챌린지① 참가 안내</small></div>
+      <a class="home" href="../">홈</a>
+    </div>
+    <nav class="jump" aria-label="바로가기">
+      <a class="dday" href="#submit" id="dday">리서치 카드 마감<b>D-2</b></a>
+      <a href="#flow">흐름</a><a href="#tasks">리서치 카드</a><a href="#timetable">시간표</a><a href="#after">사후학습</a><a href="#credit">이수 요건</a><a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+<section class="hero" aria-label="소개">
+  <div class="hero-img" id="heroImg">
+    <img src="../recruit/img/campus-hero.webp" alt="STARGATE 캠퍼스의 게이트 앞에 선 다섯 크루" decoding="async"
+      onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://stargate-aibio.vercel.app/recruit/img/campus-hero.webp'}else{this.remove();document.getElementById('heroImg').classList.add('noimg')}">
+    <span class="hero-tag code">BIO WORKATION · 1N2D</span>
+  </div>
+  <div class="hero-t">
+    <p class="hero-k code">ULTRA ANCHOR · BIO WORKATION</p>
+    <h1>리서치 카드 한 장으로,<br><em>현장 실습</em>을 바로 시작합니다</h1>
+    <p class="lead">관심 분야를 정하고 리서치 카드를 써 오면, 11월 20일 천안캠퍼스에서 조원들과 바로 팀 실습에 들어갑니다. 처음이라 막막해도 괜찮습니다. 깊은 조사와 구현은 현장에서 함께 합니다.</p>
+    <div class="row">
+      <a class="btn btn-cta" href="#submit">리서치 카드 제출하기 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="#timetable">현장 시간표 보기</a>
+    </div>
+    <div class="meta"><span>11.19 18:00 CARD DUE</span><span>11.20–21 DKU CHEONAN</span><span>11.25–12.4 D-MOOC</span><span>1 CREDIT · P/F</span></div>
+    <div class="now" aria-live="polite">
+      <span class="code">NOW</span>
+      <div class="txt"><b id="nowTitle">리서치 카드 제출</b><span class="t" id="nowText">11.19.(목) 18:00까지 이 페이지에서 제출하십시오.</span></div>
+      <a class="btn btn-cta" id="nowBtn" href="#submit">제출하러 가기</a>
+    </div>
+  </div>
+</section>
+
+<ol class="gates phases" aria-label="세 단계 일정">
+  <li data-phase="0">
+    <span class="code">Pre-work</span>
+    <span class="date">~11.19</span><span class="day">목요일 18:00</span>
+    <h3>리서치 카드 제출</h3>
+    <span class="where">이 페이지에서</span>
+    <div class="actions"><a class="btn btn-line" href="#tasks">작성 안내</a></div>
+  </li>
+  <li data-phase="1">
+    <span class="code">On site</span>
+    <span class="date">11.20–21</span><span class="day">금–토요일, 1박 2일</span>
+    <h3>팀 실습·예선·본선</h3>
+    <span class="where">단국대 천안캠퍼스</span>
+    <div class="actions"><a class="btn btn-line" href="#timetable">시간표</a></div>
+  </li>
+  <li data-phase="2">
+    <span class="code">After</span>
+    <span class="date">11.25–12.4</span><span class="day">수–금요일</span>
+    <h3>특강 수강·성찰일지</h3>
+    <span class="where">D-MOOC에서</span>
+    <div class="actions"><a class="btn btn-line" href="#after">사후학습</a></div>
+  </li>
+</ol>
+
+<section class="box" id="flow">
+  <span class="code">Whole flow · 7 Gates</span>
+  <h2>사전부터 사후까지, 일곱 단계</h2>
+  <p class="desc">조 편성은 관심 분야 1순위를 기준으로 대학과 전공을 섞어 정하고, 결과는 1일차 오리엔테이션에서 안내합니다.</p>
+  <ol class="flow">
+    <li class="hl"><span class="gn">01</span><div><b>리서치 카드 제출<span class="code">Research</span></b><span class="s">~11.19.(목) 18:00 · 이 페이지</span></div></li>
+    <li><span class="gn">02</span><div><b>오리엔테이션·조 편성<span class="code">Crew</span></b><span class="s">11.20.(금) 10:00 · 트랙별 실습실</span></div></li>
+    <li><span class="gn">03</span><div><b>트랙별 특강·팀 실습<span class="code">Lab</span></b><span class="s">조원 카드 중 하나를 팀 주제로 골라 시작</span></div></li>
+    <li><span class="gn">04</span><div><b>예선 발표·멘토링<span class="code">Preliminary</span></b><span class="s">16:00–17:30 · 현직자 멘토 피드백·평가</span></div></li>
+    <li><span class="gn">05</span><div><b>최종 결과물 제출<span class="code">Submit</span></b><span class="s">11.20.(금) 24:00까지 · 숙소에서 고도화</span></div></li>
+    <li><span class="gn">06</span><div><b>본선·시상<span class="code">Final</span></b><span class="s">11.21.(토) 09:30 · 보건과학관 국제회의장</span></div></li>
+    <li><span class="gn">07</span><div><b>사후학습·성찰일지<span class="code">Reflect</span></b><span class="s">11.25.(수)–12.4.(금) · D-MOOC</span></div></li>
+  </ol>
+</section>
+
+<section class="box" id="tasks">
+  <span class="code">Gate 01 · Research card</span>
+  <h2>트랙별 리서치 카드 <small>11.19.(목) 18:00</small></h2>
+  <p class="desc">관심 분야 1·2순위를 고르고 문항 5개를 조사해 정리합니다. 약 1시간 내외면 충분합니다.</p>
+  <div class="tabs" role="tablist" aria-label="트랙 선택">
+    <button type="button" role="tab" id="tab-pharma" aria-controls="panel-pharma" aria-selected="true" data-track="pharma">AI제약바이오</button>
+    <button type="button" role="tab" id="tab-device" aria-controls="panel-device" aria-selected="false" data-track="device">AI의료기기</button>
+  </div>
+
+  <!-- PHARMA -->
+  <div class="panel" id="panel-pharma" role="tabpanel" aria-labelledby="tab-pharma">
+    <div class="track-head"><p><b>당일 실습</b> 바이오 특화 근거 검색 서비스(NexusRAG)로 관심 질환의 표적·경로·작용기전 근거를 깊이 조사하고, 근거에 기반한 신규 용도 가설과 그 한계를 정리해 발표합니다.</p></div>
+    <div class="steps">
+      <article class="step" id="pharma-1">
+        <div class="step-top"><span class="step-no">STEP 1 · PRE-WORK</span><span class="chip due">마감 11.19.(목) 18:00</span><span class="chip">약 1시간 · 문항 5개</span></div>
+        <h3>관심 질환·의약품 리서치 카드</h3>
+        <p class="why">관심 분야에서 질환 하나를 골라 질환 기전, 표준 치료제와 작용기전, 치료의 한계를 조사해 정리합니다. 카드의 '치료의 한계'가 당일 신규 용도 가설의 출발점이 됩니다.</p>
+        <h4>관심 분야 · 1·2순위 선택</h4>
+        <ul class="cats">
+          <li><b>항암(표적·면역항암)</b><span>EGFR 변이 폐암</span></li>
+          <li><b>대사·내분비(당뇨·비만)</b><span>비만(GLP-1 계열 약물)</span></li>
+          <li><b>신경·퇴행성(치매·파킨슨)</b><span>알츠하이머병(아밀로이드 항체)</span></li>
+          <li><b>염증·자가면역</b><span>류마티스관절염(TNF 억제제)</span></li>
+          <li><b>감염·백신</b><span>RSV 감염(백신·항체)</span></li>
+          <li><b>희귀·유전질환</b><span>척수성근위축증</span></li>
+        </ul>
+        <h4>작성 문항</h4>
+        <ul class="qs">
+          <li><span class="l">① 대상 질환</span><span class="h">1순위 분야에서 다룰 질환 하나. 하위 유형·변이까지 구체적으로(폐암 → EGFR 변이 비소세포폐암)</span><span class="fmt">단답</span></li>
+          <li><span class="l new">② 질환 기전</span><span class="h">질환이 생기고 진행되는 핵심 표적·경로를 2~3문장으로</span><span class="fmt">300자</span></li>
+          <li><span class="l">③ 표준 치료제와 작용기전</span><span class="h">현재 쓰이는 대표 치료제 1~2개와 각각의 작용기전</span><span class="fmt">300자</span></li>
+          <li><span class="l">④ 치료의 한계</span><span class="h">현재 치료로 해결되지 않는 한계나 극복해야 할 문제(미충족 수요)</span><span class="fmt">200자</span></li>
+          <li><span class="l">⑤ 근거 자료</span><span class="h">자료 2~3개(공공 자료 1개 + 리뷰 논문 1편 이상, 링크·DOI). AI를 썼다면 도구와 질문, 원문으로 확인한 내용 한 줄</span><span class="fmt">서술</span></li>
+        </ul>
+        <details class="ex">
+          <summary>작성 예시 <small>EGFR 변이 비소세포폐암</small></summary>
+          <div class="ex-body">
+            <p class="ex-note">작성 방식을 보여 주는 예시입니다. 같은 질환을 골라도 되지만, 내용은 직접 찾아 자신의 말로 작성하십시오.</p>
+            <div class="fields">
+              <div class="f"><span class="l">관심 분야</span><div class="v">1순위 항암(표적·면역항암) / 2순위 희귀·유전질환</div></div>
+              <div class="f"><span class="l">① 대상 질환</span><div class="v">EGFR 변이 비소세포폐암(엑손19 결실·L858R 변이)</div></div>
+              <div class="f"><span class="l">② 질환 기전</span><div class="v">EGFR은 세포 표면의 수용체 티로신 키나아제로, 정상 세포에서는 성장인자가 붙을 때만 활성화된다. 엑손19 결실이나 L858R 변이가 생기면 신호 없이도 계속 활성화되어, 하류의 RAS–RAF–MEK–ERK(증식)와 PI3K–AKT(생존) 경로가 멈추지 않는다.</div></div>
+              <div class="f"><span class="l">③ 표준 치료제와 작용기전</span><div class="v"><p>오시머티닙(타그리소): 3세대 EGFR-TKI. 변이 EGFR의 ATP 결합 부위(C797)에 공유결합해 신호를 차단하며, T790M 내성 변이에도 작용한다.</p><p>레이저티닙(렉라자): 3세대 EGFR-TKI. EGFR·MET 이중항체 아미반타맙과 병용하는 1차 치료로도 쓰인다.</p></div></div>
+              <div class="f"><span class="l">④ 치료의 한계</span><div class="v">표적치료제의 초기 효과는 크지만 시간이 지나면 대부분 내성(C797S 같은 2차 변이, MET 증폭 같은 우회 경로)이 생기며, 내성 이후 쓸 수 있는 표준 치료가 제한적이다.</div></div>
+              <div class="f"><span class="l">⑤ 근거 자료</span><div class="v"><p>국가암정보센터 「폐암」(질환 기초), 미국 FDA 타그리소 허가사항(작용기전·적응증)</p><p>리뷰 논문: Leonetti A. et al., "Resistance mechanisms to osimertinib in EGFR-mutated non-small cell lung cancer", British Journal of Cancer, 2019</p><p>AI 사용 기록: Claude에 "오시머티닙 내성 기전"을 물었고, 답에 나온 C797S·MET 증폭을 위 리뷰 논문에서 확인함</p></div></div>
+            </div>
+          </div>
+        </details>
+        <div class="actions"><a class="btn btn-navy" href="#submit" data-pick="pharma">이 트랙으로 제출하기</a></div>
+      </article>
+      <article class="step next" id="pharma-onsite">
+        <div class="step-top"><span class="step-no">ON SITE · PREVIEW</span><span class="chip">11.20.(금) 치의학관 114호(연송홀)</span></div>
+        <ol class="flowline">
+          <li><b>가설 세우기</b><span>조원 카드 중 질환 하나를 골라 NexusRAG로 표적·기전 근거 탐색</span></li>
+          <li><b>근거 검증</b><span>AI가 낸 근거를 원문으로 확인하고 가설 보완</span></li>
+          <li><b>리서치 심화</b><span>리뷰·임상·허가 정보로 교차 확인, 선행기술 확인</span></li>
+          <li><b>예선·특강</b><span>16:00 예선 발표·멘토링, 변리사 특강</span></li>
+        </ol>
+        <p class="judge"><b>예선에서 보는 것</b>질환 이해도 · 리서치 깊이 · 근거 기반 추론 · AI 활용 적절성 · 발표 전달력</p>
+      </article>
+    </div>
+  </div>
+
+  <!-- DEVICE -->
+  <div class="panel" id="panel-device" role="tabpanel" aria-labelledby="tab-device" hidden>
+    <div class="track-head"><p><b>당일 실습</b> 조원들의 리서치 카드에서 현장 문제 하나를 골라 PRD로 정리하고, AX 바이브코딩으로 AI 의료기기 프로토타입을 직접 만들어 고도화합니다.</p></div>
+    <div class="steps">
+      <article class="step" id="device-1">
+        <div class="step-top"><span class="step-no">STEP 1 · PRE-WORK</span><span class="chip due">마감 11.19.(목) 18:00</span><span class="chip">약 1시간 · 문항 5개</span></div>
+        <h3>의료 현장 문제 리서치 카드</h3>
+        <p class="why">관심 분야에서 겪었거나 관찰한 의료 현장의 문제 하나를 조사해, 대상 사용자·문제 상황·현재 방식의 한계·문제의 크기를 근거와 함께 정리합니다. 해결책보다 문제 정의가 먼저입니다.</p>
+        <h4>관심 분야 · 1·2순위 선택</h4>
+        <ul class="cats">
+          <li><b>진단·체외진단</b><span>당뇨 환자의 혈당 관리</span></li>
+          <li><b>치과·임플란트</b><span>임플란트 수술 후 2주 자가관리</span></li>
+          <li><b>수술 후·재택 자가관리</b><span>퇴원 후 수술 부위 관리</span></li>
+          <li><b>영상·판독 보조</b><span>흉부 X선 판독 대기</span></li>
+          <li><b>병동·간호 업무</b><span>야간 낙상 위험 환자 관찰</span></li>
+          <li><b>재활·고령자 모니터링</b><span>뇌졸중 환자의 가정 재활 운동</span></li>
+        </ul>
+        <h4>작성 문항</h4>
+        <ul class="qs">
+          <li><span class="l">① 대상 사용자</span><span class="h">문제를 겪는 사람(환자·보호자·의사·간호사·기타)</span><span class="fmt">선택</span></li>
+          <li><span class="l">② 문제 상황</span><span class="h">언제, 어디서, 무엇이 문제인지 한 문장</span><span class="fmt">200자</span></li>
+          <li><span class="l">③ 현재 해결 방식과 한계</span><span class="h">지금은 어떻게 해결하고 있고, 그 방식의 한계는 무엇인지</span><span class="fmt">200자</span></li>
+          <li><span class="l new">④ 문제의 크기</span><span class="h">빈도·시간·위험 중 하나 이상을 근거와 함께(통계·자료·경험)</span><span class="fmt">200자</span></li>
+          <li><span class="l">⑤ 근거 자료</span><span class="h">자료 2개(통계·논문·허가 제품·기사 등, 링크), 비슷한 기존 제품·서비스가 있으면 1개. AI를 썼다면 도구와 확인 내용 한 줄</span><span class="fmt">서술</span></li>
+        </ul>
+        <details class="ex">
+          <summary>작성 예시 <small>임플란트 수술 후 2주 자가관리</small></summary>
+          <div class="ex-body">
+            <p class="ex-note">작성 방식을 보여 주는 가상 예시입니다. 같은 분야를 골라도 되지만, 내용은 직접 조사해 자신의 말로 작성하십시오.</p>
+            <div class="fields">
+              <div class="f"><span class="l">관심 분야</span><div class="v">1순위 치과·임플란트 / 2순위 수술 후·재택 자가관리</div></div>
+              <div class="f"><span class="l">① 대상 사용자</span><div class="v">환자(특히 고령층)</div></div>
+              <div class="f"><span class="l">② 문제 상황</span><div class="v">임플란트 수술 후 귀가한 고령 환자가 2주 동안 통증·붓기·출혈이 정상 회복인지, 병원에 가야 하는 신호인지 판단하기 어렵다.</div></div>
+              <div class="f"><span class="l">③ 현재 해결 방식과 한계</span><div class="v">종이 안내문과 전화 문의로 해결하지만, 안내문을 잃어버리기 쉽고 야간·주말에는 물어볼 곳이 없다.</div></div>
+              <div class="f"><span class="l">④ 문제의 크기</span><div class="v">만 65세 이상은 임플란트에 건강보험이 적용되어(평생 2개) 고령 환자의 시술이 많다. 감염·출혈 신호를 늦게 알아차리면 재내원이나 재치료로 이어질 수 있다.</div></div>
+              <div class="f"><span class="l">⑤ 근거 자료</span><div class="v"><p>국민건강보험공단 노인 임플란트 급여 기준 안내, 치과 수술 후 주의사항 안내문(병원 홈페이지)</p><p>보건의료빅데이터개방시스템 임플란트 시술 통계(직접 찾아 수치 확인), 비슷한 기존 서비스: 병원별 수술 후 안내 문자</p><p>AI 사용 기록: 고령 환자 수술 후 주의사항을 물었고, 병원 안내문과 대조함</p></div></div>
+            </div>
+          </div>
+        </details>
+        <div class="actions"><a class="btn btn-navy" href="#submit" data-pick="device">이 트랙으로 제출하기</a></div>
+      </article>
+      <article class="step next" id="device-onsite">
+        <div class="step-top"><span class="step-no">ON SITE · PREVIEW</span><span class="chip">11.20.(금) 치의학관 115호</span></div>
+        <ol class="flowline">
+          <li><b>PRD 정리</b><span>조원 카드 중 하나를 골라 문제·사용자·핵심 기능 정리</span></li>
+          <li><b>바이브코딩</b><span>PRD로 핵심 화면 3개 프로토타입 만들기</span></li>
+          <li><b>예선·멘토링</b><span>16:00 조별 발표·시연, 현직자 멘토 피드백</span></li>
+          <li><b>고도화·본선</b><span>24:00 최종 결과물 제출, 2일차 본선 발표</span></li>
+        </ol>
+        <p class="judge"><b>예선에서 보는 것</b>현장성 · 비용 구조 · 실현 가능성 · 사업성 · 완성도</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="box" id="submit">
+  <span class="code">Submit · Research card</span>
+  <h2>리서치 카드 제출</h2>
+  <p class="desc">이 페이지에서 바로 제출합니다(로그인·파일 없음). 수정할 내용이 있으면 같은 학번으로 다시 제출하십시오. 마지막 제출만 반영됩니다.</p>
+
+  <form class="form-card" id="cardForm" novalidate>
+    <fieldset>
+      <legend>01 · Crew</legend>
+      <div class="grid2">
+        <div class="fld"><label for="f-name">이름<span class="req" aria-hidden="true">*</span></label><input type="text" id="f-name" autocomplete="name" maxlength="40"></div>
+        <div class="fld"><label for="f-univ">소속 대학<span class="req" aria-hidden="true">*</span></label>
+          <select id="f-univ"><option value="">선택</option><option>단국대학교</option><option>건양대학교</option><option>계명대학교</option><option>아주대학교</option><option>유한대학교</option></select></div>
+        <div class="fld"><label for="f-sid">학번<span class="req" aria-hidden="true">*</span></label><input type="text" id="f-sid" inputmode="numeric" maxlength="20"><span class="hint">다시 제출할 때 같은 사람인지 구분하는 데만 사용합니다.</span></div>
+        <div class="fld"><span class="lbl" id="l-track">참여 트랙<span class="req" aria-hidden="true">*</span></span>
+          <div class="seg" role="radiogroup" aria-labelledby="l-track">
+            <label><input type="radio" name="track" value="AI제약바이오">AI제약바이오</label>
+            <label><input type="radio" name="track" value="AI의료기기">AI의료기기</label>
+          </div><span class="hint">신청할 때 고른 트랙을 선택하십시오.</span></div>
+      </div>
+    </fieldset>
+
+    <div id="trackFields" hidden>
+      <fieldset>
+        <legend>02 · Interest</legend>
+        <div class="grid2">
+          <div class="fld"><label for="f-c1">관심 분야 1순위<span class="req" aria-hidden="true">*</span></label><select id="f-c1"></select></div>
+          <div class="fld"><label for="f-c2">관심 분야 2순위<span class="req" aria-hidden="true">*</span></label><select id="f-c2"></select><span class="hint">1순위와 다른 분야를 고르십시오.</span></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>03 · Research card</legend>
+        <div class="grid2">
+          <div class="fld full" data-q="pharma"><label for="f-p1">① 대상 질환<span class="req" aria-hidden="true">*</span></label><input type="text" id="f-p1" maxlength="120" placeholder="예) EGFR 변이 비소세포폐암(엑손19 결실·L858R)"></div>
+          <div class="fld full" data-q="pharma"><label for="f-p2">② 질환 기전<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-p2"></span></label><textarea id="f-p2" data-max="300" placeholder="핵심 표적·경로를 2~3문장으로"></textarea></div>
+          <div class="fld full" data-q="pharma"><label for="f-p3">③ 표준 치료제와 작용기전<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-p3"></span></label><textarea id="f-p3" data-max="300" placeholder="대표 치료제 1~2개와 각각의 작용기전"></textarea></div>
+          <div class="fld full" data-q="pharma"><label for="f-p4">④ 치료의 한계<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-p4"></span></label><textarea id="f-p4" data-max="200" placeholder="현재 치료로 해결되지 않는 한계나 극복해야 할 문제"></textarea></div>
+          <div class="fld full" data-q="pharma"><label for="f-p5">⑤ 근거 자료<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-p5"></span></label><textarea id="f-p5" data-max="500" placeholder="자료 2~3개(링크·DOI), AI를 썼다면 도구·질문·확인 내용"></textarea></div>
+
+          <div class="fld full" data-q="device"><span class="lbl" id="l-who">① 대상 사용자<span class="req" aria-hidden="true">*</span></span>
+            <div class="seg" role="radiogroup" aria-labelledby="l-who">
+              <label><input type="radio" name="who" value="환자">환자</label><label><input type="radio" name="who" value="보호자">보호자</label><label><input type="radio" name="who" value="의사">의사</label><label><input type="radio" name="who" value="간호사">간호사</label><label><input type="radio" name="who" value="기타">기타</label>
+            </div></div>
+          <div class="fld full" data-q="device"><label for="f-d2">② 문제 상황<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-d2"></span></label><textarea id="f-d2" data-max="200" placeholder="언제, 어디서, 무엇이 문제인지 한 문장"></textarea></div>
+          <div class="fld full" data-q="device"><label for="f-d3">③ 현재 해결 방식과 한계<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-d3"></span></label><textarea id="f-d3" data-max="200" placeholder="지금의 해결 방식과 그 한계"></textarea></div>
+          <div class="fld full" data-q="device"><label for="f-d4">④ 문제의 크기<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-d4"></span></label><textarea id="f-d4" data-max="200" placeholder="빈도·시간·위험 중 하나 이상, 근거와 함께"></textarea></div>
+          <div class="fld full" data-q="device"><label for="f-d5">⑤ 근거 자료<span class="req" aria-hidden="true">*</span><span class="count" data-for="f-d5"></span></label><textarea id="f-d5" data-max="500" placeholder="자료 2개(링크), 비슷한 기존 제품·서비스, AI 사용 기록"></textarea><span class="hint">경험을 적을 때 이름 등 개인정보는 제외하십시오.</span></div>
+        </div>
+      </fieldset>
+    </div>
+
+    <fieldset>
+      <legend>04 · Ready</legend>
+      <div class="grid2">
+        <div class="fld"><label for="f-major">전공 계열<span class="req" aria-hidden="true">*</span></label>
+          <select id="f-major"><option value="">선택</option><option>생명·약학·화학 계열</option><option>공학·컴퓨터 계열</option><option>보건·의료 계열</option><option>경영·인문·기타 계열</option></select></div>
+        <div class="fld"><label for="f-majorName">전공명<span class="opt">선택</span></label><input type="text" id="f-majorName" maxlength="40"></div>
+        <div class="fld"><label for="f-grade">학년<span class="req" aria-hidden="true">*</span></label>
+          <select id="f-grade"><option value="">선택</option><option>1학년</option><option>2학년</option><option>3학년</option><option>4학년</option><option>기타(초과학기 등)</option></select></div>
+        <div class="fld"><span class="lbl" id="l-laptop">노트북 지참<span class="req" aria-hidden="true">*</span></span>
+          <div class="seg" role="radiogroup" aria-labelledby="l-laptop">
+            <label><input type="radio" name="laptop" value="가능">가능</label>
+            <label><input type="radio" name="laptop" value="불가">불가</label>
+          </div><span class="hint">현장에서 노트북을 대여하지 않습니다. 지참이 어려우면 조원의 노트북을 함께 사용합니다.</span></div>
+      </div>
+    </fieldset>
+
+    <div class="hp" aria-hidden="true"><label for="f-website">웹사이트</label><input type="text" id="f-website" tabindex="-1" autocomplete="off"></div>
+    <label class="consent"><input type="checkbox" id="f-consent"><span><b>개인정보 수집·이용에 동의합니다.</b> 이름·소속 대학·학번·전공·학년과 리서치 카드는 조 편성과 현장 운영에만 쓰고, 행사 종료 후 파기합니다.</span></label>
+    <div class="submit-row">
+      <button type="submit" class="btn btn-cta" id="submitBtn">리서치 카드 제출 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <small>작성 중인 내용은 이 브라우저에 임시 저장됩니다.</small>
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite" hidden></p>
+  </form>
+
+  <div class="pass" id="done" hidden tabindex="-1">
+    <div class="tk-h"><span>WORKATION BOARDING PASS</span><span id="doneAt"></span></div>
+    <div class="tk-b">
+      <h3>리서치 카드 <em>제출 완료</em></h3>
+      <p id="doneMsg">조 편성은 11.20.(금) 오리엔테이션에서 안내합니다.</p>
+      <dl id="doneList"></dl>
+      <button type="button" class="btn btn-ghost" id="again">내용 고쳐서 다시 제출</button>
+    </div>
+  </div>
+
+  <div class="check" id="check">
+    <h3>제출 확인</h3>
+    <p class="d">이름과 학번으로 접수 여부를 확인합니다. 접수 시각과 트랙, 1순위 분야만 표시합니다.</p>
+    <form id="checkForm" novalidate>
+      <div class="fld"><label for="k-name">이름</label><input type="text" id="k-name" autocomplete="name" maxlength="40"></div>
+      <div class="fld"><label for="k-sid">학번</label><input type="text" id="k-sid" inputmode="numeric" maxlength="20"></div>
+      <button type="submit" class="btn btn-navy" id="checkBtn">확인하기</button>
+    </form>
+    <p class="status" id="checkStatus" role="status" aria-live="polite" hidden></p>
+  </div>
+</section>
+
+<section class="box" id="timetable">
+  <span class="code">On site · Timetable</span>
+  <h2>현장 시간표</h2>
+  <div class="daytabs" role="tablist" aria-label="일차 선택">
+    <button type="button" role="tab" aria-selected="true" aria-controls="day1" data-day="day1">1일차 11.20.(금)</button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="day2" data-day="day2">2일차 11.21.(토)</button>
+  </div>
+  <div id="day1" role="tabpanel">
+    <p class="place">단국대 천안캠퍼스 · AI제약바이오 치의학관 114호(연송홀) · AI의료기기 치의학관 115호</p>
+    <ol class="tt">
+      <li><time>10:00</time><div><b>트랙별 실습실 집합·오리엔테이션</b><span>이틀 동선, 학점 이수 요건, 조 편성을 안내합니다.</span></div></li>
+      <li><time>10:10<small>– 16:00</small></time><div><b>트랙별 특강·팀 실습</b><span>조원 리서치 카드 중 하나를 팀 주제로 골라 시작합니다. 점심 12:00–13:00.</span></div></li>
+      <li><time>16:00<small>– 17:30</small></time><div><b>예선 발표·현직자 멘토링·평가</b><span>트랙별로 발표하고 피드백을 받습니다. 종료 후 단체 사진 촬영.</span></div></li>
+      <li><time>17:30<small>– 19:30</small></time><div><b>석식</b><span>단체 버스로 이동합니다.</span></div></li>
+      <li><time>19:30<small>– 21:00</small></time><div><b>숙소 이동·체크인, 예선 결과 발표</b><span>트랙별 본선 진출팀을 발표합니다. 숙소 배정은 현장에서 안내.</span></div></li>
+      <li><time>21:00<small>– 24:00</small></time><div><b>본선 준비·결과물 고도화</b><span>멘토 피드백을 반영해 다듬습니다.</span></div></li>
+      <li class="hl"><time>24:00</time><div><b>팀 최종 결과물 제출 마감</b><span>제출 방법은 현장에서 안내합니다.</span></div></li>
+    </ol>
+  </div>
+  <div id="day2" role="tabpanel" hidden>
+    <p class="place">본선 · 보건과학관 1층 국제회의장</p>
+    <ol class="tt">
+      <li><time>07:00<small>– 08:50</small></time><div><b>조식·체크아웃</b><span>짐을 챙겨 나옵니다.</span></div></li>
+      <li class="hl"><time>09:00</time><div><b>호텔 앞 집합</b><span>시간을 꼭 지켜 주십시오. 단체 버스로 이동합니다.</span></div></li>
+      <li><time>09:30<small>– 12:00</small></time><div><b>본선 발표·KTR 산업동향 특강·시상</b><span>예선 통과팀 발표와 심사, 우수팀 시상, 폐회와 단체 사진.</span></div></li>
+      <li><time>12:05<small>– 13:30</small></time><div><b>중식 후 귀교</b><span>학생회관 학생식당에서 점심 식사 후 대학별로 귀교합니다.</span></div></li>
+    </ol>
+  </div>
+  <p class="remember">⏰ 꼭 기억하십시오 — 리서치 카드 <em>11.19.(목) 18:00</em> · 최종 결과물 <em>11.20.(금) 24:00</em> · 2일차 <em>09:00 호텔 앞 집합</em></p>
+</section>
+
+<section class="box" id="pack">
+  <span class="code">Pack list</span>
+  <h2>미리 챙겨 주십시오</h2>
+  <ul class="perks">
+    <li><span class="code">Laptop</span><b>노트북과 충전기 (필수)</b><span>현장에서 노트북을 대여하지 않으니 반드시 지참하십시오.</span></li>
+    <li><span class="code">Login</span><b>실습 도구 로그인</b><span>제약바이오: NexusRAG 접속 · 의료기기: GitHub 계정과 Claude 데스크톱 앱 설치</span></li>
+    <li><span class="code">Overnight</span><b>1박 2일 개인 준비물</b><span>세면도구 등 개인 물품을 챙겨 오십시오. 숙소 배정은 현장에서 안내합니다.</span></li>
+  </ul>
+  <div class="actions"><a class="btn btn-line" data-tool href="#pack">실습 도구 안내</a></div>
+</section>
+
+<section class="box" id="after">
+  <span class="code">After · D-MOOC</span>
+  <h2>사후학습 <small>11.25.(수)–12.4.(금)</small></h2>
+  <p class="desc">취업특강 수강과 성찰일지 제출은 모두 D-MOOC 강좌에서 진행합니다.</p>
+  <div class="course">
+    <div class="txt"><span class="code">D-MOOC course</span><b>AI바이오워케이션챌린지Ⅰ 사후학습: 제약바이오·의료기기 취업 특강</b></div>
+    <a class="btn btn-cta" data-dmooc href="#after">강좌 바로가기 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+  </div>
+  <ol class="flow">
+    <li><span class="gn">01</span><div><b>강좌 접속·로그인</b><span class="s">위 버튼으로 강좌 페이지에 바로 접속해 로그인합니다.</span></div></li>
+    <li><span class="gn">02</span><div><b>수강 신청</b><span class="s">11.25.(수)부터 수강할 수 있습니다.</span></div></li>
+    <li><span class="gn">03</span><div><b>취업특강 동영상 3개</b><span class="s">클립별 진도율 90% 이상과 확인 문항</span></div></li>
+    <li class="hl"><span class="gn">04</span><div><b>성찰일지 제출</b><span class="s">12.4.(금)까지 D-MOOC 강좌에 제출합니다.</span></div></li>
+  </ol>
+</section>
+
+<section class="box" id="credit">
+  <span class="code">Credit · P/F</span>
+  <h2>1학점 이수 요건</h2>
+  <p class="desc">네 가지를 모두 채우면 1학점(P/F)을 받습니다.</p>
+  <ol class="flow">
+    <li><span class="gn">01</span><div><b>리서치 카드 제출</b><span class="s">11.19.(목) 18:00까지 이 페이지에서, 필수 칸 모두 작성</span></div></li>
+    <li><span class="gn">02</span><div><b>양일 현장 참여</b><span class="s">1일차 오전·오후·야간, 2일차 시간대별 출석</span></div></li>
+    <li><span class="gn">03</span><div><b>취업특강 동영상 3개 이수</b><span class="s">D-MOOC, 11.25.–12.4. 클립별 진도율 90% 이상과 확인 문항</span></div></li>
+    <li><span class="gn">04</span><div><b>사후 과제(성찰일지) 제출</b><span class="s">D-MOOC에 12.4.(금)까지</span></div></li>
+  </ol>
+</section>
+
+<section class="box" id="rules">
+  <span class="code">AI rules</span>
+  <h2>AI 사용 규칙</h2>
+  <ul class="perks">
+    <li><span class="code">Record</span><b>쓴 도구 적기</b><span>AI를 썼다면 ⑤ 근거 자료에 도구와 질문, 확인한 내용을 적습니다.</span></li>
+    <li><span class="code">Verify</span><b>원문으로 확인하기</b><span>AI 답은 공식 자료로 확인한 뒤 사용합니다. 확인 못 하면 '확인 불가'.</span></li>
+    <li><span class="code">Rewrite</span><b>내 말로 정리하기</b><span>AI가 쓴 문장을 그대로 붙여 넣지 않습니다.</span></li>
+    <li><span class="code">Privacy</span><b>개인정보 넣지 않기</b><span>환자 실명·사진·연락처를 AI와 카드에 넣지 않습니다.</span></li>
+  </ul>
+</section>
+
+<section class="box lib" id="library">
+  <span class="code">Library</span>
+  <h2>참고 데이터베이스</h2>
+  <p class="desc">공공 자료에서 시작해 리뷰 논문으로 넓혀 가면 좋습니다.</p>
+  <details open><summary>공통 · 질환 기초</summary><ul>
+    <li><a href="https://health.kdca.go.kr/" target="_blank" rel="noopener">국가건강정보포털 ↗</a><span>질병관리청의 질환 기초 정보</span></li>
+    <li><a href="https://www.cancer.go.kr/" target="_blank" rel="noopener">국가암정보센터 ↗</a><span>암 종류별 정보와 국내 현황</span></li>
+    <li><a href="https://www.riss.kr/" target="_blank" rel="noopener">RISS ↗</a><span>국내 학술논문·학위논문</span></li>
+    <li><a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar ↗</a><span>분야를 가리지 않는 논문 검색</span></li>
+  </ul></details>
+  <details><summary>AI제약바이오</summary><ul>
+    <li><a href="https://nedrug.mfds.go.kr/" target="_blank" rel="noopener">의약품안전나라 ↗</a><span>국내 허가 의약품 정보(식약처)</span></li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed ↗</a><span>의생명 논문. 'review'를 붙여 검색하면 리뷰 논문부터 찾기 쉽습니다.</span></li>
+    <li><a href="https://www.uniprot.org/" target="_blank" rel="noopener">UniProt ↗</a><span>단백질(표적)의 기능·도메인·ID</span></li>
+    <li><a href="https://www.genome.jp/kegg/pathway.html" target="_blank" rel="noopener">KEGG PATHWAY ↗</a><span>질환·신호경로 지도</span></li>
+    <li><a href="https://platform.opentargets.org/" target="_blank" rel="noopener">Open Targets Platform ↗</a><span>표적과 질환의 연관 근거</span></li>
+    <li><a href="https://clinicaltrials.gov/" target="_blank" rel="noopener">ClinicalTrials.gov ↗</a><span>전 세계 임상시험 등록 정보</span></li>
+  </ul></details>
+  <details><summary>AI의료기기</summary><ul>
+    <li><a href="https://opendata.hira.or.kr/" target="_blank" rel="noopener">보건의료빅데이터개방시스템 ↗</a><span>질병·진료 통계로 문제의 크기 근거 찾기</span></li>
+    <li><a href="https://emedi.mfds.go.kr/" target="_blank" rel="noopener">의료기기 전자민원창구 ↗</a><span>국내 허가 의료기기 품목 검색(식약처)</span></li>
+    <li><a href="https://www.kipris.or.kr/" target="_blank" rel="noopener">KIPRIS ↗</a><span>국내외 특허 검색(특허청)</span></li>
+    <li><a href="https://patents.google.com/" target="_blank" rel="noopener">Google Patents ↗</a><span>해외 특허를 키워드로 넓게 검색</span></li>
+    <li><a href="https://kosis.kr/" target="_blank" rel="noopener">KOSIS 국가통계포털 ↗</a><span>인구·질병 관련 국가 통계</span></li>
+  </ul></details>
+</section>
+
+<section class="box faq" id="faq">
+  <span class="code">FAQ</span>
+  <h2>자주 묻는 질문</h2>
+  <details><summary>의학·약학 지식이 많지 않아도 괜찮습니까?</summary><p>네. 국가건강정보포털·국가암정보센터 같은 공공 자료에서 시작해 리뷰 논문 한 편까지 찾아보면 충분합니다. 깊은 조사는 당일 팀 실습에서 함께 진행합니다.</p></details>
+  <details><summary>관심 분야를 잘 모르겠습니다.</summary><p>분야마다 붙은 예시 중 끌리는 것을 고르면 됩니다. 1·2순위는 서로 다르게 고르십시오.</p></details>
+  <details><summary>제출한 내용을 고치고 싶습니다.</summary><p>같은 학번으로 다시 제출하면 됩니다. 마지막에 제출한 내용만 반영됩니다.</p></details>
+  <details><summary>제출이 잘 되었는지 확인하고 싶습니다.</summary><p>제출 섹션 아래 '제출 확인'에 이름과 학번을 넣으면 접수 시각과 트랙, 1순위 분야를 확인할 수 있습니다.</p></details>
+  <details><summary>조 편성 결과는 언제 알 수 있습니까?</summary><p>따로 공지하지 않고 11.20.(금) 10시 오리엔테이션에서 안내합니다. 트랙별 실습실(제약바이오 치의학관 114호, 의료기기 치의학관 115호)로 오십시오.</p></details>
+  <details><summary>마감(11.19. 18:00)을 놓쳤습니다.</summary><p>늦더라도 바로 제출하십시오. 다만 마감 이후 제출분은 조 편성에 반영되지 않을 수 있습니다.</p></details>
+  <details><summary>최종 결과물은 언제까지 제출합니까?</summary><p>1일차 11.20.(금) 24:00까지입니다. 저녁에 숙소에서 멘토 피드백을 반영해 고도화한 뒤 제출합니다. 제출 방법은 현장에서 안내합니다.</p></details>
+  <details><summary>사후학습은 어디서 합니까?</summary><p>D-MOOC의 'AI바이오워케이션챌린지Ⅰ 사후학습' 강좌에서 11.25.(수)부터 12.4.(금)까지 진행합니다. 동영상 수강과 성찰일지 제출 모두 해당 강좌에서 합니다.</p></details>
+  <details><summary>제출 버튼을 눌러도 제출되지 않습니다.</summary><p>잠시 뒤 다시 눌러 보십시오. 그래도 되지 않으면 작성한 내용을 ai.bio.engine@gmail.com으로 보내 주십시오(제목: 리서치카드_트랙_이름).</p></details>
+</section>
+
+<section class="contact" id="contact">
+  <div class="txt">
+    <span class="code">Contact</span>
+    <h2>궁금한 점은 언제든<br>편하게 문의하십시오</h2>
+    <p>AI기반 첨단바이오사업단<br><a href="mailto:ai.bio.engine@gmail.com">ai.bio.engine@gmail.com</a></p>
+  </div>
+  <img src="../recruit/img/c2-jump.webp" alt="" aria-hidden="true" decoding="async"
+    onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://stargate-aibio.vercel.app/recruit/img/c2-jump.webp'}else{this.remove()}">
+</section>
+</main>
+
+<footer class="wrap">
+  주관 단국대 · 참여 건양대 · 계명대 · 아주대 · 유한대 · <a href="../">ULTRA ANCHOR 홈 →</a>
+</footer>
+
+<script>
+(function () {
+  /* 운영진이 채울 값. SUBMIT_URL은 Apps Script 웹 앱 주소(…/exec) */
+  const CONFIG = {
+    SUBMIT_URL: '',      // 리서치 카드 제출 받기·제출 확인(Apps Script 웹 앱)
+    DMOOC_URL: 'https://mooc.dankook.ac.kr/courses/6afa70a0a5606a302150cc4f',
+    TOOL_GUIDE_URL: ''   // 실습 도구 안내(계정·튜토리얼)
+  };
+  const CATS = {
+    'AI제약바이오': ['항암(표적·면역항암)', '대사·내분비(당뇨·비만)', '신경·퇴행성(치매·파킨슨)', '염증·자가면역', '감염·백신', '희귀·유전질환'],
+    'AI의료기기': ['진단·체외진단', '치과·임플란트', '수술 후·재택 자가관리', '영상·판독 보조', '병동·간호 업무', '재활·고령자 모니터링']
+  };
+  const KEY = { 'AI제약바이오': 'pharma', 'AI의료기기': 'device' };
+  const TRACK_OF = { pharma: 'AI제약바이오', device: 'AI의료기기' };
+  const LABELS = {
+    pharma: ['① 대상 질환', '② 질환 기전', '③ 표준 치료제와 작용기전', '④ 치료의 한계', '⑤ 근거 자료'],
+    device: ['① 대상 사용자', '② 문제 상황', '③ 현재 해결 방식과 한계', '④ 문제의 크기', '⑤ 근거 자료']
+  };
+  const DRAFT = 'workation-research-card-v2';
+  const DUE = Date.parse('2026-11-19T18:00:00+09:00');
+  const $ = (id) => document.getElementById(id);
+
+  /* 링크 */
+  const link = (sel, url, label) => document.querySelectorAll(sel).forEach((a) => {
+    if (url) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.removeAttribute('aria-disabled'); }
+    else { a.setAttribute('aria-disabled', 'true'); a.title = label + ' 링크는 준비되는 대로 열립니다'; a.addEventListener('click', (e) => e.preventDefault()); }
+  });
+  link('[data-tool]', CONFIG.TOOL_GUIDE_URL, '실습 도구 안내');
+  link('[data-dmooc]', CONFIG.DMOOC_URL, 'D-MOOC');
+
+  /* D-day · 지금 할 일 (한국 시간) */
+  (function () {
+    const now = Date.now(), T = (s) => Date.parse(s);
+    const dd = $('dday');
+    if (now < DUE) {
+      const kst = (t) => Math.floor((t + 9 * 3600e3) / 86400e3);
+      const d = kst(DUE) - kst(now);
+      dd.querySelector('b').textContent = d > 0 ? 'D-' + d : 'D-DAY';
+    } else dd.hidden = true;
+    let ph, title, text, href, label;
+    if (now < DUE) { ph = 0; title = '리서치 카드 제출'; text = '11.19.(목) 18:00까지 이 페이지에서 제출하십시오. 약 1시간 내외.'; href = '#submit'; label = '제출하러 가기'; }
+    else if (now < T('2026-11-21T14:00:00+09:00')) { ph = 1; title = '현장 참여'; text = '11.20.(금) 10:00까지 트랙별 실습실로 오십시오. 최종 결과물은 당일 24:00까지 제출합니다.'; href = '#timetable'; label = '시간표 보기'; }
+    else if (now < T('2026-12-05T00:00:00+09:00')) { ph = 2; title = '사후학습'; text = '11.25.(수)~12.4.(금) D-MOOC에서 동영상 3개 수강과 성찰일지 제출.'; href = '#after'; label = '사후학습 안내'; }
+    else { ph = -1; title = '모든 과정이 끝났습니다'; text = '참여해 주셔서 감사합니다. 이수 결과는 학사 일정에 따라 반영됩니다.'; href = '#credit'; label = '이수 요건 보기'; }
+    $('nowTitle').textContent = title; $('nowText').textContent = text;
+    const b = $('nowBtn'); b.href = href; b.textContent = label;
+    document.querySelectorAll('.phases>li').forEach((li) => li.classList.toggle('is-now', +li.dataset.phase === ph));
+  })();
+
+  /* 트랙 탭 (#pharma / #device) */
+  const tabs = Array.from(document.querySelectorAll('.tabs [role="tab"]'));
+  const show = (track, focus) => tabs.forEach((t) => {
+    const on = t.dataset.track === track;
+    t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1;
+    $(t.getAttribute('aria-controls')).hidden = !on;
+    if (on && focus) t.focus();
+  });
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => { show(t.dataset.track); history.replaceState(null, '', '#' + t.dataset.track); });
+    t.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+      show(next.dataset.track, true); history.replaceState(null, '', '#' + next.dataset.track);
+    });
+  });
+  const fromHash = () => { const h = location.hash.slice(1); if (h === 'pharma' || h === 'device') { show(h); $('tasks').scrollIntoView(); } };
+  window.addEventListener('hashchange', fromHash); fromHash();
+
+  /* 시간표 일차 탭 */
+  const dtabs = Array.from(document.querySelectorAll('.daytabs [role="tab"]'));
+  dtabs.forEach((t) => t.addEventListener('click', () => dtabs.forEach((x) => {
+    const on = x === t; x.setAttribute('aria-selected', String(on)); $(x.dataset.day).hidden = !on;
+  })));
+  if (Date.now() >= Date.parse('2026-11-21T00:00:00+09:00') && Date.now() < Date.parse('2026-11-22T00:00:00+09:00')) dtabs[1].click();
+
+  /* 제출 폼 */
+  const form = $('cardForm'), status = $('status'), btn = $('submitBtn'), trackFields = $('trackFields');
+  const fill = (sel, list, keep) => {
+    sel.innerHTML = '<option value="">선택</option>' + list.map((c) => '<option>' + c + '</option>').join('');
+    if (keep && list.includes(keep)) sel.value = keep;
+  };
+  const curTrack = () => (form.querySelector('input[name="track"]:checked') || {}).value || '';
+  const setTrack = (track, draft) => {
+    const k = KEY[track]; trackFields.hidden = !k; if (!k) return;
+    fill($('f-c1'), CATS[track], draft && draft.c1); fill($('f-c2'), CATS[track], draft && draft.c2);
+    form.querySelectorAll('[data-q]').forEach((el) => { el.hidden = el.dataset.q !== k; });
+  };
+  form.querySelectorAll('input[name="track"]').forEach((r) => r.addEventListener('change', () => { setTrack(r.value); saveDraft(); }));
+  document.querySelectorAll('[data-pick]').forEach((a) => a.addEventListener('click', () => {
+    const t = TRACK_OF[a.dataset.pick], r = form.querySelector('input[name="track"][value="' + t + '"]');
+    if (r && !r.checked) { r.checked = true; setTrack(t); saveDraft(); }
+  }));
+  const counters = () => form.querySelectorAll('textarea[data-max]').forEach((ta) => {
+    const c = form.querySelector('.count[data-for="' + ta.id + '"]'), n = ta.value.trim().length, max = +ta.dataset.max;
+    if (c) { c.textContent = n + ' / ' + max; c.classList.toggle('over', n > max); }
+  });
+  form.addEventListener('input', () => { counters(); saveDraft(); });
+  form.addEventListener('change', () => saveDraft());
+
+  const qIds = { pharma: ['f-p1', 'f-p2', 'f-p3', 'f-p4', 'f-p5'], device: [null, 'f-d2', 'f-d3', 'f-d4', 'f-d5'] };
+  const collect = () => {
+    const track = curTrack(), k = KEY[track];
+    const d = {
+      name: $('f-name').value.trim(), univ: $('f-univ').value, sid: $('f-sid').value.trim(), track,
+      c1: $('f-c1').value, c2: $('f-c2').value, major: $('f-major').value, majorName: $('f-majorName').value.trim(),
+      grade: $('f-grade').value, laptop: (form.querySelector('input[name="laptop"]:checked') || {}).value || '',
+      consent: $('f-consent').checked, website: $('f-website').value
+    };
+    if (k) qIds[k].forEach((id, i) => {
+      d['q' + (i + 1)] = id ? $(id).value.trim() : ((form.querySelector('input[name="who"]:checked') || {}).value || '');
+    });
+    return d;
+  };
+  const mark = (el, msg) => {
+    const fld = el.closest('.fld') || el.closest('.consent');
+    const tgt = el.matches('input,select,textarea') ? el : el.querySelector('input');
+    if (tgt) tgt.setAttribute('aria-invalid', 'true');
+    if (fld && !fld.querySelector('.err')) { const s = document.createElement('span'); s.className = 'err'; s.textContent = msg; fld.appendChild(s); }
+    return tgt || el;
+  };
+  const validate = (d) => {
+    form.querySelectorAll('.err').forEach((e) => e.remove());
+    form.querySelectorAll('[aria-invalid]').forEach((e) => e.removeAttribute('aria-invalid'));
+    const bad = [], k = KEY[d.track];
+    const need = (ok, el, msg) => { if (!ok) bad.push(mark(el, msg)); };
+    need(d.name, $('f-name'), '이름을 입력하십시오.');
+    need(d.univ, $('f-univ'), '소속 대학을 선택하십시오.');
+    need(d.sid, $('f-sid'), '학번을 입력하십시오.');
+    need(k, form.querySelector('[aria-labelledby="l-track"]'), '참여 트랙을 선택하십시오.');
+    if (k) {
+      need(d.c1, $('f-c1'), '1순위 분야를 선택하십시오.');
+      need(d.c2 && d.c2 !== d.c1, $('f-c2'), d.c2 ? '1순위와 다른 분야를 선택하십시오.' : '2순위 분야를 선택하십시오.');
+      qIds[k].forEach((id, i) => {
+        const v = d['q' + (i + 1)], label = LABELS[k][i].slice(2);
+        if (!id) { need(v, form.querySelector('[aria-labelledby="l-who"]'), '대상 사용자를 선택하십시오.'); return; }
+        const el = $(id), max = +el.dataset.max || 0;
+        need(v && (!max || v.length <= max), el, v ? max + '자 이내로 줄여 주십시오.' : label + ' 칸을 작성하십시오.');
+      });
+    }
+    need(d.major, $('f-major'), '전공 계열을 선택하십시오.');
+    need(d.grade, $('f-grade'), '학년을 선택하십시오.');
+    need(d.laptop, form.querySelector('[aria-labelledby="l-laptop"]'), '노트북 지참 여부를 선택하십시오.');
+    need(d.consent, $('f-consent'), '개인정보 수집·이용에 동의해야 제출할 수 있습니다.');
+    return bad;
+  };
+  const say = (el, cls, msg) => { el.className = 'status ' + cls; el.textContent = msg; el.hidden = false; };
+
+  /* 임시 저장(이 브라우저에만, 실패해도 무시) */
+  let restoring = false;
+  function saveDraft() {
+    if (restoring) return;
+    try { const d = collect(); delete d.website; delete d.consent; localStorage.setItem(DRAFT, JSON.stringify(d)); } catch (e) { /* 저장 불가 */ }
+  }
+  (function loadDraft() {
+    let d = null;
+    try { d = JSON.parse(localStorage.getItem(DRAFT) || 'null'); } catch (e) { d = null; }
+    if (!d) return;
+    restoring = true;
+    ['name', 'univ', 'sid', 'major', 'majorName', 'grade'].forEach((f) => { const el = $('f-' + f); if (el && d[f]) el.value = d[f]; });
+    const tr = form.querySelector('input[name="track"][value="' + d.track + '"]');
+    if (tr) { tr.checked = true; setTrack(d.track, d); }
+    const lp = form.querySelector('input[name="laptop"][value="' + d.laptop + '"]'); if (lp) lp.checked = true;
+    const k = KEY[d.track];
+    if (k) qIds[k].forEach((id, i) => {
+      const v = d['q' + (i + 1)] || '';
+      if (id) $(id).value = v; else { const w = form.querySelector('input[name="who"][value="' + v + '"]'); if (w) w.checked = true; }
+    });
+    restoring = false;
+  })();
+  counters();
+
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const showDone = (d, at) => {
+    const k = KEY[d.track];
+    const rows = [['이름', d.name + ' (' + d.univ + ')'], ['트랙', d.track], ['관심 분야', '1순위 ' + d.c1 + ' / 2순위 ' + d.c2]]
+      .concat(LABELS[k].map((l, i) => [l, d['q' + (i + 1)]]));
+    $('doneList').innerHTML = rows.map((r) => '<dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd>').join('');
+    $('doneAt').textContent = at ? at + ' KST' : '';
+    $('doneMsg').textContent = '조 편성은 11.20.(금) 오리엔테이션에서 안내합니다. 수정할 내용이 있으면 같은 학번으로 다시 제출하십시오.';
+    form.hidden = true; $('done').hidden = false; $('done').focus();
+  };
+  $('again').addEventListener('click', () => { $('done').hidden = true; form.hidden = false; status.hidden = true; $('f-name').focus(); });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const d = collect(), bad = validate(d);
+    if (bad.length) { say(status, 'bad', '빠진 칸이 ' + bad.length + '곳 있습니다. 빨간 안내를 확인하십시오.'); bad[0].focus(); return; }
+    if (!CONFIG.SUBMIT_URL) { say(status, 'bad', '제출 접수가 아직 열리지 않았습니다. 작성한 내용은 이 브라우저에 저장되어 있으니 잠시 뒤 다시 제출하십시오.'); return; }
+    btn.disabled = true; say(status, 'wait', '제출하는 중입니다…');
+    try {
+      const res = await fetch(CONFIG.SUBMIT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d), redirect: 'follow' });
+      const out = await res.json();
+      if (!out.ok) {
+        if (out.error === 'invalid') throw new Error('빠지거나 잘못된 칸이 있습니다. 내용을 확인한 뒤 다시 제출하십시오.');
+        if (out.error === 'busy') throw new Error('제출이 몰리고 있습니다. 잠시 뒤 다시 눌러 주십시오.');
+        throw new Error('제출하지 못했습니다. 잠시 뒤 다시 시도하십시오.');
+      }
+      status.hidden = true; showDone(d, out.at);
+    } catch (err) {
+      say(status, 'bad', (err && err.message && !/fetch|JSON|network/i.test(err.message) ? err.message : '네트워크 문제로 제출하지 못했습니다. 잠시 뒤 다시 눌러 주십시오.') +
+        ' 계속 되지 않으면 작성한 내용을 ai.bio.engine@gmail.com으로 보내 주십시오(제목: 리서치카드_트랙_이름).');
+    } finally { btn.disabled = false; }
+  });
+
+  /* 제출 확인 */
+  const checkStatus = $('checkStatus');
+  $('checkForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = $('k-name').value.trim(), sid = $('k-sid').value.trim();
+    if (!name || !sid) { say(checkStatus, 'bad', '이름과 학번을 모두 입력하십시오.'); return; }
+    if (!CONFIG.SUBMIT_URL) { say(checkStatus, 'bad', '제출 확인은 접수가 열리면 사용할 수 있습니다.'); return; }
+    $('checkBtn').disabled = true; say(checkStatus, 'wait', '확인하는 중입니다…');
+    try {
+      const u = CONFIG.SUBMIT_URL + '?action=check&name=' + encodeURIComponent(name) + '&sid=' + encodeURIComponent(sid);
+      const out = await (await fetch(u, { redirect: 'follow' })).json();
+      if (out.ok && out.found) say(checkStatus, 'ok', out.at + ' 접수됨 · ' + out.track + ' · 1순위 ' + out.c1 + (out.count > 1 ? ' (총 ' + out.count + '회 제출, 마지막 제출 반영)' : ''));
+      else if (out.ok) say(checkStatus, 'bad', '제출 기록이 없습니다. 이름·학번을 다시 확인하거나 위에서 제출하십시오.');
+      else throw new Error();
+    } catch (err) { say(checkStatus, 'bad', '지금은 확인할 수 없습니다. 잠시 뒤 다시 시도하십시오.'); }
+    finally { $('checkBtn').disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>
