@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>워케이션챌린지① 팀 허브</title>
+<meta name="description" content="AI첨단바이오 워케이션챌린지① 팀별 사전과제 확인, 팀 이름·주제 입력, 예선·본선 발표 파일 제출">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap">
+<style>
+/* STARGATE 톤(prework와 같은 토큰). 구조: 남색 헤더 → 팀 고르기·팀 코드 → 내 팀(이름·주제 / 제출 / 관심 카드) → 전체 팀 주제 보드. ?admin=키 이면 운영진 표 */
+:root{
+  --ink:#121838; --ink-deep:#0B1030; --navy:#1B2452; --blue:#1F5CC4;
+  --cyan:#27B9CF; --cyan-soft:#BFEFF6; --ok:#0A7D90; --ok-tint:rgba(39,185,207,.15);
+  --amber:#E59A2F; --warn:#9E5C08; --warn-tint:rgba(229,154,47,.16);
+  --paper:#F5F8FD; --panel:#FFFFFF; --soft:#EAF1FB; --rule:#DCE4F1; --muted:#586487;
+  --on-dark:#EEF3FF; --on-dark-muted:#A9B5D6; --on-dark-line:rgba(255,255,255,.14);
+  --red:#C2413A; --red-tint:#FDECEA;
+  --f-body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-display:"Archivo","Noto Sans KR",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.65;word-break:keep-all;overflow-wrap:anywhere}
+[hidden]{display:none!important}
+a{color:var(--blue)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.code{font-family:var(--f-display);font-style:italic;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+.top{background:var(--ink-deep);color:var(--on-dark);padding-top:env(safe-area-inset-top,0px)}
+.top-row{display:flex;align-items:center;gap:12px;padding-block:12px}
+.top-row .logo{height:32px;width:auto}
+.top-row strong{display:block;font-family:var(--f-display);font-style:italic;font-weight:900;font-size:15px;letter-spacing:.04em;line-height:1.2}
+.top-row strong em{font-style:inherit;color:var(--cyan)}
+.top-row small{display:block;font-size:12px;color:var(--on-dark-muted)}
+.top-row .home{margin-left:auto;flex:none;font-size:12.5px;color:var(--cyan-soft);background:rgba(39,185,207,.16);border:1px solid rgba(39,185,207,.55);border-radius:999px;padding:6px 12px;text-decoration:none}
+.hero{padding-block:18px 26px}
+.hero h1{font-size:clamp(22px,5vw,28px);font-weight:800;letter-spacing:-.025em;margin:0 0 6px;line-height:1.3}
+.hero h1 em{font-style:normal;color:var(--cyan)}
+.hero p{margin:0;color:var(--on-dark-muted);font-size:14px}
+.steps{display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:14px;padding:0;list-style:none}
+.steps li{font-size:12.5px;color:var(--on-dark);border:1px solid var(--on-dark-line);border-radius:999px;padding:4px 12px}
+.steps li b{font-family:var(--f-display);font-style:italic;color:var(--cyan);margin-right:6px}
+.dl{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.dl span{font-family:var(--f-mono);font-size:12px;color:var(--cyan-soft);background:rgba(255,255,255,.06);border:1px solid var(--on-dark-line);border-radius:8px;padding:4px 10px}
+.dl span b{color:#fff;font-weight:600}
+
+main{display:flex;flex-direction:column;gap:18px;padding-block:20px 60px}
+.box{background:var(--panel);border:1px solid var(--rule);border-radius:16px;padding:20px;min-width:0}
+.box>.code:first-child{display:block;font-size:12px;color:var(--blue);margin-bottom:2px}
+.box h2{font-size:19px;font-weight:800;letter-spacing:-.02em;margin:0 0 4px}
+.desc{color:var(--muted);margin:0 0 14px;font-size:14px}
+.tabs{display:inline-flex;background:var(--soft);border-radius:999px;padding:4px;gap:2px;margin-bottom:12px}
+.tabs button{border:0;background:transparent;font-weight:700;font-size:14px;color:var(--navy);padding:7px 16px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.tabs button[aria-pressed="true"]{background:var(--ink-deep);color:#fff}
+.teamgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.tbtn{text-align:left;border:1px solid var(--rule);background:var(--panel);border-radius:12px;padding:10px 12px;cursor:pointer;display:flex;flex-direction:column;gap:2px;min-width:0}
+.tbtn b{font-size:14.5px}
+.tbtn span{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tbtn[aria-pressed="true"]{border:2px solid var(--blue);padding:9px 11px;background:var(--soft)}
+.login{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;margin-top:14px}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0}
+.field label{font-size:13px;font-weight:700;color:var(--navy)}
+.field small{font-size:12px;color:var(--muted)}
+input[type=text],input[type=password],input[type=search],select,textarea{border:1px solid var(--rule);border-radius:10px;padding:9px 12px;background:#fff;font-size:15px;width:100%}
+textarea{min-height:76px;resize:vertical}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:42px;padding:9px 18px;border-radius:999px;font-weight:700;font-size:14.5px;cursor:pointer;border:1px solid transparent;white-space:nowrap;text-decoration:none}
+.btn.p{background:var(--ink-deep);color:#fff}
+.btn.s{background:var(--panel);color:var(--navy);border-color:var(--rule)}
+.btn:disabled{opacity:.5;cursor:default}
+.msg{font-size:13.5px;border-radius:10px;padding:8px 12px;margin-top:10px}
+.msg.ok{background:var(--ok-tint);color:var(--ok)}
+.msg.bad{background:var(--red-tint);color:var(--red)}
+.msg.wait{background:var(--soft);color:var(--navy)}
+
+.teamhead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:flex-start}
+.teamhead h2{font-size:22px}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.pill{font-size:12.5px;font-weight:700;color:var(--navy);background:var(--soft);border-radius:999px;padding:3px 10px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.sub{border:1px solid var(--rule);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.sub h3{margin:0;font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.sub h3 .due{font-family:var(--f-mono);font-size:12px;font-weight:600;color:var(--warn);background:var(--warn-tint);border-radius:6px;padding:1px 8px}
+.state{font-size:13.5px;border-radius:10px;padding:10px 12px;background:var(--paper);color:var(--muted)}
+.state.done{background:var(--ok-tint);color:var(--ok)}
+.state.done b{color:var(--ink)}
+.drop{border:2px dashed var(--rule);border-radius:12px;padding:16px;text-align:center;color:var(--muted);font-size:13.5px;cursor:pointer}
+.drop.over{border-color:var(--blue);background:var(--soft)}
+.drop b{color:var(--navy)}
+.bar{height:6px;border-radius:999px;background:var(--soft);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--cyan);transition:width .2s}
+
+.view{display:inline-flex;border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.view button{border:0;background:transparent;font-size:13px;font-weight:700;padding:6px 12px;color:var(--muted);cursor:pointer}
+.view button[aria-pressed="true"]{background:var(--ink-deep);color:#fff}
+.members{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:12px}
+.m{border:1px solid var(--rule);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.who{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.who b{font-size:16px}
+.who span{font-size:12.5px;color:var(--muted)}
+dl{margin:0;display:flex;flex-direction:column;gap:9px}
+dt{font-size:11.5px;font-weight:700;color:var(--ok)}
+dd{margin:2px 0 0;font-size:13.5px;line-height:1.6}
+.empty{color:var(--muted);font-style:italic}
+.items{display:flex;flex-direction:column;gap:16px;margin-top:12px}
+.item h4{margin:0 0 6px;font-size:15px}
+.row{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:8px 0;border-top:1px solid var(--rule)}
+.row .nm{font-weight:700;font-size:14px}
+.row .nm small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.row .tx{font-size:13.5px;line-height:1.6;min-width:0}
+
+.board{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.bcard{border:1px solid var(--rule);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.bcard .no{font-size:12px;font-weight:700;color:var(--blue)}
+.bcard b{font-size:15.5px}
+.bcard p{margin:0;font-size:13.5px;color:var(--ink)}
+.bcard .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.tag{font-size:11.5px;font-weight:700;border-radius:6px;padding:1px 8px;background:var(--paper);color:var(--muted)}
+.tag.on{background:var(--ok-tint);color:var(--ok)}
+.tblwrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-size:12.5px;color:var(--muted);white-space:nowrap}
+td.late{color:var(--warn);font-weight:700}
+body.screen .top,body.screen #pick,body.screen #mine{display:none}
+body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.screen .board{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+@media (max-width:520px){.row{grid-template-columns:1fr;gap:2px}.top-row small{display:none}}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="top-row">
+      <img class="logo" src="../assets/logo-white.png" alt="ULTRA ANCHOR">
+      <div><strong>WORKATION CHALLENGE <em>①</em></strong><small>울트라앵커사업 AI첨단바이오 컨소시엄</small></div>
+      <a class="home" href="../prework/">참가 안내</a>
+    </div>
+    <div class="hero">
+      <h1>우리 팀 <em>허브</em></h1>
+      <p>팀을 고르고 팀 코드를 넣으면 팀원 사전과제를 보고, 팀 이름·주제를 정하고, 발표 파일을 낼 수 있습니다.</p>
+      <ol class="steps"><li><b>1</b>팀 고르기·팀 코드</li><li><b>2</b>팀 이름·주제 저장</li><li><b>3</b>예선 PDF 제출</li><li><b>4</b>본선 PDF 제출</li></ol>
+      <div class="dl"><span>예선 마감 <b>11. 20.(금) 15:50</b></span><span>본선 마감 <b>11. 20.(금) 24:00</b></span><span>PDF · 최대 20MB</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="box" id="pick">
+    <span class="code">STEP 1</span>
+    <h2>팀 고르기</h2>
+    <p class="desc">팀 코드(숫자 4자리)는 오리엔테이션 때 팀 테이블에 놓인 카드에 적혀 있습니다.</p>
+    <div class="tabs" role="group" aria-label="트랙">
+      <button id="tr-ph" data-tr="AI제약바이오" aria-pressed="true">AI제약바이오</button>
+      <button id="tr-md" data-tr="AI의료기기" aria-pressed="false">AI의료기기</button>
+    </div>
+    <div class="teamgrid" id="teamgrid"><p class="desc">팀 목록을 불러오는 중입니다…</p></div>
+    <form class="login" id="loginForm">
+      <div class="field" style="width:140px"><label for="code">팀 코드</label><input id="code" type="password" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="0000"></div>
+      <button class="btn p" id="loginBtn" type="submit" disabled>우리 팀 열기</button>
+    </form>
+    <div class="msg" id="loginMsg" hidden></div>
+  </section>
+
+  <section class="box" id="mine" hidden>
+    <div class="teamhead">
+      <div><span class="code" id="mTrack"></span><h2 id="mTitle"></h2><div class="pills" id="mPills"></div></div>
+      <button class="btn s" id="logout" type="button">다른 팀 보기</button>
+    </div>
+
+    <div class="grid2" style="margin-top:16px">
+      <form class="sub" id="nameForm">
+        <h3>팀 이름 · 팀 주제</h3>
+        <div class="field"><label for="tName">팀 이름</label><input id="tName" type="text" maxlength="30" placeholder="예: 타우브레이커"></div>
+        <div class="field"><label for="tTopic">팀 주제 (한 줄)</label><textarea id="tTopic" maxlength="120" placeholder="예: 혈뇌장벽을 넘는 타우 응집 억제 후보 탐색"></textarea><small>발표 순서표와 주제 보드에 이 문장이 그대로 나옵니다.</small></div>
+        <div><button class="btn p" id="saveBtn" type="submit">저장</button></div>
+        <div class="msg" id="saveMsg" hidden></div>
+      </form>
+      <div class="sub" id="who-box">
+        <h3>제출하는 사람</h3>
+        <div class="field"><label for="by">이름</label><select id="by"></select><small>파일을 올릴 때 제출 기록에 함께 남습니다.</small></div>
+        <p class="desc" style="margin:0">PDF 하나만 올립니다. 다시 올리면 마지막 파일로 발표합니다. 파일 이름은 자동으로 <b>트랙_팀번호_팀이름_단계.pdf</b>로 바뀝니다.</p>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:14px" id="subs"></div>
+
+    <div style="margin-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+      <h2 style="font-size:18px;margin:0">팀원 사전과제 (관심 카드)</h2>
+      <div class="view" role="group" aria-label="보기 방식"><button id="v-m" data-v="member" aria-pressed="true">팀원별</button><button id="v-i" data-v="item" aria-pressed="false">항목별 비교</button></div>
+    </div>
+    <div id="cards"></div>
+  </section>
+
+  <section class="box" id="boardBox">
+    <span class="code">BOARD</span>
+    <h2>전체 팀 주제</h2>
+    <p class="desc">팀 이름·주제를 저장하면 여기에 바로 나옵니다. 예선 발표 순서를 볼 때 이 화면을 띄워 두세요.</p>
+    <div class="tabs" role="group" aria-label="보드 트랙">
+      <button id="bt-ph" data-btr="AI제약바이오" aria-pressed="true">AI제약바이오</button>
+      <button id="bt-md" data-btr="AI의료기기" aria-pressed="false">AI의료기기</button>
+    </div>
+    <div class="board" id="board"></div>
+  </section>
+
+  <section class="box" id="adminBox" hidden>
+    <span class="code">STAFF</span>
+    <h2>운영진 제출 현황</h2>
+    <p class="desc" id="adminDesc">마지막 제출 파일을 엽니다. 예선 15:55쯤 한 번 새로 고쳐 확인하세요.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px"><button class="btn s" id="adminReload" type="button">새로 고침</button></div>
+    <div class="tblwrap"><table><thead><tr><th>팀</th><th>코드</th><th>팀 이름 · 주제</th><th>예선 파일</th><th>본선 파일</th></tr></thead><tbody id="adminBody"></tbody></table></div>
+  </section>
+</main>
+
+<script>
+(() => {
+  /* 운영진이 채울 값: Apps Script 웹 앱 주소(…/exec). 비워 두면 시험 모드(가짜 팀 2개, 브라우저 안에서만 동작) */
+  const CONFIG = {
+    API: '',
+    MAX_MB: 20,
+    DUE: { '예선': '11. 20.(금) 15:50', '본선': '11. 20.(금) 24:00' },
+  };
+  const LABEL = {
+    'AI제약바이오': ['대상 질환', '질환 기전', '표준 치료제와 작용기전', '치료의 한계', '근거 자료'],
+    'AI의료기기': ['대상 사용자', '문제 상황', '현재 해결 방식과 한계', '문제의 크기', '근거 자료'],
+  };
+  const NUM = ['①', '②', '③', '④', '⑤'];
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const linkify = s => esc(s).replace(/(https?:\/\/[^\s<]+)/g, u => `<a href="${u}" target="_blank" rel="noopener">${u.length > 60 ? u.slice(0, 57) + '…' : u}</a>`).replace(/\n/g, '<br>');
+  const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }, del(k) { try { localStorage.removeItem(k); } catch (e) {} } };
+  const say = (el, kind, text) => { el.hidden = false; el.className = 'msg ' + kind; el.textContent = text; };
+  const ERR = {
+    code: '팀 코드가 맞지 않습니다. 팀 테이블 카드의 숫자 4자리를 확인하세요.', team: '팀을 다시 골라 주세요.',
+    invalid: '빈칸이 있습니다. 팀 이름과 주제를 모두 적어 주세요.', busy: '제출이 몰리고 있습니다. 잠시 뒤 다시 눌러 주세요.',
+    pdf: 'PDF 파일만 올릴 수 있습니다. 발표 자료를 PDF로 저장해 다시 올려 주세요.', size: `파일이 ${CONFIG.MAX_MB}MB보다 큽니다. 이미지 압축 후 다시 올려 주세요.`,
+  };
+
+  /* ---------- 서버 (API 비어 있으면 시험 모드) ---------- */
+  const DEMO = {
+    teams: [
+      { t: '제약 1팀', tr: 'AI제약바이오', f: '항암', b: 'A반', p: '치의학관 114호(연송홀)', s: '1열 · 통로 왼쪽', code: '0000', name: '', topic: '',
+        members: [{ n: '예시 학생A', u: '단국대', y: '3학년', mj: '제약공학과', c: ['비소세포폐암(EGFR 변이)', 'EGFR 변이로 신호가 계속 켜져 암세포가 증식합니다.', '오시머티닙: EGFR 티로신키나제 억제제', '1~2년 뒤 C797S 등 내성이 생깁니다.', 'https://pubmed.ncbi.nlm.nih.gov/'] },
+                  { n: '예시 학생B', u: '유한대', y: '2학년', mj: '바이오제약과', c: ['폐암', '', '', '', ''] }], subs: {} },
+      { t: '의료기기 1팀', tr: 'AI의료기기', f: '치과·임플란트', b: '-', p: '치의학관 115호', s: '테이블 1', code: '0000', name: '', topic: '',
+        members: [{ n: '예시 학생C', u: '단국대', y: '4학년', mj: '치위생학과', c: ['임플란트 수술 후 환자', '수술 후 2주 동안 집에서 관리법을 잊습니다.', '종이 안내문을 줍니다.', '연간 수십만 건', ''] }], subs: {} },
+    ],
+  };
+  const pub = t => ({ t: t.t, tr: t.tr, f: t.f, b: t.b, p: t.p, s: t.s, name: t.name, topic: t.topic, sub: { '예선': !!t.subs['예선'], '본선': !!t.subs['본선'] } });
+  async function api(method, body, query) {
+    if (!CONFIG.API) {
+      await new Promise(r => setTimeout(r, 250));
+      if (method === 'GET' && query.action === 'teams') return { ok: true, teams: DEMO.teams.map(pub) };
+      if (method === 'GET' && query.action === 'admin') return { ok: true, teams: DEMO.teams.map(t => Object.assign(pub(t), { code: t.code, subs: t.subs, members: t.members.map(m => m.n) })) };
+      const t = DEMO.teams.find(x => x.t === body.team);
+      if (!t) return { ok: false, error: 'team' };
+      if (body.code !== t.code) return { ok: false, error: 'code' };
+      if (body.action === 'save') { t.name = body.name; t.topic = body.topic; }
+      if (body.action === 'upload') { const now = new Date(); t.subs[body.stage] = { at: `${now.getMonth() + 1}.${now.getDate()} ${now.toTimeString().slice(0, 5)}`, file: body.filename, by: body.by, n: ((t.subs[body.stage] || {}).n || 0) + 1, url: '#' }; }
+      return { ok: true, team: Object.assign(pub(t), { members: t.members, subs: t.subs }) };
+    }
+    if (method === 'GET') {
+      const u = CONFIG.API + '?' + new URLSearchParams(query).toString();
+      return (await fetch(u, { redirect: 'follow' })).json();
+    }
+    const res = await fetch(CONFIG.API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body), redirect: 'follow' });
+    return res.json();
+  }
+
+  /* ---------- 상태 ---------- */
+  let TEAMS = [], track = 'AI제약바이오', boardTrack = 'AI제약바이오', picked = null, me = null, code = '', view = store.get('hub-view') || 'member';
+  const params = new URLSearchParams(location.search);
+  if (params.get('view') === 'screen') document.body.classList.add('screen');
+
+  function renderGrid() {
+    document.querySelectorAll('[data-tr]').forEach(b => b.setAttribute('aria-pressed', b.dataset.tr === track));
+    const list = TEAMS.filter(t => t.tr === track);
+    $('teamgrid').innerHTML = list.map(t => `<button type="button" class="tbtn" data-team="${esc(t.t)}" aria-pressed="${t.t === picked}">
+      <b>${esc(t.t)}</b><span>${esc(t.name || t.f)}</span><span>${esc(t.b !== '-' ? t.b + ' · ' : '')}${esc(t.s)}</span></button>`).join('') || '<p class="desc">팀이 없습니다.</p>';
+    $('loginBtn').disabled = !picked;
+  }
+  function renderBoard() {
+    document.querySelectorAll('[data-btr]').forEach(b => b.setAttribute('aria-pressed', b.dataset.btr === boardTrack));
+    $('board').innerHTML = TEAMS.filter(t => t.tr === boardTrack).map(t => `<div class="bcard">
+      <span class="no">${esc(t.t)} · ${esc(t.f)}${t.b !== '-' ? ' · 예선 ' + esc(t.b) : ''}</span>
+      <b>${t.name ? esc(t.name) : '<span class="empty">팀 이름 미정</span>'}</b>
+      <p>${t.topic ? esc(t.topic) : '<span class="empty">주제 미정</span>'}</p>
+      <div class="tags"><span class="tag ${t.sub && t.sub['예선'] ? 'on' : ''}">예선 ${t.sub && t.sub['예선'] ? '제출' : '미제출'}</span><span class="tag ${t.sub && t.sub['본선'] ? 'on' : ''}">본선 ${t.sub && t.sub['본선'] ? '제출' : '미제출'}</span></div>
+    </div>`).join('');
+  }
+  async function loadTeams() {
+    try {
+      const out = await api('GET', null, { action: 'teams' });
+      if (!out.ok) throw new Error();
+      TEAMS = out.teams; renderGrid(); renderBoard();
+    } catch (e) { $('teamgrid').innerHTML = '<p class="msg bad">팀 목록을 불러오지 못했습니다. 잠시 뒤 새로 고쳐 주세요.</p>'; }
+  }
+
+  /* ---------- 내 팀 ---------- */
+  function renderMine() {
+    const t = me;
+    $('mTrack').textContent = t.tr; $('mTitle').textContent = t.t + (t.name ? ' · ' + t.name : '');
+    $('mPills').innerHTML = [t.f, t.b !== '-' ? `예선 ${t.b} · ${t.p}` : `예선 ${t.p}`, t.s].map(v => `<span class="pill">${esc(v)}</span>`).join('');
+    if (document.activeElement !== $('tName')) $('tName').value = t.name || '';
+    if (document.activeElement !== $('tTopic')) $('tTopic').value = t.topic || '';
+    const prevBy = $('by').value || store.get('hub-by');
+    $('by').innerHTML = t.members.map(m => `<option value="${esc(m.n)}">${esc(m.n)} (${esc(m.u)})</option>`).join('');
+    if (prevBy && t.members.some(m => m.n === prevBy)) $('by').value = prevBy;
+    $('subs').innerHTML = ['예선', '본선'].map(st => {
+      const s = (t.subs || {})[st];
+      return `<div class="sub" data-stage="${st}">
+        <h3>${st} 발표 파일 <span class="due">마감 ${CONFIG.DUE[st]}</span></h3>
+        <div class="state ${s ? 'done' : ''}">${s ? `제출됨 · <b>${esc(s.file)}</b><br>${esc(s.at)} · ${esc(s.by || '')}${s.n > 1 ? ` · ${s.n}번째 제출` : ''}${s.late ? ' · 마감 후 제출' : ''}` : '아직 제출하지 않았습니다.'}</div>
+        <label class="drop" for="f-${st}"><b>PDF 고르기</b> 또는 여기로 끌어 놓기<br><small>${s ? '다시 올리면 이 파일로 바뀝니다.' : `PDF 한 개 · ${CONFIG.MAX_MB}MB 이하`}</small></label>
+        <input id="f-${st}" type="file" accept="application/pdf,.pdf" hidden>
+        <div class="bar" hidden><i></i></div>
+        <div class="msg" hidden></div>
+      </div>`;
+    }).join('');
+    $('subs').querySelectorAll('.sub').forEach(bindUpload);
+    renderCards();
+  }
+  function renderCards() {
+    const L = LABEL[me.tr], ms = me.members;
+    document.querySelectorAll('.view button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === view));
+    $('cards').innerHTML = view === 'member'
+      ? `<div class="members">${ms.map(m => `<article class="m"><div class="who"><b>${esc(m.n)}</b><span>${esc(m.u)} · ${esc(m.mj || '')} ${esc(m.y || '')}</span></div>
+          <dl>${m.c.map((c, i) => `<div><dt>${NUM[i]} ${L[i]}</dt><dd class="${c ? '' : 'empty'}">${c ? linkify(c) : '작성하지 않음'}</dd></div>`).join('')}</dl></article>`).join('')}</div>`
+      : `<div class="items">${L.map((lab, i) => `<div class="item"><h4>${NUM[i]} ${lab}</h4>${ms.map(m => `<div class="row"><div class="nm">${esc(m.n)}<small>${esc(m.u)}</small></div><div class="tx">${m.c[i] ? linkify(m.c[i]) : '<span class="empty">작성하지 않음</span>'}</div></div>`).join('')}</div>`).join('')}</div>`;
+  }
+  function bindUpload(box) {
+    const st = box.dataset.stage, input = box.querySelector('input'), drop = box.querySelector('.drop'), bar = box.querySelector('.bar'), msg = box.querySelector('.msg');
+    const go = file => upload(st, file, bar, msg, drop);
+    input.addEventListener('change', () => input.files[0] && go(input.files[0]));
+    ['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+    ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+    drop.addEventListener('drop', e => e.dataTransfer.files[0] && go(e.dataTransfer.files[0]));
+  }
+  async function upload(stage, file, bar, msg, drop) {
+    if (!/\.pdf$/i.test(file.name) && file.type !== 'application/pdf') { say(msg, 'bad', ERR.pdf); return; }
+    if (file.size > CONFIG.MAX_MB * 1048576) { say(msg, 'bad', ERR.size); return; }
+    if (!me.name) { say(msg, 'bad', '먼저 위에서 팀 이름과 주제를 저장해 주세요. 파일 이름에 팀 이름이 들어갑니다.'); return; }
+    const by = $('by').value; store.set('hub-by', by);
+    drop.style.pointerEvents = 'none'; bar.hidden = false; const fill = bar.querySelector('i'); fill.style.width = '15%';
+    say(msg, 'wait', `${file.name} 올리는 중입니다… 창을 닫지 마세요.`);
+    try {
+      const data = await new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(',')[1]); r.onerror = rej; r.readAsDataURL(file); });
+      fill.style.width = '45%';
+      const t0 = setInterval(() => { const w = parseFloat(fill.style.width); if (w < 90) fill.style.width = (w + 5) + '%'; }, 600);
+      const out = await api('POST', { action: 'upload', team: me.t, code, stage, by, filename: file.name, data });
+      clearInterval(t0);
+      if (!out.ok) throw new Error(ERR[out.error] || '제출하지 못했습니다. 잠시 뒤 다시 시도해 주세요.');
+      fill.style.width = '100%'; me = out.team; syncTeam(); renderMine();
+      const box = $('subs').querySelector(`[data-stage="${stage}"] .msg`); say(box, 'ok', `${stage} 파일을 제출했습니다.`);
+    } catch (e) {
+      say(msg, 'bad', (e && e.message && !/fetch|JSON|network|Load failed/i.test(e.message) ? e.message : '네트워크 문제로 올리지 못했습니다. 다시 시도해 주세요.') + ' 계속 안 되면 운영진에게 USB로 전달해 주세요.');
+      bar.hidden = true; drop.style.pointerEvents = '';
+    }
+  }
+  function syncTeam() {
+    const i = TEAMS.findIndex(x => x.t === me.t);
+    if (i >= 0) TEAMS[i] = Object.assign({}, TEAMS[i], { name: me.name, topic: me.topic, sub: { '예선': !!(me.subs || {})['예선'], '본선': !!(me.subs || {})['본선'] } });
+    renderGrid(); renderBoard();
+  }
+  async function login(team, c, quiet) {
+    if (!quiet) say($('loginMsg'), 'wait', '팀 정보를 불러오는 중입니다…');
+    $('loginBtn').disabled = true;
+    try {
+      const out = await api('POST', { action: 'login', team, code: c });
+      if (!out.ok) throw new Error(ERR[out.error] || '불러오지 못했습니다.');
+      me = out.team; code = c; store.set('hub-team', team); store.set('hub-code', c);
+      $('loginMsg').hidden = true; $('mine').hidden = false; renderMine(); syncTeam();
+      if (!quiet) $('mine').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    } catch (e) {
+      if (!quiet) say($('loginMsg'), 'bad', e.message && !/fetch|JSON|network|Load failed/i.test(e.message) ? e.message : '네트워크 문제로 불러오지 못했습니다.');
+      store.del('hub-code');
+    } finally { $('loginBtn').disabled = !picked; }
+  }
+
+  /* ---------- 이벤트 ---------- */
+  document.addEventListener('click', e => {
+    const tr = e.target.closest('[data-tr]'); if (tr) { track = tr.dataset.tr; picked = null; renderGrid(); return; }
+    const btr = e.target.closest('[data-btr]'); if (btr) { boardTrack = btr.dataset.btr; renderBoard(); return; }
+    const tb = e.target.closest('.tbtn'); if (tb) { picked = tb.dataset.team; renderGrid(); $('code').focus(); return; }
+    const v = e.target.closest('.view button'); if (v) { view = v.dataset.v; store.set('hub-view', view); renderCards(); }
+  });
+  $('loginForm').addEventListener('submit', e => { e.preventDefault(); if (picked) login(picked, $('code').value.trim()); });
+  $('logout').addEventListener('click', () => { me = null; code = ''; store.del('hub-code'); $('mine').hidden = true; $('code').value = ''; $('pick').scrollIntoView(); });
+  $('nameForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const name = $('tName').value.trim(), topic = $('tTopic').value.trim();
+    if (!name || !topic) { say($('saveMsg'), 'bad', ERR.invalid); return; }
+    $('saveBtn').disabled = true; say($('saveMsg'), 'wait', '저장하는 중입니다…');
+    try {
+      const out = await api('POST', { action: 'save', team: me.t, code, name, topic });
+      if (!out.ok) throw new Error(ERR[out.error] || '저장하지 못했습니다.');
+      me = out.team; syncTeam(); renderMine(); say($('saveMsg'), 'ok', '저장했습니다. 아래 주제 보드에도 반영됐습니다.');
+    } catch (err) { say($('saveMsg'), 'bad', err.message && !/fetch|JSON|network|Load failed/i.test(err.message) ? err.message : '네트워크 문제로 저장하지 못했습니다.'); }
+    finally { $('saveBtn').disabled = false; }
+  });
+
+  /* ---------- 운영진 ---------- */
+  async function loadAdmin(key) {
+    $('adminBox').hidden = false; $('adminBody').innerHTML = '<tr><td colspan="5">불러오는 중…</td></tr>';
+    try {
+      const out = await api('GET', null, { action: 'admin', key });
+      if (!out.ok) throw new Error(out.error === 'key' ? '관리자 키가 맞지 않습니다.' : '불러오지 못했습니다.');
+      const cell = s => s ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.file)}</a><br><small>${esc(s.at)} · ${esc(s.by || '')}${s.n > 1 ? ' · ' + s.n + '회' : ''}</small>` : '<span class="empty">미제출</span>';
+      $('adminBody').innerHTML = out.teams.map(t => `<tr><td><b>${esc(t.t)}</b><br><small>${esc(t.b !== '-' ? t.b + ' · ' : '')}${esc(t.members.length)}명</small></td><td>${esc(t.code)}</td>
+        <td>${esc(t.name || '-')}<br><small>${esc(t.topic || '')}</small></td><td class="${t.subs['예선'] && t.subs['예선'].late ? 'late' : ''}">${cell(t.subs['예선'])}</td><td class="${t.subs['본선'] && t.subs['본선'].late ? 'late' : ''}">${cell(t.subs['본선'])}</td></tr>`).join('');
+      const n = st => out.teams.filter(t => t.subs[st]).length;
+      $('adminDesc').textContent = `예선 ${n('예선')}/${out.teams.length}팀 · 본선 ${n('본선')}/${out.teams.length}팀 제출. 파일 이름을 누르면 열립니다.`;
+    } catch (e) { $('adminBody').innerHTML = `<tr><td colspan="5" class="late">${esc(e.message || '불러오지 못했습니다.')}</td></tr>`; }
+  }
+  const admin = params.get('admin');
+  if (admin) { loadAdmin(admin); $('adminReload').addEventListener('click', () => loadAdmin(admin)); }
+
+  if (!CONFIG.API) {
+    const n = document.createElement('p'); n.className = 'msg wait';
+    n.textContent = '시험 모드입니다. 실제 서버 주소를 넣기 전이라 예시 팀 2개만 보이고, 팀 코드는 0000입니다. 입력 내용은 저장되지 않습니다.';
+    $('pick').prepend(n);
+  }
+  loadTeams().then(() => {
+    const t = store.get('hub-team'), c = store.get('hub-code');
+    if (t && c && TEAMS.some(x => x.t === t)) { picked = t; track = TEAMS.find(x => x.t === t).tr; renderGrid(); login(t, c, true); }
+  });
+  setInterval(() => { if (!document.hidden) api('GET', null, { action: 'teams' }).then(o => { if (o.ok) { TEAMS = o.teams; renderGrid(); renderBoard(); } }).catch(() => {}); }, 60000);
+})();
+</script>
+</body>
+</html>
