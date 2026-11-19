@@ -136,6 +136,15 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
 .stat span{font-size:12px;color:var(--muted)}
 .btn.xs{min-height:30px;padding:4px 12px;font-size:12.5px}
 .foot{text-align:center;padding-bottom:30px}
+.pub{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;padding:12px;border:1px solid var(--rule);border-radius:12px;background:var(--paper);align-items:center}
+.pub b{font-size:13px;color:var(--navy);margin-right:4px}
+.sw{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;border:1px solid var(--rule);background:#fff;border-radius:999px;padding:5px 12px;cursor:pointer}
+.sw::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--rule)}
+.sw[aria-pressed="true"]{border-color:var(--ok);color:var(--ok);background:var(--ok-tint)}
+.sw[aria-pressed="true"]::before{background:var(--ok)}
+.res{display:flex;flex-direction:column;gap:6px;min-width:120px}
+.res label{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700}
+.res select{padding:4px 8px;font-size:13px;border-radius:8px}
 @media (max-width:520px){.row{grid-template-columns:1fr;gap:2px}.top-row small{display:none}}
 @media (prefers-reduced-motion:reduce){.bar i{transition:none}}
 </style>
@@ -146,7 +155,7 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
     <div class="top-row">
       <img class="logo" src="../assets/logo-white.png" alt="ULTRA ANCHOR">
       <div><strong>WORKATION CHALLENGE <em>①</em></strong><small>울트라앵커사업 AI첨단바이오 컨소시엄</small></div>
-      <a class="home" href="../prework/">참가 안내</a>
+      <a class="home" href="../showcase/">결과물</a> <a class="home" href="../prework/" style="margin-left:6px">참가 안내</a>
     </div>
     <div class="hero">
       <h1>우리 팀 <em>허브</em></h1>
@@ -229,7 +238,14 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
         <button class="btn s xs" id="adminReload" type="button">새로 고침</button>
         <button class="btn s xs" id="adminOut" type="button">운영진 모드 끄기</button>
       </div>
-      <div class="tblwrap"><table><thead><tr><th>팀</th><th>코드</th><th>팀 이름 · 주제</th><th>예선 파일</th><th>본선 파일</th><th></th></tr></thead><tbody id="adminBody"></tbody></table></div>
+      <div class="pub" id="pubBar"><b>결과 공개 (결과물 페이지)</b>
+        <button type="button" class="sw" data-flag="showFinalists" aria-pressed="false">본선 진출팀 공개</button>
+        <button type="button" class="sw" data-flag="showAwards" aria-pressed="false">수상 결과 공개</button>
+        <button type="button" class="sw" data-flag="showFiles" aria-pressed="false">결과물 지금 공개</button>
+        <a class="btn s xs" href="../showcase/" target="_blank" rel="noopener">결과물 페이지 열기</a>
+        <small class="desc" style="margin:0;flex-basis:100%">최종(본선) PDF는 11. 21.(토) 00:00 마감이 지나면 저절로 공개됩니다. '결과물 지금 공개'는 마감 전에 미리 열 때만 켜세요.</small>
+      </div>
+      <div class="tblwrap"><table><thead><tr><th>팀</th><th>코드</th><th>팀 이름 · 주제</th><th>예선 파일</th><th>본선 파일</th><th>결과</th><th></th></tr></thead><tbody id="adminBody"></tbody></table></div>
     </div>
   </section>
   <p class="foot"><button class="btn s xs" id="openAdmin" type="button">운영진 모드</button></p>
@@ -262,6 +278,7 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
 
   /* ---------- 서버 (API 비어 있으면 시험 모드) ---------- */
   const DEMO = {
+    flags: { showFinalists: false, showAwards: false, showFiles: false },
     teams: [
       { t: '제약 1팀', tr: 'AI제약바이오', f: '항암', b: 'A반', p: '치의학관 114호(연송홀)', s: '1열 · 통로 왼쪽', code: '0000', name: '', topic: '',
         members: [{ n: '예시 학생A', u: '단국대', y: '3학년', mj: '제약공학과', c: ['비소세포폐암(EGFR 변이)', 'EGFR 변이로 신호가 계속 켜져 암세포가 증식합니다.', '오시머티닙: EGFR 티로신키나제 억제제', '1~2년 뒤 C797S 등 내성이 생깁니다.', 'https://pubmed.ncbi.nlm.nih.gov/'] },
@@ -276,11 +293,13 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
       await new Promise(r => setTimeout(r, 250));
       if (method === 'GET' && query.action === 'teams') return { ok: true, teams: DEMO.teams.map(pub) };
       if (method === 'GET' && query.action === 'admin' && query.key !== 'demo') return { ok: false, error: 'key' };
-      if (method === 'GET' && query.action === 'admin') return { ok: true, teams: DEMO.teams.map(t => Object.assign(pub(t), { code: t.code, subs: t.subs, members: t.members.map(m => m.n) })) };
+      if (method === 'GET' && query.action === 'admin') return { ok: true, flags: DEMO.flags, teams: DEMO.teams.map(t => Object.assign(pub(t), { code: t.code, finalist: !!t.finalist, award: t.award || '', subs: t.subs, members: t.members.map(m => m.n) })) };
       if (body.key && body.key !== 'demo') return { ok: false, error: 'key' };
+      if (body.action === 'publish') { ['showFinalists', 'showAwards', 'showFiles'].forEach(k => { if (k in body) DEMO.flags[k] = !!body[k]; }); return { ok: true, flags: DEMO.flags }; }
       const t = body.key ? DEMO.teams.find(x => x.t === body.team) : DEMO.teams.find(x => x.code === body.code);
       if (!t) return { ok: false, error: body.key ? 'team' : 'code' };
       if (body.key && !body.by) body.by = '운영진';
+      if (body.action === 'mark') { t.finalist = !!body.finalist; t.award = body.award || ''; return { ok: true }; }
       if (body.action === 'save') { t.name = body.name; t.topic = body.topic; }
       if (body.action === 'upload') { const now = new Date(); t.subs[body.stage] = { at: `${now.getMonth() + 1}.${now.getDate()} ${now.toTimeString().slice(0, 5)}`, file: body.filename, by: body.by, n: ((t.subs[body.stage] || {}).n || 0) + 1, url: '#' }; }
       return { ok: true, team: Object.assign(pub(t), { members: t.members, subs: t.subs }) };
@@ -294,7 +313,7 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
   }
 
   /* ---------- 상태 ---------- */
-  let TEAMS = [], boardTrack = 'AI제약바이오', me = null, cred = null, adminKey = '', adminTrack = '', ADMIN = [], view = store.get('hub-view') || 'member';
+  let FLAGS = {}, TEAMS = [], boardTrack = 'AI제약바이오', me = null, cred = null, adminKey = '', adminTrack = '', ADMIN = [], view = store.get('hub-view') || 'member';
   const params = new URLSearchParams(location.search);
   if (params.get('view') === 'screen') document.body.classList.add('screen');
 
@@ -432,6 +451,7 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
     const n = st => all.filter(t => t.subs[st]).length, late = st => all.filter(t => t.subs[st] && t.subs[st].late).length;
     $('adminStats').innerHTML = [
       [`${all.filter(t => t.name).length}/${all.length}`, '팀 이름·주제 저장'],
+      [`${all.filter(t => t.finalist).length}`, '본선 진출 표시'],
       [`${n('예선')}/${all.length}`, `예선 제출${late('예선') ? ` · 마감 후 ${late('예선')}` : ''}`],
       [`${n('본선')}/${all.length}`, `본선 제출${late('본선') ? ` · 마감 후 ${late('본선')}` : ''}`],
     ].map(([v, l]) => `<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
@@ -439,14 +459,17 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
     $('adminBody').innerHTML = list.map(t => `<tr><td><b>${esc(t.t)}</b><br><small>${esc(t.b !== '-' ? t.b + ' · ' : '')}${esc(t.members.length)}명</small></td><td>${esc(t.code)}</td>
       <td>${t.name ? esc(t.name) : '<span class="empty">미정</span>'}<br><small>${esc(t.topic || '')}</small></td>
       <td class="${t.subs['예선'] && t.subs['예선'].late ? 'late' : ''}">${cell(t.subs['예선'])}</td><td class="${t.subs['본선'] && t.subs['본선'].late ? 'late' : ''}">${cell(t.subs['본선'])}</td>
+      <td><div class="res"><label><input type="checkbox" data-fin="${esc(t.t)}" ${t.finalist ? 'checked' : ''}> 본선 진출</label>
+        <select data-award="${esc(t.t)}" aria-label="${esc(t.t)} 수상"><option value="">수상 없음</option>${['최우수상', '우수상', '장려상'].map(a => `<option ${t.award === a ? 'selected' : ''}>${a}</option>`).join('')}</select></div></td>
       <td><button class="btn s xs" type="button" data-open="${esc(t.t)}">팀 열기</button></td></tr>`).join('');
+    document.querySelectorAll('[data-flag]').forEach(b => b.setAttribute('aria-pressed', !!(FLAGS || {})[b.dataset.flag]));
   }
   async function loadAdmin(key, quiet) {
     if (!quiet) say($('adminMsg'), 'wait', '불러오는 중입니다…');
     try {
       const out = await api('GET', null, { action: 'admin', key });
       if (!out.ok) throw new Error(ERR[out.error] || '불러오지 못했습니다.');
-      adminKey = key; sess.set('hub-admin', key); ADMIN = out.teams;
+      adminKey = key; sess.set('hub-admin', key); ADMIN = out.teams; FLAGS = out.flags || {};
       $('adminMsg').hidden = true; $('adminForm').hidden = true; $('adminMain').hidden = false; $('pick').before($('adminBox')); renderAdmin();
     } catch (e) {
       if (!quiet || !adminKey) { $('adminForm').hidden = false; $('adminMain').hidden = true; say($('adminMsg'), 'bad', e.message && !/fetch|JSON|network|Load failed/i.test(e.message) ? e.message : '네트워크 문제로 불러오지 못했습니다.'); }
@@ -466,6 +489,31 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
   $('adminOut').addEventListener('click', () => {
     adminKey = ''; ADMIN = []; sess.del('hub-admin'); $('akey').value = ''; $('adminMain').hidden = true; $('adminForm').hidden = false; $('adminBox').hidden = true;
     if (cred && cred.key) { me = null; cred = null; $('mine').hidden = true; }
+  });
+  async function mark(team) {
+    const fin = document.querySelector(`[data-fin="${CSS.escape(team)}"]`), aw = document.querySelector(`[data-award="${CSS.escape(team)}"]`);
+    const row = ADMIN.find(t => t.t === team);
+    try {
+      const out = await api('POST', { action: 'mark', key: adminKey, team, finalist: fin.checked, award: aw.value });
+      if (!out.ok) throw new Error(ERR[out.error] || '저장하지 못했습니다.');
+      row.finalist = fin.checked; row.award = aw.value; renderAdmin();
+      say($('adminMsg'), 'ok', `${team} 결과를 저장했습니다.`);
+    } catch (e) { say($('adminMsg'), 'bad', e.message && !/fetch|JSON|network|Load failed/i.test(e.message) ? e.message : '네트워크 문제로 저장하지 못했습니다.'); renderAdmin(); }
+  }
+  document.addEventListener('change', e => {
+    const f = e.target.closest('[data-fin]'); if (f) { mark(f.dataset.fin); return; }
+    const a = e.target.closest('[data-award]'); if (a) { if (a.value) { const c = document.querySelector(`[data-fin="${CSS.escape(a.dataset.award)}"]`); if (c) c.checked = true; } mark(a.dataset.award); }
+  });
+  document.addEventListener('click', async e => {
+    const fl = e.target.closest('[data-flag]');
+    if (fl) {
+      const k = fl.dataset.flag, v = !(FLAGS || {})[k];
+      try {
+        const out = await api('POST', { action: 'publish', key: adminKey, [k]: v });
+        if (!out.ok) throw new Error(ERR[out.error] || '바꾸지 못했습니다.');
+        FLAGS = out.flags; renderAdmin(); say($('adminMsg'), 'ok', `${fl.textContent.trim()}: ${v ? '켰습니다' : '껐습니다'}.`);
+      } catch (err) { say($('adminMsg'), 'bad', err.message); }
+    }
   });
   document.addEventListener('click', e => {
     const at = e.target.closest('[data-atr]'); if (at) { adminTrack = at.dataset.atr; renderAdmin(); return; }

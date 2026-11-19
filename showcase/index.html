@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>워케이션챌린지① 결과물</title>
+<meta name="description" content="AI첨단바이오 워케이션챌린지① 팀별 최종 결과물, 본선 진출팀, 수상팀">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap">
+<style>
+/* STARGATE 톤. 구조: 남색 머리(상태 칩) → 수상팀(공개 시) → 본선 진출팀(공개 시) → 전체 결과물 격자(트랙 탭). 카드 = 표지(PDF 첫 장) + 팀명·주제 + 보기 */
+:root{
+  --ink:#121838; --ink-deep:#0B1030; --navy:#1B2452; --blue:#1F5CC4;
+  --cyan:#27B9CF; --cyan-soft:#BFEFF6; --ok:#0A7D90; --ok-tint:rgba(39,185,207,.15);
+  --gold:#C98A12; --gold-tint:#FFF3D6; --silver:#5E6E8C; --silver-tint:#EEF2F8; --bronze:#A5602E; --bronze-tint:#FBEDE2;
+  --paper:#F5F8FD; --panel:#FFFFFF; --soft:#EAF1FB; --rule:#DCE4F1; --muted:#586487;
+  --on-dark:#EEF3FF; --on-dark-muted:#A9B5D6; --on-dark-line:rgba(255,255,255,.14);
+  --f-body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-display:"Archivo","Noto Sans KR",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.65;word-break:keep-all;overflow-wrap:anywhere}
+[hidden]{display:none!important}
+a{color:var(--blue)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.code{font-family:var(--f-display);font-style:italic;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+
+.top{background:var(--ink-deep);color:var(--on-dark);padding-top:env(safe-area-inset-top,0px)}
+.top-row{display:flex;align-items:center;gap:12px;padding-block:12px}
+.top-row .logo{height:32px;width:auto}
+.top-row strong{display:block;font-family:var(--f-display);font-style:italic;font-weight:900;font-size:15px;letter-spacing:.04em;line-height:1.2}
+.top-row strong em{font-style:inherit;color:var(--cyan)}
+.top-row small{display:block;font-size:12px;color:var(--on-dark-muted)}
+.links{margin-left:auto;display:flex;gap:6px;flex:none}
+.links a{font-size:12.5px;color:var(--cyan-soft);background:rgba(39,185,207,.16);border:1px solid rgba(39,185,207,.55);border-radius:999px;padding:6px 12px;text-decoration:none}
+.hero{padding-block:22px 30px}
+.hero .k{margin:0 0 6px;font-size:12px;color:var(--cyan)}
+.hero h1{font-size:clamp(26px,6vw,40px);font-weight:900;letter-spacing:-.03em;margin:0 0 8px;line-height:1.15;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--cyan)}
+.hero p{margin:0;color:var(--on-dark-muted);max-width:62ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{font-size:12.5px;color:var(--on-dark);border:1px solid var(--on-dark-line);border-radius:999px;padding:4px 12px}
+.chip b{font-family:var(--f-mono);color:#fff;margin-right:4px}
+.chip.on{border-color:rgba(39,185,207,.6);background:rgba(39,185,207,.16);color:var(--cyan-soft)}
+
+main{display:flex;flex-direction:column;gap:28px;padding-block:24px 64px}
+.sec-h{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px;margin-bottom:12px}
+.sec-h h2{margin:0;font-size:21px;font-weight:900;letter-spacing:-.02em}
+.sec-h p{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
+.tabs{display:inline-flex;background:var(--soft);border-radius:999px;padding:4px;gap:2px}
+.tabs button{border:0;background:transparent;font-weight:700;font-size:13.5px;color:var(--navy);padding:6px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.tabs button[aria-pressed="true"]{background:var(--ink-deep);color:#fff}
+
+.awards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.cover{position:relative;aspect-ratio:16/9;max-width:100%;background:linear-gradient(135deg,#1B2452,#0B1030);display:flex;align-items:flex-end;padding:14px;color:#fff;overflow:hidden}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;background:#fff}
+.cover .ph{font-family:var(--f-display);font-style:italic;font-weight:900;font-size:20px;line-height:1.2;position:relative}
+.cover .ph small{display:block;font-family:var(--f-body);font-style:normal;font-weight:500;font-size:12px;color:var(--cyan-soft)}
+.badge{position:absolute;top:10px;left:10px;font-size:12px;font-weight:800;border-radius:999px;padding:3px 10px;background:var(--ink-deep);color:var(--cyan-soft);z-index:1}
+.badge.gold{background:var(--gold);color:#fff}.badge.silver{background:var(--silver);color:#fff}.badge.bronze{background:var(--bronze);color:#fff}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.meta{font-size:12px;font-weight:700;color:var(--blue)}
+.body h3{margin:0;font-size:17px;line-height:1.35}
+.body p{margin:0;font-size:13.5px;color:var(--ink)}
+.acts{display:flex;gap:8px;margin-top:auto;padding-top:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:6px 14px;border-radius:999px;font-weight:700;font-size:13.5px;cursor:pointer;border:1px solid transparent;text-decoration:none;white-space:nowrap}
+.btn.p{background:var(--ink-deep);color:#fff}
+.btn.s{background:var(--panel);color:var(--navy);border-color:var(--rule)}
+.card.award{border-width:2px}
+.card.award.gold{border-color:var(--gold)}.card.award.gold .body{background:var(--gold-tint)}
+.card.award.silver{border-color:var(--silver)}.card.award.silver .body{background:var(--silver-tint)}
+.card.award.bronze{border-color:var(--bronze)}.card.award.bronze .body{background:var(--bronze-tint)}
+.card.award h3{font-size:20px}
+.wait{background:var(--panel);border:1px dashed var(--rule);border-radius:16px;padding:20px;color:var(--muted);font-size:14px}
+.wait b{color:var(--ink)}
+.empty{color:var(--muted);font-style:italic}
+
+dialog{border:0;border-radius:16px;padding:0;width:min(1000px,96vw);height:min(86vh,900px);max-width:100%}
+dialog::backdrop{background:rgba(11,16,48,.7)}
+.dlg{display:flex;flex-direction:column;height:100%}
+.dlg header{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--rule)}
+.dlg header b{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dlg iframe{flex:1;border:0;width:100%}
+@media (max-width:520px){.top-row small{display:none}.links a{padding:5px 10px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="top-row">
+      <a href="../"><img class="logo" src="../assets/logo-white.png" alt="ULTRA ANCHOR"></a>
+      <div><strong>WORKATION CHALLENGE <em>①</em></strong><small>울트라앵커사업 AI첨단바이오 컨소시엄</small></div>
+      <nav class="links" aria-label="바로가기"><a href="../team/">팀 허브</a><a href="../prework/">참가 안내</a></nav>
+    </div>
+    <div class="hero">
+      <p class="k code">SHOWCASE · 2026. 11. 20.–21.</p>
+      <h1>우리가 <em>1박 2일</em> 동안 만든 것</h1>
+      <p>AI제약바이오·AI의료기기 두 트랙 팀들이 이틀 동안 만든 최종 결과물입니다. 팀 허브로 제출된 최종 PDF가 이 페이지에 저절로 올라옵니다.</p>
+      <div class="chips" id="chips"></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="awardSec" hidden>
+    <div class="sec-h"><div><span class="code" style="font-size:12px;color:var(--gold)">AWARDS</span><h2>수상팀</h2></div></div>
+    <div class="awards" id="awards"></div>
+  </section>
+
+  <section id="finSec" hidden>
+    <div class="sec-h"><div><span class="code" style="font-size:12px;color:var(--blue)">FINALISTS</span><h2>본선 진출팀</h2><p>11. 21.(토) 보건과학관 국제회의장 본선에 오른 팀입니다.</p></div></div>
+    <div class="grid" id="finalists"></div>
+  </section>
+
+  <section>
+    <div class="sec-h">
+      <div><span class="code" style="font-size:12px;color:var(--blue)">ALL TEAMS</span><h2>전체 결과물</h2><p id="allDesc">불러오는 중입니다…</p></div>
+      <div class="tabs" role="group" aria-label="트랙">
+        <button type="button" data-tr="" aria-pressed="true">전체</button>
+        <button type="button" data-tr="AI제약바이오" aria-pressed="false">AI제약바이오</button>
+        <button type="button" data-tr="AI의료기기" aria-pressed="false">AI의료기기</button>
+      </div>
+    </div>
+    <div id="allWait" class="wait" hidden></div>
+    <div class="grid" id="all"></div>
+  </section>
+</main>
+
+<dialog id="dlg" aria-label="결과물 보기">
+  <div class="dlg">
+    <header><b id="dlgTitle"></b><a class="btn s" id="dlgOpen" href="#" target="_blank" rel="noopener">새 창에서 열기</a><button class="btn p" type="button" id="dlgClose">닫기</button></header>
+    <iframe id="dlgFrame" title="결과물 PDF" allow="autoplay"></iframe>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  /* 팀 허브와 같은 Apps Script 웹 앱 주소. ?demo=1 을 붙이면 예시 데이터로 화면만 봅니다 */
+  const CONFIG = {
+    API: 'https://script.google.com/macros/s/AKfycbxZfD-WY-cHF0-2EUVsrY2zxxmlKAQtqqL9vyWOAYJu3wnOkcvsjOgInrxyssb0HkKlBg/exec',
+  };
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const DEMO = new URLSearchParams(location.search).get('demo') === '1' || !CONFIG.API;
+  const MEDAL = { '최우수상': 'gold', '우수상': 'silver', '장려상': 'bronze' };
+  const ORDER = { '최우수상': 0, '우수상': 1, '장려상': 2 };
+  let DATA = null, track = '';
+
+  function demoData() {
+    const fields = ['항암', '감염·백신', '대사·내분비', '치과·임플란트', '재활·고령자 모니터링'];
+    const teams = Array.from({ length: 8 }, (_, i) => {
+      const md = i >= 5, no = md ? i - 4 : i + 1;
+      return { t: (md ? '의료기기 ' : '제약 ') + no + '팀', tr: md ? 'AI의료기기' : 'AI제약바이오', f: fields[i % 5], name: ['타우브레이커', 'GLP-원', '레드실드', '네오타깃', '백신랩', '케어루프', '스텝업', '덴탈노트'][i],
+        topic: ['혈뇌장벽을 넘는 타우 응집 억제 후보 탐색', '근손실 없는 비만 치료 후보 탐색', 'RSV 고위험군 예방 항체 후보', 'EGFR C797S 내성 폐암 후보 탐색', 'mRNA 백신 보관 안정성 개선', '임플란트 수술 후 2주 자가관리 앱', '뇌졸중 가정 재활 동작 코칭', '치과 진료 예약·설명 자동화'][i],
+        submitted: i !== 4, final: i !== 4 ? { id: '', url: '#', at: '11-21 23:40' } : null, finalist: [0, 1, 3, 5, 6].includes(i), award: { 0: '최우수상', 3: '우수상', 5: '최우수상', 6: '우수상' }[i] || '' };
+    });
+    return { ok: true, filesOpen: true, showFinalists: true, showAwards: true, teams };
+  }
+  async function load() {
+    try {
+      const out = DEMO ? demoData() : await (await fetch(CONFIG.API + '?action=showcase', { redirect: 'follow' })).json();
+      if (!out.ok) throw new Error();
+      DATA = out; render();
+    } catch (e) { $('allDesc').textContent = '결과물을 불러오지 못했습니다. 잠시 뒤 새로 고쳐 주세요.'; }
+  }
+  const cover = t => {
+    const img = t.final && t.final.id ? `<img src="https://drive.google.com/thumbnail?id=${encodeURIComponent(t.final.id)}&sz=w800" alt="" loading="lazy" onerror="this.remove()">` : '';
+    const badge = t.award ? `<span class="badge ${MEDAL[t.award] || ''}">${esc(t.award)}</span>` : (t.finalist ? '<span class="badge">본선 진출</span>' : '');
+    return `<div class="cover">${img}${badge}<div class="ph"><small>${esc(t.t)}</small>${esc(t.name || '팀 이름 미정')}</div></div>`;
+  };
+  const card = (t, cls = '') => `<article class="card ${cls}">
+    ${cover(t)}
+    <div class="body">
+      <span class="meta">${esc(t.tr)} · ${esc(t.f)} · ${esc(t.t)}</span>
+      <h3>${t.name ? esc(t.name) : '<span class="empty">팀 이름 미정</span>'}</h3>
+      <p>${t.topic ? esc(t.topic) : '<span class="empty">주제 미정</span>'}</p>
+      <div class="acts">${t.final
+        ? `<button type="button" class="btn p" data-view="${esc(t.t)}">결과물 보기</button><a class="btn s" href="${esc(t.final.url)}" target="_blank" rel="noopener">새 창</a>`
+        : `<span class="empty" style="font-size:13px">${t.submitted ? '마감 후 공개' : '아직 제출 전'}</span>`}</div>
+    </div></article>`;
+
+  function render() {
+    const d = DATA, all = d.teams, sub = all.filter(t => t.submitted).length;
+    const fin = all.filter(t => t.finalist), aw = all.filter(t => t.award).sort((a, b) => (a.tr > b.tr ? 1 : a.tr < b.tr ? -1 : ORDER[a.award] - ORDER[b.award]));
+    $('chips').innerHTML = [
+      `<span class="chip ${d.filesOpen ? 'on' : ''}"><b>${sub}/${all.length}</b>팀 제출${d.filesOpen ? ' · 공개 중' : ' · 11.21 00:00 공개'}</span>`,
+      `<span class="chip ${d.showFinalists ? 'on' : ''}">본선 진출팀 ${d.showFinalists ? '발표' : '발표 전'}</span>`,
+      `<span class="chip ${d.showAwards ? 'on' : ''}">수상팀 ${d.showAwards ? '발표' : '발표 전 · 11.21 시상'}</span>`,
+    ].join('');
+    $('awardSec').hidden = !(d.showAwards && aw.length);
+    $('awards').innerHTML = aw.map(t => card(t, 'award ' + (MEDAL[t.award] || ''))).join('');
+    $('finSec').hidden = !(d.showFinalists && fin.length);
+    $('finalists').innerHTML = fin.map(t => card(t)).join('');
+    document.querySelectorAll('[data-tr]').forEach(b => b.setAttribute('aria-pressed', b.dataset.tr === track));
+    const list = all.filter(t => !track || t.tr === track);
+    $('allDesc').textContent = d.filesOpen ? `${list.filter(t => t.final).length}팀의 최종 결과물이 올라와 있습니다. 카드를 누르면 PDF를 바로 볼 수 있습니다.` : '최종 결과물은 본선 마감(11. 21.(토) 00:00)이 지나면 저절로 공개됩니다. 지금은 팀 이름과 주제만 보입니다.';
+    $('allWait').hidden = true;
+    $('all').innerHTML = list.map(t => card(t)).join('');
+  }
+
+  const dlg = $('dlg');
+  function view(team) {
+    const t = DATA.teams.find(x => x.t === team); if (!t || !t.final) return;
+    $('dlgTitle').textContent = `${t.t} · ${t.name || ''}`;
+    $('dlgOpen').href = t.final.url;
+    $('dlgFrame').src = t.final.id ? `https://drive.google.com/file/d/${encodeURIComponent(t.final.id)}/preview` : 'about:blank';
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else window.open(t.final.url, '_blank', 'noopener');
+  }
+  $('dlgClose').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('close', () => { $('dlgFrame').src = 'about:blank'; });
+  document.addEventListener('click', e => {
+    const tb = e.target.closest('[data-tr]'); if (tb) { track = tb.dataset.tr; render(); return; }
+    const v = e.target.closest('[data-view]'); if (v) view(v.dataset.view);
+  });
+  load();
+  setInterval(() => { if (!document.hidden && !(dlg.open)) load(); }, 60000);
+})();
+</script>
+</body>
+</html>
