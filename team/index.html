@@ -129,6 +129,13 @@ th{font-size:12.5px;color:var(--muted);white-space:nowrap}
 td.late{color:var(--warn);font-weight:700}
 body.screen .top,body.screen #pick,body.screen #mine{display:none}
 body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.screen .board{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.adminbar{background:var(--warn-tint);color:var(--warn);border-radius:10px;padding:10px 14px;font-size:13.5px;font-weight:700;margin-top:12px}
+.stats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.stat{background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:8px 14px;min-width:120px}
+.stat b{display:block;font-family:var(--f-display);font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--muted)}
+.btn.xs{min-height:30px;padding:4px 12px;font-size:12.5px}
+.foot{text-align:center;padding-bottom:30px}
 @media (max-width:520px){.row{grid-template-columns:1fr;gap:2px}.top-row small{display:none}}
 @media (prefers-reduced-motion:reduce){.bar i{transition:none}}
 </style>
@@ -167,6 +174,7 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
       <div><span class="code" id="mTrack"></span><h2 id="mTitle"></h2><div class="pills" id="mPills"></div></div>
       <button class="btn s" id="logout" type="button">나가기</button>
     </div>
+    <div class="adminbar" id="asAdmin" hidden></div>
 
     <div class="grid2" style="margin-top:16px">
       <form class="sub" id="nameForm">
@@ -205,18 +213,33 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
 
   <section class="box" id="adminBox" hidden>
     <span class="code">STAFF</span>
-    <h2>운영진 제출 현황</h2>
-    <p class="desc" id="adminDesc">마지막 제출 파일을 엽니다. 예선 15:55쯤 한 번 새로 고쳐 확인하세요.</p>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px"><button class="btn s" id="adminReload" type="button">새로 고침</button></div>
-    <div class="tblwrap"><table><thead><tr><th>팀</th><th>코드</th><th>팀 이름 · 주제</th><th>예선 파일</th><th>본선 파일</th></tr></thead><tbody id="adminBody"></tbody></table></div>
+    <h2>운영진 모드</h2>
+    <form class="login" id="adminForm" style="margin-top:6px">
+      <div class="field" style="width:200px"><label for="akey">관리자 키</label><input id="akey" type="password" autocomplete="off" placeholder="시트 '안내' 탭의 키"></div>
+      <button class="btn p" type="submit">들어가기</button>
+    </form>
+    <div class="msg" id="adminMsg" hidden></div>
+    <div id="adminMain" hidden>
+      <p class="desc" style="margin-top:6px">파일 이름을 누르면 마지막 제출본이 열립니다. [팀 열기]로 그 팀 화면에 들어가 팀 이름·주제를 고치거나 파일을 대신 올릴 수 있습니다. 1분마다 저절로 새로 고칩니다.</p>
+      <div class="stats" id="adminStats"></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
+        <div class="tabs" role="group" aria-label="운영진 트랙" style="margin:0">
+          <button data-atr="" aria-pressed="true">전체</button><button data-atr="AI제약바이오" aria-pressed="false">제약</button><button data-atr="AI의료기기" aria-pressed="false">의료기기</button>
+        </div>
+        <button class="btn s xs" id="adminReload" type="button">새로 고침</button>
+        <button class="btn s xs" id="adminOut" type="button">운영진 모드 끄기</button>
+      </div>
+      <div class="tblwrap"><table><thead><tr><th>팀</th><th>코드</th><th>팀 이름 · 주제</th><th>예선 파일</th><th>본선 파일</th><th></th></tr></thead><tbody id="adminBody"></tbody></table></div>
+    </div>
   </section>
+  <p class="foot"><button class="btn s xs" id="openAdmin" type="button">운영진 모드</button></p>
 </main>
 
 <script>
 (() => {
   /* 운영진이 채울 값: Apps Script 웹 앱 주소(…/exec). 비워 두면 시험 모드(가짜 팀 2개, 브라우저 안에서만 동작) */
   const CONFIG = {
-    API: 'https://script.google.com/macros/s/AKfycbzl_YgehwSgwsi__jdMupNuE5IpPSZwD61FOCsCeehPsqpH_imOpHNsCOK6YnkrnNlU4w/exec',
+    API: '',
     MAX_MB: 20,
     DUE: { '예선': '11. 20.(금) 15:50', '본선': '11. 20.(금) 24:00' },
   };
@@ -231,6 +254,7 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
   const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }, del(k) { try { localStorage.removeItem(k); } catch (e) {} } };
   const say = (el, kind, text) => { el.hidden = false; el.className = 'msg ' + kind; el.textContent = text; };
   const ERR = {
+    key: '관리자 키가 맞지 않습니다.',
     code: '맞는 팀 코드가 없습니다. 팀 테이블 카드의 숫자 4자리를 확인하세요.', team: '맞는 팀 코드가 없습니다.',
     invalid: '빈칸이 있습니다. 팀 이름과 주제를 모두 적어 주세요.', busy: '제출이 몰리고 있습니다. 잠시 뒤 다시 눌러 주세요.',
     pdf: 'PDF 파일만 올릴 수 있습니다. 발표 자료를 PDF로 저장해 다시 올려 주세요.', size: `파일이 ${CONFIG.MAX_MB}MB보다 큽니다. 이미지 압축 후 다시 올려 주세요.`,
@@ -251,9 +275,12 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
     if (!CONFIG.API) {
       await new Promise(r => setTimeout(r, 250));
       if (method === 'GET' && query.action === 'teams') return { ok: true, teams: DEMO.teams.map(pub) };
+      if (method === 'GET' && query.action === 'admin' && query.key !== 'demo') return { ok: false, error: 'key' };
       if (method === 'GET' && query.action === 'admin') return { ok: true, teams: DEMO.teams.map(t => Object.assign(pub(t), { code: t.code, subs: t.subs, members: t.members.map(m => m.n) })) };
-      const t = DEMO.teams.find(x => x.code === body.code);
-      if (!t) return { ok: false, error: 'code' };
+      if (body.key && body.key !== 'demo') return { ok: false, error: 'key' };
+      const t = body.key ? DEMO.teams.find(x => x.t === body.team) : DEMO.teams.find(x => x.code === body.code);
+      if (!t) return { ok: false, error: body.key ? 'team' : 'code' };
+      if (body.key && !body.by) body.by = '운영진';
       if (body.action === 'save') { t.name = body.name; t.topic = body.topic; }
       if (body.action === 'upload') { const now = new Date(); t.subs[body.stage] = { at: `${now.getMonth() + 1}.${now.getDate()} ${now.toTimeString().slice(0, 5)}`, file: body.filename, by: body.by, n: ((t.subs[body.stage] || {}).n || 0) + 1, url: '#' }; }
       return { ok: true, team: Object.assign(pub(t), { members: t.members, subs: t.subs }) };
@@ -267,7 +294,7 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
   }
 
   /* ---------- 상태 ---------- */
-  let TEAMS = [], boardTrack = 'AI제약바이오', me = null, code = '', view = store.get('hub-view') || 'member';
+  let TEAMS = [], boardTrack = 'AI제약바이오', me = null, cred = null, adminKey = '', adminTrack = '', ADMIN = [], view = store.get('hub-view') || 'member';
   const params = new URLSearchParams(location.search);
   if (params.get('view') === 'screen') document.body.classList.add('screen');
 
@@ -296,7 +323,9 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
     if (document.activeElement !== $('tName')) $('tName').value = t.name || '';
     if (document.activeElement !== $('tTopic')) $('tTopic').value = t.topic || '';
     const prevBy = $('by').value || store.get('hub-by');
-    $('by').innerHTML = t.members.map(m => `<option value="${esc(m.n)}">${esc(m.n)} (${esc(m.u)})</option>`).join('');
+    $('asAdmin').hidden = !(cred && cred.key);
+    if (cred && cred.key) $('asAdmin').textContent = `운영진 모드로 ${t.t}을(를) 보고 있습니다. 여기서 올린 파일은 제출자 '운영진'으로 기록됩니다.`;
+    $('by').innerHTML = (cred && cred.key ? '<option value="운영진">운영진</option>' : '') + t.members.map(m => `<option value="${esc(m.n)}">${esc(m.n)} (${esc(m.u)})</option>`).join('');
     if (prevBy && t.members.some(m => m.n === prevBy)) $('by').value = prevBy;
     $('subs').innerHTML = ['예선', '본선'].map(st => {
       const s = (t.subs || {})[st];
@@ -339,7 +368,7 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
       const data = await new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(',')[1]); r.onerror = rej; r.readAsDataURL(file); });
       fill.style.width = '45%';
       const t0 = setInterval(() => { const w = parseFloat(fill.style.width); if (w < 90) fill.style.width = (w + 5) + '%'; }, 600);
-      const out = await api('POST', { action: 'upload', code, stage, by, filename: file.name, data });
+      const out = await api('POST', Object.assign({ action: 'upload', stage, by, filename: file.name, data }, cred));
       clearInterval(t0);
       if (!out.ok) throw new Error(ERR[out.error] || '제출하지 못했습니다. 잠시 뒤 다시 시도해 주세요.');
       fill.style.width = '100%'; me = out.team; syncTeam(); renderMine();
@@ -361,7 +390,7 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
       if (!/^\d{4}$/.test(c)) throw new Error('팀 코드는 숫자 4자리입니다.');
       const out = await api('POST', { action: 'login', code: c });
       if (!out.ok) throw new Error(ERR[out.error] || '불러오지 못했습니다.');
-      me = out.team; code = c; store.set('hub-code', c);
+      me = out.team; cred = { code: c }; store.set('hub-code', c);
       $('loginMsg').hidden = true; $('mine').hidden = false; renderMine(); syncTeam();
       if (!quiet) $('mine').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     } catch (e) {
@@ -376,14 +405,19 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
     const v = e.target.closest('.view button'); if (v) { view = v.dataset.v; store.set('hub-view', view); renderCards(); }
   });
   $('loginForm').addEventListener('submit', e => { e.preventDefault(); login($('code').value.trim()); });
-  $('logout').addEventListener('click', () => { me = null; code = ''; store.del('hub-code'); $('mine').hidden = true; $('code').value = ''; $('pick').scrollIntoView(); });
+  $('logout').addEventListener('click', () => {
+    const wasAdmin = cred && cred.key;
+    me = null; cred = null; $('mine').hidden = true;
+    if (wasAdmin) { $('adminBox').scrollIntoView(); return; }
+    store.del('hub-code'); $('code').value = ''; $('pick').scrollIntoView();
+  });
   $('nameForm').addEventListener('submit', async e => {
     e.preventDefault();
     const name = $('tName').value.trim(), topic = $('tTopic').value.trim();
     if (!name || !topic) { say($('saveMsg'), 'bad', ERR.invalid); return; }
     $('saveBtn').disabled = true; say($('saveMsg'), 'wait', '저장하는 중입니다…');
     try {
-      const out = await api('POST', { action: 'save', code, name, topic });
+      const out = await api('POST', Object.assign({ action: 'save', name, topic }, cred));
       if (!out.ok) throw new Error(ERR[out.error] || '저장하지 못했습니다.');
       me = out.team; syncTeam(); renderMine(); say($('saveMsg'), 'ok', '저장했습니다. 아래 주제 보드에도 반영됐습니다.');
     } catch (err) { say($('saveMsg'), 'bad', err.message && !/fetch|JSON|network|Load failed/i.test(err.message) ? err.message : '네트워크 문제로 저장하지 못했습니다.'); }
@@ -391,29 +425,64 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
   });
 
   /* ---------- 운영진 ---------- */
-  async function loadAdmin(key) {
-    $('adminBox').hidden = false; $('adminBody').innerHTML = '<tr><td colspan="5">불러오는 중…</td></tr>';
+  const sess = { get(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }, del(k) { try { sessionStorage.removeItem(k); } catch (e) {} } };
+  function renderAdmin() {
+    document.querySelectorAll('[data-atr]').forEach(b => b.setAttribute('aria-pressed', b.dataset.atr === adminTrack));
+    const all = ADMIN, list = all.filter(t => !adminTrack || t.tr === adminTrack);
+    const n = st => all.filter(t => t.subs[st]).length, late = st => all.filter(t => t.subs[st] && t.subs[st].late).length;
+    $('adminStats').innerHTML = [
+      [`${all.filter(t => t.name).length}/${all.length}`, '팀 이름·주제 저장'],
+      [`${n('예선')}/${all.length}`, `예선 제출${late('예선') ? ` · 마감 후 ${late('예선')}` : ''}`],
+      [`${n('본선')}/${all.length}`, `본선 제출${late('본선') ? ` · 마감 후 ${late('본선')}` : ''}`],
+    ].map(([v, l]) => `<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
+    const cell = s => s ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.file)}</a><br><small>${esc(s.at)} · ${esc(s.by || '')}${s.n > 1 ? ' · ' + s.n + '회' : ''}${s.late ? ' · 마감 후' : ''}</small>` : '<span class="empty">미제출</span>';
+    $('adminBody').innerHTML = list.map(t => `<tr><td><b>${esc(t.t)}</b><br><small>${esc(t.b !== '-' ? t.b + ' · ' : '')}${esc(t.members.length)}명</small></td><td>${esc(t.code)}</td>
+      <td>${t.name ? esc(t.name) : '<span class="empty">미정</span>'}<br><small>${esc(t.topic || '')}</small></td>
+      <td class="${t.subs['예선'] && t.subs['예선'].late ? 'late' : ''}">${cell(t.subs['예선'])}</td><td class="${t.subs['본선'] && t.subs['본선'].late ? 'late' : ''}">${cell(t.subs['본선'])}</td>
+      <td><button class="btn s xs" type="button" data-open="${esc(t.t)}">팀 열기</button></td></tr>`).join('');
+  }
+  async function loadAdmin(key, quiet) {
+    if (!quiet) say($('adminMsg'), 'wait', '불러오는 중입니다…');
     try {
       const out = await api('GET', null, { action: 'admin', key });
-      if (!out.ok) throw new Error(out.error === 'key' ? '관리자 키가 맞지 않습니다.' : '불러오지 못했습니다.');
-      const cell = s => s ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.file)}</a><br><small>${esc(s.at)} · ${esc(s.by || '')}${s.n > 1 ? ' · ' + s.n + '회' : ''}</small>` : '<span class="empty">미제출</span>';
-      $('adminBody').innerHTML = out.teams.map(t => `<tr><td><b>${esc(t.t)}</b><br><small>${esc(t.b !== '-' ? t.b + ' · ' : '')}${esc(t.members.length)}명</small></td><td>${esc(t.code)}</td>
-        <td>${esc(t.name || '-')}<br><small>${esc(t.topic || '')}</small></td><td class="${t.subs['예선'] && t.subs['예선'].late ? 'late' : ''}">${cell(t.subs['예선'])}</td><td class="${t.subs['본선'] && t.subs['본선'].late ? 'late' : ''}">${cell(t.subs['본선'])}</td></tr>`).join('');
-      const n = st => out.teams.filter(t => t.subs[st]).length;
-      $('adminDesc').textContent = `예선 ${n('예선')}/${out.teams.length}팀 · 본선 ${n('본선')}/${out.teams.length}팀 제출. 파일 이름을 누르면 열립니다.`;
-    } catch (e) { $('adminBody').innerHTML = `<tr><td colspan="5" class="late">${esc(e.message || '불러오지 못했습니다.')}</td></tr>`; }
+      if (!out.ok) throw new Error(ERR[out.error] || '불러오지 못했습니다.');
+      adminKey = key; sess.set('hub-admin', key); ADMIN = out.teams;
+      $('adminMsg').hidden = true; $('adminForm').hidden = true; $('adminMain').hidden = false; $('pick').before($('adminBox')); renderAdmin();
+    } catch (e) {
+      if (!quiet || !adminKey) { $('adminForm').hidden = false; $('adminMain').hidden = true; say($('adminMsg'), 'bad', e.message && !/fetch|JSON|network|Load failed/i.test(e.message) ? e.message : '네트워크 문제로 불러오지 못했습니다.'); }
+    }
   }
-  const admin = params.get('admin');
-  if (admin) { loadAdmin(admin); $('adminReload').addEventListener('click', () => loadAdmin(admin)); }
+  async function openAsAdmin(team) {
+    try {
+      const out = await api('POST', { action: 'login', key: adminKey, team });
+      if (!out.ok) throw new Error(ERR[out.error] || '열지 못했습니다.');
+      me = out.team; cred = { key: adminKey, team }; $('mine').hidden = false; renderMine();
+      $('mine').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    } catch (e) { say($('adminMsg'), 'bad', e.message); }
+  }
+  $('openAdmin').addEventListener('click', () => { $('adminBox').hidden = false; $('adminBox').scrollIntoView(); if (!adminKey) $('akey').focus(); });
+  $('adminForm').addEventListener('submit', e => { e.preventDefault(); const k = $('akey').value.trim(); if (k) loadAdmin(k); });
+  $('adminReload').addEventListener('click', () => loadAdmin(adminKey));
+  $('adminOut').addEventListener('click', () => {
+    adminKey = ''; ADMIN = []; sess.del('hub-admin'); $('akey').value = ''; $('adminMain').hidden = true; $('adminForm').hidden = false; $('adminBox').hidden = true;
+    if (cred && cred.key) { me = null; cred = null; $('mine').hidden = true; }
+  });
+  document.addEventListener('click', e => {
+    const at = e.target.closest('[data-atr]'); if (at) { adminTrack = at.dataset.atr; renderAdmin(); return; }
+    const op = e.target.closest('[data-open]'); if (op) openAsAdmin(op.dataset.open);
+  });
+  const startKey = params.get('admin') || sess.get('hub-admin');
+  if (startKey) { $('adminBox').hidden = false; loadAdmin(startKey); }
+  setInterval(() => { if (adminKey && !document.hidden) loadAdmin(adminKey, true); }, 60000);
 
   if (!CONFIG.API) {
     const n = document.createElement('p'); n.className = 'msg wait';
-    n.textContent = '시험 모드입니다. 실제 서버 주소를 넣기 전이라 예시 팀 2개만 있고, 팀 코드는 0000(제약 1팀)·1111(의료기기 1팀)입니다. 입력 내용은 저장되지 않습니다.';
+    n.textContent = '시험 모드입니다. 실제 서버 주소를 넣기 전이라 예시 팀 2개만 있고, 팀 코드는 0000(제약 1팀)·1111(의료기기 1팀), 관리자 키는 demo입니다. 입력 내용은 저장되지 않습니다.';
     $('pick').prepend(n);
   }
   loadTeams().then(() => {
     const c = store.get('hub-code');
-    if (c) login(c, true);
+    if (c && !startKey) login(c, true);
   });
   setInterval(() => { if (!document.hidden) api('GET', null, { action: 'teams' }).then(o => { if (o.ok) { TEAMS = o.teams; renderBoard(); } }).catch(() => {}); }, 60000);
 })();
