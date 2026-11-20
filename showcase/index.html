@@ -90,6 +90,8 @@ dialog::backdrop{background:rgba(11,16,48,.7)}
 .dlg header{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--rule)}
 .dlg header b{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dlg iframe{flex:1;border:0;width:100%}
+.pages{flex:1;overflow:auto;background:#E9EDF5;padding:14px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.pages img{width:min(1100px,100%);height:auto;display:block;border-radius:6px;box-shadow:0 2px 10px rgba(11,16,48,.15);background:#fff}
 @media (max-width:520px){.top-row small{display:none}.links a{padding:5px 10px}}
 .card .who{font-size:12.5px;color:var(--muted, #586487);margin-top:4px}
 .acts{flex-wrap:wrap}
@@ -141,6 +143,7 @@ dialog::backdrop{background:rgba(11,16,48,.7)}
   <div class="dlg">
     <header><b id="dlgTitle"></b><a class="btn s" id="dlgOpen" href="#" target="_blank" rel="noopener">새 창에서 열기</a><button class="btn p" type="button" id="dlgClose">닫기</button></header>
     <iframe id="dlgFrame" title="결과물 PDF" allow="autoplay"></iframe>
+    <div class="pages" id="dlgPages" hidden></div>
   </div>
 </dialog>
 
@@ -177,7 +180,7 @@ dialog::backdrop{background:rgba(11,16,48,.7)}
     '의료기기 6팀': { name: '헤어로그', topic: '탈모 초기 선별과 치료 경과 확인 웹서비스', who: '6조 · 이서영 · 이지혜 · 조수진 · 장소윤 · 원예은', pdf: 'files/device/md06.pdf', site: 'https://claude.ai/artifact/TDc5zW5X5o3UTfVz5BU2Qc?sk=mGKmqbBEzu221lzsAH1NsQ#report' },
   };
   function mergeLocal(out) {
-    out.teams.forEach(t => { const L = LOCAL[t.t]; if (!L) return; Object.assign(t, { f: '', name: L.name, topic: L.topic, who: L.who, site: L.site, submitted: true }); if (!t.final) t.final = { id: '', url: L.pdf, local: true }; });
+    out.teams.forEach(t => { const L = LOCAL[t.t]; if (!L) return; Object.assign(t, { f: '', name: L.name, topic: L.topic, who: L.who, site: L.site, submitted: true }); if (!t.final) t.final = { id: '', url: L.pdf, local: L.pdf.replace(/\.pdf$/, ''), pages: 5 }; });
     return out;
   }
   async function load() {
@@ -188,7 +191,7 @@ dialog::backdrop{background:rgba(11,16,48,.7)}
     } catch (e) { $('allDesc').textContent = '결과물을 불러오지 못했습니다. 잠시 뒤 새로 고쳐 주세요.'; }
   }
   const cover = t => {
-    const img = t.final && t.final.id ? `<img src="https://drive.google.com/thumbnail?id=${encodeURIComponent(t.final.id)}&sz=w800" alt="" loading="lazy" onerror="this.remove()">` : '';
+    const img = t.final && t.final.local ? `<img src="${esc(t.final.local)}/cover-1.jpg" alt="" loading="lazy" onerror="this.remove()">` : t.final && t.final.id ? `<img src="https://drive.google.com/thumbnail?id=${encodeURIComponent(t.final.id)}&sz=w800" alt="" loading="lazy" onerror="this.remove()">` : '';
     const badge = t.award ? `<span class="badge ${MEDAL[t.award] || ''}">${esc(t.award)}</span>` : (t.finalist ? '<span class="badge">본선 진출</span>' : '');
     return `<div class="cover">${img}${badge}<div class="ph"><small>${esc(t.t)}</small>${esc(t.name || '팀 이름 미정')}</div></div>`;
   };
@@ -227,11 +230,13 @@ dialog::backdrop{background:rgba(11,16,48,.7)}
     const t = DATA.teams.find(x => x.t === team); if (!t || !t.final) return;
     $('dlgTitle').textContent = `${t.t} · ${t.name || ''}`;
     $('dlgOpen').href = t.final.url;
-    $('dlgFrame').src = t.final.local ? t.final.url : t.final.id ? `https://drive.google.com/file/d/${encodeURIComponent(t.final.id)}/preview` : 'about:blank';
+    const loc = !!t.final.local; $('dlgFrame').hidden = loc; $('dlgPages').hidden = !loc;
+    $('dlgPages').innerHTML = loc ? Array.from({ length: t.final.pages }, (_, i) => `<img src="${esc(t.final.local)}/p-${i + 1}.jpg" alt="${i + 1}쪽" loading="lazy">`).join('') : '';
+    $('dlgFrame').src = loc ? 'about:blank' : t.final.id ? `https://drive.google.com/file/d/${encodeURIComponent(t.final.id)}/preview` : 'about:blank';
     if (typeof dlg.showModal === 'function') dlg.showModal(); else window.open(t.final.url, '_blank', 'noopener');
   }
   $('dlgClose').addEventListener('click', () => dlg.close());
-  dlg.addEventListener('close', () => { $('dlgFrame').src = 'about:blank'; });
+  dlg.addEventListener('close', () => { $('dlgFrame').src = 'about:blank'; $('dlgPages').innerHTML = ''; });
   document.addEventListener('click', e => {
     const tb = e.target.closest('[data-tr]'); if (tb) { track = tb.dataset.tr; render(); return; }
     const v = e.target.closest('[data-view]'); if (v) view(v.dataset.view);
