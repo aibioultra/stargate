@@ -127,6 +127,15 @@ dd{margin:2px 0 0;font-size:13.5px;line-height:1.6}
 .bcard b{font-size:15.5px}
 .bcard p{margin:0;font-size:13.5px;color:var(--ink)}
 .bcard .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.bcard.fin{border:2px solid var(--amber);background:linear-gradient(180deg,#FFF8EC,#fff 60%)}
+.finb{display:inline-flex;align-self:flex-start;align-items:center;gap:4px;font-size:12px;font-weight:800;color:#8A4B00;background:#FFE9B8;border-radius:999px;padding:2px 10px}
+.finstrip{border:1px solid #F2C77A;background:#FFF8EC;border-radius:14px;padding:14px 16px;margin-bottom:14px}
+.finstrip h3{margin:0 0 8px;font-size:15px;color:#8A4B00}
+.finstrip ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.finstrip li{background:#fff;border:1px solid #F2C77A;border-radius:10px;padding:6px 12px;font-size:14px}
+.finstrip li small{color:var(--blue);font-weight:700;margin-right:6px}
+.finme{border-radius:14px;padding:14px 16px;margin:12px 0 4px;background:#FFF2D6;border:2px solid var(--amber);color:#5A3300;font-size:14.5px;line-height:1.6}
+.finme b{font-size:16px}
 .tag{font-size:11.5px;font-weight:700;border-radius:6px;padding:1px 8px;background:var(--paper);color:var(--muted)}
 .tag.on{background:var(--ok-tint);color:var(--ok)}
 .tblwrap{overflow-x:auto}
@@ -196,6 +205,7 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
       <button class="btn s" id="logout" type="button">나가기</button>
     </div>
     <div class="adminbar" id="asAdmin" hidden></div>
+    <div class="finme" id="finMe" hidden></div>
 
     <div class="grid2" style="margin-top:16px">
       <form class="sub" id="nameForm">
@@ -229,6 +239,7 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
       <button id="bt-ph" data-btr="AI제약바이오" aria-pressed="true">AI제약바이오</button>
       <button id="bt-md" data-btr="AI의료기기" aria-pressed="false">AI의료기기</button>
     </div>
+    <div id="finStrip"></div>
     <div class="board" id="board"></div>
   </section>
 
@@ -325,24 +336,38 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
   }
 
   /* ---------- 상태 ---------- */
-  let FLAGS = {}, TEAMS = [], boardTrack = 'AI제약바이오', me = null, cred = null, adminKey = '', adminTrack = '', ADMIN = [], view = store.get('hub-view') || 'member';
+  let FIN = {}, FLAGS = {}, TEAMS = [], boardTrack = 'AI제약바이오', me = null, cred = null, adminKey = '', adminTrack = '', ADMIN = [], view = store.get('hub-view') || 'member';
   const params = new URLSearchParams(location.search);
   if (params.get('view') === 'screen') document.body.classList.add('screen');
 
   function renderBoard() {
     document.querySelectorAll('[data-btr]').forEach(b => b.setAttribute('aria-pressed', b.dataset.btr === boardTrack));
-    $('board').innerHTML = TEAMS.filter(t => t.tr === boardTrack).map(t => `<div class="bcard">
+    const fl = TEAMS.filter(t => FIN[t.t] && FIN[t.t].finalist);
+    $('finStrip').innerHTML = fl.length ? `<div class="finstrip"><h3>본선 진출팀 · 11. 21.(토) 09:40 보건과학관 1층 국제회의장</h3><ul>${fl.map(t => `<li><small>${esc(t.t)}</small>${esc(t.name || '')}${FIN[t.t].award ? ' · ' + esc(FIN[t.t].award) : ''}</li>`).join('')}</ul></div>` : '';
+    $('board').innerHTML = TEAMS.filter(t => t.tr === boardTrack).map(t => `<div class="bcard ${FIN[t.t] && FIN[t.t].finalist ? 'fin' : ''}">
+      ${FIN[t.t] && FIN[t.t].finalist ? `<span class="finb">★ 본선 진출${FIN[t.t].award ? ' · ' + esc(FIN[t.t].award) : ''}</span>` : ''}
       <span class="no">${esc(t.t)} · ${esc(t.f)}${t.b !== '-' ? ' · 예선 ' + esc(t.b) : ''}</span>
       <b>${t.name ? esc(t.name) : '<span class="empty">팀 이름 미정</span>'}</b>
       <p>${t.topic ? esc(t.topic) : '<span class="empty">주제 미정</span>'}</p>
       <div class="tags"><span class="tag ${t.sub && t.sub['예선'] ? 'on' : ''}">예선 ${t.sub && t.sub['예선'] ? '제출' : '미제출'}</span><span class="tag ${t.sub && t.sub['본선'] ? 'on' : ''}">본선 ${t.sub && t.sub['본선'] ? '제출' : '미제출'}</span></div>
     </div>`).join('');
   }
+  async function loadFin() {
+    try {
+      const o = await api('GET', null, { action: 'showcase' });
+      if (o && o.ok) { FIN = {}; (o.teams || []).forEach(t => { if (t.finalist || t.award) FIN[t.t] = { finalist: !!t.finalist, award: t.award || '' }; }); renderBoard(); if (me) renderFinMe(); }
+    } catch (e) {}
+  }
+  function renderFinMe() {
+    const f = me && FIN[me.t];
+    $('finMe').hidden = !(f && f.finalist);
+    if (f && f.finalist) $('finMe').innerHTML = `<b>★ 본선 진출을 축하합니다!${f.award ? ' · ' + esc(f.award) : ''}</b><br>최종 PDF를 <b>${esc(CONFIG.DUE['본선'])}</b>까지 아래 ‘본선 발표 파일’에 올려 주세요. 본선은 11. 21.(토) 09:40 보건과학관 1층 국제회의장에서 팀당 5분 발표입니다.`;
+  }
   async function loadTeams() {
     try {
       const out = await api('GET', null, { action: 'teams' });
       if (!out.ok) throw new Error();
-      TEAMS = out.teams; renderBoard();
+      TEAMS = out.teams; renderBoard(); loadFin();
     } catch (e) { $('board').innerHTML = '<p class="msg bad">팀 목록을 불러오지 못했습니다. 잠시 뒤 새로 고쳐 주세요.</p>'; }
   }
 
@@ -370,7 +395,7 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
       </div>`;
     }).join('');
     $('subs').querySelectorAll('.sub').forEach(bindUpload);
-    renderCards();
+    renderCards(); renderFinMe();
   }
   function renderCards() {
     const L = LABEL[me.tr], ms = me.members;
@@ -546,7 +571,7 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
     const c = store.get('hub-code');
     if (c && !startKey) login(c, true);
   });
-  setInterval(() => { if (!document.hidden) api('GET', null, { action: 'teams' }).then(o => { if (o.ok) { TEAMS = o.teams; renderBoard(); } }).catch(() => {}); }, 60000);
+  setInterval(() => { if (!document.hidden) api('GET', null, { action: 'teams' }).then(o => { if (o.ok) { TEAMS = o.teams; renderBoard(); loadFin(); } }).catch(() => {}); }, 60000);
 })();
 </script>
 </body>
