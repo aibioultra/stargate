@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>발표 타이머 · 워케이션챌린지 ①</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap">
+<style>
+/* 본선 발표용 카운트다운. 남은 1분 주황, 0초 이후 빨강 + 초과 시간 표시. ?mini=1 이면 작은 창 모드 */
+:root{--bg:#0B1030;--panel:#121838;--line:rgba(169,181,214,.22);--muted:#A9B5D6;--fg:#fff;
+  --cyan:#27B9CF;--amber:#E59A2F;--red:#E5484D;
+  --f-display:"Archivo","Noto Sans KR",system-ui,sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--f-body:"Noto Sans KR",system-ui,sans-serif;
+  --c:var(--cyan);color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);display:flex;flex-direction:column;
+  padding:max(14px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(14px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  transition:background .4s}
+body.warn{--c:var(--amber)} body.over{--c:var(--red);background:#2A0E14}
+header{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+header strong{font-family:var(--f-display);font-style:italic;font-weight:900;letter-spacing:.04em;font-size:15px}
+header strong em{font-style:inherit;color:var(--cyan)}
+header a{margin-left:auto;font-size:13px;color:#BFEFF6;border:1px solid rgba(39,185,207,.55);background:rgba(39,185,207,.14);border-radius:999px;padding:5px 12px;text-decoration:none}
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2vh;min-height:0}
+#label{background:transparent;border:0;border-bottom:1px dashed var(--line);color:var(--fg);text-align:center;font:800 clamp(18px,3.4vw,40px)/1.3 var(--f-body);width:min(900px,100%);padding:4px 8px}
+#label::placeholder{color:rgba(169,181,214,.45)}
+#label:focus{outline:none;border-bottom-color:var(--cyan)}
+.state{font-family:var(--f-display);font-style:italic;font-weight:800;letter-spacing:.14em;font-size:clamp(13px,1.6vw,20px);color:var(--c);text-transform:uppercase;min-height:1.3em}
+#time{font-family:var(--f-mono);font-weight:600;font-variant-numeric:tabular-nums;line-height:.95;font-size:min(30vw,48vh);color:var(--c);letter-spacing:-.02em;cursor:pointer;user-select:none;transition:color .3s}
+body.over #time{animation:pulse 1s steps(2) infinite}
+@keyframes pulse{50%{opacity:.55}}
+.bar{width:min(1100px,92vw);height:12px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+.bar i{display:block;height:100%;width:100%;background:var(--c);transition:width .25s linear,background .3s}
+.ctrl{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:1vh}
+button{font:700 15px var(--f-body);color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 18px;cursor:pointer}
+button:hover{border-color:var(--cyan)}
+button:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+button.p{background:var(--cyan);border-color:var(--cyan);color:#0B1030;min-width:130px}
+button[aria-pressed="true"]{border-color:var(--cyan);background:rgba(39,185,207,.18)}
+.presets{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.presets button{font-size:14px;padding:8px 14px}
+.hint{font-size:12.5px;color:var(--muted);text-align:center}
+.hint kbd{font-family:var(--f-mono);background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:5px;padding:1px 6px;margin:0 2px}
+/* 작은 창 */
+body.mini{padding:8px 10px}
+body.mini header,body.mini .presets,body.mini .hint,body.mini #label,body.mini .ctrl .x{display:none}
+body.mini main{gap:6px}
+body.mini #time{font-size:min(30vw,52vh)}
+body.mini .bar{height:6px}
+body.mini .ctrl button{padding:6px 10px;font-size:12.5px;min-width:0;border-radius:8px}
+</style>
+</head>
+<body>
+<header>
+  <strong>WORKATION CHALLENGE <em>①</em> · 발표 타이머</strong>
+  <a href="../showcase/">결과물(Showcase)</a>
+</header>
+<main>
+  <input id="label" type="text" maxlength="60" placeholder="발표 팀 이름 (선택)" aria-label="발표 팀 이름">
+  <div class="state" id="state">READY</div>
+  <div id="time" role="timer" aria-live="off" title="클릭하면 시작 / 일시정지">05:00</div>
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  <div class="ctrl">
+    <button class="p" id="go" type="button">시작</button>
+    <button id="reset" type="button">다시</button>
+    <button class="x" id="minus" type="button">−1분</button>
+    <button class="x" id="plus" type="button">+1분</button>
+    <button class="x" id="sound" type="button" aria-pressed="true">알림음 켜짐</button>
+    <button class="x" id="full" type="button">전체 화면</button>
+    <button class="x" id="mini" type="button">작은 창으로 띄우기</button>
+  </div>
+  <div class="presets" role="group" aria-label="시간 프리셋">
+    <button data-m="5" aria-pressed="true">발표 5분</button>
+    <button data-m="10" aria-pressed="false">질의응답 10분</button>
+    <button data-m="3" aria-pressed="false">3분</button>
+    <button data-m="2" aria-pressed="false">총평 2분</button>
+  </div>
+  <p class="hint"><kbd>Space</kbd> 시작·일시정지 · <kbd>R</kbd> 다시 · <kbd>F</kbd> 전체 화면 · 남은 1분에 주황, 0초에 빨강과 알림음, 이후 초과 시간을 셉니다.</p>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const P = new URLSearchParams(location.search);
+if (P.get('mini')) document.body.classList.add('mini');
+let total = 5 * 60 * 1000, left = total, endAt = 0, running = false, raf = 0, warned = false, ended = false, soundOn = true, ac = null;
+
+function beep(n, freq) {
+  if (!soundOn) return;
+  try {
+    ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+    for (let i = 0; i < n; i++) {
+      const o = ac.createOscillator(), g = ac.createGain(), t = ac.currentTime + i * 0.38;
+      o.type = 'sine'; o.frequency.value = freq; o.connect(g); g.connect(ac.destination);
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.5, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.3);
+      o.start(t); o.stop(t + 0.32);
+    }
+  } catch (e) {}
+}
+function fmt(ms) {
+  const s = Math.ceil(Math.abs(ms) / 1000), m = Math.floor(s / 60), r = s % 60;
+  return String(m).padStart(2, '0') + ':' + String(r).padStart(2, '0');
+}
+function paint() {
+  const over = left <= 0;
+  $('time').textContent = over ? '+' + fmt(-left).replace(/^0/, '') : fmt(left);
+  if (over && Math.abs(left) < 1000) $('time').textContent = '00:00';
+  $('bar').style.width = Math.max(0, Math.min(100, left / total * 100)) + '%';
+  document.body.classList.toggle('warn', !over && left <= 60000);
+  document.body.classList.toggle('over', over);
+  $('state').textContent = over ? '시간 종료 · 초과' : running ? (left <= 60000 ? '남은 1분' : 'SPEAKING') : (left === total ? 'READY' : 'PAUSED');
+  document.title = (over ? '⏰ ' : '') + $('time').textContent + ' · 발표 타이머';
+}
+function tick() {
+  left = endAt - performance.now();
+  if (!warned && left <= 60000 && total > 60000) { warned = true; beep(1, 660); }
+  if (!ended && left <= 0) { ended = true; beep(3, 880); }
+  paint();
+  if (running) raf = requestAnimationFrame(tick);
+}
+function start() { if (running) return; running = true; endAt = performance.now() + left; $('go').textContent = '일시정지'; tick(); }
+function pause() { if (!running) return; running = false; cancelAnimationFrame(raf); left = endAt - performance.now(); $('go').textContent = '계속'; paint(); }
+function toggle() { running ? pause() : start(); }
+function reset() { running = false; cancelAnimationFrame(raf); left = total; warned = false; ended = false; $('go').textContent = '시작'; paint(); }
+function setMin(m) {
+  total = m * 60000; reset();
+  document.querySelectorAll('.presets button').forEach(b => b.setAttribute('aria-pressed', +b.dataset.m === m));
+}
+function adjust(d) {
+  if (running) { endAt += d; left = endAt - performance.now(); } else { left = Math.max(1000, left + d); }
+  total = Math.max(total, left); if (left > 60000) warned = false; if (left > 0) ended = false; paint();
+}
+$('go').onclick = toggle; $('time').onclick = toggle; $('reset').onclick = reset;
+$('plus').onclick = () => adjust(60000); $('minus').onclick = () => adjust(-60000);
+$('sound').onclick = e => { soundOn = !soundOn; e.target.setAttribute('aria-pressed', soundOn); e.target.textContent = soundOn ? '알림음 켜짐' : '알림음 꺼짐'; if (soundOn) beep(1, 660); };
+$('full').onclick = () => { try { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); } catch (e) {} };
+$('mini').onclick = () => { const w = window.open(location.pathname + '?mini=1', 'wc-timer', 'width=380,height=230'); if (!w) location.search = '?mini=1'; };
+document.querySelectorAll('.presets button').forEach(b => b.onclick = () => setMin(+b.dataset.m));
+document.addEventListener('keydown', e => {
+  if (e.target.id === 'label') { if (e.key === 'Enter') e.target.blur(); return; }
+  if (e.code === 'Space') { e.preventDefault(); toggle(); }
+  else if (e.key === 'r' || e.key === 'R') reset();
+  else if (e.key === 'f' || e.key === 'F') $('full').click();
+});
+try { const l = sessionStorage.getItem('wc-timer-label'); if (l) $('label').value = l; } catch (e) {}
+$('label').addEventListener('input', e => { try { sessionStorage.setItem('wc-timer-label', e.target.value); } catch (x) {} });
+paint();
+</script>
+</body>
+</html>
