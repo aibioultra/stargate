@@ -53,6 +53,9 @@ button,input,select,textarea{font:inherit;color:inherit}
 .lab{display:inline-flex;align-items:center;gap:12px;margin-top:16px;padding:12px 18px;border-radius:12px;background:var(--amber);color:#1B1203;text-decoration:none;font-weight:700;font-size:15px;box-shadow:0 6px 18px rgba(229,154,47,.28);max-width:100%}
 .lab small{display:block;font-size:11.5px;font-weight:600;opacity:.75;letter-spacing:.02em}
 .lab:hover{filter:brightness(1.06)}
+.labs{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.labs .lab{margin-top:0}
+.lab.dl2{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(229,154,47,.7);box-shadow:none}
+.lab.dl2 small{color:#F2B867;opacity:1}
 .lab:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
 main{display:flex;flex-direction:column;gap:18px;padding-block:20px 60px}
@@ -166,7 +169,8 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
       <p>팀 코드 4자리를 넣으면 미리 배정된 우리 팀이 열립니다. 팀원 사전과제를 보고, 팀 이름·주제를 정하고, 발표 파일을 낼 수 있습니다.</p>
       <ol class="steps"><li><b>1</b>팀 코드 입력</li><li><b>2</b>팀 이름·주제 저장</li><li><b>3</b>예선 PDF 제출</li><li><b>4</b>본선 PDF 제출</li></ol>
       <div class="dl"><span>예선 마감 <b>11. 20.(금) 15:50</b></span><span>본선 마감 <b>11. 20.(금) 24:00</b></span><span>PDF · 최대 20MB</span></div>
-      <a class="lab" href="https://george-rated-wrapped-fairfield.trycloudflare.com/login" target="_blank" rel="noopener"><span><small>AI제약바이오 트랙</small>실습 플랫폼 접속 →</span></a>
+      <div class="labs"><a class="lab" href="https://george-rated-wrapped-fairfield.trycloudflare.com/login" target="_blank" rel="noopener"><span><small>AI제약바이오 트랙</small>실습 플랫폼 접속 →</span></a>
+      <a class="lab dl2" href="files/metaprompt_handout.pdf" download="AI제약바이오_MetaPrompt_연구가설생성_배포자료.pdf"><span><small>실습 자료 · PDF</small>Meta-prompt 연구 가설 생성 ↓</span></a></div>
     </div>
   </div>
 </header>
