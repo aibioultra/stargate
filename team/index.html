@@ -355,7 +355,18 @@ body.admin .cardsHead,body.admin #cards{display:none}
     '의료기기 5팀': { name: '아물', topic: '제왕절개 수술 부위 회복 기록과 분만 병원 진료 예약 케어', who: '5조 · 소민지 · 송은주 · 옥연지 · 왕세현 · 이세연' },
     '의료기기 6팀': { name: '헤어로그', topic: '탈모 초기 선별과 치료 경과 확인 웹서비스', who: '6조 · 이서영 · 이지혜 · 조수진 · 장소윤 · 원예은' },
   };
-  const disp = t => LOCAL[t.t] ? Object.assign({}, t, { f: '', b: '-', name: LOCAL[t.t].name, topic: LOCAL[t.t].topic, who: LOCAL[t.t].who, done: true }) : t;
+  /* AX Campus에서 받은 의료기기 예선 발표자료(11.20 15:25 제출본). 허브에 실제 예선 파일이 없거나 테스트 파일뿐이면 이것을 예선 제출본으로 보여 줌 */
+  const localSub = t => {
+    const L = LOCAL[t.t]; if (!L) return null;
+    const n = t.t.match(/\d+/)[0].padStart(2, '0');
+    return { file: `의료기기_${n}팀_${L.name}_예선.pdf`, at: '11.20 15:25', by: 'AX Campus 제출본', n: 1, url: `../showcase/files/device/md${n}.pdf`, dl: true };
+  };
+  const withSubs = t => {
+    const ls = localSub(t), s = Object.assign({}, t.subs || {});
+    if (ls && (!s['예선'] || /테스트|test/i.test(s['예선'].file || ''))) s['예선'] = ls;
+    return s;
+  };
+  const disp = t => LOCAL[t.t] ? Object.assign({}, t, { f: '', b: '-', name: LOCAL[t.t].name, topic: LOCAL[t.t].topic, who: LOCAL[t.t].who, done: true, sub: Object.assign({}, t.sub, { '예선': true }) }) : t;
   function renderBoard() {
     document.querySelectorAll('[data-btr]').forEach(b => b.setAttribute('aria-pressed', b.dataset.btr === boardTrack));
     const fl = TEAMS.filter(t => t.tr === boardTrack && FIN[t.t] && FIN[t.t].finalist);
@@ -365,7 +376,7 @@ body.admin .cardsHead,body.admin #cards{display:none}
       <span class="no">${[t.t, t.f, t.b !== '-' ? '예선 ' + t.b : ''].filter(Boolean).map(esc).join(' · ')}</span>
       <b>${t.name ? esc(t.name) : '<span class="empty">팀 이름 미정</span>'}</b>
       <p>${t.topic ? esc(t.topic) : '<span class="empty">주제 미정</span>'}</p>${t.who ? `<p class="who">${esc(t.who)}</p>` : ''}
-      <div class="tags">${t.done ? '<span class="tag on">결과물 제출</span>' : `<span class="tag ${t.sub && t.sub['예선'] ? 'on' : ''}">예선 ${t.sub && t.sub['예선'] ? '제출' : '미제출'}</span><span class="tag ${t.sub && t.sub['본선'] ? 'on' : ''}">본선 ${t.sub && t.sub['본선'] ? '제출' : '미제출'}</span>`}</div>
+      <div class="tags">${`<span class="tag ${t.sub && t.sub['예선'] ? 'on' : ''}">예선 ${t.sub && t.sub['예선'] ? '제출' : '미제출'}</span><span class="tag ${t.sub && t.sub['본선'] ? 'on' : ''}">본선 ${t.sub && t.sub['본선'] ? '제출' : '미제출'}</span>`}</div>
       ${t.done || (t.sub && t.sub['본선']) ? '<a class="go" href="../showcase/">결과물 보기 →</a>' : ''}
     </div>`).join('');
   }
@@ -401,7 +412,7 @@ body.admin .cardsHead,body.admin #cards{display:none}
     $('by').innerHTML = (cred && cred.key ? '<option value="운영진">운영진</option>' : '') + t.members.map(m => `<option value="${esc(m.n)}">${esc(m.n)} (${esc(m.u)})</option>`).join('');
     if (prevBy && t.members.some(m => m.n === prevBy)) $('by').value = prevBy;
     $('subs').innerHTML = ['예선', '본선'].map(st => {
-      const s = (t.subs || {})[st];
+      const s = withSubs(t)[st];
       return `<div class="sub" data-stage="${st}">
         <h3>${st} 발표 파일 <span class="due">마감 ${CONFIG.DUE[st]}</span></h3>
         <div class="state ${s ? 'done' : ''}">${s ? `제출됨 · <b>${esc(s.file)}</b><br>${esc(s.at)} · ${esc(s.by || '')}${s.n > 1 ? ` · ${s.n}번째 제출` : ''}${s.late ? ' · 마감 후 제출' : ''}` : '아직 제출하지 않았습니다.'}</div>
@@ -501,7 +512,7 @@ body.admin .cardsHead,body.admin #cards{display:none}
   const sess = { get(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }, del(k) { try { sessionStorage.removeItem(k); } catch (e) {} } };
   function renderAdmin() {
     document.querySelectorAll('[data-atr]').forEach(b => b.setAttribute('aria-pressed', b.dataset.atr === adminTrack));
-    const all = ADMIN, list = all.filter(t => !adminTrack || t.tr === adminTrack);
+    const all = ADMIN.map(t => Object.assign({}, t, { subs: withSubs(t) })), list = all.filter(t => !adminTrack || t.tr === adminTrack);
     const n = st => all.filter(t => t.subs[st]).length, late = st => all.filter(t => t.subs[st] && t.subs[st].late).length;
     $('adminStats').innerHTML = [
       [`${all.filter(t => t.name).length}/${all.length}`, '팀 이름·주제 저장'],
@@ -509,9 +520,9 @@ body.admin .cardsHead,body.admin #cards{display:none}
       [`${n('예선')}/${all.length}`, `예선 제출${late('예선') ? ` · 마감 후 ${late('예선')}` : ''}`],
       [`${n('본선')}/${all.length}`, `본선 제출${late('본선') ? ` · 마감 후 ${late('본선')}` : ''}`],
     ].map(([v, l]) => `<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
-    const dl = s => s.id ? `https://drive.google.com/uc?export=download&id=${encodeURIComponent(s.id)}` : s.url;
+    const dl = s => s.dl ? s.url : s.id ? `https://drive.google.com/uc?export=download&id=${encodeURIComponent(s.id)}` : s.url;
     const cell = s => s ? `<b class="fname">${esc(s.file)}</b><br><small>${esc(s.at)} · ${esc(s.by || '')}${s.n > 1 ? ' · ' + s.n + '회' : ''}${s.late ? ' · 마감 후' : ''}</small>
-      <div class="fbtn"><a class="btn s xs" href="${esc(s.url)}" target="_blank" rel="noopener">보기</a><a class="btn p xs" href="${esc(dl(s))}" target="_blank" rel="noopener">다운로드</a></div>` : '<span class="empty">미제출</span>';
+      <div class="fbtn"><a class="btn s xs" href="${esc(s.url)}" target="_blank" rel="noopener">보기</a><a class="btn p xs" href="${esc(dl(s))}" target="_blank" rel="noopener"${s.dl ? ` download="${esc(s.file)}"` : ''}>다운로드</a></div>` : '<span class="empty">미제출</span>';
     $('adminBody').innerHTML = list.map(disp).map(t => `<tr><td><b>${esc(t.t)}</b><br><small>${esc(t.b !== '-' ? t.b + ' · ' : '')}${esc(t.members.length)}명</small></td><td>${esc(t.code)}</td>
       <td>${t.name ? esc(t.name) : '<span class="empty">미정</span>'}<br><small>${esc(t.topic || '')}</small></td>
       <td class="${t.subs['예선'] && t.subs['예선'].late ? 'late' : ''}">${cell(t.subs['예선'])}</td><td class="${t.subs['본선'] && t.subs['본선'].late ? 'late' : ''}">${cell(t.subs['본선'])}</td>
