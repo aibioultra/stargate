@@ -154,6 +154,8 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
 .res select{padding:4px 8px;font-size:13px;border-radius:8px}
 @media (max-width:520px){.row{grid-template-columns:1fr;gap:2px}.top-row small{display:none}}
 @media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.fbtn{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}.fbtn .btn{text-decoration:none}
+.fname{font-weight:700;word-break:break-all}
 </style>
 </head>
 <body>
@@ -465,7 +467,9 @@ body.screen .bcard b{font-size:22px}body.screen .bcard p{font-size:18px}body.scr
       [`${n('예선')}/${all.length}`, `예선 제출${late('예선') ? ` · 마감 후 ${late('예선')}` : ''}`],
       [`${n('본선')}/${all.length}`, `본선 제출${late('본선') ? ` · 마감 후 ${late('본선')}` : ''}`],
     ].map(([v, l]) => `<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
-    const cell = s => s ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.file)}</a><br><small>${esc(s.at)} · ${esc(s.by || '')}${s.n > 1 ? ' · ' + s.n + '회' : ''}${s.late ? ' · 마감 후' : ''}</small>` : '<span class="empty">미제출</span>';
+    const dl = s => s.id ? `https://drive.google.com/uc?export=download&id=${encodeURIComponent(s.id)}` : s.url;
+    const cell = s => s ? `<b class="fname">${esc(s.file)}</b><br><small>${esc(s.at)} · ${esc(s.by || '')}${s.n > 1 ? ' · ' + s.n + '회' : ''}${s.late ? ' · 마감 후' : ''}</small>
+      <div class="fbtn"><a class="btn s xs" href="${esc(s.url)}" target="_blank" rel="noopener">보기</a><a class="btn p xs" href="${esc(dl(s))}" target="_blank" rel="noopener">다운로드</a></div>` : '<span class="empty">미제출</span>';
     $('adminBody').innerHTML = list.map(t => `<tr><td><b>${esc(t.t)}</b><br><small>${esc(t.b !== '-' ? t.b + ' · ' : '')}${esc(t.members.length)}명</small></td><td>${esc(t.code)}</td>
       <td>${t.name ? esc(t.name) : '<span class="empty">미정</span>'}<br><small>${esc(t.topic || '')}</small></td>
       <td class="${t.subs['예선'] && t.subs['예선'].late ? 'late' : ''}">${cell(t.subs['예선'])}</td><td class="${t.subs['본선'] && t.subs['본선'].late ? 'late' : ''}">${cell(t.subs['본선'])}</td>
