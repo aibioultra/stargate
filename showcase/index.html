@@ -91,6 +91,8 @@ dialog::backdrop{background:rgba(11,16,48,.7)}
 .dlg header b{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dlg iframe{flex:1;border:0;width:100%}
 @media (max-width:520px){.top-row small{display:none}.links a{padding:5px 10px}}
+.card .who{font-size:12.5px;color:var(--muted, #586487);margin-top:4px}
+.acts{flex-wrap:wrap}
 </style>
 </head>
 <body>
@@ -165,11 +167,24 @@ dialog::backdrop{background:rgba(11,16,48,.7)}
     });
     return { ok: true, filesOpen: true, showFinalists: true, showAwards: true, teams };
   }
+  /* AI의료기기 6개 조 결과물 (AX Campus 제출본, 11.20). 발표자료는 이 사이트에 올린 PDF, 서비스는 각 조가 만든 링크 */
+  const LOCAL = {
+    '의료기기 1팀': { name: 'Bonetrace', topic: '치과의사가 치조정·치조골의 시간에 따른 변화를 한눈에 비교하도록 돕는 영상판독 보조 소프트웨어', who: '1조 · 김진희 · 이여진 · 신한나 · 전연수 · 정예은 · 최소윤', pdf: 'files/device/md01.pdf', site: 'https://claude.ai/artifact/DcnN71GjAiEWZoNgrR1p7X' },
+    '의료기기 2팀': { name: 'E-LINK', topic: '환자와 치과의사 사이의 양방향 통역사 — 치과와 집 사이, 끊어진 관리의 연결', who: '2조 · 노유림 · 임지현 · 이에스더 · 유시아 · 최인서 · 남효민', pdf: 'files/device/md02.pdf', site: 'https://claude.ai/artifact/X9Ri5kwnhdm12z8RJggNE1?sk=bWkMfxFiptuhm-dKWSVUVw' },
+    '의료기기 3팀': { name: '뻐꾸기 14', topic: '고령 임플란트 환자의 수술 후 14일 회복 체크·사후관리 AI 서비스', who: '3조 · 김휘수 · 유지우 · 윤연우 · 정희원 · 홍성민', pdf: 'files/device/md03.pdf', site: 'https://implant-care-app.vercel.app' },
+    '의료기기 4팀': { name: '케어사인', topic: '뇌졸중 환자의 혈압·산소포화도를 측정해 재발을 막고 간호사의 반복 측정 업무를 덜어 주는 웨어러블 모니터링', who: '4조 · 김준효 · 유고은 · 유민승 · 이채은 · 정윤지', pdf: 'files/device/md04.pdf', site: 'https://claude.ai/artifact/NoiKkAnPJ79JakqjpEuA7e' },
+    '의료기기 5팀': { name: '아물', topic: '제왕절개 수술 부위 회복 기록과 분만 병원 진료 예약 케어', who: '5조 · 소민지 · 송은주 · 옥연지 · 왕세현 · 이세연', pdf: 'files/device/md05.pdf', site: 'https://claude.ai/artifact/LJdYjHNtnifTuLbMWtyTD7?sk=59nDBv0QNAKe41zal2DVog' },
+    '의료기기 6팀': { name: '헤어로그', topic: '탈모 초기 선별과 치료 경과 확인 웹서비스', who: '6조 · 이서영 · 이지혜 · 조수진 · 장소윤 · 원예은', pdf: 'files/device/md06.pdf', site: 'https://claude.ai/artifact/TDc5zW5X5o3UTfVz5BU2Qc?sk=mGKmqbBEzu221lzsAH1NsQ#report' },
+  };
+  function mergeLocal(out) {
+    out.teams.forEach(t => { const L = LOCAL[t.t]; if (!L) return; Object.assign(t, { f: '', name: L.name, topic: L.topic, who: L.who, site: L.site, submitted: true }); if (!t.final) t.final = { id: '', url: L.pdf, local: true }; });
+    return out;
+  }
   async function load() {
     try {
       const out = DEMO ? demoData() : await (await fetch(CONFIG.API + '?action=showcase', { redirect: 'follow' })).json();
       if (!out.ok) throw new Error();
-      DATA = out; render();
+      DATA = mergeLocal(out); render();
     } catch (e) { $('allDesc').textContent = '결과물을 불러오지 못했습니다. 잠시 뒤 새로 고쳐 주세요.'; }
   }
   const cover = t => {
@@ -180,11 +195,11 @@ dialog::backdrop{background:rgba(11,16,48,.7)}
   const card = (t, cls = '') => `<article class="card ${cls}">
     ${cover(t)}
     <div class="body">
-      <span class="meta">${esc(t.tr)} · ${esc(t.f)} · ${esc(t.t)}</span>
+      <span class="meta">${[t.tr, t.f, t.t].filter(Boolean).map(esc).join(' · ')}</span>
       <h3>${t.name ? esc(t.name) : '<span class="empty">팀 이름 미정</span>'}</h3>
-      <p>${t.topic ? esc(t.topic) : '<span class="empty">주제 미정</span>'}</p>
+      <p>${t.topic ? esc(t.topic) : '<span class="empty">주제 미정</span>'}</p>${t.who ? `<p class="who">${esc(t.who)}</p>` : ''}
       <div class="acts">${t.final
-        ? `<button type="button" class="btn p" data-view="${esc(t.t)}">결과물 보기</button><a class="btn s" href="${esc(t.final.url)}" target="_blank" rel="noopener">새 창</a>`
+        ? `<button type="button" class="btn p" data-view="${esc(t.t)}">결과물 보기</button><a class="btn s" href="${esc(t.final.url)}" target="_blank" rel="noopener">새 창</a>${t.site ? `<a class="btn s" href="${esc(t.site)}" target="_blank" rel="noopener">서비스 열기</a>` : ''}`
         : `<span class="empty" style="font-size:13px">${t.submitted ? '마감 후 공개' : '아직 제출 전'}</span>`}</div>
     </div></article>`;
 
@@ -212,7 +227,7 @@ dialog::backdrop{background:rgba(11,16,48,.7)}
     const t = DATA.teams.find(x => x.t === team); if (!t || !t.final) return;
     $('dlgTitle').textContent = `${t.t} · ${t.name || ''}`;
     $('dlgOpen').href = t.final.url;
-    $('dlgFrame').src = t.final.id ? `https://drive.google.com/file/d/${encodeURIComponent(t.final.id)}/preview` : 'about:blank';
+    $('dlgFrame').src = t.final.local ? t.final.url : t.final.id ? `https://drive.google.com/file/d/${encodeURIComponent(t.final.id)}/preview` : 'about:blank';
     if (typeof dlg.showModal === 'function') dlg.showModal(); else window.open(t.final.url, '_blank', 'noopener');
   }
   $('dlgClose').addEventListener('click', () => dlg.close());
