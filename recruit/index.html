@@ -489,13 +489,106 @@ details.edit>form{border:0;border-top:1px solid var(--rule);border-radius:0 0 va
 @keyframes jump2{0%{opacity:0;transform:translateY(30px) scale(.7)}50%{opacity:1;transform:translateY(-8px) scale(1.04)}100%{opacity:1;transform:none}}
 .modal-c{position:relative;overflow:visible}
 .empty{border:1px dashed var(--rule);border-radius:var(--r);padding:18px;color:var(--muted);font-size:14px;margin:0}
+
+/* 수강신청 안내 팝업 */
+button.dchip{font:inherit;font-size:12.5px;cursor:pointer;transition:border-color .15s,background .15s}
+button.dchip:hover{border-color:var(--cyan);background:rgba(39,185,207,.22)}
+.modal-c.notice{max-width:560px;padding:0;gap:0;overflow:auto}
+.nt-band{position:relative;padding:22px 64px 18px 132px;min-height:128px;background:radial-gradient(120% 140% at 0% 100%,rgba(39,185,207,.35),transparent 55%),linear-gradient(180deg,var(--navy) 0%,var(--ink-deep) 100%);color:var(--on-dark);border-radius:18px 18px 0 0;display:grid;align-content:center;gap:4px}
+.nt-band img{position:absolute;left:14px;bottom:0;height:122px;width:auto;max-width:none;filter:drop-shadow(0 8px 14px rgba(0,0,0,.4))}
+.nt-band .kick{color:var(--cyan);margin:0}
+.nt-band h2{color:#fff;font-size:21px;line-height:1.3;margin:0}
+.nt-x{position:absolute;right:10px;top:10px;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:var(--on-dark);display:grid;place-items:center;cursor:pointer}
+.nt-x:hover{background:rgba(255,255,255,.12)}
+.nt-x svg{width:20px;height:20px;stroke:currentColor;stroke-width:2.2;fill:none;stroke-linecap:round}
+.nt-body{padding:18px 22px 20px;display:grid;gap:14px}
+.nt-lead{margin:0;font-weight:700}
+.nt{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 16px;margin:0;font-size:14px;line-height:1.6}
+.nt dt{font-weight:800;color:var(--main);white-space:nowrap}
+.nt dd{margin:0}
+.nt dd .chip{margin-left:4px;vertical-align:1px}
+.nt .fee{background:var(--warn-tint);border-radius:10px;padding:8px 12px}
+.nt-foot{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);padding-top:14px}
+@media (max-width:520px){.nt-band{padding:18px 56px 16px 104px;min-height:104px}.nt-band img{height:104px;left:6px}.nt-band h2{font-size:18px}.nt{grid-template-columns:minmax(0,1fr);gap:2px}.nt dd{margin-bottom:8px}}
+
+a.btn{text-decoration:none}
+/* 홈의 강의계획서 카드 */
+.sylcard{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 18px;align-items:center}
+.sylcard h3{margin:2px 0 4px;font-size:17px}
+.sylcard .row{justify-content:flex-end}
+@media (max-width:640px){.sylcard{grid-template-columns:minmax(0,1fr)}.sylcard .row{justify-content:flex-start}}
+.wait{display:grid;gap:4px;margin-top:14px;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid var(--on-dark-line);font-size:14px;color:var(--on-dark-muted)}
+.wait b{color:#fff}
+
+/* 강의계획서 */
+.syl-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 18px;align-items:center}
+.syl-top h2{margin:2px 0 0;font-size:21px;letter-spacing:-.01em}
+@media (max-width:640px){.syl-top{grid-template-columns:minmax(0,1fr)}}
+.syl-info{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0;border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;background:var(--panel)}
+.syl-info>div{display:grid;grid-template-columns:112px minmax(0,1fr);gap:10px;padding:10px 14px;border-bottom:1px solid var(--rule);font-size:14px}
+.syl-info>div:nth-child(odd):not(.wide){border-right:1px solid var(--rule)}
+.syl-info .wide{grid-column:1/-1;border-bottom:0}
+.syl-info dt{color:var(--muted);font-weight:700;font-size:13px}
+.syl-info dd{margin:0}
+@media (max-width:640px){.syl-info{grid-template-columns:minmax(0,1fr)}.syl-info>div:nth-child(odd):not(.wide){border-right:0}.syl-info>div{grid-template-columns:96px minmax(0,1fr)}}
+.hours{display:flex;border-radius:10px;overflow:hidden;font-size:12.5px;font-weight:700;min-height:38px}
+.hours span{display:grid;place-items:center;padding:4px 6px;text-align:center;line-height:1.3;min-width:0}
+.goals{margin:0;padding-left:22px;display:grid;gap:4px}
+.wseg{display:grid;gap:8px}
+.wseg-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.wseg-h b{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:112%;font-size:15px}
+.wseg-h span{font-size:13px;color:var(--muted)}
+.wk{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.wk li{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:3px 14px;align-items:start;background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:12px 14px}
+.wk .n{grid-row:span 3;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--main);font-family:var(--f-display);font-style:italic;font-weight:800;font-size:15px}
+.wk .t{font-weight:700}
+.wk .m{justify-self:end}
+.wk .g{grid-column:2/-1;font-size:13.5px;color:var(--muted);white-space:pre-line}
+.wk .a{grid-column:2/-1;font-size:13px}
+.wk .a b{color:var(--muted);font-weight:700;margin-right:6px}
+@media (max-width:560px){.wk li{grid-template-columns:36px minmax(0,1fr);padding:12px}.wk .m{grid-column:2;justify-self:start}.wk .n{width:32px;height:32px}}
+.evalbar{display:flex;border-radius:10px;overflow:hidden;min-height:34px;font-size:12.5px;font-weight:700}
+.evalbar span{display:grid;place-items:center;padding:4px 6px;text-align:center;line-height:1.25;min-width:0}
+.evl{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14px}
+.evl li{display:grid;grid-template-columns:12px 112px 46px minmax(0,1fr);gap:10px;align-items:baseline}
+.evl i{width:12px;height:12px;border-radius:3px;align-self:center}
+.evl b{font-family:var(--f-display);font-weight:800;font-stretch:110%}
+.evl span:last-child{color:var(--muted);font-size:13.5px}
+@media (max-width:560px){.evl li{grid-template-columns:12px minmax(0,1fr) 46px}.evl span:last-child{grid-column:2/-1}}
+.syl-notes{margin:0;padding-left:20px;display:grid;gap:4px;font-size:14px}
+
+/* 사업단 푸터 */
+.sfoot{background:var(--ink-deep);color:#C3CCE6;position:relative;overflow:hidden;padding-top:52px}
+.sfoot .in{max-width:1180px;margin:0 auto}
+.f-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.8fr) minmax(0,.8fr) minmax(0,1.2fr);gap:32px}
+.f-logo a{display:inline-block}
+.f-logo img{width:210px;height:auto;display:block}
+.f-logo p{margin:16px 0 0;font-size:14px;line-height:1.7}
+.sfoot .f-main{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:8px 16px;border-radius:999px;border:1px solid rgba(39,185,207,.45);color:var(--cyan-soft)!important;font-weight:700;font-size:13.5px}
+.sfoot .f-main:hover{background:rgba(39,185,207,.14);color:#fff!important;text-decoration:none!important}
+.sfoot .f-main svg{width:16px;height:16px}
+.sfoot h3{margin:0 0 12px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:#8C97BC;font-weight:600}
+.sfoot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14.5px}
+.sfoot a,.sfoot .lk{color:#C3CCE6;text-decoration:none;background:none;border:0;padding:0;font:inherit;cursor:pointer;text-align:left}
+.sfoot a:hover,.sfoot .lk:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.f-contact dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 16px;margin:0;font-size:14px}
+.f-contact dt{color:#8C97BC}
+.f-contact dd{margin:0;overflow-wrap:anywhere}
+.f-water{font-family:var(--f-display);font-stretch:125%;font-style:italic;font-weight:900;font-size:clamp(2rem,7vw,6.2rem);line-height:.82;color:rgba(255,255,255,.055);white-space:nowrap;margin-top:48px;letter-spacing:-.03em;user-select:none;overflow:hidden}
+.f-copy{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;border-top:1px solid rgba(255,255,255,.08);padding-block:18px calc(26px + env(safe-area-inset-bottom,0px));font-size:12.5px;color:#8C97BC}
+.f-copy .lk{color:#8C97BC;font-size:12.5px}
+@media (max-width:860px){.f-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.f-logo,.f-contact{grid-column:1/-1}}
+@media (max-width:420px){.f-grid{grid-template-columns:minmax(0,1fr)}}
+.pv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;margin:0;font-size:14px}
+.pv dt{font-weight:700;color:var(--muted);white-space:nowrap}
+.pv dd{margin:0}
 </style>
 </head>
 <body>
 <header class="top"><div class="top-in gut">
   <button class="brand" type="button" data-go="board" aria-label="홈으로 가기"><img src="data:image/png;base64,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" alt="ULTRA ANCHOR 초광역 성장엔진 인재육성사업"><div class="brand-t"><strong><em>STARGATE</em> RECRUIT LINE</strong><span>AI첨단바이오 컨소시엄 · 워케이션챌린지② 사전과제</span></div></button>
   <button class="homebtn" id="homeBtn" type="button" data-go="board"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11L12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></svg><span>홈</span></button>
-  <span class="dchip" id="dday"></span>
+  <button class="dchip" id="dday" type="button" data-act="notice" title="수강신청 안내 보기"></button>
   <span class="xpchip" id="xpchip" title="별빛 포인트"></span>
   <button class="switch" id="demoBtn" type="button" data-act="demo" aria-pressed="false"><span class="knob" aria-hidden="true"></span>시연 모드</button>
 </div></header>
@@ -507,6 +600,45 @@ details.edit>form{border:0;border-top:1px solid var(--rule);border-radius:0 0 va
 </main>
 <div class="toast" id="toast" role="status"></div>
 <div class="clear" id="clear" role="status" aria-live="polite"></div>
+<footer class="sfoot" id="foot">
+  <div class="in gut">
+    <div class="f-grid">
+      <div class="f-logo">
+        <a href="https://stargate-aibio.vercel.app/" aria-label="ULTRA ANCHOR 초광역 성장엔진 인재육성사업 메인 사이트"><img src="img/logo-white.webp" alt="ULTRA ANCHOR 초광역 성장엔진 인재육성사업" width="210" height="71" loading="lazy" decoding="async"></a>
+        <p>AI기반 첨단바이오사업단<br>주관 단국대 · 참여 건양대 · 계명대 · 아주대 · 유한대</p>
+        <a class="f-main" href="https://stargate-aibio.vercel.app/">STARGATE 메인 사이트<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div>
+        <h3>MENU</h3>
+        <ul>
+          <li><a href="https://stargate-aibio.vercel.app/#about">사업 소개</a></li>
+          <li><a href="https://stargate-aibio.vercel.app/#finder">30초 진로 진단</a></li>
+          <li><a href="https://stargate-aibio.vercel.app/#pathway">이수 경로</a></li>
+          <li><a href="https://stargate-aibio.vercel.app/#curriculum">교육과정</a></li>
+          <li><a href="https://stargate-aibio.vercel.app/#faq">자주 묻는 질문</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>RECRUIT LINE</h3>
+        <ul>
+          <li><button class="lk" type="button" data-go="board">리크루트 라인 홈</button></li>
+          <li><button class="lk" type="button" data-act="notice">수강신청 안내</button></li>
+          <li><button class="lk" type="button" data-go="syllabus">강의계획서</button></li>
+        </ul>
+      </div>
+      <div class="f-contact">
+        <h3>CONTACT</h3>
+        <dl>
+          <dt>사업단</dt><dd>초광역 성장엔진 인재육성사업단</dd>
+          <dt>이메일</dt><dd><a href="mailto:ai.bio.engine@gmail.com">ai.bio.engine@gmail.com</a></dd>
+          <dt>전화·카카오톡</dt><dd>추후 안내</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="f-water" aria-hidden="true">ULTRA ANCHOR</div>
+    <div class="f-copy"><span>© 2026 ULTRA ANCHOR · 초광역 성장엔진 인재육성사업</span><button class="lk" type="button" data-act="privacy">개인정보 수집·이용 안내</button></div>
+  </div>
+</footer>
 <div class="modal" id="modal" hidden></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="swp" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#27B9CF" stop-opacity="0"/><stop offset="1" stop-color="#27B9CF" stop-opacity=".55"/></linearGradient></defs></svg>
 
@@ -516,9 +648,11 @@ details.edit>form{border:0;border-top:1px solid var(--rule);border-radius:0 0 va
  * RESULTS_URL: 서류 발표·오퍼 결과 파일(운영진이 data/results.json으로 올림).
  * VOD: 지역 영상 주소(비공개 유튜브 등). 비우면 '12.21 공개 예정'으로 보입니다.
  * BOOTHS의 code(부스 QR)·pin(담당자 확인 번호)은 운영 전에 바꿔 주세요.
+ * APPLY_CLOSE: 수강신청 마감(이 시각까지 '수강신청하기'). LEARN_OPEN: 계절학기 시작 — 이때부터 GATE가 열립니다(그 전에는 수강신청만).
+ *   폼을 연결하면 수강신청도 STEP 'S0 수강신청'으로 같은 응답 시트에 쌓입니다. 연결 전에는 신청 정보가 학생 브라우저에만 남습니다.
  */
 const CONFIG = {
-  FORM_PREFILL_URL: '',
+  FORM_PREFILL_URL: 'https://docs.google.com/forms/d/e/1FAIpQLSe13yGKgl2Jck9WZUAqENVkvRMSiU9wI7eync-QABK9BjDZ5Q/viewform?usp=pp_url&entry.1083683534=NAME&entry.1521260852=UNIV&entry.31930695=SID&entry.2021750780=STEP&entry.1873031387=COMPANY&entry.1919994033=CONTENT',
   RESULTS_URL: 'data/results.json',
   VOD: { G1: '', G2: '', C1: '', C2: '', D1: '', D2: '' },
   /* 실제 클립 제작 전까지 보여 줄 샘플 영상(공개 자료 기반). VOD에 주소를 넣으면 그쪽이 우선합니다. 빼려면 값을 ''로 */
@@ -526,8 +660,12 @@ const CONFIG = {
   RESULT_OPEN: '2027-01-05T09:00:00+09:00',
   FAIR_OPEN: '2027-01-06T13:00:00+09:00',
   OFFER_OPEN: '2027-01-08T15:00:00+09:00',
-  FAIR_DAY: '2027-01-06T10:00:00+09:00'
+  FAIR_DAY: '2027-01-06T10:00:00+09:00',
+  APPLY_CLOSE: '2026-12-02T23:59:59+09:00',
+  LEARN_OPEN: '2026-12-21T00:00:00+09:00'
 };
+/* 강의계획서 데이터: build/build_syllabus.py가 syl_content.py에서 만들어 아래 표시 사이에 넣습니다(직접 고치지 마세요) */
+/*SYL:START*/const SYL = {"term": "2026년도 동계 계절학기", "applyDue": "2026.12.2.(수)", "learnOpen": "12.21.(월)", "field": "2027.1.6.(수) 10:00 ~ 1.8.(금) 17:00", "date": "2026. 11. 24. 인재성장센터", "file": "docs/workation2-syllabus.hwpx", "fileName": "AI바이오워케이션챌린지②_강의계획서(안).hwpx", "courses": [{"key": "pharma", "name": "AI제약바이오워케이션챌린지②", "en": "BioWorkation Challenge II: AI Pharma-Bio", "major": "AI제약바이오", "info": [["교과목명 Course Title", "AI제약바이오워케이션챌린지②", "학점 Credits", "2"], ["교과목 코드 Course Code", "(부여 예정)", "이수영역", "전공선택(AI제약바이오, 공통·중급)"], ["주수강대상", "5개 참여대학 학부생\n(① 이수자 우선)", "언어 Language", "한국어"], ["강의형태", "강의, 실습, 현장실습, 상담·모의면접", "강의실", "소노벨 천안, 현장실습 기관\n(온라인: 리크루트 라인)"], ["시간구분", "이론(9) 실험(0) 실습(21) 실기(0) 설계(0)", "사이버강의", "웹보조수업\n(사전·사후 온라인 11시간)"], ["강의유형", "블렌디드\n(사전 온라인 + 2박 3일 + 사후 온라인)", "DURE수업", "지산학연계"], ["원격수업미리보기", "사전 7시간(리크루트 라인: 지역 GATE 영상 6편·공고 지원·서류·직무과제), 사후 4시간(성찰일지·향후 학습계획서)"]], "summary": {"overview": "본 교과목은 AI첨단바이오 초광역 성장엔진 사업의 동계 계절학기 공통교과로, 학생이 제약바이오 앵커기업의 채용 절차(공고 지원 → 서류 → 직무과제 → 면접 → 오퍼)를 직접 거쳐 보는 2학점 블렌디드 교과이다. 사전에는 온라인 '리크루트 라인'에서 경기·충남·대구 지역과 앵커기업을 이해하고 지원서류와 직무과제를 준비하며, 2027년 1월 6일(수)~8일(금) 소노벨 천안 2박 3일 동안 상시 채용박람회, 목표직무 특강(T1 품질·제조, T2 연구개발, T3 규제·산업지원), 제약바이오 현장실습을 수행한다. 사후에는 성찰일지와 향후 학습계획서로 다음 이수 경로를 설계한다.", "linked": "선수: AI제약바이오워케이션챌린지①(권장) / 후속: 워케이션챌린지③, 직무 마이크로디그리(품질·제조, 연구개발, 규제·산업지원), KTR 방학 현장실습, 현장·연구연계(방학 4~8주)", "goals": ["경기·충남·대구 지역과 제약바이오 앵커기업(유한양행·종근당·다산제약)의 사업과 입지를 설명할 수 있다", "제약바이오 품질·제조, 연구개발, 규제·산업지원 직무의 업무와 요구역량을 구분할 수 있다", "지원 공고에 맞춰 이력서와 자기소개서를 작성할 수 있다", "직무 현장 미션을 해결하고, 면접에서 자신의 역량을 근거와 함께 설명할 수 있다", "목표직무에 따라 마이크로디그리·현장실습·인턴십을 잇는 향후 학습계획을 수립할 수 있다"], "effect": "인사담당자 피드백을 받은 이력서·자기소개서, 직무과제, 미션 패스포트, 현장실습 기록지, 향후 학습계획서를 산출하며, 인턴십 지원 풀(동의자)과 다음 학기 이수 계획의 근거 자료로 활용"}, "weeks": [{"n": 1, "topic": "수강 OT·리크루트 라인 탑승", "goal": "교과 구조와 이수 요건 이해, 탑승권(프로필)·STAR 유형 등록", "method": "강의", "mode": "온라인", "hrs": 1, "asg": "탑승권(프로필) 등록", "seg": "pre"}, {"n": 2, "topic": "GATE 01 지역탐사: 지역 GATE 영상", "goal": "경기·충남·대구의 지역 이야기와 전략산업·바이오, 앵커기업 입지 이해", "method": "강의", "mode": "온라인 VOD", "hrs": 2, "asg": "영상 6편 시청, GATE KEY 메모 3개", "seg": "pre"}, {"n": 3, "topic": "GATE 02 공고지원", "goal": "제약바이오 앵커기업 모의 채용공고 분석, 지원 직무 선택(최대 3곳)", "method": "실습", "mode": "온라인", "hrs": 1, "asg": "지원 공고 1~3곳", "seg": "pre"}, {"n": 4, "topic": "GATE 03 서류전형", "goal": "지원 공고에 맞춘 이력서·자기소개서 작성", "method": "실습", "mode": "온라인", "hrs": 2, "asg": "이력서 1장, 공고별 자기소개서", "seg": "pre"}, {"n": 5, "topic": "GATE 04 직무과제", "goal": "지원 직무의 10분 현장 미션 해결, 1분 자기소개·예상 질문 답변 준비", "method": "실습", "mode": "온라인", "hrs": 1, "asg": "직무과제, 1분 자기소개", "seg": "pre"}, {"n": 6, "topic": "등록·여는 특강", "goal": "2박 3일 일정과 이수 요건 확인, 바이오 산업과 커리어 시야 넓히기", "method": "강의", "mode": "대면", "hrs": 2, "asg": "휴대폰(부스 QR), 필기구", "seg": "d1"}, {"n": 7, "topic": "채용박람회 부스 탐색·오프닝 세레모니", "goal": "앵커기업·기관 8개 부스 첫 방문, 입단 선서와 미션 패스포트 수령", "method": "실습", "mode": "대면", "hrs": 2.5, "asg": "미션 패스포트", "seg": "d1"}, {"n": 8, "topic": "특별강연(박태웅 의장)", "goal": "AI 전환기 산업과 일의 변화 이해(주제 협의 중)", "method": "강의", "mode": "대면", "hrs": 1, "asg": "—", "seg": "d1"}, {"n": 9, "topic": "채용박람회 투어 ①", "goal": "조별 순번으로 부스 미션 수행: 기업 브리핑·인사담당자 인터뷰", "method": "실습", "mode": "대면", "hrs": 1.5, "asg": "미션 ①·②", "seg": "d2"}, {"n": 10, "topic": "목표직무 특강(A조) / 현장실습(B조)", "goal": "A조: T1 품질·제조, T2 연구개발, T3 규제·산업지원 직무 이해\nB조: 배정 기관에서 생산·품질관리(GMP)와 시험·인증 현장 확인", "method": "강의 / 실습", "mode": "대면", "hrs": 3, "asg": "직무 노트 / 현장실습 기록지", "seg": "d2"}, {"n": 11, "topic": "GATE 06 면접전형: 1:1 상담·모의면접", "goal": "서류 피드백, 예상 질문 기반 모의면접, 인턴십 상담", "method": "실습", "mode": "대면·예약제", "hrs": 2.5, "asg": "미션 ③~⑤, 이력서·자기소개서 출력본", "seg": "d2"}, {"n": 12, "topic": "채용박람회 투어 ②", "goal": "남은 부스 미션을 마치고 패스포트 완료 기준 충족", "method": "실습", "mode": "대면", "hrs": 1.5, "asg": "미션 패스포트 완료", "seg": "d3"}, {"n": 13, "topic": "현장실습(A조) / 목표직무 특강(B조)", "goal": "A조: 배정 기관에서 생산·품질관리(GMP)와 시험·인증 현장 확인\nB조: T1 품질·제조, T2 연구개발, T3 규제·산업지원 직무 이해", "method": "실습 / 강의", "mode": "대면", "hrs": 3, "asg": "현장실습 기록지 / 직무 노트", "seg": "d3"}, {"n": 14, "topic": "GATE 07 오퍼: 클로징 세레모니", "goal": "창업경진대회·우수학생 시상, 오퍼 확인, 다음 항로 카드 작성", "method": "발표·행사", "mode": "대면", "hrs": 2, "asg": "다음 항로 카드", "seg": "d3"}, {"n": 15, "topic": "성찰과 다음 항로", "goal": "성찰일지와 향후 학습계획서(마이크로디그리·다전공, ③, 방학 현장실습·인턴십) 작성", "method": "개인 활동", "mode": "온라인", "hrs": 4, "asg": "성찰일지(1.13.), 향후 학습계획서(1.15.)", "seg": "post"}], "evals": [{"name": "중간고사", "pct": 0, "note": ""}, {"name": "기말고사", "pct": 0, "note": ""}, {"name": "수시시험", "pct": 0, "note": ""}, {"name": "과제물", "pct": 50, "note": "사전과제 30%(GATE 01~04: 지역 메모·지원서류·직무과제) + 사후과제 20%(성찰일지·향후 학습계획서)"}, {"name": "실험실습보고서", "pct": 15, "note": "현장실습 기록지"}, {"name": "발표 및 토론", "pct": 0, "note": "모의면접은 박람회 미션에 포함"}, {"name": "출석", "pct": 15, "note": "현장 3일 출석, 목표직무 특강 3시간 출석"}, {"name": "연계프로그램", "pct": 20, "note": "채용박람회 미션 패스포트(GATE 06 면접전형)"}, {"name": "기타", "pct": 0, "note": ""}], "evalLead": "P/F로 평가하며(등급제 여부 협의 중), 현장 3일 전 일정 참여와 사전과제(GATE 01~04)·사후과제 제출은 Pass의 필수 요건입니다.", "book": ["교재", "강의 자료 제공(리크루트 라인 영상·모의 채용공고·직무과제, 미션 패스포트, 현장실습 기록지 양식)", "사업단", "기타"], "notes": ["수강신청은 2026.12.2.(수)까지이며, 소속 대학 기준에 따라 계절학기 수강료가 발생할 수 있습니다. 프로그램 참가비는 없고 숙박·식사·교통을 지원합니다(안).", "사전과제(GATE 01~04)는 계절학기가 시작되는 12.21.(월)부터 리크루트 라인에서 열립니다.", "현장 일정은 2027.1.6.(수) 10:00 ~ 1.8.(금) 17:00 소노벨 천안 2박 3일이며, 전 일정 숙박을 원칙으로 합니다.", "2·3일차는 A·B조로 나뉘어 목표직무 특강(T1~T3)과 현장실습을 서로 바꿔 수강합니다. 현장실습 기관(종근당 천안공장·다산제약(아산)·KTR 세종)은 사전 배정합니다.", "사전과제·채용박람회·세레모니는 AI의료기기 전공과 합동, 목표직무 특강과 현장실습은 전공별로 운영합니다.", "현장실습 기관의 복장·촬영 규정을 따르며, 생산·시험 구역은 허가된 곳만 출입합니다.", "이력서·자기소개서를 기업에 전달(인턴십 지원 풀)하는 것은 학생이 따로 동의한 경우에만 진행합니다.", "오퍼는 앵커기업의 인턴십·현장실습 관심 표시로 채용 확정이 아니며, 성적과 무관합니다."]}, {"key": "device", "name": "AI의료기기워케이션챌린지②", "en": "BioWorkation Challenge II: AI Medical Device", "major": "AI의료기기", "info": [["교과목명 Course Title", "AI의료기기워케이션챌린지②", "학점 Credits", "2"], ["교과목 코드 Course Code", "(부여 예정)", "이수영역", "전공선택(AI의료기기, 공통·중급)"], ["주수강대상", "5개 참여대학 학부생\n(① 이수자 우선)", "언어 Language", "한국어"], ["강의형태", "강의, 실습, 현장실습, 상담·모의면접", "강의실", "소노벨 천안, 현장실습 기관\n(온라인: 리크루트 라인)"], ["시간구분", "이론(9) 실험(0) 실습(21) 실기(0) 설계(0)", "사이버강의", "웹보조수업\n(사전·사후 온라인 11시간)"], ["강의유형", "블렌디드\n(사전 온라인 + 2박 3일 + 사후 온라인)", "DURE수업", "지산학연계"], ["원격수업미리보기", "사전 7시간(리크루트 라인: 지역 GATE 영상 6편·공고 지원·서류·직무과제), 사후 4시간(성찰일지·향후 학습계획서)"]], "summary": {"overview": "본 교과목은 AI첨단바이오 초광역 성장엔진 사업의 동계 계절학기 공통교과로, 학생이 의료기기 앵커기업의 채용 절차(공고 지원 → 서류 → 직무과제 → 면접 → 오퍼)를 직접 거쳐 보는 2학점 블렌디드 교과이다. 사전에는 온라인 '리크루트 라인'에서 경기·충남·대구 지역과 앵커기업을 이해하고 지원서류와 직무과제를 준비하며, 2027년 1월 6일(수)~8일(금) 소노벨 천안 2박 3일 동안 상시 채용박람회, 목표직무 특강(T4 품질·제조, T5 연구개발, T6 규제·산업지원), 의료기기 현장실습을 수행한다. 사후에는 성찰일지와 향후 학습계획서로 다음 이수 경로를 설계한다.", "linked": "선수: AI의료기기워케이션챌린지①(권장) / 후속: 워케이션챌린지③, 직무 마이크로디그리(품질·제조, 연구개발, 규제·산업지원), KTR 방학 현장실습, 현장·연구연계(방학 4~8주)", "goals": ["경기·충남·대구 지역과 의료기기 앵커기업(에스디바이오센서·메가젠임플란트·세신정밀)의 사업과 입지를 설명할 수 있다", "의료기기 품질·제조, 연구개발, 규제·산업지원 직무의 업무와 요구역량을 구분할 수 있다", "지원 공고에 맞춰 이력서와 자기소개서를 작성할 수 있다", "직무 현장 미션을 해결하고, 면접에서 자신의 역량을 근거와 함께 설명할 수 있다", "목표직무에 따라 마이크로디그리·현장실습·인턴십을 잇는 향후 학습계획을 수립할 수 있다"], "effect": "인사담당자 피드백을 받은 이력서·자기소개서, 직무과제, 미션 패스포트, 현장실습 기록지, 향후 학습계획서를 산출하며, 인턴십 지원 풀(동의자)과 다음 학기 이수 계획의 근거 자료로 활용"}, "weeks": [{"n": 1, "topic": "수강 OT·리크루트 라인 탑승", "goal": "교과 구조와 이수 요건 이해, 탑승권(프로필)·STAR 유형 등록", "method": "강의", "mode": "온라인", "hrs": 1, "asg": "탑승권(프로필) 등록", "seg": "pre"}, {"n": 2, "topic": "GATE 01 지역탐사: 지역 GATE 영상", "goal": "경기·충남·대구의 지역 이야기와 전략산업·바이오, 앵커기업 입지 이해", "method": "강의", "mode": "온라인 VOD", "hrs": 2, "asg": "영상 6편 시청, GATE KEY 메모 3개", "seg": "pre"}, {"n": 3, "topic": "GATE 02 공고지원", "goal": "의료기기 앵커기업 모의 채용공고 분석, 지원 직무 선택(최대 3곳)", "method": "실습", "mode": "온라인", "hrs": 1, "asg": "지원 공고 1~3곳", "seg": "pre"}, {"n": 4, "topic": "GATE 03 서류전형", "goal": "지원 공고에 맞춘 이력서·자기소개서 작성", "method": "실습", "mode": "온라인", "hrs": 2, "asg": "이력서 1장, 공고별 자기소개서", "seg": "pre"}, {"n": 5, "topic": "GATE 04 직무과제", "goal": "지원 직무의 10분 현장 미션 해결, 1분 자기소개·예상 질문 답변 준비", "method": "실습", "mode": "온라인", "hrs": 1, "asg": "직무과제, 1분 자기소개", "seg": "pre"}, {"n": 6, "topic": "등록·여는 특강", "goal": "2박 3일 일정과 이수 요건 확인, 바이오 산업과 커리어 시야 넓히기", "method": "강의", "mode": "대면", "hrs": 2, "asg": "휴대폰(부스 QR), 필기구", "seg": "d1"}, {"n": 7, "topic": "채용박람회 부스 탐색·오프닝 세레모니", "goal": "앵커기업·기관 8개 부스 첫 방문, 입단 선서와 미션 패스포트 수령", "method": "실습", "mode": "대면", "hrs": 2.5, "asg": "미션 패스포트", "seg": "d1"}, {"n": 8, "topic": "특별강연(박태웅 의장)", "goal": "AI 전환기 산업과 일의 변화 이해(주제 협의 중)", "method": "강의", "mode": "대면", "hrs": 1, "asg": "—", "seg": "d1"}, {"n": 9, "topic": "채용박람회 투어 ①", "goal": "조별 순번으로 부스 미션 수행: 기업 브리핑·인사담당자 인터뷰", "method": "실습", "mode": "대면", "hrs": 1.5, "asg": "미션 ①·②", "seg": "d2"}, {"n": 10, "topic": "목표직무 특강(A조) / 현장실습(B조)", "goal": "A조: T4 품질·제조, T5 연구개발, T6 규제·산업지원 직무 이해\nB조: 배정 기관에서 의료 현장·AX센터와 시험·인증 현장 확인", "method": "강의 / 실습", "mode": "대면", "hrs": 3, "asg": "직무 노트 / 현장실습 기록지", "seg": "d2"}, {"n": 11, "topic": "GATE 06 면접전형: 1:1 상담·모의면접", "goal": "서류 피드백, 예상 질문 기반 모의면접, 인턴십 상담", "method": "실습", "mode": "대면·예약제", "hrs": 2.5, "asg": "미션 ③~⑤, 이력서·자기소개서 출력본", "seg": "d2"}, {"n": 12, "topic": "채용박람회 투어 ②", "goal": "남은 부스 미션을 마치고 패스포트 완료 기준 충족", "method": "실습", "mode": "대면", "hrs": 1.5, "asg": "미션 패스포트 완료", "seg": "d3"}, {"n": 13, "topic": "현장실습(A조) / 목표직무 특강(B조)", "goal": "A조: 배정 기관에서 의료 현장·AX센터와 시험·인증 현장 확인\nB조: T4 품질·제조, T5 연구개발, T6 규제·산업지원 직무 이해", "method": "실습 / 강의", "mode": "대면", "hrs": 3, "asg": "현장실습 기록지 / 직무 노트", "seg": "d3"}, {"n": 14, "topic": "GATE 07 오퍼: 클로징 세레모니", "goal": "창업경진대회·우수학생 시상, 오퍼 확인, 다음 항로 카드 작성", "method": "발표·행사", "mode": "대면", "hrs": 2, "asg": "다음 항로 카드", "seg": "d3"}, {"n": 15, "topic": "성찰과 다음 항로", "goal": "성찰일지와 향후 학습계획서(마이크로디그리·다전공, ③, 방학 현장실습·인턴십) 작성", "method": "개인 활동", "mode": "온라인", "hrs": 4, "asg": "성찰일지(1.13.), 향후 학습계획서(1.15.)", "seg": "post"}], "evals": [{"name": "중간고사", "pct": 0, "note": ""}, {"name": "기말고사", "pct": 0, "note": ""}, {"name": "수시시험", "pct": 0, "note": ""}, {"name": "과제물", "pct": 50, "note": "사전과제 30%(GATE 01~04: 지역 메모·지원서류·직무과제) + 사후과제 20%(성찰일지·향후 학습계획서)"}, {"name": "실험실습보고서", "pct": 15, "note": "현장실습 기록지"}, {"name": "발표 및 토론", "pct": 0, "note": "모의면접은 박람회 미션에 포함"}, {"name": "출석", "pct": 15, "note": "현장 3일 출석, 목표직무 특강 3시간 출석"}, {"name": "연계프로그램", "pct": 20, "note": "채용박람회 미션 패스포트(GATE 06 면접전형)"}, {"name": "기타", "pct": 0, "note": ""}], "evalLead": "P/F로 평가하며(등급제 여부 협의 중), 현장 3일 전 일정 참여와 사전과제(GATE 01~04)·사후과제 제출은 Pass의 필수 요건입니다.", "book": ["교재", "강의 자료 제공(리크루트 라인 영상·모의 채용공고·직무과제, 미션 패스포트, 현장실습 기록지 양식)", "사업단", "기타"], "notes": ["수강신청은 2026.12.2.(수)까지이며, 소속 대학 기준에 따라 계절학기 수강료가 발생할 수 있습니다. 프로그램 참가비는 없고 숙박·식사·교통을 지원합니다(안).", "사전과제(GATE 01~04)는 계절학기가 시작되는 12.21.(월)부터 리크루트 라인에서 열립니다.", "현장 일정은 2027.1.6.(수) 10:00 ~ 1.8.(금) 17:00 소노벨 천안 2박 3일이며, 전 일정 숙박을 원칙으로 합니다.", "2·3일차는 A·B조로 나뉘어 목표직무 특강(T4~T6)과 현장실습을 서로 바꿔 수강합니다. 현장실습 기관(단국대학교병원·KTR 세종)은 사전 배정합니다.", "사전과제·채용박람회·세레모니는 AI제약바이오 전공과 합동, 목표직무 특강과 현장실습은 전공별로 운영합니다.", "현장실습 기관의 복장·촬영 규정을 따르며, 생산·시험 구역은 허가된 곳만 출입합니다.", "이력서·자기소개서를 기업에 전달(인턴십 지원 풀)하는 것은 학생이 따로 동의한 경우에만 진행합니다.", "오퍼는 앵커기업의 인턴십·현장실습 관심 표시로 채용 확정이 아니며, 성적과 무관합니다."]}]};/*SYL:END*/
 
 const STATIONS = [
   { id: 'explore', code: '01', en: 'STAR MAP', name: '지역탐사', due: '~12.23', dueL: '12.23(수)까지', what: '경기·충남·대구 세 지역 GATE의 영상 6편을 보고 앵커기업 공고를 엽니다' },
@@ -803,6 +941,13 @@ const resumeOk = () => { const r = S.resume; return len(r.exp[0].what) && len(r.
 const resultOpen = () => S.demo || now() >= Date.parse(CONFIG.RESULT_OPEN) || !!myRes();
 const fairOpen = () => S.demo || now() >= Date.parse(CONFIG.FAIR_OPEN);
 const offerOpen = () => S.demo || now() >= Date.parse(CONFIG.OFFER_OPEN);
+const learnOpen = () => S.demo || now() >= Date.parse(CONFIG.LEARN_OPEN);
+const applyOpen = () => now() <= Date.parse(CONFIG.APPLY_CLOSE);
+const dLeft = t => Math.round((kstDay(Date.parse(t)) - kstDay(now())) / 864e5);
+const kstToday = () => new Date(Date.now() + 9 * 36e5).toISOString().slice(0, 10);
+const COURSE_NAME = { pharma: 'AI제약바이오워케이션챌린지②', device: 'AI의료기기워케이션챌린지②' };
+const courseOf = p => (p && p.course) || ((p && p.track && TRACKS[p.track] && TRACKS[p.track][0] === '의료기기') ? 'device' : 'pharma');
+const LEARN_LOCK = '학습은 계절학기가 시작되는 12.21(월)부터 열려요. 지금은 수강신청과 강의계획서 확인만 할 수 있어요.';
 function myRes() {
   if (S.demo) { const a = S.apps; return { invite: a.length > 1 ? a.slice(0, -1) : a.slice(), open: a.length > 1 ? a.slice(-1) : [], offer: a.length ? [PMAP[a[0]].co] : [] }; }
   if (RESULTS && S.profile && RESULTS.applicants) return RESULTS.applicants[S.profile.id] || null;
@@ -826,13 +971,14 @@ const DONE = {
 };
 function access(id) {
   if (!S.profile) return false;
+  if (!learnOpen()) return false;
   if (id === 'explore' || id === 'jobs') return true;
   if (id === 'docs' || id === 'task' || id === 'result') return S.apps.length > 0;
   if (id === 'fair') return fairOpen();
   if (id === 'offer') return offerOpen();
   return false;
 }
-function curIndex() { for (let i = 0; i < STATIONS.length; i++) { const s = STATIONS[i]; if (!DONE[s.id]() && access(s.id)) return i; } return STATIONS.length - 1; }
+function curIndex() { if (!learnOpen()) return 0; for (let i = 0; i < STATIONS.length; i++) { const s = STATIONS[i]; if (!DONE[s.id]() && access(s.id)) return i; } return STATIONS.length - 1; }
 function status(i) { const s = STATIONS[i]; if (S.profile && DONE[s.id]()) return 'done'; if (!access(s.id)) return 'lock'; return i === curIndex() ? 'now' : 'open'; }
 const LOCKMSG = { docs: 'GATE 02 공고지원에서 한 곳 이상 지원하면 열려요.', task: 'GATE 02 공고지원에서 한 곳 이상 지원하면 열려요.', result: 'GATE 02 공고지원에서 한 곳 이상 지원하면 열려요.', fair: '1.6(수) 13:00 소노벨 채용박람회가 시작되면 열려요.', offer: '1.8(금) 15:00 클로징 세레모니에서 열려요.' };
 
@@ -841,11 +987,13 @@ let VIEW = 'board';
 const VIEWS = STATIONS.map(s => s.id);
 function pickView() {
   const h = location.hash.slice(1);
+  if (h === 'syllabus') return 'syllabus';
   if (!S.profile || h === 'home') return 'board';
   if (VIEWS.includes(h)) return h;
+  if (!learnOpen()) return 'board';
   return STATIONS[curIndex()].id;
 }
-function go(id) { if (!S.profile) id = 'board'; if (id !== 'board') UI.editTicket = false; VIEW = id; UI.pin = null; const hh = id === 'board' ? 'home' : id; if ((VIEWS.includes(id) || id === 'board') && location.hash.slice(1) !== hh) { try { history.replaceState(null, '', '#' + hh); } catch (e) { location.hash = hh; } } render(); window.scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' }); }
+function go(id) { if (!S.profile && id !== 'syllabus') id = 'board'; if (id !== 'board') UI.editTicket = false; VIEW = id; UI.pin = null; const hh = id === 'board' ? 'home' : id; if ((VIEWS.includes(id) || id === 'board' || id === 'syllabus') && location.hash.slice(1) !== hh) { try { history.replaceState(null, '', '#' + hh); } catch (e) { location.hash = hh; } } render(); window.scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' }); }
 
 function renderLine() {
   const st = STATIONS.map((s, i) => status(i));
@@ -883,20 +1031,26 @@ function vBoard() {
   const nx = has ? STATIONS[curIndex()] : null, allDone = lit === 7;
   const pick = has ? p.star : UI.star;
   const stl = { done: '<span class="chip ok gs">통과</span>', now: '<span class="chip now gs">진행 중</span>', open: '<span class="chip gs">열림</span>', lock: '<span class="chip lock gs">잠김</span>' };
+  const wait = has && !learnOpen(), dl = dLeft(CONFIG.LEARN_OPEN);
   return `<div class="hero">
     <div class="hero-img"><img src="img/campus-hero.webp" alt="STARGATE 캠퍼스의 게이트 앞에 선 다섯 크루" decoding="async"><span class="hero-tag">STARGATE CAMPUS · 5 CREW</span></div>
     <div class="hero-t">
       <p class="hero-k">ULTRA ANCHOR · STARGATE RECRUIT LINE</p>
-      ${has ? `<h1>${esc(p.name)} 크루,<br>${allDone ? '<em>7개 게이트</em>를 모두 통과했어요' : `다음은 <em>GATE ${nx.code} ${esc(nx.name)}</em>예요`}</h1>
+      ${wait ? `<h1>${esc(p.name)} 크루,<br><em>수강신청</em>이 ${FORM || p.sample ? '접수됐어요' : '저장됐어요'}</h1>
+      <p>${esc(COURSE_NAME[courseOf(p)])} · 2학점. 학습은 계절학기가 시작되는 12.21(월)에 GATE 01 지역탐사부터 열려요. 그 전까지 강의계획서를 살펴보고, 소속 대학의 계절학기 수강료 안내를 챙겨 주세요.</p>
+      <div class="wait"><span><b>GATE OPEN D-${dl}</b> · 12.21(월) 00:00</span><span>수강신청 ${applyOpen() ? '12.2(수)까지 정보를 고칠 수 있어요' : '기간이 끝났어요(12.2 마감)'}${FORM || p.sample ? '' : ' · 시안: 아직 사업단으로 전송되지 않고 이 브라우저에만 저장돼요'}</span></div>
+      <div class="row hero-cta"><button class="btn cta" type="button" data-go="syllabus">강의계획서 보기 ${ICON.arrow}</button><button class="btn ghost-d" type="button" data-act="edit-ticket">수강신청 정보 고치기</button></div>`
+      : has ? `<h1>${esc(p.name)} 크루,<br>${allDone ? '<em>7개 게이트</em>를 모두 통과했어요' : `다음은 <em>GATE ${nx.code} ${esc(nx.name)}</em>예요`}</h1>
       <p>${allDone ? '수고 많았어요. 다음 항로 카드를 사후과제 학습계획서로 다듬어 주세요.' : `${esc(nx.what)} · ${esc(nx.dueL)}`}</p>
       <div class="row hero-cta"><button class="btn cta" type="button" data-go="${nx.id}">GATE ${nx.code} ${allDone ? '다시 보기' : '이어서 하기'} ${ICON.arrow}</button><button class="btn ghost-d" type="button" data-act="edit-ticket">탑승권 정보 고치기</button></div>`
       : `<h1>7개의 게이트 너머,<br><em>앵커기업</em>이 기다립니다</h1>
       <p>실제 채용 절차를 일곱 개의 게이트로 옮겨 놓았어요. 경기·충남·대구 세 지역 GATE를 열어 앵커기업 공고를 확인하고, 모의 채용공고에 지원하고, 서류와 직무 미션을 거쳐 1월 6일 소노벨 채용박람회에서 인사담당자를 만납니다. 마지막 게이트에서는 인턴십·현장실습으로 이어지는 오퍼를 받을 수 있어요.</p>
-      <div class="row hero-cta"><button class="btn cta" type="button" data-act="to-form">탑승권 발급하기 ${ICON.arrow}</button><button class="btn ghost-d" type="button" data-act="sample">예시 크루로 둘러보기</button></div>`}
-      <div class="meta"><span>12.21 GATE OPEN</span><span>1.6–8 SONO BELLE CHEONAN</span><span>${lit}/7 GATES LIT</span></div>
+      <div class="row hero-cta"><button class="btn cta" type="button" data-act="to-form">${applyOpen() ? '수강신청하기' : '탑승권 발급하기'} ${ICON.arrow}</button><button class="btn ghost-d" type="button" data-go="syllabus">강의계획서 보기</button><button class="btn ghost-d" type="button" data-act="sample">예시 크루로 둘러보기</button></div>`}
+      <div class="meta">${applyOpen() ? '<span>수강신청 ~12.2</span>' : ''}<span>12.21 GATE OPEN</span><span>1.6–8 SONO BELLE CHEONAN</span><span>${lit}/7 GATES LIT</span></div>
     </div>
   </div>
-  <div class="sec"><h2>STARGATE 7개 게이트${has ? ' <small>누르면 그 게이트로 이동해요</small>' : ''}</h2><ol class="gates">${STATIONS.map((s, i) => has
+  ${sylCard()}
+  <div class="sec"><h2>STARGATE 7개 게이트${has ? (learnOpen() ? ' <small>누르면 그 게이트로 이동해요</small>' : ' <small>12.21(월) 계절학기가 시작되면 열려요</small>') : ''}</h2><ol class="gates">${STATIONS.map((s, i) => has
     ? `<li><button class="gi ${st[i]}" type="button" data-go="${s.id}"><span class="gn">${st[i] === 'done' ? ICON.check : s.code}</span><b>${esc(s.name)}<small>${s.en}</small></b><span>${esc(s.what)}</span>${stl[st[i]]}</button></li>`
     : `<li><div class="gi"><span class="gn">${s.code}</span><b>${esc(s.name)}<small>${s.en}</small></b><span>${esc(s.what)}</span></div></li>`).join('')}</ol></div>
   <div class="sec"><h2>너는 어떤 STAR 크루? <small>①에서 진단한 유형을 고르면 그 크루가 탑승권에 타고, 박람회 도킹·출항 장면에 함께해요</small></h2>
@@ -911,7 +1065,7 @@ function vBoard() {
 }
 function boardForm(p, has) {
   return `<form class="box sec" id="boardForm" novalidate>
-    ${has ? '' : '<h2>크루 탑승권 발급</h2>'}
+    ${has ? '' : `<h2>${applyOpen() ? '수강신청 · 크루 탑승권 발급' : '크루 탑승권 발급'}</h2>${applyOpen() ? `<p class="note">${CONFIG.APPLY_CLOSE.slice(5, 7) * 1}월 ${CONFIG.APPLY_CLOSE.slice(8, 10) * 1}일까지 받아요. 탑승권을 발급하면 수강신청이 접수되고, 학습은 12.21(월)부터 열려요.</p>` : '<p class="msg warn">수강신청은 12.2(수)에 마감됐어요. 기간 안에 신청한 학생이 다른 기기에서 다시 들어올 때 같은 정보로 발급해 주세요.</p>'}`}
     <div class="fgrid">
       <label class="f"><span>이름</span><input id="b-name" name="name" value="${esc(p.name || '')}" autocomplete="name" required></label>
       <label class="f"><span>소속 대학</span><select id="b-univ" name="univ" required><option value="">선택</option>${UNIVS.map(u => `<option${p.univ === u ? ' selected' : ''}>${u}</option>`).join('')}</select></label>
@@ -919,13 +1073,99 @@ function boardForm(p, has) {
       <label class="f"><span>전공</span><input id="b-major" name="major" value="${esc(p.major || '')}" required></label>
       <label class="f"><span>학년</span><select id="b-grade" name="grade" required><option value="">선택</option>${['1학년', '2학년', '3학년', '4학년 이상'].map(g => `<option${p.grade === g ? ' selected' : ''}>${g}</option>`).join('')}</select></label>
       <label class="f"><span>목표 트랙 <em>(①에서 정한 트랙)</em></span><select id="b-track" name="track" required><option value="">선택</option>${Object.keys(TRACKS).map(t => `<option value="${t}"${p.track === t ? ' selected' : ''}>${tname(t)}</option>`).join('')}</select></label>
+      <label class="f"><span>수강 교과목 <em>(2학점)</em></span><select id="b-course" name="course" required><option value="">선택</option>${Object.entries(COURSE_NAME).map(([k, n]) => `<option value="${k}"${(p.course || (has ? courseOf(p) : '')) === k ? ' selected' : ''}>${n}</option>`).join('')}</select></label>
       <label class="f"><span>나의 STAR 유형 <em>(①의 진단 결과 · 선택)</em></span><select id="b-star" name="star"><option value="">아직 몰라요</option>${Object.entries(STARS).map(([k, v]) => `<option value="${k}"${p.star === k ? ' selected' : ''}>${v.en} · ${v.ko}</option>`).join('')}</select></label>
     </div>
-    <label class="chk"><input type="checkbox" id="b-consent" name="consent"${p.consent ? ' checked' : ''}><span>과제 제출과 학점 처리를 위해 이름·대학·학번·전공·학년을 사업단이 수집·이용하는 데 동의합니다. (보관: 학기 종료 후 1년, 안)</span></label>
+    <label class="chk"><input type="checkbox" id="b-fee" name="fee"${p.fee || (has && p.consent) ? ' checked' : ''}><span>소속 대학에 따라 <b>계절학기 수강료</b>가 발생할 수 있다는 안내를 확인했어요. <button class="lnk" type="button" data-act="notice">안내 보기</button></span></label>
+    <label class="chk"><input type="checkbox" id="b-consent" name="consent"${p.consent ? ' checked' : ''}><span>수강신청 접수, 과제 제출과 학점 처리를 위해 이름·대학·학번·전공·학년을 사업단이 수집·이용하는 데 동의합니다. (보관: 학기 종료 후 1년, 안) <button class="lnk" type="button" data-act="privacy">자세히</button></span></label>
     <p class="msg warn" id="boardMsg" hidden></p>
-    <div class="row"><button class="btn" type="submit">${has ? '탑승권 고치기' : '탑승권 발급받기'} ${ICON.arrow}</button></div>
+    <div class="row"><button class="btn" type="submit">${has ? '탑승권 고치기' : applyOpen() ? '수강신청하기' : '탑승권 발급받기'} ${ICON.arrow}</button></div>
     <p class="note">${has ? 'STAR 유형은 위의 \'너는 어떤 STAR 크루?\' 카드에서도 바로 바꿀 수 있어요.' : '예시 크루로 둘러보면 시연 모드가 켜지고, 모든 게이트가 예시 내용으로 채워집니다. 실제 과제를 시작할 때는 탑승권 아래의 \'처음부터 다시\'를 누르세요.'}</p>
   </form>`;
+}
+
+/* 강의계획서 */
+const br = t => esc(t).replace(/\n/g, '<br>');
+const SYL_FILE = () => (SYL ? `<a class="btn" href="${esc(SYL.file)}" download="${esc(SYL.fileName)}">HWPX 내려받기 ${ICON.arrow}</a>` : '');
+function sylCard() {
+  return `<div class="box sylcard"><div><span class="kick">SYLLABUS · 2026 WINTER</span><h3>워케이션챌린지② 강의계획서 <small class="note">2학점 · 30시간</small></h3><p class="note">사전 온라인 7시간(GATE 01~04) + 소노벨 천안 2박 3일 19시간 + 사후 4시간. AI제약바이오·AI의료기기 두 교과목으로 개설돼요.</p></div><div class="row"><button class="btn ghost" type="button" data-go="syllabus">강의계획서 보기</button>${SYL_FILE()}</div></div>`;
+}
+const SEG = { pre: ['사전 온라인', '12.21(월)~12.31(목) · 리크루트 라인 GATE 01~04'], d1: ['1일차', '1.6(수) · 소노벨 천안'], d2: ['2일차', '1.7(목) · 소노벨 천안 · 현장실습 기관'], d3: ['3일차', '1.8(금) · 소노벨 천안 · 현장실습 기관'], post: ['사후 온라인', '1.9(토)~1.15(금)'] };
+const EVC = [['#1B2452', '#fff'], ['#1F5CC4', '#fff'], ['#27B9CF', '#0B1030'], ['#E59A2F', '#0B1030']];
+function vSyllabus() {
+  if (!SYL) return '<p class="empty">강의계획서를 불러오지 못했어요.</p>';
+  const key = UI.syl || courseOf(S.profile), co = SYL.courses.find(c => c.key === key) || SYL.courses[0];
+  const h = s => co.weeks.filter(w => s.includes(w.seg)).reduce((n, w) => n + w.hrs, 0);
+  const parts = [['사전 온라인', h(['pre']), '#1F5CC4', '#fff'], ['현장 2박 3일', h(['d1', 'd2', 'd3']), '#1B2452', '#fff'], ['사후', h(['post']), '#27B9CF', '#0B1030']];
+  const ev = co.evals.filter(e => e.pct > 0);
+  return `<header class="ph"><span class="gbadge" aria-hidden="true">SY</span><div class="ph-t"><span class="kick">SYLLABUS · ${esc(SYL.term)}</span><h1>강의계획서</h1></div><div class="meta"><span class="chip now">2학점 · 30시간</span><span>수강신청 ${esc(SYL.applyDue)}까지 · 학습 ${esc(SYL.learnOpen)}부터</span></div></header>
+  <div class="tabs" role="tablist" aria-label="교과목">${SYL.courses.map(c => `<button class="tab" type="button" role="tab" aria-selected="${c.key === co.key}" data-act="syltab" data-id="${c.key}">${esc(c.major)}</button>`).join('')}</div>
+  <div class="box syl-top"><div><span class="kick">${esc(co.en)}</span><h2>${esc(co.name)}</h2><p class="note">사전과제·채용박람회·세레모니는 두 교과목이 함께, 목표직무 특강과 현장실습은 교과목별로 운영해요.</p></div><div class="row">${SYL_FILE()}</div></div>
+  <div class="sec"><h2>교과목 기본정보 <small>Course Information</small></h2>
+    <dl class="syl-info">${co.info.map(r => r.length === 4 ? `<div><dt>${esc(r[0])}</dt><dd>${br(r[1])}</dd></div><div><dt>${esc(r[2])}</dt><dd>${br(r[3])}</dd></div>` : `<div class="wide"><dt>${esc(r[0])}</dt><dd>${br(r[1])}</dd></div>`).join('')}</dl>
+    <div class="hours" role="img" aria-label="${parts.map(p => `${p[0]} ${p[1]}시간`).join(', ')}">${parts.map(p => `<span style="flex:${p[1]};background:${p[2]};color:${p[3]}">${p[0]} ${p[1]}h</span>`).join('')}</div>
+  </div>
+  <div class="sec"><h2>교과목 설명 <small>Course Summary</small></h2>
+    <div class="box" style="display:grid;gap:12px"><p style="margin:0">${br(co.summary.overview)}</p>
+      <div><b>역량기반 학습목표</b><ol class="goals">${co.summary.goals.map(g => `<li>${esc(g)}</li>`).join('')}</ol></div>
+      <p class="note" style="color:var(--ink)"><b>학습효과</b> ${esc(co.summary.effect)}</p>
+      <p class="note"><b>연계교과목</b> ${esc(co.summary.linked)}</p></div>
+  </div>
+  <div class="sec"><h2>차시별 계획 <small>15차시 · 30시간</small></h2>
+    ${Object.keys(SEG).map(sg => { const ws = co.weeks.filter(w => w.seg === sg); return `<div class="wseg"><div class="wseg-h"><b>${SEG[sg][0]}</b><span>${esc(SEG[sg][1])} · ${ws.reduce((n, w) => n + w.hrs, 0)}시간</span></div><ol class="wk">${ws.map(w => `<li><span class="n">${w.n}</span><span class="t">${esc(w.topic)}</span><span class="m chip">${esc(w.method)} · ${w.hrs}시간</span><span class="g">${esc(w.goal)}</span><span class="a"><b>과제·준비물</b>${esc(w.asg)}</span></li>`).join('')}</ol></div>`; }).join('')}
+  </div>
+  <div class="sec"><h2>평가방법</h2>
+    <p class="note" style="color:var(--ink)">${esc(co.evalLead)}</p>
+    <div class="evalbar" role="img" aria-label="${ev.map(e => `${e.name} ${e.pct}%`).join(', ')}">${ev.map((e, i) => `<span style="flex:${e.pct};background:${EVC[i % 4][0]};color:${EVC[i % 4][1]}">${e.pct}%</span>`).join('')}</div>
+    <ul class="evl">${ev.map((e, i) => `<li><i style="background:${EVC[i % 4][0]}"></i><span>${esc(e.name)}</span><b>${e.pct}%</b><span>${esc(e.note)}</span></li>`).join('')}</ul>
+  </div>
+  <div class="sec"><h2>교재·참고사항</h2>
+    <div class="box" style="display:grid;gap:10px"><p class="note" style="color:var(--ink)"><b>교재</b> ${esc(co.book[1])}</p>
+    <ul class="syl-notes">${co.notes.map(n => `<li>${esc(n)}</li>`).join('')}</ul></div>
+    <p class="note">강의계획서(안)은 학사 협의에 따라 바뀔 수 있어요. 바뀌면 이 페이지와 내려받는 파일에 함께 반영합니다.</p>
+  </div>`;
+}
+
+/* 수강신청 안내 팝업 · 개인정보 안내 */
+const NOTICE_KEY = 'ua-recruit-notice-hide';
+const X_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+function openNotice() {
+  const m = $('#modal'), open = applyOpen(), da = dLeft(CONFIG.APPLY_CLOSE), dl = dLeft(CONFIG.LEARN_OPEN), p = S.profile;
+  m.hidden = false;
+  m.innerHTML = `<div class="modal-c pop notice" role="dialog" aria-modal="true" aria-labelledby="noticeT">
+    <div class="nt-band"><img src="img/c1-signal.webp" alt=""><span class="kick">WINTER SESSION · 2학점</span><h2 id="noticeT">${open ? '워케이션챌린지② 수강신청 안내' : '워케이션챌린지② 수강신청이 마감됐어요'}</h2><button class="nt-x" type="button" data-act="notice-close" aria-label="닫기">${X_SVG}</button></div>
+    <div class="nt-body">
+      <p class="nt-lead">AI제약바이오워케이션챌린지② · AI의료기기워케이션챌린지② <span class="note">(동계 계절학기, 각 2학점)</span></p>
+      <dl class="nt">
+        <dt>수강신청</dt><dd><b>12월 2일(수)까지</b>${open ? `<span class="chip now">${da > 0 ? 'D-' + da : '오늘 마감'}</span>` : '<span class="chip lock">마감</span>'}<br>${p && !p.sample ? '수강신청서를 냈어요. 12.2까지 홈의 \'수강신청 정보 고치기\'에서 고칠 수 있어요.' : '이 페이지에서 탑승권을 발급하면 수강신청이 접수돼요.'}</dd>
+        <dt>수강료</dt><dd class="fee">소속 대학에 따라 <b>계절학기 수강료가 발생할 수 있어요.</b> 금액과 납부 방법은 대학별 기준을 따릅니다. 프로그램 참가비는 없고, 숙박·식사·교통은 사업단이 지원할 예정이에요.</dd>
+        <dt>학습 시작</dt><dd><b>12월 21일(월)</b> 계절학기 시작과 함께 GATE 01 지역탐사가 열려요${learnOpen() ? '' : ` <span class="chip">D-${dl}</span>`}. 그 전에는 수강신청과 강의계획서 확인만 할 수 있어요.</dd>
+        <dt>현장</dt><dd>2027.1.6(수)~8(금) 소노벨 천안 2박 3일 · 채용박람회·목표직무 특강·현장실습</dd>
+      </dl>
+      <div class="row"><button class="btn ghost" type="button" data-act="notice-syl">강의계획서 보기</button>${!p && open ? `<button class="btn" type="button" data-act="notice-apply">수강신청하기 ${ICON.arrow}</button>` : `<button class="btn" type="button" data-act="notice-close">확인</button>`}</div>
+      <div class="nt-foot"><label class="chk"><input type="checkbox" id="noticeHide"><span>오늘 하루 보지 않기</span></label><span class="note">문의 ai.bio.engine@gmail.com</span></div>
+    </div></div>`;
+  const b = m.querySelector('.nt-x'); if (b) b.focus({ preventScroll: true });
+}
+function closeNotice() {
+  const hb = $('#noticeHide');
+  if (hb && hb.checked) { try { localStorage.setItem(NOTICE_KEY, kstToday()); } catch (e) { /* 저장 불가 */ } }
+  $('#modal').hidden = true; $('#modal').innerHTML = '';
+}
+function openPrivacy() {
+  const m = $('#modal'); m.hidden = false;
+  m.innerHTML = `<div class="modal-c pop" role="dialog" aria-modal="true" aria-labelledby="pvT"><h2 id="pvT">개인정보 수집·이용 안내</h2>
+    <p class="note" style="color:var(--ink)">초광역 성장엔진 인재육성사업단은 워케이션챌린지② 수강신청과 과제 운영을 위해 아래와 같이 개인정보를 수집·이용합니다.</p>
+    <dl class="pv">
+      <dt>목적</dt><dd>수강신청 접수, 과제 제출 확인과 학점 처리, 일정 안내</dd>
+      <dt>항목</dt><dd>이름, 소속 대학, 학번, 전공, 학년, 수강 교과목, 목표 트랙·STAR 유형, 과제 제출 내용</dd>
+      <dt>보유 기간</dt><dd>학기 종료 후 1년(안)</dd>
+      <dt>저장</dt><dd>Google 설문지·스프레드시트(사업단 계정)에 저장하며, 사업단 담당자만 확인합니다. 작성 중인 내용은 이 브라우저에만 저장돼요.</dd>
+      <dt>기업 전달</dt><dd>이력서·자기소개서를 앵커기업에 전달하는 것은 GATE 05에서 따로 동의한 경우에만 진행합니다.</dd>
+      <dt>동의 거부</dt><dd>동의하지 않을 수 있으며, 이 경우 수강신청과 과제 제출이 제한됩니다.</dd>
+      <dt>문의</dt><dd>ai.bio.engine@gmail.com</dd>
+    </dl>
+    <div class="row"><button class="btn" type="button" data-act="close-only">확인</button></div></div>`;
 }
 
 /* R1 지역탐사 */
@@ -1210,12 +1450,12 @@ function renderSide() {
   const sky = `<svg class="stars" aria-hidden="true" viewBox="0 0 320 520" preserveAspectRatio="xMidYMid slice" style="inset:0;width:100%;height:100%">${starsSvg(36, 11, 320, 520)}</svg>`;
   if (!p) { $('#side').innerHTML = `<div class="ticket">${sky}<div class="tk-h"><img src="${MARK}" alt=""><span>STARGATE BOARDING PASS</span></div><div class="tk-b"><span class="tk-id" style="color:var(--on-dark-muted)">UA27-····</span><span class="note" style="color:var(--on-dark-muted)">탑승권을 발급하면 크루 번호가 생겨요. 이 번호로 서류 결과와 박람회 미션이 기록됩니다.</span></div></div>`; return; }
   const ci = curIndex(), nx = STATIONS[ci], on = BADGES.filter(b => b.on()).length, rk = rank(x), star = p.star && STARS[p.star];
-  const SENT = [['S1', '지역탐사'], ['S2', '공고지원'], ['S3', '서류전형'], ['S4', '직무과제'], ['S5', '서류발표'], ['S6', '면접전형'], ['S7', '오퍼']];
+  const SENT = [['S0', '수강신청'], ['S1', '지역탐사'], ['S2', '공고지원'], ['S3', '서류전형'], ['S4', '직무과제'], ['S5', '서류발표'], ['S6', '면접전형'], ['S7', '오퍼']];
   $('#side').innerHTML = `<div class="ticket">${sky}
     <div class="tk-h"><img src="${MARK}" alt="ULTRA ANCHOR"><span>${p.sample ? 'SAMPLE CREW' : 'STARGATE BOARDING PASS'}</span></div>
     <div class="tk-b"><div class="tk-top"><div><span class="tk-id">${esc(p.id)}</span><span class="tk-name">${esc(p.name)}</span></div>${CREW_OF[p.star] ? `<button class="port" type="button" data-act="edit-crew" style="--cc:${CREWS[CREW_OF[p.star]].cc}" title="STAR 크루 바꾸기"><img src="${crewImg(CREW_OF[p.star], 'face')}" alt="${esc(STARS[p.star].en)} STAR 크루 ${esc(CREWS[CREW_OF[p.star]].ko)}"></button>` : `<button class="port none" type="button" data-act="edit-crew" title="STAR 크루 고르기">${ICON.star}</button>`}</div>
       ${star ? `<span class="tk-star">${ICON.star5}${esc(star.en)} STAR</span>` : '<span class="tk-star none">STAR 유형 미등록</span>'}
-      <dl class="tk-dl"><dt>소속</dt><dd>${esc(p.univ)} · ${esc(p.major)} ${esc(p.grade)}</dd><dt>목표 트랙</dt><dd>${esc(tname(p.track))}</dd><dt>지원</dt><dd>${S.apps.length ? S.apps.map(id => esc(CO[PMAP[id].co].name)).join(' · ') : '아직 없음'}</dd></dl>
+      <dl class="tk-dl"><dt>교과목</dt><dd>${esc(COURSE_NAME[courseOf(p)])}</dd><dt>소속</dt><dd>${esc(p.univ)} · ${esc(p.major)} ${esc(p.grade)}</dd><dt>목표 트랙</dt><dd>${esc(tname(p.track))}</dd><dt>지원</dt><dd>${S.apps.length ? S.apps.map(id => esc(CO[PMAP[id].co].name)).join(' · ') : '아직 없음'}</dd></dl>
       <div class="rank"><div class="rank-top"><b>${rk.en}</b><span>${esc(rk.ko)} · 별빛 ${x}</span></div><span class="xpbar"><i style="width:${Math.round(rk.pct)}%"></i></span><small>${rk.next ? `${esc(rk.nextName)}까지 별빛 ${rk.next}` : '최고 등급에 도착했어요'}</small></div>
     </div>
     <div class="perf"></div>
@@ -1223,23 +1463,23 @@ function renderSide() {
     <div class="stamps">${BADGES.map(b => `<span class="stamp${b.on() ? ' on' : ''}" style="${b.c ? `--c:${b.c}` : ''}">${ICON.star}<span>${b.t}</span></span>`).join('')}</div>
     <div class="tk-f"><span>GATE ${STATIONS.filter(s => DONE[s.id]()).length}/7 CLEAR</span><span>${S.demo ? '시연 모드' : (FORM ? '사업단 전송' : '시안 · 이 브라우저에만 저장')}</span></div>
   </div>
-  <div class="box nextc"><span class="nl">NEXT GATE</span><strong>GATE ${nx.code} ${esc(nx.name)}</strong><span class="note">${esc(nx.dueL)}</span>${VIEW !== nx.id ? `<button class="btn sm" type="button" data-go="${nx.id}">바로 가기 ${ICON.arrow}</button>` : ''}</div>
+  ${learnOpen() ? `<div class="box nextc"><span class="nl">NEXT GATE</span><strong>GATE ${nx.code} ${esc(nx.name)}</strong><span class="note">${esc(nx.dueL)}</span>${VIEW !== nx.id ? `<button class="btn sm" type="button" data-go="${nx.id}">바로 가기 ${ICON.arrow}</button>` : ''}</div>` : `<div class="box nextc"><span class="nl">GATE OPEN · D-${dLeft(CONFIG.LEARN_OPEN)}</span><strong>12.21(월) GATE 01 지역탐사</strong><span class="note">계절학기가 시작되면 열려요. 그 전에는 강의계획서를 살펴봐 주세요.</span>${VIEW !== 'syllabus' ? '<button class="btn sm" type="button" data-go="syllabus">강의계획서 보기</button>' : ''}</div>`}
   <div class="box"><span class="nl note" style="font-weight:700">보낸 기록</span><ul class="sent">${SENT.map(([k, n]) => `<li class="${S.sent[k] ? 'ok' : ''}"><span>${k} ${n}</span><span>${S.sent[k] ? esc(S.sent[k]) : '—'}</span></li>`).join('')}</ul></div>
   <div class="row"><button class="btn ghost sm" type="button" data-act="copy">기록 복사</button>${UI.resetAsk ? '<span class="note">모든 기록을 지울까요?</span><button class="btn sm" type="button" data-act="reset-yes">지우기</button><button class="btn ghost sm" type="button" data-act="reset-no">취소</button>' : '<button class="btn ghost sm" type="button" data-act="reset">처음부터 다시</button>'}</div>`;
 }
 
 function render() {
-  if (!S.profile) VIEW = 'board';
-  const dd = Math.round((kstDay(Date.parse(CONFIG.FAIR_DAY)) - kstDay(now())) / 864e5);
-  $('#dday').innerHTML = dd > 0 ? `소노벨 채용박람회 <b>D-${dd}</b>` : dd === 0 ? '<b>오늘</b> 소노벨 채용박람회' : '채용박람회 <b>종료</b>';
+  if (!S.profile && VIEW !== 'syllabus') VIEW = 'board';
+  const dd = Math.round((kstDay(Date.parse(CONFIG.FAIR_DAY)) - kstDay(now())) / 864e5), da = dLeft(CONFIG.APPLY_CLOSE), dl = dLeft(CONFIG.LEARN_OPEN);
+  $('#dday').innerHTML = applyOpen() ? `수강신청 마감 <b>${da > 0 ? 'D-' + da : 'D-DAY'}</b>` : !learnOpen() ? `학습 시작 <b>D-${dl}</b>` : dd > 0 ? `소노벨 채용박람회 <b>D-${dd}</b>` : dd === 0 ? '<b>오늘</b> 소노벨 채용박람회' : '채용박람회 <b>종료</b>';
   $('#demoBtn').setAttribute('aria-pressed', String(!!S.demo));
   if (VIEW === 'board') $('#homeBtn').setAttribute('aria-current', 'page'); else $('#homeBtn').removeAttribute('aria-current');
   $('#ribbon').hidden = !S.demo;
   renderLine();
   const sel = $('.st.sel'), ln = $('#line'); if (sel && ln && ln.scrollWidth > ln.clientWidth) ln.scrollLeft = Math.max(0, sel.offsetLeft - ln.clientWidth / 2 + sel.offsetWidth / 2);
-  const fn = { board: vBoard, explore: vExplore, jobs: vJobs, docs: vDocs, task: vTask, result: vResult, fair: vFair, offer: vOffer }[VIEW];
+  const fn = { board: vBoard, syllabus: vSyllabus, explore: vExplore, jobs: vJobs, docs: vDocs, task: vTask, result: vResult, fair: vFair, offer: vOffer }[VIEW];
   const i = VIEWS.indexOf(VIEW);
-  $('#panel').innerHTML = (i >= 0 && !access(VIEW)) ? `${head(VIEW)}<p class="empty">${ICON.lock} ${LOCKMSG[VIEW] || '앞 게이트를 먼저 지나 주세요.'}</p>` : fn();
+  $('#panel').innerHTML = (i >= 0 && !access(VIEW)) ? `${head(VIEW)}<p class="empty">${ICON.lock} ${learnOpen() ? (LOCKMSG[VIEW] || '앞 게이트를 먼저 지나 주세요.') : LEARN_LOCK}</p>${learnOpen() ? '' : '<div class="row"><button class="btn ghost sm" type="button" data-go="syllabus">강의계획서 보기</button><button class="btn ghost sm" type="button" data-go="board">홈으로</button></div>'}` : fn();
   renderSide();
 }
 
@@ -1247,24 +1487,41 @@ function render() {
 function genId() { const a = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; let s = ''; for (let i = 0; i < 4; i++) s += a[Math.floor(Math.random() * a.length)]; return 'UA27-' + s; }
 function showMsg(id, text) { const el = $('#' + id); if (!el) { toast(text); return; } el.textContent = text; el.hidden = !text; }
 
-document.addEventListener('submit', e => {
+document.addEventListener('submit', async e => {
   if (e.target.id !== 'boardForm') return;
   e.preventDefault();
   const fd = new FormData(e.target), v = k => String(fd.get(k) || '').trim();
-  const miss = ['name', 'univ', 'sid', 'major', 'grade', 'track'].filter(k => !v(k));
+  const miss = ['name', 'univ', 'sid', 'major', 'grade', 'track', 'course'].filter(k => !v(k));
   if (miss.length) return showMsg('boardMsg', '빈 칸을 모두 채워 주세요.');
-  if (!fd.get('consent')) return showMsg('boardMsg', '개인정보 수집·이용에 동의해야 과제를 제출할 수 있어요.');
-  const old = S.profile || {};
-  S.profile = { id: old.id || genId(), name: v('name'), univ: v('univ'), sid: v('sid'), major: v('major'), grade: v('grade'), track: v('track'), star: v('star'), consent: true, sample: old.sample || false };
-  save(); toast(old.id ? '탑승권을 고쳤어요.' : `탑승권이 발급됐어요 · 크루 ${S.profile.id}`); if (old.id) { UI.editTicket = false; go('board'); } else go('explore');
+  if (!fd.get('fee')) return showMsg('boardMsg', '계절학기 수강료 안내를 확인하고 체크해 주세요.');
+  if (!fd.get('consent')) return showMsg('boardMsg', '개인정보 수집·이용에 동의해야 수강신청과 과제 제출을 할 수 있어요.');
+  const old = S.profile || {}, isNew = !old.id;
+  S.profile = { id: old.id || genId(), name: v('name'), univ: v('univ'), sid: v('sid'), major: v('major'), grade: v('grade'), track: v('track'), course: v('course'), star: v('star'), fee: true, consent: true, sample: old.sample || false };
+  save();
+  if (!S.profile.sample) {
+    const p = S.profile, step = isNew ? (applyOpen() ? 'S0 수강신청' : 'S0 탑승권 발급(마감 후)') : 'S0 수강신청(정보 수정)';
+    const ok = await send(step, COURSE_NAME[p.course], `교과목: ${COURSE_NAME[p.course]}\n${p.univ} ${p.major} ${p.grade} · 학번 ${p.sid}\n목표 트랙: ${tname(p.track)}${p.star && STARS[p.star] ? `\nSTAR: ${STARS[p.star].en}` : ''}\n계절학기 수강료 안내 확인: 예`);
+    if (!ok) return;
+  }
+  if (!isNew) { toast('수강신청 정보를 고쳤어요.'); UI.editTicket = false; go('board'); return; }
+  if (!learnOpen()) { toast(FORM ? `수강신청이 접수됐어요 · 크루 ${S.profile.id}` : `수강신청서를 저장했어요 · 크루 ${S.profile.id}`); go('board'); return; }
+  toast(`탑승권이 발급됐어요 · 크루 ${S.profile.id}`); go('explore');
 });
 
 document.addEventListener('click', async e => {
+  if (e.target.id === 'modal' && ($('#modal .notice') || $('#pvT'))) { if ($('#modal .notice')) closeNotice(); else { $('#modal').hidden = true; $('#modal').innerHTML = ''; } return; }
   const g = e.target.closest('[data-go]');
   if (g) { const id = g.dataset.go; go(id); return; }
   const a = e.target.closest('[data-act]');
   if (!a) return;
   const act = a.dataset.act, id = a.dataset.id;
+  if (act === 'notice') { openNotice(); return; }
+  if (act === 'notice-close') { closeNotice(); return; }
+  if (act === 'notice-syl') { closeNotice(); go('syllabus'); return; }
+  if (act === 'notice-apply') { closeNotice(); if (VIEW !== 'board') go('board'); setTimeout(() => { const f = $('#boardForm'); if (f) { f.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }); const n = $('#b-name'); if (n) n.focus({ preventScroll: true }); } }, 60); return; }
+  if (act === 'privacy') { openPrivacy(); return; }
+  if (act === 'close-only') { $('#modal').hidden = true; $('#modal').innerHTML = ''; return; }
+  if (act === 'syltab') { UI.syl = id; render(); return; }
   if (act === 'demo') { S.demo = !S.demo; save(); toast(S.demo ? '시연 모드를 켰어요.' : '시연 모드를 껐어요.'); render(); return; }
   if (act === 'sample') { fillSample(); go('result'); toast('예시 크루로 채웠어요. 시연 모드가 켜졌습니다.'); return; }
   if (act === 'pickstar') {
@@ -1401,7 +1658,7 @@ function softRefresh() {
     REGIONS.forEach((r, i) => { const box = document.querySelectorAll('.branch')[i]; if (!box) return; const rd = regionDone(r); box.querySelectorAll('.coc').forEach(c => { c.classList.toggle('on', rd); const lk = c.querySelector('svg'); if (rd && lk) lk.remove(); }); const cs = box.querySelector('[data-cst]'); if (cs) { cs.innerHTML = cstInner(r); cs.classList.toggle('lit', rd); } });
   }
 }
-document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.id === 'boothCode') { e.preventDefault(); checkin(e.target.value); } if (e.key === 'Escape' && !$('#modal').hidden) { $('#modal').hidden = true; render(); } });
+document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.id === 'boothCode') { e.preventDefault(); checkin(e.target.value); } if (e.key === 'Escape' && !$('#modal').hidden) { if ($('#modal .notice')) { closeNotice(); return; } if ($('#pvT')) { $('#modal').hidden = true; $('#modal').innerHTML = ''; return; } $('#modal').hidden = true; render(); } });
 
 function checkin(code) {
   const c = String(code || '').trim().toUpperCase(), b = BOOTHS.find(x => x.code === c);
@@ -1442,7 +1699,7 @@ function fillSample() {
   const essayCN = '충남 지역 영상에서 가장 인상 깊었던 것은 천안과 아산에 제약·바이오 생산 현장이 가까이 모여 있다는 점이었습니다. 학교 가까운 곳에 실제 생산 현장이 있다는 것은 졸업 뒤에도 익숙한 곳에서 경력을 쌓을 수 있다는 뜻이기도 합니다. 저는 충남에서 일한다면 공장 현장에서 품질 업무를 차근차근 배우면서, 지역 대학과 기업이 함께 여는 교육 과정에도 꾸준히 참여하고 싶습니다. 주말에는 가까운 독립기념관이나 온천을 다니며 이 지역을 일터이자 생활의 터전으로 만들어 가고 싶습니다. 오래 머물수록 지역과 함께 성장하는 사람, 후배들에게 이 지역의 좋은 일자리를 소개하는 사람이 되고 싶습니다.';
   const essayGG = '경기 지역 영상을 보며 수도권에는 연구소와 본사가 모여 있어, 개발 단계의 제품과 생산 현장이 빠르게 오간다는 점을 알게 되었습니다. 저는 경기에서 일한다면 측정기 품질관리 업무로 시작해 연구개발 부서와 자주 소통하면서, 시험 데이터가 제품 개선으로 이어지는 과정을 가까이에서 배우고 싶습니다. 교통이 편리한 만큼 다른 지역의 협력 기업과도 활발히 오가며 시야를 넓히고, 퇴근 뒤에는 데이터 분석 공부를 이어 가 품질 데이터를 더 잘 다루는 사람이 되고 싶습니다. 이곳에서 쌓은 경험을 다른 지역의 생산 현장에도 나누며, 지역 사이를 잇는 품질 담당자로 자라고 싶습니다.';
   S = fresh(); S.demo = true;
-  S.profile = { id: 'UA27-EX01', name: '김바이오', univ: '단국대학교', sid: '32270000', major: '제약공학과', grade: '3학년', track: 'T1', star: 'Q', consent: true, sample: true };
+  S.profile = { id: 'UA27-EX01', name: '김바이오', univ: '단국대학교', sid: '32270000', major: '제약공학과', grade: '3학년', track: 'T1', course: 'pharma', star: 'Q', fee: true, consent: true, sample: true };
   const memos = { G1: '경기에는 바이오 기업의 연구소와 본사가 많이 모여 있다', G2: '체외진단 기업이 연구와 생산을 함께 키우고 있다', C1: '천안·아산은 대학과 생산 현장이 가깝다', C2: '충남은 제약 생산 공장이 모여 있는 지역이다', D1: '대구는 의료 관련 기업과 병원이 함께 성장해 왔다', D2: '치과 임플란트 기업들이 대구에서 세계로 수출한다' };
   Object.entries(memos).forEach(([k, v]) => { S.clips[k] = { watched: true, memo: v }; });
   S.notes = { gg: '연구소가 가까운 곳에서 일하며 개발 단계의 제품을 빨리 접해 보고 싶다. 교통이 좋아 다른 지역 협력사도 오가기 쉬울 것 같다.', cn: '학교와 가까운 생산 현장에서 품질 업무를 배우며 오래 머물고 싶다. 지역 대학과 기업이 함께하는 교육에도 계속 참여하고 싶다.', dg: '의료기기 기업과 병원이 가까워 현장의 불편을 바로 듣고 개선하는 일을 해 보고 싶다. 치과 분야에도 관심이 생겼다.' };
@@ -1454,7 +1711,7 @@ function fillSample() {
   S.cases.T4 = { a0: 1, a1: 0, open: '나사 치수 측정값을 설비별로 모아 하루 단위 추세를 보고, 기준선에 가까워지면 설비 점검을 먼저 하도록 알림을 주겠습니다.', done: true, score: 2 };
   S.iv = { intro: '안녕하세요, 근거를 남기는 꼼꼼함으로 품질을 지키고 싶은 지원자 김바이오입니다. 기기분석 실험에서 조원마다 결과가 2% 넘게 달랐을 때, 실험 노트를 모아 원인을 찾고 기록 양식을 바꿔 차이를 0.5% 안으로 줄였습니다. 워케이션챌린지①에서는 AI로 찾은 후보물질의 근거를 검토하며 데이터의 신뢰가 기록에서 나온다는 것을 배웠습니다. 입사 후에는 시험 기록과 데이터를 정확히 관리하는 QC 담당자가 되겠습니다.', ask: '신입 QC가 첫 1년 동안 가장 많이 배우는 일은 무엇인가요?', qa: {} };
   S.consentB = true;
-  S.sent = { S1: '12.22 21:10', S2: '12.23 10:02', S3: '12.27 23:41', S4: '12.30 20:15' };
+  S.sent = { S0: '11.27 10:12', S1: '12.22 21:10', S2: '12.23 10:02', S3: '12.27 23:41', S4: '12.30 20:15' };
   save();
 }
 
@@ -1463,10 +1720,16 @@ function fillSample() {
   try { const q = new URLSearchParams(location.search); const code = q.get('booth'); if (code && S.profile) { setTimeout(() => checkin(code), 300); } } catch (e) { /* noop */ }
 })();
 fetch(CONFIG.RESULTS_URL, { cache: 'no-store' }).then(r => (r.ok ? r.json() : null)).then(j => { if (j && j.applicants) { RESULTS = j; render(); } }).catch(() => {});
-window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (VIEWS.includes(h) && h !== VIEW) { VIEW = h; render(); } else if (h === 'home' && VIEW !== 'board') { VIEW = 'board'; render(); } });
+window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (h === 'syllabus' && VIEW !== 'syllabus') { VIEW = 'syllabus'; render(); window.scrollTo(0, 0); } else if (VIEWS.includes(h) && h !== VIEW) { VIEW = h; render(); } else if (h === 'home' && VIEW !== 'board') { VIEW = 'board'; render(); } });
 try { $('#bandStars').setAttribute('viewBox', '0 0 1400 170'); $('#bandStars').innerHTML = starsSvg(110, 3, 1400, 170); } catch (e) { /* noop */ }
 VIEW = pickView();
 render();
+/* 수강신청 안내: 학습 시작 전, 아직 신청하지 않은 방문자에게 한 번 띄운다('오늘 하루 보지 않기' 존중) */
+(function () {
+  let hidden = false; try { hidden = localStorage.getItem(NOTICE_KEY) === kstToday(); } catch (e) { /* noop */ }
+  let qr = false; try { qr = new URLSearchParams(location.search).has('booth'); } catch (e) { /* noop */ }
+  if (!hidden && !qr && !S.profile && now() < Date.parse(CONFIG.LEARN_OPEN)) setTimeout(() => { if ($('#modal').hidden) openNotice(); }, 500);
+})();
 </script>
 </body>
 </html>
