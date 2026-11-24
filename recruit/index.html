@@ -1037,12 +1037,12 @@ function vBoard() {
     <div class="hero-t">
       <p class="hero-k">ULTRA ANCHOR · STARGATE RECRUIT LINE</p>
       ${wait ? `<h1>${esc(p.name)} 크루,<br><em>수강신청</em>이 ${FORM || p.sample ? '접수되었습니다' : '저장되었습니다'}</h1>
-      <p>신청한 교과목은 ${esc(COURSE_NAME[courseOf(p)])}(2학점)입니다. 12월 21일(월) 계절학기가 시작되면 GATE 01 지역탐사부터 시작할 수 있습니다. 그 전에 강의계획서를 미리 읽어 보고, 소속 대학의 계절학기 수강료도 확인해 두십시오.</p>
-      <div class="wait"><span><b>GATE OPEN D-${dl}</b> · 12.21(월) 00:00</span><span>수강신청 ${applyOpen() ? '12.2(수)까지 정보를 고칠 수 있습니다' : '기간이 끝났습니다(12.2 마감)'}${FORM || p.sample ? '' : ' · 시안: 아직 사업단으로 전송되지 않고 이 브라우저에만 저장됩니다'}</span></div>
-      <div class="row hero-cta"><button class="btn cta" type="button" data-go="syllabus">강의계획서 보기 ${ICON.arrow}</button><button class="btn ghost-d" type="button" data-act="edit-ticket">수강신청 정보 고치기</button></div>`
+      <p>신청한 교과목은 ${esc(COURSE_NAME[courseOf(p)])}(2학점)입니다. 12월 21일(월) 계절학기가 시작되면 GATE 01 지역탐사부터 시작할 수 있습니다.</p>
+      <div class="wait"><span><b>GATE OPEN D-${dl}</b> · 12.21(월) 00:00</span><span>수강신청 ${applyOpen() ? '12.2(수)까지 정보를 수정할 수 있습니다' : '기간이 끝났습니다(12.2 마감)'}${FORM || p.sample ? '' : ' · 시안: 아직 사업단으로 전송되지 않고 이 브라우저에만 저장됩니다'}</span></div>
+      <div class="row hero-cta"><button class="btn cta" type="button" data-go="syllabus">강의계획서 보기 ${ICON.arrow}</button><button class="btn ghost-d" type="button" data-act="edit-ticket">수강신청 정보 수정</button></div>`
       : has ? `<h1>${esc(p.name)} 크루,<br>${allDone ? '<em>7개 게이트</em>를 모두 통과했습니다' : `다음은 <em>GATE ${nx.code} ${esc(nx.name)}</em>입니다`}</h1>
       <p>${allDone ? '수고 많았습니다. 다음 항로 카드를 사후과제 학습계획서로 다듬어 주십시오.' : `${esc(nx.what)} · ${esc(nx.dueL)}`}</p>
-      <div class="row hero-cta"><button class="btn cta" type="button" data-go="${nx.id}">GATE ${nx.code} ${allDone ? '다시 보기' : '이어서 하기'} ${ICON.arrow}</button><button class="btn ghost-d" type="button" data-act="edit-ticket">탑승권 정보 고치기</button></div>`
+      <div class="row hero-cta"><button class="btn cta" type="button" data-go="${nx.id}">GATE ${nx.code} ${allDone ? '다시 보기' : '이어서 하기'} ${ICON.arrow}</button><button class="btn ghost-d" type="button" data-act="edit-ticket">탑승권 정보 수정</button></div>`
       : `<h1>7개의 게이트 너머,<br><em>앵커기업</em>이 기다립니다</h1>
       <p>실제 채용 절차를 일곱 개의 게이트로 옮겨 놓았습니다. 경기·충남·대구 세 지역 GATE를 열어 앵커기업 공고를 확인하고, 모의 채용공고에 지원하고, 서류와 직무 미션을 거쳐 1월 6일 소노벨 채용박람회에서 인사담당자를 만납니다. 마지막 게이트에서는 인턴십·현장실습으로 이어지는 오퍼를 받을 수 있습니다.</p>
       <div class="row hero-cta"><button class="btn cta" type="button" data-act="to-form">${applyOpen() ? '수강신청하기' : '탑승권 발급하기'} ${ICON.arrow}</button><button class="btn ghost-d" type="button" data-go="syllabus">강의계획서 보기</button><button class="btn ghost-d" type="button" data-act="sample">예시 크루로 둘러보기</button></div>`}
@@ -1061,7 +1061,7 @@ function vBoard() {
     <div class="perk"><b>Insignia</b><span>지역 GATE를 열고 게이트를 지날 때마다 탑승권의 휘장 10개가 하나씩 켜집니다.</span></div>
     <div class="perk"><b>Your STAR</b><span>①에서 진단한 STAR 유형을 고르면 그 유형의 크루가 탑승권에 타고, 나에게 맞는 트랙의 공고에 추천 표시가 붙습니다.</span></div>
   </div>
-  ${has ? `<details class="edit" id="editBox"${UI.editTicket ? ' open' : ''}><summary>탑승권 정보 고치기</summary>${boardForm(p, true)}</details>` : boardForm(p, false)}`;
+  ${has ? `<details class="edit" id="editBox"${UI.editTicket ? ' open' : ''}><summary>탑승권 정보 수정</summary>${boardForm(p, true)}</details>` : boardForm(p, false)}`;
 }
 function boardForm(p, has) {
   return `<form class="box sec" id="boardForm" novalidate>
@@ -1079,7 +1079,7 @@ function boardForm(p, has) {
     <label class="chk"><input type="checkbox" id="b-fee" name="fee"${p.fee || (has && p.consent) ? ' checked' : ''}><span>소속 대학에 따라 <b>계절학기 수강료</b>가 발생할 수 있다는 안내를 확인했습니다. <button class="lnk" type="button" data-act="notice">안내 보기</button></span></label>
     <label class="chk"><input type="checkbox" id="b-consent" name="consent"${p.consent ? ' checked' : ''}><span>수강신청 접수, 과제 제출과 학점 처리를 위해 이름·대학·학번·전공·학년을 사업단이 수집·이용하는 데 동의합니다. (보관: 학기 종료 후 1년, 안) <button class="lnk" type="button" data-act="privacy">자세히</button></span></label>
     <p class="msg warn" id="boardMsg" hidden></p>
-    <div class="row"><button class="btn" type="submit">${has ? '탑승권 고치기' : applyOpen() ? '수강신청하기' : '탑승권 발급받기'} ${ICON.arrow}</button></div>
+    <div class="row"><button class="btn" type="submit">${has ? '탑승권 수정' : applyOpen() ? '수강신청하기' : '탑승권 발급받기'} ${ICON.arrow}</button></div>
     <p class="note">${has ? 'STAR 유형은 위의 \'나의 STAR 크루\' 카드에서도 바로 바꿀 수 있습니다.' : '예시 크루로 둘러보면 시연 모드가 켜지고, 모든 게이트가 예시 내용으로 채워집니다. 실제 과제를 시작할 때는 탑승권 아래의 \'처음부터 다시\'를 누르십시오.'}</p>
   </form>`;
 }
@@ -1137,7 +1137,7 @@ function openNotice() {
     <div class="nt-body">
       <p class="nt-lead">AI제약바이오워케이션챌린지② · AI의료기기워케이션챌린지② <span class="note">(동계 계절학기, 각 2학점)</span></p>
       <dl class="nt">
-        <dt>수강신청</dt><dd><b>12월 2일(수)까지</b>${open ? `<span class="chip now">${da > 0 ? 'D-' + da : '오늘 마감'}</span>` : '<span class="chip lock">마감</span>'}<br>${p && !p.sample ? '수강신청서를 제출했습니다. 12.2까지 홈의 \'수강신청 정보 고치기\'에서 고칠 수 있습니다.' : '이 페이지에서 탑승권을 발급하면 수강신청이 접수됩니다.'}</dd>
+        <dt>수강신청</dt><dd><b>12월 2일(수)까지</b>${open ? `<span class="chip now">${da > 0 ? 'D-' + da : '오늘 마감'}</span>` : '<span class="chip lock">마감</span>'}<br>${p && !p.sample ? '수강신청서를 제출했습니다. 12.2까지 홈의 \'수강신청 정보 수정\'에서 수정할 수 있습니다.' : '이 페이지에서 탑승권을 발급하면 수강신청이 접수됩니다.'}</dd>
         <dt>수강료</dt><dd class="fee">소속 대학 기준에 따라 <b>계절학기 수강료가 발생할 수 있습니다.</b> 금액과 납부 방법은 소속 대학 안내를 따라 주십시오.</dd>
         <dt>학습 시작</dt><dd><b>12월 21일(월)</b> 계절학기 시작과 함께 GATE 01 지역탐사가 열립니다${learnOpen() ? '' : ` <span class="chip">D-${dl}</span>`}. 그 전에는 수강신청과 강의계획서 확인만 할 수 있습니다.</dd>
         <dt>현장</dt><dd>2027.1.6(수)~8(금) 소노벨 천안 2박 3일 · 채용박람회·목표직무 특강·현장실습<br>현장 일정의 숙박·식사·교통은 사업단이 지원할 예정입니다.</dd>
@@ -1251,7 +1251,7 @@ function vDocs() {
 function docResume() {
   const p = S.profile;
   return `<div class="sec">
-    <div class="box"><p style="margin:0"><strong>${esc(p.name)}</strong> · ${esc(p.univ)} ${esc(p.major)} ${esc(p.grade)} · 목표 트랙 ${esc(tname(p.track))} <button class="lnk" type="button" data-act="edit-ticket">고치기</button></p></div>
+    <div class="box"><p style="margin:0"><strong>${esc(p.name)}</strong> · ${esc(p.univ)} ${esc(p.major)} ${esc(p.grade)} · 목표 트랙 ${esc(tname(p.track))} <button class="lnk" type="button" data-act="edit-ticket">수정</button></p></div>
     <h2>핵심 경험 세 가지 <small>첫 번째는 꼭 채워 주십시오</small></h2>
     <div class="exp">${[0, 1, 2].map(i => `<div class="box"><span class="en">EXP ${i + 1}</span>
       <label class="f"><span>무슨 경험</span>${inp(`resume.exp.${i}.what`, '예: 기기분석 실험 조장')}</label>
