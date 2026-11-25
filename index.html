@@ -1313,10 +1313,10 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
   /* 챌린지① 현장 사진: assets/challenge1/ 에 넣고 파일명을 아래에 적으면 표시됩니다 */
   const PHOTOS = [
     { f: 'c1-01.jpg', t: 'BioWorkation Challenge① 단체사진', alt: '챌린지① 참가 학생과 교원 단체 사진' },
-    { f: 'c1-02.jpg', t: 'AI의료기기 트랙', alt: 'AI의료기기 트랙 팀 실습' },
     { f: 'c1-03.jpg', t: 'AI제약바이오 트랙', alt: 'AI제약바이오 트랙 실습' },
-    { f: 'c1-04.jpg', t: '우수팀 선발', alt: '최우수상 수상팀 기념 촬영' },
-    { f: 'c1-05.jpg', t: '심사 및 멘토링 세션', alt: '본선 진출팀 발표와 심사' }
+    { f: 'c1-02.jpg', t: 'AI의료기기 트랙', alt: 'AI의료기기 트랙 팀 실습' },
+    { f: 'c1-05.jpg', t: '심사 및 멘토링 세션', alt: '본선 진출팀 발표와 심사' },
+    { f: 'c1-04.jpg', t: '우수팀 선발', alt: '최우수상 수상팀 기념 촬영' }
   ];
   (() => { const g = $('#gallery'); if (!g || !PHOTOS.length) return;
     g.innerHTML = PHOTOS.map((p, i) => `<figure class="${i === 0 ? 'w2' : ''}"><img src="assets/challenge1/${p.f}" alt="${p.alt}" loading="lazy"><figcaption>${p.t}</figcaption></figure>`).join('');
