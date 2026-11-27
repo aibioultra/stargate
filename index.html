@@ -293,7 +293,9 @@ table.cmp{width:100%;border-collapse:collapse;min-width:760px;font-size:15px}
 .ch-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .ch-info + .note-ref{margin:12px 0 28px}
 .gnb a{white-space:nowrap}
-.rep-stats{margin-bottom:28px}.rep-stats .big{font-size:clamp(30px,4vw,42px);line-height:1;font-weight:900;margin-right:2px}
+.rep-stats{margin-bottom:28px}
+.pl-card .pl-btn{margin-top:auto;align-self:flex-start;font-size:14px;padding:10px 16px}
+.pl-info{margin:16px 0 14px}.rep-stats .big{font-size:clamp(30px,4vw,42px);line-height:1;font-weight:900;margin-right:2px}
 .gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 32px}
 .gallery figure{margin:0;border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:var(--on-dark-fill)}
 .gallery figure.w2{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
@@ -710,7 +712,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       <a href="#schedule">일정</a>
       <a href="team/">팀 허브 (팀 코드로 입장)</a>
       <a href="showcase/">결과물 쇼케이스</a>
-      <a href="https://mooc.dankook.ac.kr/courses/6afa70a0a5606a302150cc4f" target="_blank" rel="noopener">사후학습 · 이수증 (D-MOOC)</a>
+      <a href="#postlearn">[공지] 사후학습 안내 (D-MOOC)</a>
       <a href="#faq">자주 묻는 질문</a>
     </div>
   </nav>
@@ -726,7 +728,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       <p class="lead">11월 20–21일, <b>5개 대학 학생 96명</b>이 <b>앵커기업·기관 현직자</b>와 함께 첫 워케이션 챌린지를 마쳤습니다. 다음 항로는 1월 소노벨 천안에서 열리는 <b>워케이션 챌린지②</b>입니다. 챌린지①에 참여하지 않았어도 신청할 수 있습니다.</p>
       <div class="cta-row">
         <a class="btn btn-navy" href="recruit/">챌린지② 수강신청</a>
-        <a class="btn btn-navy" href="https://mooc.dankook.ac.kr/courses/6afa70a0a5606a302150cc4f" target="_blank" rel="noopener">사후학습 · 이수증 (D-MOOC)</a>
+        <a class="btn btn-navy" href="#postlearn">[공지] 사후학습 안내 (D-MOOC)</a>
         <a class="btn btn-ghost" href="showcase/">결과물 쇼케이스</a>
         <a class="btn btn-ghost" href="#finder">30초 진로 진단</a>
       </div>
@@ -782,6 +784,46 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       </svg>
       <figcaption class="route-foot"><span><b>HUB</b> 단국대 천안 · N 36°50′ E 127°10′</span><span>5 PORTS · 3 REGIONS</span></figcaption>
     </figure>
+  </div>
+</section>
+
+<!-- ============ POST-LEARNING NOTICE ============ -->
+<section class="sec band-navy" id="postlearn">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t">
+        <p class="kicker">Notice · Post-learning</p>
+        <h2>[공지] 챌린지① 사후학습 안내</h2>
+        <p class="desc">워케이션챌린지①(11.20–21) 참가 학생은 <b style="color:#fff">12.4.(금) 23:59까지</b> D-MOOC에서 사후학습을 마쳐야 이수인정시간 15시간이 채워집니다. 아래에서 <b style="color:#fff">본인에게 해당하는 강좌 하나만</b> 수강신청하세요.</p>
+      </div>
+    </div>
+    <div class="sessions">
+        <article class="session pl-card">
+          <span class="tag">CREDIT · 교과 1학점</span>
+          <h4>[교과] AI제약바이오워케이션챌린지I</h4>
+          <p>AI제약바이오 트랙 · 학점(1학점) 인정 학생</p>
+          <a class="btn btn-cyan pl-btn" href="https://mooc.dankook.ac.kr/courses/6b077d87022ec72a4d65ba39" target="_blank" rel="noopener">D-MOOC에서 수강하기 <svg class="i"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="session pl-card">
+          <span class="tag">CREDIT · 교과 1학점</span>
+          <h4>[교과] AI의료기기워케이션챌린지I</h4>
+          <p>AI의료기기 트랙 · 학점(1학점) 인정 학생</p>
+          <a class="btn btn-cyan pl-btn" href="https://mooc.dankook.ac.kr/courses/6b077dacb61c304be966c42f" target="_blank" rel="noopener">D-MOOC에서 수강하기 <svg class="i"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="session pl-card">
+          <span class="tag">NON-CREDIT · 비교과</span>
+          <h4>[비교과] AI첨단바이오워케이션챌린지</h4>
+          <p>학점 인정 없이 참여한 학생 (두 트랙 공통)</p>
+          <a class="btn btn-cyan pl-btn" href="https://mooc.dankook.ac.kr/courses/6b077e0f022ec72a4d65ba42" target="_blank" rel="noopener">D-MOOC에서 수강하기 <svg class="i"><use href="#i-arrow"/></svg></a>
+        </article>
+    </div>
+    <div class="ch-info pl-info">
+      <div><span class="k">DEADLINE</span><span class="v">2026. 12. 4.(금) 23:59</span></div>
+      <div><span class="k">LEARN</span><span class="v">안내 강의 + 취업특강 3편<br>(산업·채용 지형도 · 직무 해부 · 기업 분석과 지원 전략)</span></div>
+      <div><span class="k">REFLECTION</span><span class="v">성찰일지 게시글 3문항<br>현장학습 · 온라인학습 · 앞으로의 계획</span></div>
+      <div><span class="k">CERTIFICATE</span><span class="v">12. 11.(금)부터<br>D-MOOC 강좌 페이지에서 내려받기</span></div>
+    </div>
+    <p class="note-ref">※ 교과·비교과 구분이 헷갈리면 신청 전에 소속 대학 담당자에게 확인해 주세요. 수강신청은 참가 명단과 대조해 승인됩니다.<br>※ 현장 과정(11.20–21)에 참여하지 않은 경우, 사후학습을 마쳐도 이수 처리와 이수증 발급이 되지 않습니다.</p>
   </div>
 </section>
 
@@ -931,7 +973,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:10px 18px">
         <a class="more" href="showcase/">결과물 쇼케이스 <svg class="i"><use href="#i-arrow"/></svg></a>
-        <a class="more" href="https://mooc.dankook.ac.kr/courses/6afa70a0a5606a302150cc4f" target="_blank" rel="noopener">사후학습 · 이수증 <svg class="i"><use href="#i-arrow"/></svg></a>
+        <a class="more" href="#postlearn">사후학습 · 이수증 <svg class="i"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
 
@@ -974,14 +1016,14 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
         <article class="session">
           <span class="tag">사후학습 · ~12.4(금)</span>
           <h4>D-MOOC 취업특강 · 성찰일지</h4>
-          <p>D-MOOC에서 취업특강 동영상 3개를 수강하고 성찰일지를 제출하면 이수인정시간 15시간이 채워집니다.</p>
-          <div class="org"><svg class="i"><use href="#i-arrow"/></svg><a class="co-link" href="https://mooc.dankook.ac.kr/courses/6afa70a0a5606a302150cc4f" target="_blank" rel="noopener">D-MOOC 바로가기</a></div>
+          <p>본인에게 해당하는 D-MOOC 강좌(교과 제약바이오 · 교과 의료기기 · 비교과) 하나를 신청해 안내 강의와 취업특강 3편을 수강하고 성찰일지를 게시하면 이수인정시간 15시간이 채워집니다.</p>
+          <div class="org"><svg class="i"><use href="#i-arrow"/></svg><a class="co-link" href="#postlearn">사후학습 강좌 3종 보기</a></div>
         </article>
         <article class="session">
           <span class="tag">이수증 · CERTIFICATE</span>
           <h4>이수증은 D-MOOC에서</h4>
           <p>사후학습까지 마쳐 이수가 확정되면 D-MOOC 강좌 페이지에서 이수증을 내려받을 수 있습니다. 학점 등록은 소속 대학 안내를 따릅니다.</p>
-          <div class="org"><svg class="i"><use href="#i-arrow"/></svg><a class="co-link" href="https://mooc.dankook.ac.kr/courses/6afa70a0a5606a302150cc4f" target="_blank" rel="noopener">이수증 내려받기</a></div>
+          <div class="org"><svg class="i"><use href="#i-arrow"/></svg><a class="co-link" href="#postlearn">이수증 내려받기</a></div>
         </article>
         <article class="session">
           <span class="tag">팀 결과물 · ARCHIVE</span>
@@ -1028,7 +1070,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
     </div>
     <ol class="tl">
       <li><span class="dot" aria-hidden="true"></span><div><span class="title">AI첨단바이오 워케이션 챌린지 ①</span><span class="date">11.20(금)–21(토) <span class="st">완료</span></span></div><div class="box">단국대 천안캠퍼스에서 1박 2일로 진행했습니다. 결과물은 <a href="showcase/" style="color:inherit;font-weight:700">쇼케이스</a>에서 볼 수 있습니다.</div></li>
-      <li class="now"><span class="dot" aria-hidden="true"></span><div><span class="title">챌린지① 사후학습 (D-MOOC)</span><span class="date">11.25(수)–12.4(금)</span></div><div class="box"><a href="https://mooc.dankook.ac.kr/courses/6afa70a0a5606a302150cc4f" target="_blank" rel="noopener" style="color:inherit;font-weight:700">D-MOOC</a>에서 취업특강 동영상 3개를 수강하고 성찰일지를 제출합니다. 이수가 확정되면 같은 곳에서 이수증을 내려받습니다.</div></li>
+      <li class="now"><span class="dot" aria-hidden="true"></span><div><span class="title">챌린지① 사후학습 (D-MOOC)</span><span class="date">~12.4(금) 23:59</span></div><div class="box"><a href="#postlearn" style="color:inherit;font-weight:700">D-MOOC</a>에서 취업특강 동영상 3개를 수강하고 성찰일지를 제출합니다. 이수가 확정되면 같은 곳에서 이수증을 내려받습니다.</div></li>
       <li class="key"><span class="dot" aria-hidden="true"></span><div><span class="title">챌린지② 수강신청</span><span class="date">~12.2(수)</span></div><div class="box"><a href="recruit/" style="color:inherit;font-weight:700">리크루트 라인</a>에서 탑승권을 발급하면 접수됩니다. 챌린지① 미참여자도 신청할 수 있습니다.</div></li>
       <li><span class="dot" aria-hidden="true"></span><div><span class="title">챌린지② 사전과제 (GATE 01–04)</span><span class="date">12.21(월)부터</span></div><div class="box">계절학기 시작과 함께 리크루트 라인에서 단계별 과제가 열립니다.</div></li>
       <li class="key"><span class="dot" aria-hidden="true"></span><div><span class="title">AI첨단바이오 워케이션 챌린지 ②</span><span class="date">2027.1.6(수)–8(금)</span></div><div class="box">소노벨 천안 2박 3일 · 앵커기업 채용박람회와 목표직무 특강 · 2학점</div></li>
@@ -1101,7 +1143,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
 
     <div class="panel" role="tabpanel" id="p-ch" aria-labelledby="tab-ch" hidden>
       <details class="qa" open><summary><span class="q">Q.</span>챌린지① 이수는 언제 확정되나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>현장 1박 2일(오프라인 10시간)에 더해 <b>12.4.(금)까지 D-MOOC 사후학습</b>(취업특강 동영상 3개 수강, 성찰일지 제출)을 마쳐야 이수인정시간 15시간이 채워져 이수가 확정됩니다.</p></div></details>
-      <details class="qa"><summary><span class="q">Q.</span>이수증은 어디서 받나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>이수가 확정되면 <a href="https://mooc.dankook.ac.kr/courses/6afa70a0a5606a302150cc4f" target="_blank" rel="noopener">D-MOOC 강좌 페이지</a>에서 직접 내려받을 수 있습니다.</p></div></details>
+      <details class="qa"><summary><span class="q">Q.</span>이수증은 어디서 받나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>이수가 확정되면 <a href="#postlearn">D-MOOC 강좌 페이지</a>에서 직접 내려받을 수 있습니다.</p></div></details>
       <details class="qa"><summary><span class="q">Q.</span>챌린지①을 듣지 않았는데 챌린지②를 신청할 수 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>네. 5개 참여대학 재학생이면 챌린지① 참여 여부와 관계없이 신청할 수 있습니다.</p></div></details>
       <details class="qa"><summary><span class="q">Q.</span>챌린지②는 언제, 어디서 하나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>2027년 1월 6일(수)부터 8일(금)까지 소노벨 천안에서 2박 3일로 진행합니다. 동계 계절학기 2학점(30시간) 교과이며, 12.21.(월)부터 온라인 사전과제가 열립니다.</p></div></details>
       <details class="qa"><summary><span class="q">Q.</span>챌린지① 팀 결과물은 계속 볼 수 있나요?<svg class="i chev"><use href="#i-chev"/></svg></summary><div class="a"><p>네. <a href="showcase/">결과물 쇼케이스</a>와 팀 허브에 그대로 보관합니다.</p></div></details>
@@ -1128,7 +1170,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
     </div>
     <ul class="news">
       <li><a href="recruit/"><span class="cat">모집</span><span class="ttl">AI첨단바이오 워케이션 챌린지 ② 수강신청 · 12.2.(수)까지</span><span class="st now">NEW</span><span class="go"><svg class="i"><use href="#i-arrow"/></svg></span></a></li>
-      <li><a href="https://mooc.dankook.ac.kr/courses/6afa70a0a5606a302150cc4f" target="_blank" rel="noopener"><span class="cat">공지</span><span class="ttl">챌린지 ① 사후학습(D-MOOC) 안내 · 12.4.(금)까지 · 이수증 발급</span><span class="st now">NEW</span><span class="go"><svg class="i"><use href="#i-arrow"/></svg></span></a></li>
+      <li><a href="#postlearn"><span class="cat">공지</span><span class="ttl">챌린지 ① 사후학습(D-MOOC) 안내 · 12.4.(금)까지 · 이수증 발급</span><span class="st now">NEW</span><span class="go"><svg class="i"><use href="#i-arrow"/></svg></span></a></li>
       <li><a href="#challenge"><span class="cat">소식</span><span class="ttl">챌린지 ① 첫 출항 완료 · 최우수상 브레인패스 · Bonetrace</span><span class="go"><svg class="i"><use href="#i-arrow"/></svg></span></a></li>
     </ul>
   </div>
@@ -2009,7 +2051,7 @@ fieldset.fld legend{padding:0;margin-bottom:6px}
     sched: { t: 'link', href: '#schedule', label: '일정 보기' },
     ch: { t: 'link', href: '#challenge', label: '챌린지① 리포트' },
     next: { t: 'link', href: 'recruit/', label: '챌린지② 수강신청' },
-    mooc: { t: 'link', href: 'https://mooc.dankook.ac.kr/courses/6afa70a0a5606a302150cc4f', label: 'D-MOOC 바로가기' },
+    mooc: { t: 'link', href: '#postlearn', label: '사후학습 강좌 3종 보기' },
     curr: { t: 'link', href: '#curriculum', label: '교육과정 자세히 보기' },
     finder: { t: 'link', href: '#finder', label: '30초 진로 진단' },
     partners: { t: 'link', href: '#partners', label: '참여기관 보기' },
